@@ -65,6 +65,10 @@ You can add your classmate or teammate as contact.
 
 Format: `contact add n\[name] p\[phone number] c\[classmate/teammate]`
 
+Example:
+
+* `contact add n\John Doe p\12345678 c\classmate`
+
 Note:
 
 * `[name]` is not case-sensitive (Jane doe is the same as jane Doe).
@@ -76,6 +80,10 @@ You can edit the contacts that you have added. If the contact you tried to edit 
 
 Format: `contact edit n\[name] p\[phone number] c\[classmate/teammate]`
 
+Example:
+
+* `contact edit n\John Doe p\88888888 c\classmate`
+
 Note:
 
 * `[name]` is not case-sensitive (Jane doe is the same as jane Doe).
@@ -85,6 +93,10 @@ Note:
 You can delete a contact that you have added. If the contact you try to delete does not exist, NOVA will let you know.
 
 Format: `contact delete n\[name]`
+
+Example:
+
+* `contact delete n\John Doe`
 
 Note:
 
@@ -96,17 +108,29 @@ You can delete all the contacts that you have added in your address book. If the
 
 Format: `contact delete all`
 
+Example:
+
+* `contact delete all`
+
 ==== List All Contacts: `list`
 
 NOVA will list the contact's name, phone number and category of all contacts.
 
 Format: `contact list`
 
+Example:
+
+* `contact list`
+
 ==== List Category Contact: `list [classmate/teammate]`
 
 NOVA will list the name and phone number of all the contacts under that category. NOVA will also list the category specific remarks.
 
 Format: `contact list c\[classmate/teammate]`
+
+Example:
+
+* `contact list c\classmate`
 
 Note:
 
@@ -117,7 +141,11 @@ Note:
 
 NOVA will find a specific contact added to the address book.
 
-Format: `contact find [name]`
+Format: `contact find n\[name]`
+
+Example:
+
+* `contact find n\John Doe`
 
 Note:
 
@@ -127,7 +155,11 @@ Note:
 
 NOVA will find a specific contact added to the address book and add the picture.
 
-Format: `contact addpic n\[name] [path]`
+Format: `contact addpic n\[name] pa\[path]`
+
+Example:
+
+* `contact addpic n\John Doe pa\C:\Users\aloha\Desktop\john.png`
 
 Note:
 
@@ -137,7 +169,11 @@ Note:
 
 NOVA will find a specific contact added to the address book and edit the picture.
 
-Format: `contact updatepic n\[name] [path]`
+Format: `contact updatepic n\[name] pa\[path]`
+
+Example:
+
+* `contact updatepic n\John Doe pa\C:\Users\aloha\Desktop\doe.png`
 
 Note:
 
@@ -149,6 +185,10 @@ NOVA will find a specific contact added to the address book and edit the picture
 
 Format: `contact deletepic n\[name]`
 
+Example:
+
+* `contact deletepic n\John Doe`
+
 Note:
 
 * `[name]` is not case-sensitive (Jane doe is the same as jane Doe)
@@ -158,6 +198,10 @@ Note:
 NOVA will find a specific contact added to the address book and add the remark according to category.
 
 Format: `contact remark c\[classmate/teammate] n\[name] d\[description]`
+
+Example:
+
+* `contact remark c\teammate n\John Doe d\He's cute`
 
 Note:
 
@@ -169,11 +213,19 @@ NOVA will find the second latest command that was done by the user and go to tha
 
 Format: `contact undo`
 
+Example:
+
+* `contact undo`
+
 ==== Redo Your Command: `redo`
 
 NOVA will redo commands.
 
 Format: `contact redo`
+
+Example:
+
+* `contact redo`
 
 ==== Short Form [v2.0]
 
