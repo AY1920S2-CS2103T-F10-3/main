@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">NOVA</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S2-CS2103T-F10-3/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>NOVA - User Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: <code>Team CS2103T-F10-3</code>      Since: <code>Feb 2020</code>      Licence: <code>MIT</code></p>
+<p>By: <code>Team CS2103T-F10-3</code>      Since: <code>Mar 2020</code>      Licence: <code>MIT</code></p>
 </div>
 </div>
 <div id="toc" class="toc">
@@ -16,6 +16,7 @@
 <li><a href="#common">3.1. Common</a>
 <ul class="sectlevel3">
 <li><a href="#exit-code-exit-code">3.1.1. Exit : <code>exit</code></a></li>
+<li><a href="#navigation-code-nav-code">3.1.2. Navigation: <code>nav</code></a></li>
 </ul>
 </li>
 <li><a href="#address-book">3.2. Address Book</a>
@@ -23,20 +24,20 @@
 <li><a href="#add-contact-code-add-code">3.2.1. Add Contact: <code>add</code></a></li>
 <li><a href="#edit-contact-code-edit-code">3.2.2. Edit Contact: <code>edit</code></a></li>
 <li><a href="#delete-contact-code-delete-code">3.2.3. Delete Contact : <code>delete</code></a></li>
-<li><a href="#delete-all-contacts-code-delete-all-code">3.2.4. Delete All Contacts: <code>delete all</code></a></li>
-<li><a href="#list-all-contacts-code-list-code">3.2.5. List All Contacts: <code>list</code></a></li>
+<li><a href="#delete-all-contacts-code-delete-all-code">3.2.4. Delete all Contacts: <code>delete all</code></a></li>
+<li><a href="#list-all-contacts-code-list-code">3.2.5. List all Contacts: <code>list</code></a></li>
 <li><a href="#list-category-contact-code-list-classmate-teammate-code">3.2.6. List Category Contact: <code>list [classmate/teammate]</code></a></li>
 <li><a href="#find-contact-code-find-code">3.2.7. Find Contact: <code>find</code></a></li>
 <li><a href="#add-picture-to-contact-code-addpic-code">3.2.8. Add Picture to Contact: <code>addpic</code></a></li>
 <li><a href="#update-picture-to-contact-code-updatepic-code">3.2.9. Update Picture to Contact: <code>updatepic</code></a></li>
 <li><a href="#delete-picture-in-contact-code-deletepic-code">3.2.10. Delete Picture in Contact: <code>deletepic</code></a></li>
 <li><a href="#add-category-specific-remarks-code-remark-code">3.2.11. Add Category Specific Remarks: <code>remark</code></a></li>
-<li><a href="#undo-your-command-code-undo-code">3.2.12. Undo Your Command: <code>undo</code></a></li>
-<li><a href="#redo-your-command-code-redo-code">3.2.13. Redo Your Command: <code>redo</code></a></li>
-<li><a href="#short-form-v2-0">3.2.14. Short Form [v2.0]</a></li>
+<li><a href="#undo-command-code-undo-code">3.2.12. Undo Command: <code>undo</code></a></li>
+<li><a href="#redo-command-code-redo-code">3.2.13. Redo Command: <code>redo</code></a></li>
+<li><a href="#short-form-v2-0">3.2.14. Short Form [v2.0]:</a></li>
 </ul>
 </li>
-<li><a href="#manage-plans">3.3. Manage Plans</a>
+<li><a href="#manage-events">3.3. Manage Events</a>
 <ul class="sectlevel3">
 <li><a href="#add-a-meeting-code-meeting-code">3.3.1. Add a Meeting: <code>meeting</code></a></li>
 <li><a href="#add-a-study-session-code-study-code">3.3.2. Add a Study Session: <code>study</code></a></li>
@@ -53,20 +54,29 @@
 <ul class="sectlevel3">
 <li><a href="#view-schedule-of-a-day-code-view-code">3.4.1. View Schedule of a Day: <code>view</code></a></li>
 <li><a href="#view-schedule-of-a-week-code-view-code">3.4.2. View Schedule of a Week: <code>view</code></a></li>
-<li><a href="#view-schedule-of-a-month-code-view-code">3.4.3. View Schedule of a Month: <code>view</code></a></li>
+<li><a href="#view-schedule-of-a-month-v2-0-code-view-code">3.4.3. View Schedule of a Month [v2.0]: <code>view</code></a></li>
 <li><a href="#view-timetable-code-view-code">3.4.4. View Timetable: <code>view</code></a></li>
 <li><a href="#find-free-slots-code-freeslot-code">3.4.5. Find Free Slots: <code>freeslot</code></a></li>
 <li><a href="#set-reminder-code-reminder-code">3.4.6. Set Reminder: <code>reminder</code></a></li>
 </ul>
 </li>
-<li><a href="#progress-tracker">3.5. Progress Tracker</a>
+<li><a href="#study-planner">3.5. Study Planner</a>
 <ul class="sectlevel3">
-<li><a href="#add-notes-code-add-note-code">3.5.1. Add Notes: <code>add note</code></a></li>
-<li><a href="#delete-notes-code-delete-note-code">3.5.2. Delete Notes: <code>delete note</code></a></li>
-<li><a href="#view-notes-code-view-note-code">3.5.3. View Notes: <code>view note</code></a></li>
-<li><a href="#set-done-code-done-code">3.5.4. Set Done: <code>done</code></a></li>
-<li><a href="#add-project-task-code-add-code">3.5.5. Add Project Task: <code>add</code></a></li>
-<li><a href="#delete-project-task-code-delete-code">3.5.6. Delete Project Task: <code>delete</code></a></li>
+<li><a href="#create-plan-code-plan-code">3.5.1. Create Plan: <code>plan</code></a></li>
+<li><a href="#delete-plan-code-delete-code">3.5.2. Delete Plan: <code>delete</code></a></li>
+<li><a href="#add-task-code-add-code">3.5.3. Add Task: <code>add</code></a></li>
+<li><a href="#complete-task-code-done-code">3.5.4. Complete Task: <code>done</code></a></li>
+<li><a href="#delete-task-code-delete-code">3.5.5. Delete Task: <code>delete</code></a></li>
+</ul>
+</li>
+<li><a href="#progress-tracker">3.6. Progress Tracker</a>
+<ul class="sectlevel3">
+<li><a href="#add-notes-code-add-note-code">3.6.1. Add Notes: <code>add note</code></a></li>
+<li><a href="#delete-notes-code-delete-note-code">3.6.2. Delete Notes: <code>delete note</code></a></li>
+<li><a href="#view-notes-code-view-note-code">3.6.3. View Notes: <code>view note</code></a></li>
+<li><a href="#complete-tasks-code-done-code">3.6.4. Complete Tasks: <code>done</code></a></li>
+<li><a href="#add-project-task-code-add-code">3.6.5. Add Project Task: <code>add</code></a></li>
+<li><a href="#delete-project-task-code-delete-code">3.6.6. Delete Project Task: <code>delete</code></a></li>
 </ul>
 </li>
 </ul>
@@ -82,13 +92,13 @@
 <div class="paragraph">
 <p>Next-gen Organizing Virtual Assistant (NOVA) is a one-stop desktop application for CS2103T students to manage all CS2103T related activities, from studying to planning project meetings. NOVA is designed for users who prefer to use the Command Line Interface (CLI).</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/GUI_v2.0.png" alt="GUI v2.0" width="790">
 </div>
 </div>
-<div class="paragraph">
-<p>Fig 1: GUI of NOVA</p>
+<div class="paragraph text-center">
+<p><em><span class="small">Fig 1: GUI of NOVA</span></em></p>
 </div>
 </div>
 </div>
@@ -110,17 +120,25 @@
 <p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
 </li>
 <li>
-<p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br></p>
+<p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.</p>
 </li>
 <li>
 <p>Some example commands you can try:</p>
 <div class="ulist">
 <ul>
 <li>
+<p><strong><code>nav ab</code></strong>: navigates to address book mode</p>
+<div class="ulist">
+<ul>
+<li>
 <p><strong><code>list all</code></strong> : lists all contacts</p>
 </li>
 <li>
-<p><strong><code>contact add</code></strong><code>n\John Doe p\98765432 c\classmate</code> : adds a contact named <code>John Doe</code> to the Address Book and categorise as classmate</p>
+<p><strong><code>contact add</code></strong><code>n\John Doe p\98765432 c\classmate</code> : adds a contact named <code>John Doe</code> to the Address Book and
+categorise as classmate</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p><strong><code>exit</code></strong> : exits the app</p>
@@ -139,7 +157,8 @@
 <h2 id="Features"><a class="link" href="#Features">3. Features</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Features are group together in modes of operation. There is a set of common commands and also within every mode, there is a set of commands for you to use and get things done.</p>
+<p>Features are grouped together in modes of operation. There is a set of common commands and within every mode,
+there is also a set of commands for you to use and get things done.</p>
 </div>
 <div class="sect2">
 <h3 id="common"><a class="link" href="#common">3.1. Common</a></h3>
@@ -149,22 +168,53 @@
 <div class="sect3">
 <h4 id="exit-code-exit-code"><a class="link" href="#exit-code-exit-code">3.1.1. Exit : <code>exit</code></a></h4>
 <div class="paragraph">
-<p>When exiting NOVA with the <code>exit</code> command, the contacts, schedules and notes will be saved.</p>
+<p>You can exit NOVA with this command. While exiting NOVA, contacts, schedules and
+notes will be saved.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="navigation-code-nav-code"><a class="link" href="#navigation-code-nav-code">3.1.2. Navigation: <code>nav</code></a></h4>
+<div class="paragraph">
+<p>You can navigate to the desired mode to use its features.</p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>nav [home/ab/schedule/tracker]</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>ab</code> refers to address book.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Example:<br>
+<code>nav ab</code></p>
+</div>
+<div class="paragraph">
+<p>Change the mode of operation to address book.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="address-book"><a class="link" href="#address-book">3.2. Address Book</a></h3>
 <div class="paragraph">
-<p>The address book feature allows you to keep in contact with your teammates and classmates.</p>
+<p>The address book feature allows you to keep in contact with your teammates and classmates. Access this mode by entering
+the command <code>nav ab</code>.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/addressbook.png" alt="addressbook" width="790">
 </div>
 </div>
-<div class="paragraph">
-<p>Fig 2.1: GUI of NOVA after user typed contact add n\John Doe p\12345678 c\teammate</p>
+<div class="paragraph text-center">
+<p><em><span class="small">Fig 3.2: GUI of NOVA after user typed contact <code>add n\John Doe p\12345678 c\teammate</code></span></em></p>
 </div>
 <div class="sect3">
 <h4 id="add-contact-code-add-code"><a class="link" href="#add-contact-code-add-code">3.2.1. Add Contact: <code>add</code></a></h4>
@@ -172,59 +222,75 @@
 <p>You can add your classmate or teammate as contact.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>contact add n\[name] p\[phone number] c\[classmate/teammate]</code></p>
+<p>Format: <code>add n\[name] p\[phone number] c\[classmate/teammate]</code></p>
 </div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
 <div class="ulist">
 <ul>
 <li>
-<p><code>contact add n\John Doe p\12345678 c\classmate</code></p>
+<p><code>[name]</code> is not case-sensitive. (E.g. "Jane doe" is the same as "jane Doe")</p>
+</li>
+<li>
+<p><code>[classmate/teammate]</code> is not case-sensitive. (E.g. "ClassMate" is the same as "classmate")</p>
+</li>
+<li>
+<p>The name you add will be automatically formatted. (E.g. "jane doe" will become "Jane Doe")</p>
 </li>
 </ul>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>Note:</p>
+<p>Example:<br>
+<code>add n\John Doe p\12345678 c\classmate</code></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>[name]</code> is not case-sensitive (Jane doe is the same as jane Doe).</p>
-</li>
-<li>
-<p>The name you add will be automatically formatted (jane doe will become Jane Doe).</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Adds a new contact with name John Doe, phone number 12345678 into the classmate category.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="edit-contact-code-edit-code"><a class="link" href="#edit-contact-code-edit-code">3.2.2. Edit Contact: <code>edit</code></a></h4>
 <div class="paragraph">
-<p>You can edit the contacts that you have added. If the contact you tried to edit does not exist, NOVA will let you know.</p>
+<p>You can edit the contacts that you have added. If the contact you want to edit does not exist, NOVA will let you know.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>contact edit n\[name] p\[phone number] c\[classmate/teammate]</code></p>
+<p>Format: <code>edit n\[name] p\[phone number] c\[classmate/teammate]</code></p>
 </div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
 <div class="ulist">
 <ul>
 <li>
-<p><code>contact edit n\John Doe p\88888888 c\classmate</code></p>
+<p><code>[name]</code> is not case-sensitive. (E.g. "Jane doe" is the same as "jane Doe")</p>
+</li>
+<li>
+<p><code>[classmate/teammate]</code> is not case-sensitive. (E.g. "ClassMate" is the same as "classmate")</p>
 </li>
 </ul>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>Note:</p>
+<p>Example:<br>
+<code>edit n\John Doe p\88888888 c\classmate</code></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>[name]</code> is not case-sensitive (Jane doe is the same as jane Doe).</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Edits the phone number of John Doe to 88888888.</p>
 </div>
 </div>
 <div class="sect3">
@@ -233,74 +299,74 @@
 <p>You can delete a contact that you have added. If the contact you try to delete does not exist, NOVA will let you know.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>contact delete n\[name]</code></p>
+<p>Format: <code>delete n\[name]</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>[name]</code> is not case-sensitive. (E.g. "Jane doe" is the same as "jane Doe")
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>contact delete n\John Doe</code></p>
-</li>
-</ul>
+<p>Example:<br>
+<code>delete n\John Doe</code></p>
 </div>
 <div class="paragraph">
-<p>Note:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>[name]</code> is not case-sensitive (Jane doe is the same as jane Doe).</p>
-</li>
-</ul>
+<p>Deletes John Doe from your address book.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="delete-all-contacts-code-delete-all-code"><a class="link" href="#delete-all-contacts-code-delete-all-code">3.2.4. Delete All Contacts: <code>delete all</code></a></h4>
+<h4 id="delete-all-contacts-code-delete-all-code"><a class="link" href="#delete-all-contacts-code-delete-all-code">3.2.4. Delete all Contacts: <code>delete all</code></a></h4>
 <div class="paragraph">
 <p>You can delete all the contacts that you have added in your address book. If there is no contact, NOVA will let you know.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>contact delete all</code></p>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>contact delete all</code></p>
-</li>
-</ul>
+<p>Format: <code>delete all</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="list-all-contacts-code-list-code"><a class="link" href="#list-all-contacts-code-list-code">3.2.5. List All Contacts: <code>list</code></a></h4>
+<h4 id="list-all-contacts-code-list-code"><a class="link" href="#list-all-contacts-code-list-code">3.2.5. List all Contacts: <code>list</code></a></h4>
 <div class="paragraph">
-<p>NOVA will list the contact&#8217;s name, phone number and category of all contacts.</p>
+<p>You can list the contact&#8217;s name, phone number and category of all contacts.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>contact list</code></p>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>contact list</code></p>
-</li>
-</ul>
+<p>Format: <code>list</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="list-category-contact-code-list-classmate-teammate-code"><a class="link" href="#list-category-contact-code-list-classmate-teammate-code">3.2.6. List Category Contact: <code>list [classmate/teammate]</code></a></h4>
 <div class="paragraph">
-<p>NOVA will list the name and phone number of all the contacts under that category. NOVA will also list the category specific remarks.</p>
+<p>You can list the name and phone number of all the contacts under one of the categories.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>contact list c\[classmate/teammate]</code></p>
+<p>Format: <code>list c\[classmate/teammate]</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>[classmate/teammate]</code> is not case-sensitive. (E.g. "ClassMate" is the same as "classmate")</p>
+</li>
+<li>
+<p>There are only <code>classmate</code> and <code>teammate</code> categories.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -308,23 +374,12 @@
 <div class="ulist">
 <ul>
 <li>
-<p><code>contact list c\classmate</code></p>
+<p><code>list c\classmate</code><br>
+Lists all your contacts in the <code>classmate</code> category.</p>
 </li>
 <li>
-<p><code>contact list c\teammate</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Note:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>[classmate/teammate]</code> is not case-sensitive.</p>
-</li>
-<li>
-<p>There are only classmate and teammate categories.</p>
+<p><code>list c\teammate</code><br>
+Lists all your contacts in the <code>teammate</code> category.</p>
 </li>
 </ul>
 </div>
@@ -332,218 +387,207 @@
 <div class="sect3">
 <h4 id="find-contact-code-find-code"><a class="link" href="#find-contact-code-find-code">3.2.7. Find Contact: <code>find</code></a></h4>
 <div class="paragraph">
-<p>NOVA will find a specific contact added to the address book.</p>
+<p>You can find a contact added to the address book easily with a name.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>contact find n\[name]</code></p>
+<p>Format: <code>find n\[name]</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>[name]</code> is not case-sensitive. (E.g. "Jane doe" is the same as "jane Doe")
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>contact find n\john DOE</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Note:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>[name]</code> is not case-sensitive (Jane doe is the same as jane Doe)</p>
-</li>
-</ul>
+<p>Example:<br>
+<code>find n\john DOE</code></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="add-picture-to-contact-code-addpic-code"><a class="link" href="#add-picture-to-contact-code-addpic-code">3.2.8. Add Picture to Contact: <code>addpic</code></a></h4>
 <div class="paragraph">
-<p>NOVA will find a specific contact added to the address book and add the picture.</p>
+<p>You can add a profile picture to a contact in your address book.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>contact addpic n\[name] pa\[path]</code></p>
+<p>Format: <code>addpic n\[name] pa\[path]</code></p>
 </div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
 <div class="ulist">
 <ul>
 <li>
-<p><code>contact addpic n\john doe pa\C:\Users\aloha\Desktop\aloha.png</code></p>
+<p><code>[name]</code> is not case-sensitive. (E.g. "Jane doe" is the same as "jane Doe")</p>
+</li>
+<li>
+<p>Absolute file path is used for <code>[path]</code>.</p>
 </li>
 </ul>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>Note:</p>
+<p>Example:<br>
+<code>addpic n\john doe pa\C:\Users\aloha\Desktop\aloha.png</code></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>[name]</code> is not case-sensitive (Jane doe is the same as jane Doe)</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Sets the profile picture of John Doe to aloha.png.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="update-picture-to-contact-code-updatepic-code"><a class="link" href="#update-picture-to-contact-code-updatepic-code">3.2.9. Update Picture to Contact: <code>updatepic</code></a></h4>
 <div class="paragraph">
-<p>NOVA will find a specific contact added to the address book and edit the picture.</p>
+<p>You can update the profile picture of a contact in your address book.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>contact updatepic n\[name] pa\[path]</code></p>
+<p>Format: <code>updatepic n\[name] pa\[path]</code></p>
 </div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
 <div class="ulist">
 <ul>
 <li>
-<p><code>contact updatepic n\john doe pa\C:\Users\aloha\Desktop\updatedAloha.png</code></p>
+<p><code>[name]</code> is not case-sensitive. (E.g. "Jane doe" is the same as "jane Doe")</p>
+</li>
+<li>
+<p>Absolute file path is used for <code>[path]</code>.</p>
 </li>
 </ul>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>Note:</p>
+<p>Example:<br>
+<code>updatepic n\john doe pa\C:\Users\aloha\Desktop\updatedAloha.png</code></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>[name]</code> is not case-sensitive (Jane doe is the same as jane Doe)</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Change the picture of John Doe to updateAloha.png.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="delete-picture-in-contact-code-deletepic-code"><a class="link" href="#delete-picture-in-contact-code-deletepic-code">3.2.10. Delete Picture in Contact: <code>deletepic</code></a></h4>
 <div class="paragraph">
-<p>NOVA will find a specific contact added to the address book and edit the picture.</p>
+<p>You can delete the profile picture of a contact in your address book.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>contact deletepic n\[name]</code></p>
+<p>Format: <code>deletepic n\[name]</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>[name]</code> is not case-sensitive. (E.g. "Jane doe" is the same as "jane Doe")
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>contact deletepic n\john doe</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Note:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>[name]</code> is not case-sensitive (Jane doe is the same as jane Doe)</p>
-</li>
-</ul>
+<p>Example:<br>
+<code>deletepic n\john doe</code>
+Deletes the profile picture of John Doe</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="add-category-specific-remarks-code-remark-code"><a class="link" href="#add-category-specific-remarks-code-remark-code">3.2.11. Add Category Specific Remarks: <code>remark</code></a></h4>
 <div class="paragraph">
-<p>NOVA will find a specific contact added to the address book and add the remark according to category.</p>
+<p>You can add remarks, that are category specific, to a contact.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>contact remark c\[classmate/teammate] n\[name] d\[description]</code></p>
+<p>Format: <code>remark c\[classmate/teammate] n\[name] d\[description]</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>[name]</code> is not case-sensitive. (E.g. "Jane doe" is the same as "jane Doe")
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>contact remark c\teammate n\john DOE d\He&#8217;s cuteeee!</code></p>
-</li>
-</ul>
+<p>Example:<br>
+<code>remark c\teammate n\john DOE d\He&#8217;s cuteeee!</code></p>
 </div>
 <div class="paragraph">
-<p>Note:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>[name]</code> is not case-sensitive (Jane doe is the same as jane Doe)</p>
-</li>
-</ul>
+<p>Adds the remark "He&#8217;s cuteeee!" to John Doe.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="undo-your-command-code-undo-code"><a class="link" href="#undo-your-command-code-undo-code">3.2.12. Undo Your Command: <code>undo</code></a></h4>
+<h4 id="undo-command-code-undo-code"><a class="link" href="#undo-command-code-undo-code">3.2.12. Undo Command: <code>undo</code></a></h4>
 <div class="paragraph">
-<p>NOVA will find the second latest command that was done by the user and go to that state.</p>
+<p>You can undo a command that you have entered.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>contact undo</code></p>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>contact undo</code></p>
-</li>
-</ul>
+<p>Format: <code>undo</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="redo-your-command-code-redo-code"><a class="link" href="#redo-your-command-code-redo-code">3.2.13. Redo Your Command: <code>redo</code></a></h4>
+<h4 id="redo-command-code-redo-code"><a class="link" href="#redo-command-code-redo-code">3.2.13. Redo Command: <code>redo</code></a></h4>
 <div class="paragraph">
-<p>NOVA will redo commands.</p>
+<p>You can redo undone commands.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>contact redo</code></p>
+<p>Format: <code>redo</code></p>
 </div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>contact redo</code></p>
-</li>
-</ul>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+After you successfully enter a new command, you will lose all the undone commands.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
-<h4 id="short-form-v2-0"><a class="link" href="#short-form-v2-0">3.2.14. Short Form [v2.0]</a></h4>
+<h4 id="short-form-v2-0"><a class="link" href="#short-form-v2-0">3.2.14. Short Form [v2.0]:</a></h4>
 <div class="paragraph">
-<p>You can use the short form of contact <code>c</code> in your command.</p>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>c redo</code></p>
-</li>
-<li>
-<p><code>c add n\Hee Haw p\88887777 c\classmate</code></p>
-</li>
-</ul>
+<p>You can use the short form of your command.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="manage-plans"><a class="link" href="#manage-plans">3.3. Manage Plans</a></h3>
+<h3 id="manage-events"><a class="link" href="#manage-events">3.3. Manage Events</a></h3>
 <div class="paragraph">
-<p>Commands that will help you in managing your events.</p>
+<p>You can track events by adding them into the organizer and manage them easily. Access this mode by entering
+the command <code>nav schedule</code>.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/ManageEventsUI.png" alt="ManageEventsUI" width="790">
 </div>
 </div>
-<div class="paragraph">
-<p><em><span class="small">Figure 2.2: GUI of NOVA after user typed <code>meeting d\CS2103T website set-up v\COM1 t\2020-02-20 14:00 1</code></span></em></p>
+<div class="paragraph text-center">
+<p><em><span class="small">Figure 3.3: GUI of NOVA after user typed<br>
+<code>meeting d\CS2103T website set-up v\COM1 t\2020-02-20 14:00 15:00</code></span></em></p>
 </div>
 <div class="sect3">
 <h4 id="add-a-meeting-code-meeting-code"><a class="link" href="#add-a-meeting-code-meeting-code">3.3.1. Add a Meeting: <code>meeting</code></a></h4>
@@ -551,17 +595,14 @@
 <p>You can add a meeting as one of your events.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>meeting d\[description] v\[venue] t\[YYYY-MM-DD] [HH:MM] [duration]</code></p>
+<p>Format: <code>meeting d\[description] v\[venue] t\[YYYY-MM-DD] [Start time (HH:MM)] [End time (HH:MM)]</code></p>
 </div>
 <div class="paragraph">
-<p>Example:</p>
+<p>Example:<br>
+<code>meeting d\CS2103T website set-up v\COM1 t\2020-02-20 14:00 15:00</code></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>meeting d\CS2103T website set-up v\COM1 t\2020-02-20 14:00 1</code></p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Creates an event for a team meeting at COM1 on 20 Feb 2020 to set up CS2103T website from 2pm to 3pm.</p>
 </div>
 </div>
 <div class="sect3">
@@ -570,17 +611,14 @@
 <p>You can add a study session as one of your events.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>study d\[description] v\[venue] t\[YYYY-MM-DD] [HH:MM] [duration]</code></p>
+<p>Format: <code>study d\[description] v\[venue] t\[YYYY-MM-DD] [Start time (HH:MM)] [End time (HH:MM)]</code></p>
 </div>
 <div class="paragraph">
-<p>Example:</p>
+<p>Example:<br>
+<code>study d\cool peeps revision v\COM1 t\2020-02-20 16:00 17:00</code></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>study d\cool peeps revision v\COM1 t\2020-02-20 16:00 1</code></p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Creates an event for study session at COM1 on 20 Feb 2020 from 4pm to 5pm.</p>
 </div>
 </div>
 <div class="sect3">
@@ -589,17 +627,14 @@
 <p>You can add a consultation session as one of your events.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>consultation d\[description] v\[venue] t\[YYYY-MM-DD] [HH:MM] [duration]</code></p>
+<p>Format: <code>consultation d\[description] v\[venue] t\[YYYY-MM-DD] [Start time (HH:MM)] [End time (HH:MM)]</code></p>
 </div>
 <div class="paragraph">
-<p>Example:</p>
+<p>Example:<br>
+<code>consultation d\clarify UML v\COM1 t\2020-02-20 15:00 16:00</code></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>consultation d\clarify UML v\COM1 t\2020-02-20 15:00 1</code></p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Creates an event for consultation at COM1 on 20 Feb 2020 to clarify UML from 3pm to 4pm.</p>
 </div>
 </div>
 <div class="sect3">
@@ -608,17 +643,14 @@
 <p>You can add a lesson as one of your events.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>lesson d\[description] v\[venue] t\[day] [HH:MM] [duration]</code></p>
+<p>Format: <code>lesson d\[description] v\[venue] t\[day] [Start time (HH:MM)] [End time (HH:MM)]</code></p>
 </div>
 <div class="paragraph">
-<p>Example:</p>
+<p>Example:<br>
+<code>lesson d\CS2103T tutorial v\COM1-B103 t\Monday 15:00 17:00</code></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>lesson d\CS2103T tutorial v\COM1-B103 t\Monday 15:00 2</code></p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Creates an event for CS2103T tutorial at COM1-B103 on Monday from 3pm to 5pm.</p>
 </div>
 </div>
 <div class="sect3">
@@ -629,25 +661,24 @@
 <div class="paragraph">
 <p>Format: <code>delete t\[YYYY-MM-DD] i\[index]</code></p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>[index]</code> must be a positive integer. (E.g. 1, 2, 3, &#8230;&#8203;)
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete t\2020-02-20 i\2</code></p>
-</li>
-</ul>
+<p>Example:<br>
+<code>delete t\2020-02-20 i\2</code></p>
 </div>
 <div class="paragraph">
-<p>Note:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>[index]</code> must be a positive integer e.g. 1, 2, 3&#8230;&#8203;</p>
-</li>
-</ul>
+<p>Deletes the second event on 20 Feb 2020.</p>
 </div>
 </div>
 <div class="sect3">
@@ -658,25 +689,24 @@
 <div class="paragraph">
 <p>Format: <code>done t\[YYYY-MM-DD] i\[index]</code></p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>[index]</code> must be a positive integer. (E.g. 1, 2, 3, &#8230;&#8203;)
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>done t\2020-02-20 i\2</code></p>
-</li>
-</ul>
+<p>Example:<br>
+<code>done t\2020-02-20 i\2</code></p>
 </div>
 <div class="paragraph">
-<p>Note:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>[index]</code> must be a positive integer e.g. 1, 2, 3&#8230;&#8203;</p>
-</li>
-</ul>
+<p>Marks the second event on 20 Feb 2020 as completed.</p>
 </div>
 </div>
 <div class="sect3">
@@ -685,27 +715,26 @@
 <p>You can find the events that contain the keywords.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>find event [keywords]</code></p>
+<p>Format: <code>find event k\[keywords]</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>[keywords]</code> are case insensitive. (E.g. "cool peeps" will match "Cool Peeps")
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>find event cool peeps</code></p>
-</li>
-</ul>
+<p>Example:<br>
+<code>find event cool peeps</code></p>
 </div>
 <div class="paragraph">
-<p>Note:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>[keywords]</code> are case insensitive e.g. <code>cool peeps</code> will match <code>Cool Peeps</code></p>
-</li>
-</ul>
+<p>Finds the events with description containing cool or peeps.</p>
 </div>
 </div>
 <div class="sect3">
@@ -716,25 +745,24 @@
 <div class="paragraph">
 <p>Format: <code>note d\[description] t\[YYYY-MM-DD] i\[index]</code></p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>[index]</code> must be a positive integer. (E.g. 1, 2, 3, &#8230;&#8203;)
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>note d\Remember to bring your charger! t\2020-02-20 i\2</code></p>
-</li>
-</ul>
+<p>Example:<br>
+<code>note d\Remember to bring your charger! t\2020-02-20 i\2</code></p>
 </div>
 <div class="paragraph">
-<p>Note:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>[index]</code> must be a positive integer e.g. 1, 2, 3&#8230;&#8203;</p>
-</li>
-</ul>
+<p>Adds a note with description "Remember to bring your charger!" to the second event on 20 Feb 2020.</p>
 </div>
 </div>
 <div class="sect3">
@@ -743,40 +771,42 @@
 <p>You can add repeated events which occur weekly for a given number of times.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>repeat [number] t\[YYYY-MM-DD] i\[index]</code></p>
+<p>Format: <code>repeat t\[YYYY-MM-DD] i\[index] c\[count]</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>[index]</code> and <code>[count]</code> must be a positive integer. (E.g. 1, 2, 3, &#8230;&#8203;)
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>Example:
-<code>repeat 3 t\2020-03-02 i\2</code><br>
-Your first event on 2nd March 2020 will be repeated for the next 3 weeks.</p>
+<p>Example:<br>
+<code>repeat 3 t\2020-03-02 i\2</code></p>
 </div>
 <div class="paragraph">
-<p>Note:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>[number]</code> must be a positive integer e.g. 1, 2, 3&#8230;&#8203;</p>
-</li>
-<li>
-<p><code>[index]</code> must be a positive integer e.g. 1, 2, 3&#8230;&#8203;</p>
-</li>
-</ul>
+<p>Your second event on 2nd March 2020 will be repeated for the next 3 weeks.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="using-schedule"><a class="link" href="#using-schedule">3.4. Using Schedule</a></h3>
 <div class="paragraph">
-<p>Learn how to work with the schedule you have created in NOVA.</p>
+<p>Learn how to work with the schedule you have created in NOVA. You need to be in schedule mode. Enter the schedule
+mode by entering the command <code>nav schedule</code>.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/GUI_UsingSchedule.png" alt="GUI UsingSchedule" width="790">
 </div>
 </div>
 <div class="paragraph text-center">
-<p><em><span class="small">Fig 3.1: GUI of NOVA after entering the command freeslot 2020-03-02.</span></em></p>
+<p><em><span class="small">Fig 3.4: GUI of NOVA after entering the command <code>freeslot 2020-03-02</code>.</span></em></p>
 </div>
 <div class="sect3">
 <h4 id="view-schedule-of-a-day-code-view-code"><a class="link" href="#view-schedule-of-a-day-code-view-code">3.4.1. View Schedule of a Day: <code>view</code></a></h4>
@@ -785,12 +815,14 @@ Your first event on 2nd March 2020 will be repeated for the next 3 weeks.</p>
 </div>
 <div class="paragraph">
 <p>Format:<br>
-<code>view [YYYY-MM-DD]</code></p>
+<code>view t\[YYYY-MM-DD]</code></p>
 </div>
 <div class="paragraph">
 <p>Example:<br>
-<code>view 2020-02-29</code><br>
-Shows your schedule on 29 Feb 2020</p>
+<code>view t\2020-02-29</code></p>
+</div>
+<div class="paragraph">
+<p>Shows your schedule on 29 Feb 2020</p>
 </div>
 </div>
 <div class="sect3">
@@ -800,22 +832,7 @@ Shows your schedule on 29 Feb 2020</p>
 </div>
 <div class="paragraph">
 <p>Format:<br>
-<code>view week [week #]</code></p>
-</div>
-<div class="paragraph">
-<p>Example:<br>
-<code>view week 6</code><br>
-Shows your schedule of week 6 of the semester.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="view-schedule-of-a-month-code-view-code"><a class="link" href="#view-schedule-of-a-month-code-view-code">3.4.3. View Schedule of a Month: <code>view</code></a></h4>
-<div class="paragraph">
-<p>You can view the schedule of a specified month.</p>
-</div>
-<div class="paragraph">
-<p>Format:<br>
-<code>view [MMM]</code></p>
+<code>view week i\[week #]</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -824,16 +841,46 @@ Shows your schedule of week 6 of the semester.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The 3-letter month is not case sensitive.<br>
-(JAN is the same as jan)
+<code>[week #]</code> must be a positive integer. (E.g. 1, 2, 3, &#8230;&#8203;)
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
 <p>Example:<br>
-<code>view mar</code><br>
-Shows you a list of events in March.</p>
+<code>view week i\6</code></p>
+</div>
+<div class="paragraph">
+<p>Shows your schedule of week 6 of the semester.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="view-schedule-of-a-month-v2-0-code-view-code"><a class="link" href="#view-schedule-of-a-month-v2-0-code-view-code">3.4.3. View Schedule of a Month [v2.0]: <code>view</code></a></h4>
+<div class="paragraph">
+<p>You can view the schedule of a specified month.</p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>view t\[MMM]</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>[MMM]</code> is not case sensitive. (JAN is the same as jan)
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Example:<br>
+<code>view t\mar</code></p>
+</div>
+<div class="paragraph">
+<p>Shows you a list of events in March.</p>
 </div>
 </div>
 <div class="sect3">
@@ -843,8 +890,10 @@ Shows you a list of events in March.</p>
 </div>
 <div class="paragraph">
 <p>Format:<br>
-<code>view timetable</code><br>
-Shows you your timetable.</p>
+<code>view timetable</code></p>
+</div>
+<div class="paragraph">
+<p>Shows you your timetable.</p>
 </div>
 </div>
 <div class="sect3">
@@ -854,12 +903,14 @@ Shows you your timetable.</p>
 </div>
 <div class="paragraph">
 <p>Format:<br>
-<code>freeslot [YYYY-MM-DD]</code></p>
+<code>freeslot t\[YYYY-MM-DD]</code></p>
 </div>
 <div class="paragraph">
 <p>Example:<br>
-<code>freeslot 2020-02-29</code><br>
-Finds the free slots on 29 Feb 2020.</p>
+<code>freeslot t\2020-02-29</code></p>
+</div>
+<div class="paragraph">
+<p>Finds the free slots on 29 Feb 2020.</p>
 </div>
 </div>
 <div class="sect3">
@@ -873,151 +924,210 @@ Finds the free slots on 29 Feb 2020.</p>
 </div>
 <div class="paragraph">
 <p>Example:<br>
-<code>reminder d\project meeting t\2020-03-02</code><br>
-Set a reminder for the project meeting on 2 Mar 2020.</p>
+<code>reminder d\project meeting t\2020-03-02</code></p>
+</div>
+<div class="paragraph">
+<p>Set a reminder for the project meeting on 2 Mar 2020.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="progress-tracker"><a class="link" href="#progress-tracker">3.5. Progress Tracker</a></h3>
+<h3 id="study-planner"><a class="link" href="#study-planner">3.5. Study Planner</a></h3>
 <div class="paragraph">
-<p>A tracker to help you track your study and project progress.</p>
+<p>You can make your own study plans and keep track of your progress daily.</p>
 </div>
-<div class="imageblock">
+<div class="sect3">
+<h4 id="create-plan-code-plan-code"><a class="link" href="#create-plan-code-plan-code">3.5.1. Create Plan: <code>plan</code></a></h4>
+<div class="paragraph">
+<p>You can create a new study plan within a time frame of your choice.</p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>plan p\[plan name] d\[start date (YYYY-MM-DD)] [end date (YYYY-MM-DD)]</code></p>
+</div>
+<div class="paragraph">
+<p>Example:<br>
+<code>plan p\prepare CS2103 exam d\ 2020-01-20 2020-06-20</code></p>
+</div>
+<div class="paragraph">
+<p>Creates a new plan “prepare CS2103” which starts from 20 Jan 2020 and expected to complete by 20 Jun 2020.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="delete-plan-code-delete-code"><a class="link" href="#delete-plan-code-delete-code">3.5.2. Delete Plan: <code>delete</code></a></h4>
+<div class="paragraph">
+<p>You can delete a plan and all the tasks within it. All the allocated time slots for the plan will be freed from your
+schedule.</p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>delete p\[plan name]</code></p>
+</div>
+<div class="paragraph">
+<p>Example:<br>
+<code>delete p\prepare CS2103 exam</code></p>
+</div>
+<div class="paragraph">
+<p>Removes the plan “prepare cs2103 exam”</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="add-task-code-add-code"><a class="link" href="#add-task-code-add-code">3.5.3. Add Task: <code>add</code></a></h4>
+<div class="paragraph">
+<p>You can add a task into a plan.</p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>add p\[plan name] t\[task name]</code></p>
+</div>
+<div class="paragraph">
+<p>Example:<br>
+<code>add p\prepare cs2103 exam t\read cs2103 textbook</code></p>
+</div>
+<div class="paragraph">
+<p>Creates a new task called "read cs2103 textbook" and adds it into the plan "prepare cs2103 exam".</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="complete-task-code-done-code"><a class="link" href="#complete-task-code-done-code">3.5.4. Complete Task: <code>done</code></a></h4>
+<div class="paragraph">
+<p>You can mark a specific task as done once you completed it.</p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>done p\[plan name] t\[task name]</code></p>
+</div>
+<div class="paragraph">
+<p>Example:<br>
+<code>done p\prepare cs2103 exam t\read cs2103 textbook</code></p>
+</div>
+<div class="paragraph">
+<p>Marks the task “read cs2103 textbook” as done.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="delete-task-code-delete-code"><a class="link" href="#delete-task-code-delete-code">3.5.5. Delete Task: <code>delete</code></a></h4>
+<div class="paragraph">
+<p>Delete a specific task in the plan</p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>delete p\[plan name] t\[task name]</code></p>
+</div>
+<div class="paragraph">
+<p>Example:<br>
+<code>delete p\prepare cs2103 exam t\read cs2103 textbook</code></p>
+</div>
+<div class="paragraph">
+<p>Deletes the task “read cs2103 textbook” in the plan “prepare cs2103 exam”</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="progress-tracker"><a class="link" href="#progress-tracker">3.6. Progress Tracker</a></h3>
+<div class="paragraph">
+<p>A tracker to help you track your study and project progress. Access this mode by entering
+the command <code>nav tracker</code>.</p>
+</div>
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/GUI_ProgressTracker.png" alt="GUI ProgressTracker" width="790">
 </div>
 </div>
-<div class="paragraph">
-<p>Fig 2.4: GUI of NOVA after typing command nav progress tracker.</p>
+<div class="paragraph text-center">
+<p><em><span class="small">Fig 3.5: GUI of NOVA after typing command <code>nav progress tracker</code></span></em></p>
 </div>
 <div class="sect3">
-<h4 id="add-notes-code-add-note-code"><a class="link" href="#add-notes-code-add-note-code">3.5.1. Add Notes: <code>add note</code></a></h4>
+<h4 id="add-notes-code-add-note-code"><a class="link" href="#add-notes-code-add-note-code">3.6.1. Add Notes: <code>add note</code></a></h4>
 <div class="paragraph">
 <p>You can view notes you have added to projects and syllabus in the progress tracker.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>add note c\[chapter number\ project] n\[note]</code></p>
+<p>Format: <code>add note c\[chapter name / ip / tp] n\[note]</code></p>
 </div>
 <div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>add note c\OOP n\Object-Oriented Programming (OOP) is a programming paradigm</code></p>
-</li>
-</ul>
+<p>Example:<br>
+<code>add note c\OOP n\Object-Oriented Programming (OOP) is a programming paradigm</code></p>
 </div>
 <div class="paragraph">
 <p>Add note “Object-Oriented Programming (OOP) is a programming paradigm” to OOP chapter of the syllabus.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="delete-notes-code-delete-note-code"><a class="link" href="#delete-notes-code-delete-note-code">3.5.2. Delete Notes: <code>delete note</code></a></h4>
+<h4 id="delete-notes-code-delete-note-code"><a class="link" href="#delete-notes-code-delete-note-code">3.6.2. Delete Notes: <code>delete note</code></a></h4>
 <div class="paragraph">
-<p>You can delete notes you have added to projects and syllabus in the progress tracker.</p>
+<p>You can delete the notes that you have added to projects and syllabus in the progress tracker.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>delete note [chapter number/ project] [note number]</code></p>
+<p>Format: <code>delete note c\[chapter name / ip / tp] i\[note number]</code></p>
 </div>
 <div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete note OOP 3</code></p>
-</li>
-</ul>
+<p>Example:<br>
+<code>delete note c\OOP i\3</code></p>
 </div>
 <div class="paragraph">
 <p>Deletes note number 3 of OOP chapter of the syllabus in the progress tracker.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="view-notes-code-view-note-code"><a class="link" href="#view-notes-code-view-note-code">3.5.3. View Notes: <code>view note</code></a></h4>
+<h4 id="view-notes-code-view-note-code"><a class="link" href="#view-notes-code-view-note-code">3.6.3. View Notes: <code>view note</code></a></h4>
 <div class="paragraph">
-<p>You can view notes you have added to projects and syllabus in the progress tracker.</p>
+<p>You can view the notes that you have added to projects and syllabus in the progress tracker.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>view note [chapter number/ project]</code></p>
+<p>Format: <code>view note c\[chapter name / ip / tp]</code></p>
 </div>
 <div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>view note OOP</code></p>
-</li>
-</ul>
+<p>Example:<br>
+<code>view note c\OOP</code></p>
 </div>
 <div class="paragraph">
 <p>Shows notes added to the OOP chapter of the syllabus.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="set-done-code-done-code"><a class="link" href="#set-done-code-done-code">3.5.4. Set Done: <code>done</code></a></h4>
+<h4 id="complete-tasks-code-done-code"><a class="link" href="#complete-tasks-code-done-code">3.6.4. Complete Tasks: <code>done</code></a></h4>
 <div class="paragraph">
-<p>You can set tasks in the progress tracker as done.</p>
+<p>You can mark tasks in the progress tracker as done.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>done [chapter number/ project]</code></p>
+<p>Format: <code>done c\[chapter name / project]</code></p>
 </div>
 <div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>done OOP</code></p>
-</li>
-</ul>
+<p>Example:<br>
+<code>done c\OOP</code></p>
 </div>
 <div class="paragraph">
-<p>Sets OOP as done in progress tracker.</p>
+<p>Sets the OOP chapter as done in progress tracker.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="add-project-task-code-add-code"><a class="link" href="#add-project-task-code-add-code">3.5.5. Add Project Task: <code>add</code></a></h4>
+<h4 id="add-project-task-code-add-code"><a class="link" href="#add-project-task-code-add-code">3.6.5. Add Project Task: <code>add</code></a></h4>
 <div class="paragraph">
 <p>You can add tasks under projects in the progress tracker.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>add [project] [task]</code></p>
+<p>Format: <code>add p\[ip / tp] t\[task]</code></p>
 </div>
 <div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>Add IP Level-7 Duke</code></p>
-</li>
-</ul>
+<p>Example:<br>
+<code>Add p\IP t\Level-7 Duke</code></p>
 </div>
 <div class="paragraph">
 <p>Adds tasks “Level-7 Duke” to IP in progress tracker.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="delete-project-task-code-delete-code"><a class="link" href="#delete-project-task-code-delete-code">3.5.6. Delete Project Task: <code>delete</code></a></h4>
+<h4 id="delete-project-task-code-delete-code"><a class="link" href="#delete-project-task-code-delete-code">3.6.6. Delete Project Task: <code>delete</code></a></h4>
 <div class="paragraph">
 <p>You can remove tasks under projects in the progress tracker.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>delete [project] [task number]</code></p>
+<p>Format: <code>delete p\[project] i\[task number]</code></p>
 </div>
 <div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete IP 3</code></p>
-</li>
-</ul>
+<p>Example:<br>
+<code>delete p\IP i\3</code></p>
 </div>
 <div class="paragraph">
 <p>Deletes task 3 of IP in progress tracker.</p>
@@ -1031,7 +1141,13 @@ Set a reminder for the project meeting on 2 Mar 2020.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous NOVA folder.</p>
+<strong>A</strong>: You can install the app on the other computer and overwrite the empty data file it creates with the file that
+contains the data of your previous NOVA folder.</p>
+</div>
+<div class="paragraph">
+<p><strong>Q</strong>: How can I delete all my data in one go?<br>
+<strong>A</strong>: You can go to the folder where your jar file is located at on your computer and delete all the files and folders
+except your jar file.</p>
 </div>
 </div>
 </div>
@@ -1040,4 +1156,4 @@ Set a reminder for the project meeting on 2 Mar 2020.</p>
 <div class="sectionbody">
 
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-11 11:21:29 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-11 12:23:43 UTC</div></div></div></body></html>
