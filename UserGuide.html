@@ -24,17 +24,16 @@
 <li><a href="#add-contact-code-add-code">3.2.1. Add Contact: <code>add</code></a></li>
 <li><a href="#edit-contact-code-edit-code">3.2.2. Edit Contact: <code>edit</code></a></li>
 <li><a href="#delete-contact-code-delete-code">3.2.3. Delete Contact : <code>delete</code></a></li>
-<li><a href="#delete-all-contacts-code-delete-all-code">3.2.4. Delete all Contacts: <code>delete all</code></a></li>
+<li><a href="#clear-all-contacts-code-clear-code">3.2.4. Clear all Contacts: <code>clear</code></a></li>
 <li><a href="#list-all-contacts-code-list-code">3.2.5. List all Contacts: <code>list</code></a></li>
 <li><a href="#list-category-contact-code-list-classmate-teammate-code">3.2.6. List Category Contact: <code>list [classmate/teammate]</code></a></li>
 <li><a href="#find-contact-code-find-code">3.2.7. Find Contact: <code>find</code></a></li>
 <li><a href="#add-picture-to-contact-code-addpic-code">3.2.8. Add Picture to Contact: <code>addpic</code></a></li>
-<li><a href="#update-picture-to-contact-code-updatepic-code">3.2.9. Update Picture to Contact: <code>updatepic</code></a></li>
-<li><a href="#delete-picture-in-contact-code-deletepic-code">3.2.10. Delete Picture in Contact: <code>deletepic</code></a></li>
-<li><a href="#add-category-specific-remarks-code-remark-code">3.2.11. Add Category Specific Remarks: <code>remark</code></a></li>
-<li><a href="#undo-command-code-undo-code">3.2.12. Undo Command: <code>undo</code></a></li>
-<li><a href="#redo-command-code-redo-code">3.2.13. Redo Command: <code>redo</code></a></li>
-<li><a href="#short-form-v2-0">3.2.14. Short Form [v2.0]:</a></li>
+<li><a href="#delete-picture-in-contact-code-deletepic-code">3.2.9. Delete Picture in Contact: <code>deletepic</code></a></li>
+<li><a href="#add-category-specific-remarks-code-remark-code">3.2.10. Add Category Specific Remarks: <code>remark</code></a></li>
+<li><a href="#undo-command-code-undo-code">3.2.11. Undo Command: <code>undo</code></a></li>
+<li><a href="#redo-command-code-redo-code">3.2.12. Redo Command: <code>redo</code></a></li>
+<li><a href="#short-form-v2-0">3.2.13. Short Form [v2.0]:</a></li>
 </ul>
 </li>
 <li><a href="#manage-events">3.3. Manage Events</a>
@@ -131,10 +130,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong><code>list all</code></strong> : lists all contacts</p>
+<p><strong>`list `</strong> : lists all contacts</p>
 </li>
 <li>
-<p><strong><code>contact add</code></strong><code>n\John Doe p\98765432 c\classmate</code> : adds a contact named <code>John Doe</code> to the Address Book and
+<p><strong><code>add</code></strong><code>n\John Doe p\98765432 ejohn@gmail.com c\classmate</code> : adds a contact named <code>John Doe</code> to the Address Book and
 categorise as classmate</p>
 </li>
 </ul>
@@ -222,7 +221,7 @@ the command <code>nav ab</code>.</p>
 <p>You can add your classmate or teammate as contact.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>add n\[name] p\[phone number] c\[classmate/teammate]</code></p>
+<p>Format: <code>add n\[name] p\[phone number] e\[email address] c\[classmate/teammate]</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -262,7 +261,7 @@ the command <code>nav ab</code>.</p>
 <p>You can edit the contacts that you have added. If the contact you want to edit does not exist, NOVA will let you know.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>edit n\[name] p\[phone number] c\[classmate/teammate]</code></p>
+<p>Format: <code>edit INDEX n\[name] p\[phone number] e\[email address] c\[classmate/teammate]</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -273,6 +272,16 @@ the command <code>nav ab</code>.</p>
 <td class="content">
 <div class="ulist">
 <ul>
+<li>
+<p>Edits the person at the specified <code>INDEX</code>. The index refers to the index number shown in the displayed person list.<br>
+The index <strong>must be a positive integer</strong> 1, 2, 3, …</p>
+</li>
+<li>
+<p>At least one of the optional fields must be provided.</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.</p>
+</li>
 <li>
 <p><code>[name]</code> is not case-sensitive. (E.g. "Jane doe" is the same as "jane Doe")</p>
 </li>
@@ -299,7 +308,7 @@ the command <code>nav ab</code>.</p>
 <p>You can delete a contact that you have added. If the contact you try to delete does not exist, NOVA will let you know.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>delete n\[name]</code></p>
+<p>Format: <code>delete INDEX</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -308,26 +317,38 @@ the command <code>nav ab</code>.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<code>[name]</code> is not case-sensitive. (E.g. "Jane doe" is the same as "jane Doe")
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the person at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the displayed person list.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, …​</p>
+</li>
+</ul>
+</div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
 <p>Example:<br>
-<code>delete n\John Doe</code></p>
+<code>delete 1</code></p>
 </div>
 <div class="paragraph">
-<p>Deletes John Doe from your address book.</p>
+<p>Deletes contact at index 1 from your address book.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="delete-all-contacts-code-delete-all-code"><a class="link" href="#delete-all-contacts-code-delete-all-code">3.2.4. Delete all Contacts: <code>delete all</code></a></h4>
+<h4 id="clear-all-contacts-code-clear-code"><a class="link" href="#clear-all-contacts-code-clear-code">3.2.4. Clear all Contacts: <code>clear</code></a></h4>
 <div class="paragraph">
-<p>You can delete all the contacts that you have added in your address book. If there is no contact, NOVA will let you know.</p>
+<p>You can clear the contacts that you have added in your address book. If there is no contact, NOVA will let you know.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>delete all</code></p>
+<p>Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -415,7 +436,7 @@ Lists all your contacts in the <code>teammate</code> category.</p>
 <p>You can add a profile picture to a contact in your address book.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>addpic n\[name] pa\[path]</code></p>
+<p>Format: <code>addpic INDEX pa\[path]</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -427,7 +448,8 @@ Lists all your contacts in the <code>teammate</code> category.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>[name]</code> is not case-sensitive. (E.g. "Jane doe" is the same as "jane Doe")</p>
+<p>Adds profile picture of the person at the specified INDEX. The index refers to the index number shown in
+the displayed person list. The index <strong>must be a positive integer</strong> 1, 2, 3, …​</p>
 </li>
 <li>
 <p>Absolute file path is used for <code>[path]</code>.</p>
@@ -440,56 +462,19 @@ Lists all your contacts in the <code>teammate</code> category.</p>
 </div>
 <div class="paragraph">
 <p>Example:<br>
-<code>addpic n\john doe pa\C:\Users\aloha\Desktop\aloha.png</code></p>
+<code>addpic 2 pa\C:\Users\aloha\Desktop\aloha.png</code></p>
 </div>
 <div class="paragraph">
-<p>Sets the profile picture of John Doe to aloha.png.</p>
+<p>Sets the profile picture of contact at index 1 to aloha.png.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="update-picture-to-contact-code-updatepic-code"><a class="link" href="#update-picture-to-contact-code-updatepic-code">3.2.9. Update Picture to Contact: <code>updatepic</code></a></h4>
-<div class="paragraph">
-<p>You can update the profile picture of a contact in your address book.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>updatepic n\[name] pa\[path]</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="ulist">
-<ul>
-<li>
-<p><code>[name]</code> is not case-sensitive. (E.g. "Jane doe" is the same as "jane Doe")</p>
-</li>
-<li>
-<p>Absolute file path is used for <code>[path]</code>.</p>
-</li>
-</ul>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Example:<br>
-<code>updatepic n\john doe pa\C:\Users\aloha\Desktop\updatedAloha.png</code></p>
-</div>
-<div class="paragraph">
-<p>Change the picture of John Doe to updateAloha.png.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="delete-picture-in-contact-code-deletepic-code"><a class="link" href="#delete-picture-in-contact-code-deletepic-code">3.2.10. Delete Picture in Contact: <code>deletepic</code></a></h4>
+<h4 id="delete-picture-in-contact-code-deletepic-code"><a class="link" href="#delete-picture-in-contact-code-deletepic-code">3.2.9. Delete Picture in Contact: <code>deletepic</code></a></h4>
 <div class="paragraph">
 <p>You can delete the profile picture of a contact in your address book.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>deletepic n\[name]</code></p>
+<p>Format: <code>deletepic INDEX</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -498,24 +483,38 @@ Lists all your contacts in the <code>teammate</code> category.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<code>[name]</code> is not case-sensitive. (E.g. "Jane doe" is the same as "jane Doe")
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the picture at the specified INDEX.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the displayed person list.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> 1, 2, 3, …​</p>
+</li>
+</ul>
+</div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
 <p>Example:<br>
-<code>deletepic n\john doe</code>
-Deletes the profile picture of John Doe</p>
+<code>deletepic 2</code></p>
+</div>
+<div class="paragraph">
+<p>Deletes the profile picture contact at index 1.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="add-category-specific-remarks-code-remark-code"><a class="link" href="#add-category-specific-remarks-code-remark-code">3.2.11. Add Category Specific Remarks: <code>remark</code></a></h4>
+<h4 id="add-category-specific-remarks-code-remark-code"><a class="link" href="#add-category-specific-remarks-code-remark-code">3.2.10. Add Category Specific Remarks: <code>remark</code></a></h4>
 <div class="paragraph">
 <p>You can add remarks, that are category specific, to a contact.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>remark c\[classmate/teammate] n\[name] d\[description]</code></p>
+<p>Format: <code>remark INDEX r\[description]</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -531,14 +530,14 @@ Deletes the profile picture of John Doe</p>
 </div>
 <div class="paragraph">
 <p>Example:<br>
-<code>remark c\teammate n\john DOE d\He&#8217;s cuteeee!</code></p>
+<code>remark 2 r\He&#8217;s a nice teammate</code></p>
 </div>
 <div class="paragraph">
-<p>Adds the remark "He&#8217;s cuteeee!" to John Doe.</p>
+<p>Adds the remark "He&#8217;s a nice teammate" to contact at index 2.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="undo-command-code-undo-code"><a class="link" href="#undo-command-code-undo-code">3.2.12. Undo Command: <code>undo</code></a></h4>
+<h4 id="undo-command-code-undo-code"><a class="link" href="#undo-command-code-undo-code">3.2.11. Undo Command: <code>undo</code></a></h4>
 <div class="paragraph">
 <p>You can undo a command that you have entered.</p>
 </div>
@@ -547,7 +546,7 @@ Deletes the profile picture of John Doe</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="redo-command-code-redo-code"><a class="link" href="#redo-command-code-redo-code">3.2.13. Redo Command: <code>redo</code></a></h4>
+<h4 id="redo-command-code-redo-code"><a class="link" href="#redo-command-code-redo-code">3.2.12. Redo Command: <code>redo</code></a></h4>
 <div class="paragraph">
 <p>You can redo undone commands.</p>
 </div>
@@ -568,7 +567,7 @@ After you successfully enter a new command, you will lose all the undone command
 </div>
 </div>
 <div class="sect3">
-<h4 id="short-form-v2-0"><a class="link" href="#short-form-v2-0">3.2.14. Short Form [v2.0]:</a></h4>
+<h4 id="short-form-v2-0"><a class="link" href="#short-form-v2-0">3.2.13. Short Form [v2.0]:</a></h4>
 <div class="paragraph">
 <p>You can use the short form of your command.</p>
 </div>
@@ -1156,4 +1155,4 @@ except your jar file.</p>
 <div class="sectionbody">
 
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-11 12:37:15 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-12 00:24:49 UTC</div></div></div></body></html>
