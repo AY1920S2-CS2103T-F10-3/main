@@ -1,6 +1,7 @@
 package seedu.nova.model.common.event;
 
 import static seedu.nova.commons.util.CollectionUtil.requireAllNonNull;
+
 import java.time.LocalDateTime;
 
 public class Event implements Comparable<Event> {

@@ -9,11 +9,11 @@ import java.time.format.DateTimeParseException;
 import java.util.Optional;
 
 public class DateTimeDuration implements Comparable<DateTimeDuration> {
-    private static final DateTimeFormatter[] defaultDateF = new DateTimeFormatter[] {
-        DateTimeFormatter.ofPattern("yyyy-mm-dd")
+    private static final DateTimeFormatter[] defaultDateF = new DateTimeFormatter[]{
+            DateTimeFormatter.ofPattern("yyyy-mm-dd")
     };
-    private static final DateTimeFormatter[] defaultTimeF = new DateTimeFormatter[] {
-        DateTimeFormatter.ofPattern("hh:mm a")
+    private static final DateTimeFormatter[] defaultTimeF = new DateTimeFormatter[]{
+            DateTimeFormatter.ofPattern("hh:mm a")
     };
     private static LocalTime beginDayTime = LocalTime.of(0, 0, 0);
     private static LocalTime endDayTime = LocalTime.of(23, 59, 59);
@@ -32,9 +32,9 @@ public class DateTimeDuration implements Comparable<DateTimeDuration> {
         Optional<LocalDate> opDate = parseDate(date);
         assert !opDate.isEmpty() : "cannot parse date";
         DateTimeDuration ans = new DateTimeDuration(
-            LocalDateTime.of(opDate.get(), beginDayTime),
-            LocalDateTime.of(opDate.get(), endDayTime),
-            Duration.ofDays(1)
+                LocalDateTime.of(opDate.get(), beginDayTime),
+                LocalDateTime.of(opDate.get(), endDayTime),
+                Duration.ofDays(1)
         );
         return ans;
     }
@@ -45,9 +45,9 @@ public class DateTimeDuration implements Comparable<DateTimeDuration> {
         assert !(opDate.isEmpty() || opTime.isEmpty()) : "cannot parse date";
         LocalDateTime ldt = LocalDateTime.of(opDate.get(), opTime.get());
         DateTimeDuration ans = new DateTimeDuration(
-            ldt,
-            ldt.plusMinutes(durationInMin),
-            Duration.ofMinutes(durationInMin)
+                ldt,
+                ldt.plusMinutes(durationInMin),
+                Duration.ofMinutes(durationInMin)
         );
         return ans;
     }
@@ -82,7 +82,7 @@ public class DateTimeDuration implements Comparable<DateTimeDuration> {
 
     public boolean isOverlapping(DateTimeDuration anotherDateTime) {
         return (anotherDateTime.startDateTime.compareTo(this.startDateTime) >= 0 && anotherDateTime.startDateTime.compareTo(this.endDateTime) < 0)
-            || (anotherDateTime.endDateTime.compareTo(this.startDateTime) >= 0 && anotherDateTime.endDateTime.compareTo(this.endDateTime) < 0);
+                || (anotherDateTime.endDateTime.compareTo(this.startDateTime) >= 0 && anotherDateTime.endDateTime.compareTo(this.endDateTime) < 0);
     }
 
     @Override
