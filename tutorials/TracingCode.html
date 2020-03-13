@@ -72,7 +72,7 @@ However, the execution path through a GUI is often somewhat obscure due to vario
 used by GUI frameworks, which happens to be the case here too. Therefore, let us put the breakpoint where the UI transfers
 control to the Logic component. According to the sequence diagram, the UI component yields control to the Logic component
 through a method named <code>execute</code>. Searching through the code base for <code>execute()</code> yields a promising candidate in
-<code>seedu.address.ui.CommandBox.CommandExecutor</code>.</p>
+<code>seedu.nova.ui.CommandBox.CommandExecutor</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -219,8 +219,8 @@ look at each one.</p>
 <div class="title">AddressBookParser#parseCommand()</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java">...
-case EditCommand.COMMAND_WORD:
-    <span class="keyword">return</span> <span class="keyword">new</span> EditCommandParser().parse(arguments);
+caseAbEditCommand.COMMAND_WORD:
+    <span class="keyword">return</span> <span class="keyword">new</span> AbEditCommandParser().parse(arguments);
 ...</code></pre>
 </div>
 </div>
@@ -417,4 +417,4 @@ handled?</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-12 00:24:49 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-13 07:01:00 UTC</div></div></div></body></html>
