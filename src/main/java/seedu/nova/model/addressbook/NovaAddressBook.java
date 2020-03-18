@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import seedu.nova.model.common.person.Person;
 import seedu.nova.model.common.person.UniquePersonList;
 
@@ -127,5 +129,10 @@ public class NovaAddressBook implements AddressBookModel {
     @Override
     public int hashCode() {
         return persons.hashCode();
+    }
+
+    @Override
+    public JSONObject toJsonObject() {
+        return new JSONObject();
     }
 }

@@ -49,7 +49,7 @@ public class MainWindow extends UiPart<Stage> {
         this.logic = logic;
 
         // Configure the UI
-        setWindowDefaultSize(logic.getGuiSettings());
+        //setWindowDefaultSize(logic.getGuiSettings());
 
         //setAccelerators();
 
@@ -99,16 +99,11 @@ public class MainWindow extends UiPart<Stage> {
     private void handleExit() {
         GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
                 (int) primaryStage.getX(), (int) primaryStage.getY());
-        logic.setGuiSettings(guiSettings);
+        //logic.setGuiSettings(guiSettings);
         primaryStage.hide();
     }
 
 
-    /**
-     * Executes the command and returns the result.
-     *
-     * @see seedu.address.logic.Logic#execute(String)
-     */
     private CommandResult executeCommand(String commandText) throws CommandException, ParseException {
         try {
             CommandResult commandResult = logic.execute(commandText);

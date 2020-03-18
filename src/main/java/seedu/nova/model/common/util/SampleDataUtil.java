@@ -44,7 +44,7 @@ public class SampleDataUtil {
         };
     }
 
-    public static ReadOnlyAddressBook getSampleAddressBook() {
+    public static NovaAddressBook getSampleAddressBook() {
         NovaAddressBook sampleAb = new NovaAddressBook();
         for (Person samplePerson : getSamplePersons()) {
             sampleAb.addPerson(samplePerson);
