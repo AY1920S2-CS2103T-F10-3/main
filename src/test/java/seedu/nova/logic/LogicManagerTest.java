@@ -25,11 +25,7 @@ import seedu.nova.logic.parser.exceptions.ParseException;
 import seedu.nova.model.Model;
 import seedu.nova.model.ModelManager;
 import seedu.nova.model.addressbook.ReadOnlyAddressBook;
-import seedu.nova.model.UserPrefs;
 import seedu.nova.model.common.person.Person;
-import seedu.nova.storage.JsonAddressBookStorage;
-import seedu.nova.storage.JsonUserPrefsStorage;
-import seedu.nova.storage.StorageManager;
 import seedu.nova.testutil.PersonBuilder;
 
 public class LogicManagerTest {

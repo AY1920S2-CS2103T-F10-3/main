@@ -4,34 +4,22 @@ import java.nio.file.Path;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
+import org.json.simple.JSONObject;
 import seedu.nova.commons.core.GuiSettings;
+import seedu.nova.model.addressbook.AddressBookModel;
 import seedu.nova.model.addressbook.ReadOnlyAddressBook;
 import seedu.nova.model.common.person.Person;
+import seedu.nova.model.plan.PlanModel;
+import seedu.nova.model.schedule.ScheduleModel;
+import seedu.nova.storage.JsonParsable;
 
 /**
  * The API of the Model component.
  */
-public interface Model {
-    /** {@code Predicate} that always evaluate to true */
-    Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
+public interface Model extends JsonParsable {
+    AddressBookModel getAddressBook();
+    PlanModel getPlan();
+    ScheduleModel getSchedule();
 
-    /**
-     * Replaces user prefs data with the data in {@code userPrefs}.
-     */
-    void setUserPrefs(ReadOnlyUserPrefs userPrefs);
-
-    /**
-     * Returns the user prefs.
-     */
-    ReadOnlyUserPrefs getUserPrefs();
-
-    /**
-     * Returns the user prefs' GUI settings.
-     */
-    GuiSettings getGuiSettings();
-
-    /**
-     * Sets the user prefs' GUI settings.
-     */
-    void setGuiSettings(GuiSettings guiSettings);
+    void setAddressBook(AddressBookModel addressBook);
 }

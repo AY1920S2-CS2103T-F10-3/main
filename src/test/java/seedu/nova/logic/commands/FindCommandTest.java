@@ -18,7 +18,6 @@ import org.junit.jupiter.api.Test;
 import seedu.nova.logic.commands.addressbook.FindCommand;
 import seedu.nova.model.Model;
 import seedu.nova.model.ModelManager;
-import seedu.nova.model.UserPrefs;
 import seedu.nova.model.common.person.NameContainsKeywordsPredicate;
 
 /**

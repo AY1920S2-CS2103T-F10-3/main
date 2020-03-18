@@ -24,7 +24,6 @@ import seedu.nova.logic.commands.addressbook.ClearCommand;
 import seedu.nova.model.addressbook.NovaAddressBook;
 import seedu.nova.model.Model;
 import seedu.nova.model.ModelManager;
-import seedu.nova.model.UserPrefs;
 import seedu.nova.model.common.person.Person;
 import seedu.nova.testutil.EditPersonDescriptorBuilder;
 import seedu.nova.testutil.PersonBuilder;

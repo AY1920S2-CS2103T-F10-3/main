@@ -13,7 +13,6 @@ import org.junit.jupiter.api.io.TempDir;
 import seedu.nova.commons.core.GuiSettings;
 import seedu.nova.model.addressbook.NovaAddressBook;
 import seedu.nova.model.addressbook.ReadOnlyAddressBook;
-import seedu.nova.model.UserPrefs;
 
 public class StorageManagerTest {
 

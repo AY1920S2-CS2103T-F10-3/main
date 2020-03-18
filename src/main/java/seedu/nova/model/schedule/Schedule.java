@@ -1,5 +1,6 @@
 package seedu.nova.model.schedule;
 
+import org.json.simple.JSONObject;
 import seedu.nova.model.common.event.Event;
 import seedu.nova.model.common.time.DateTimeDuration;
 import seedu.nova.model.plan.WeakEvent;
@@ -9,12 +10,21 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.SortedSet;
 
-public class Schedule {
+public class Schedule implements ScheduleModel {
     Semester absoluteSchedule;
     Semester schedulableSchedule;
     Semester wholeSchedule;
 
-    Schedule(LocalDate start, LocalDate end) {
+    public Schedule() {
+        LocalDate now = LocalDate.now();
+        LocalDate start = LocalDate.of(now.getYear(), now.getMonth(), 1);
+        LocalDate end = LocalDate.of(now.getYear(), 12, 31);
+        this.absoluteSchedule = new Semester(0, start, end);
+        this.schedulableSchedule = new Semester(1, start, end);
+        this.wholeSchedule = new Semester(2, start, end);
+    }
+
+    public Schedule(LocalDate start, LocalDate end) {
         this.absoluteSchedule = new Semester(0, start, end);
         this.schedulableSchedule = new Semester(1, start, end);
         this.wholeSchedule = new Semester(2, start, end);
@@ -67,5 +77,10 @@ public class Schedule {
     void deleteWeakEvent(Event event) {
         this.schedulableSchedule.deleteEvent(event);
         this.wholeSchedule.deleteEvent(event);
+    }
+
+    @Override
+    public JSONObject toJsonObject() {
+        return new JSONObject();
     }
 }

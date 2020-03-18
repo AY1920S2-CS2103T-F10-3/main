@@ -3,6 +3,7 @@ package seedu.nova.model.addressbook;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.nova.model.common.person.Person;
@@ -12,7 +13,7 @@ import seedu.nova.model.common.person.UniquePersonList;
  * Wraps all data at the address-book level
  * Duplicates are not allowed (by .isSamePerson comparison)
  */
-public class NovaAddressBook implements ReadOnlyAddressBook {
+public class NovaAddressBook implements AddressBookModel {
 
     private final UniquePersonList persons;
 
@@ -66,6 +67,11 @@ public class NovaAddressBook implements ReadOnlyAddressBook {
         return persons.contains(person);
     }
 
+    @Override
+    public void deletePerson(Person target) {
+
+    }
+
     /**
      * Adds a person to the address book.
      * The person must not already exist in the address book.
@@ -85,6 +91,16 @@ public class NovaAddressBook implements ReadOnlyAddressBook {
         persons.setPerson(target, editedPerson);
     }
 
+    @Override
+    public ObservableList<Person> getFilteredPersonList() {
+        return null;
+    }
+
+    @Override
+    public void updateFilteredPersonList(Predicate<Person> predicate) {
+
+    }
+
     /**
      * Removes {@code key} from this {@code AddressBook}.
      * {@code key} must exist in the address book.
@@ -99,11 +115,6 @@ public class NovaAddressBook implements ReadOnlyAddressBook {
     public String toString() {
         return persons.asUnmodifiableObservableList().size() + " persons";
         // TODO: refine later
-    }
-
-    @Override
-    public ObservableList<Person> getPersonList() {
-        return persons.asUnmodifiableObservableList();
     }
 
     @Override

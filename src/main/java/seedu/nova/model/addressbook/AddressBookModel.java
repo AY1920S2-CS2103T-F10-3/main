@@ -2,29 +2,13 @@ package seedu.nova.model.addressbook;
 
 import javafx.collections.ObservableList;
 import seedu.nova.model.common.person.Person;
+import seedu.nova.storage.JsonParsable;
 
-import java.nio.file.Path;
 import java.util.function.Predicate;
 
-public interface AddressBookModel {
-    /**
-     * Returns the user prefs' address book file path.
-     */
-    Path getAddressBookFilePath();
+public interface AddressBookModel extends JsonParsable {
 
-    /**
-     * Sets the user prefs' address book file path.
-     */
-    void setAddressBookFilePath(Path addressBookFilePath);
-
-    /**
-     * Replaces address book data with the data in {@code addressBook}.
-     */
-    void setAddressBook(ReadOnlyAddressBook addressBook);
-
-    /** Returns the AddressBook */
-    ReadOnlyAddressBook getAddressBook();
-
+    Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = x -> true;
     /**
      * Returns true if a person with the same identity as {@code person} exists in the address book.
      */

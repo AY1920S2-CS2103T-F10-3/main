@@ -15,7 +15,6 @@ import seedu.nova.logic.parser.exceptions.ParseException;
 import seedu.nova.model.Model;
 import seedu.nova.model.addressbook.ReadOnlyAddressBook;
 import seedu.nova.model.common.person.Person;
-import seedu.nova.storage.Storage;
 
 /**
  * The main LogicManager of the app.

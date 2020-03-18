@@ -20,7 +20,6 @@ import seedu.nova.logic.commands.exceptions.CommandException;
 import seedu.nova.model.addressbook.NovaAddressBook;
 import seedu.nova.model.Model;
 import seedu.nova.model.addressbook.ReadOnlyAddressBook;
-import seedu.nova.model.ReadOnlyUserPrefs;
 import seedu.nova.model.common.person.Person;
 import seedu.nova.testutil.PersonBuilder;
 

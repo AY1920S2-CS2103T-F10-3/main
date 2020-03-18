@@ -14,7 +14,6 @@ import org.junit.jupiter.api.io.TempDir;
 
 import seedu.nova.commons.core.GuiSettings;
 import seedu.nova.commons.exceptions.DataConversionException;
-import seedu.nova.model.UserPrefs;
 
 public class JsonUserPrefsStorageTest {
 

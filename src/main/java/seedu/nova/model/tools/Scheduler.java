@@ -14,4 +14,5 @@ public interface Scheduler {
     static List<Event> getOverlappingWeakEvents(Schedule schedule, Event event) {
         return schedule.getAllWeakEvents().stream().parallel().filter(x -> x.isCrashed(event)).collect(Collectors.toList());
     }
+    
 }

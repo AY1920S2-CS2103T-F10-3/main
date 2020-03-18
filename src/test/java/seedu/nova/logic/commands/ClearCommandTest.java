@@ -9,7 +9,6 @@ import seedu.nova.logic.commands.addressbook.ClearCommand;
 import seedu.nova.model.addressbook.NovaAddressBook;
 import seedu.nova.model.Model;
 import seedu.nova.model.ModelManager;
-import seedu.nova.model.UserPrefs;
 
 public class ClearCommandTest {
 

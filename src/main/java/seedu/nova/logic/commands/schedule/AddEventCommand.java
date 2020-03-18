@@ -2,11 +2,9 @@ package seedu.nova.logic.commands.schedule;
 
 import seedu.nova.logic.commands.Command;
 import seedu.nova.logic.commands.CommandResult;
-import seedu.nova.logic.commands.addressbook.AddCommand;
 import seedu.nova.logic.commands.exceptions.CommandException;
 import seedu.nova.model.Model;
 import seedu.nova.model.common.event.Event;
-import seedu.nova.model.common.person.Person;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.nova.logic.parser.CliSyntax.*;
@@ -48,12 +46,7 @@ public class AddEventCommand extends Command {
         public CommandResult execute(Model model) throws CommandException {
             requireNonNull(model);
 
-            if (model.hasPerson(toAdd)) {
-                throw new CommandException(MESSAGE_DUPLICATE_PERSON);
-            }
 
-            model.addPerson(toAdd);
-            return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
         }
 
         @Override
