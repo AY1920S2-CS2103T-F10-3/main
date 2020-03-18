@@ -8,15 +8,15 @@ import seedu.nova.model.ModelManager;
 
 import java.io.*;
 
-public class NovaStorage implements JsonStorage<Model> {
+public class Storage implements JsonStorage<Model> {
     private static final String DEFAULT_PATH = "./nova.json";
     File originFl;
 
-    public NovaStorage() {
+    public Storage() {
         this(DEFAULT_PATH);
     }
 
-    public NovaStorage(String path) {
+    public Storage(String path) {
         this.originFl = new File(path);
     }
 

@@ -1,5 +1,6 @@
 package seedu.nova.model.schedule;
 
+import seedu.nova.model.common.Copyable;
 import seedu.nova.model.common.event.Event;
 import seedu.nova.model.common.time.DateTimeDuration;
 import seedu.nova.model.common.time.SlotList;
@@ -12,12 +13,12 @@ import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-public class Semester {
+public class Semester implements Copyable<Semester> {
     int id;
     DateTimeDuration scheduleDuration;
     List<Week> weekList;
     TreeSet<LocalDate> weekStartDateSet;
-    List<Event> eventList;
+    TreeSet<Event> eventList;
     SlotList freeSlotList;
 
     public Semester(int id, LocalDate startDate, LocalDate endDate) {
@@ -38,11 +39,11 @@ public class Semester {
             weekList.add(new Week(dd));
         }
 
-        this.eventList = new ArrayList<>();
+        this.eventList = new TreeSet<>();
         this.freeSlotList = new SlotList(this.scheduleDuration);
     }
 
-    private Semester(int id, List<Week> weekList, List<Event> eventList, SlotList freeSlotList) {
+    private Semester(int id, List<Week> weekList, TreeSet<Event> eventList, SlotList freeSlotList) {
         this.id = id;
         this.weekList = weekList;
         this.eventList = eventList;
@@ -53,7 +54,7 @@ public class Semester {
         return this.id;
     }
 
-    public List<Event> getEventList() {
+    public TreeSet<Event> getEventList() {
         return this.eventList;
     }
 
@@ -93,5 +94,11 @@ public class Semester {
 
     boolean contains(Event event) {
         return this.eventList.contains(event);
+    }
+
+    @Override
+    public Semester getCopy() {
+        return new Semester(this.id, new ArrayList<>(this.weekList), new TreeSet<>(this.eventList),
+                this.freeSlotList.getCopy());
     }
 }

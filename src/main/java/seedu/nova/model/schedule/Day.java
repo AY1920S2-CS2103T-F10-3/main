@@ -1,5 +1,6 @@
 package seedu.nova.model.schedule;
 
+import seedu.nova.model.common.Copyable;
 import seedu.nova.model.common.event.Event;
 import seedu.nova.model.common.time.DateTimeDuration;
 import seedu.nova.model.common.time.SlotList;
@@ -9,11 +10,11 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.util.*;
 
-public class Day {
+public class Day implements Copyable<Day> {
     DayOfWeek type;
     DateTimeDuration dayDuration;
     SlotList freeSlotList;
-    List<Event> eventList;
+    TreeSet<Event> eventList;
 
     Day(LocalDate lDate) {
         this.dayDuration = DateTimeDuration.parseDayFromDate(lDate);
@@ -21,14 +22,14 @@ public class Day {
         initialise();
     }
 
-    private Day(DayOfWeek type, DateTimeDuration dayDuration, List<Event> eventList) {
+    private Day(DayOfWeek type, DateTimeDuration dayDuration, TreeSet<Event> eventList) {
         this.type = type;
         this.dayDuration = dayDuration;
         this.eventList = eventList;
     }
 
     private void initialise() {
-        this.eventList = new LinkedList<>();
+        this.eventList = new TreeSet<>();
         this.freeSlotList = new SlotList(this.dayDuration);
     }
 
@@ -46,5 +47,10 @@ public class Day {
     void deleteEvent(Event event) {
         this.eventList.remove(event);
         this.freeSlotList.includeDuration(event.getDateTimeDuration());
+    }
+
+    @Override
+    public Day getCopy() {
+        return new Day(this.type, this.dayDuration.getCopy(), new TreeSet<>(this.eventList));
     }
 }

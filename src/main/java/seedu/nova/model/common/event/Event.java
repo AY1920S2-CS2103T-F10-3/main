@@ -40,7 +40,7 @@ public class Event implements Comparable<Event>, Copyable<Event> {
 
     @Override
     public int compareTo(Event o) {
-        return this.dateTime.compareTo(o.dateTime);
+        return this.dateTime.getEndDateTime().compareTo(o.dateTime.getEndDateTime());
     }
 
     @Override

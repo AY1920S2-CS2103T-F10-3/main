@@ -1,5 +1,6 @@
 package seedu.nova.model.schedule;
 
+import seedu.nova.model.common.Copyable;
 import seedu.nova.model.common.event.Event;
 import seedu.nova.model.common.time.DateTimeDuration;
 import seedu.nova.model.common.time.SlotList;
@@ -9,11 +10,13 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.SortedSet;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
 
-public class Week {
+public class Week implements Copyable<Week> {
     DateTimeDuration weekDuration;
     List<Day> sevenDays;
-    List<Event> eventList;
+    TreeSet<Event> eventList;
     SlotList freeSlotList;
 
     public Week(LocalDate date) {
@@ -28,11 +31,11 @@ public class Week {
             sevenDays.add(new Day(d.plusDays(i)));
         }
 
-        this.eventList = new ArrayList<>();
+        this.eventList = new TreeSet<>();
         this.freeSlotList = new SlotList(this.weekDuration);
     }
 
-    private Week(List<Day> sevenDays, List<Event> eventList, SlotList freeSlotList) {
+    private Week(List<Day> sevenDays, TreeSet<Event> eventList, SlotList freeSlotList) {
         this.sevenDays = sevenDays;
         this.eventList = eventList;
         this.freeSlotList = freeSlotList;
@@ -64,5 +67,10 @@ public class Week {
         for(int i = startDay; i <= endDay; i++) {
             this.sevenDays.get(i).deleteEvent(event);
         }
+    }
+
+    @Override
+    public Week getCopy() {
+        return new Week(new ArrayList<>(this.sevenDays), new TreeSet<>(this.eventList), this.freeSlotList.getCopy());
     }
 }

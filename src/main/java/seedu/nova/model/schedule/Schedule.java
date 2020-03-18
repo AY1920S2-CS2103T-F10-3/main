@@ -3,34 +3,45 @@ package seedu.nova.model.schedule;
 import org.json.simple.JSONObject;
 import seedu.nova.model.common.event.Event;
 import seedu.nova.model.common.time.DateTimeDuration;
-import seedu.nova.model.plan.WeakEvent;
 
 import java.time.Duration;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.SortedSet;
+import java.util.TreeSet;
 
 public class Schedule implements ScheduleModel {
     Semester absoluteSchedule;
     Semester schedulableSchedule;
     Semester wholeSchedule;
 
+    public Schedule(LocalDate start, LocalDate end) {
+        if(start.compareTo(end) >= 0) {
+            start = LocalDate.of(start.getYear(), start.getMonth(), 1);
+            end = LocalDate.of(end.getYear(), 12, 31);
+        }
+        init(start, end);
+    }
+
     public Schedule() {
         LocalDate now = LocalDate.now();
         LocalDate start = LocalDate.of(now.getYear(), now.getMonth(), 1);
         LocalDate end = LocalDate.of(now.getYear(), 12, 31);
+        init(start, end);
+    }
+
+    private void init(LocalDate start, LocalDate end) {
         this.absoluteSchedule = new Semester(0, start, end);
         this.schedulableSchedule = new Semester(1, start, end);
         this.wholeSchedule = new Semester(2, start, end);
     }
 
-    public Schedule(LocalDate start, LocalDate end) {
-        this.absoluteSchedule = new Semester(0, start, end);
-        this.schedulableSchedule = new Semester(1, start, end);
-        this.wholeSchedule = new Semester(2, start, end);
+    private Schedule(Semester absoluteSchedule, Semester schedulableSchedule, Semester wholeSchedule) {
+        this.absoluteSchedule = absoluteSchedule;
+        this.schedulableSchedule = schedulableSchedule;
+        this.wholeSchedule = wholeSchedule;
     }
 
-    public List<Event> getAllEvents() {
+    public TreeSet<Event> getAllEvents() {
         return this.wholeSchedule.getEventList();
     }
 
@@ -42,6 +53,7 @@ public class Schedule implements ScheduleModel {
         return this.wholeSchedule.getFreeSlots(greaterThan);
     }
 
+    @Override
     public boolean addEvent(Event event) {
         DateTimeDuration d = event.getDateTimeDuration();
         SortedSet<DateTimeDuration> freeSlotSet = getStrictFreeSlots(d.getDuration());
@@ -59,6 +71,7 @@ public class Schedule implements ScheduleModel {
         this.wholeSchedule.addEvent(event, freeSlot);
     }
 
+    @Override
     public boolean deleteEvent(Event event) {
         if(this.absoluteSchedule.contains(event)) {
             this.absoluteSchedule.deleteEvent(event);
@@ -70,7 +83,7 @@ public class Schedule implements ScheduleModel {
     }
 
     // For scheduler use only
-    public List<Event> getAllWeakEvents() {
+    public TreeSet<Event> getAllWeakEvents() {
         return this.schedulableSchedule.getEventList();
     }
 
@@ -87,5 +100,11 @@ public class Schedule implements ScheduleModel {
     @Override
     public JSONObject toJsonObject() {
         return new JSONObject();
+    }
+
+    @Override
+    public Schedule getCopy() {
+        return new Schedule(this.absoluteSchedule.getCopy(), this.schedulableSchedule.getCopy(),
+                this.wholeSchedule.getCopy());
     }
 }
