@@ -1,11 +1,14 @@
 package seedu.nova.model.common.event;
 
+import seedu.nova.model.common.time.DateTimeDuration;
+
 import static seedu.nova.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.time.LocalDateTime;
 
 public class Event implements Comparable<Event> {
     private final Name name;
+
     private final DateTimeDuration dateTime;
 
     public Event(Name name, DateTimeDuration dateTime) {
@@ -16,6 +19,10 @@ public class Event implements Comparable<Event> {
 
     public Name getName() {
         return this.name;
+    }
+
+    public DateTimeDuration getDateTimeDuration() {
+        return this.dateTime;
     }
 
     public LocalDateTime getStartDateTime() {

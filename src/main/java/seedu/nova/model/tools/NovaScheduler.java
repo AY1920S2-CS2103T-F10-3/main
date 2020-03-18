@@ -1,4 +1,5 @@
-package seedu.nova.model.scheduler;
+package seedu.nova.model.tools;
 
 public class NovaScheduler implements Scheduler {
+
 }
