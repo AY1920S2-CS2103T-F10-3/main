@@ -2,7 +2,7 @@ package seedu.nova.model.schedule;
 
 import seedu.nova.model.common.event.Event;
 import seedu.nova.model.common.time.DateTimeDuration;
-import seedu.nova.model.common.time.FreeSlotList;
+import seedu.nova.model.common.time.SlotList;
 
 import java.time.DayOfWeek;
 import java.time.Duration;
@@ -12,7 +12,7 @@ import java.util.*;
 public class Day {
     DayOfWeek type;
     DateTimeDuration dayDuration;
-    FreeSlotList freeSlotList;
+    SlotList freeSlotList;
     List<Event> eventList;
 
     Day(LocalDate lDate) {
@@ -29,7 +29,7 @@ public class Day {
 
     private void initialise() {
         this.eventList = new LinkedList<>();
-        this.freeSlotList = new FreeSlotList(this.dayDuration);
+        this.freeSlotList = new SlotList(this.dayDuration);
     }
 
     SortedSet<DateTimeDuration> getFreeSlots(Duration greaterThan) {

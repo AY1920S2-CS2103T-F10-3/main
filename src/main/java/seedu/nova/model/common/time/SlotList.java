@@ -8,16 +8,21 @@ import java.util.SortedSet;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-public class FreeSlotList implements Copyable<FreeSlotList> {
+public class SlotList implements Copyable<SlotList> {
     TreeSet<DateTimeDuration> freeSlotSet;
     TreeMap<LocalDateTime, DateTimeDuration> freeSlotMap;
 
-    public FreeSlotList(DateTimeDuration init) {
+    public SlotList(DateTimeDuration init) {
         this(new TreeSet<>(), new TreeMap<>());
         addDuration(init);
     }
 
-    private FreeSlotList(TreeSet<DateTimeDuration> freeSlotSet, TreeMap<LocalDateTime, DateTimeDuration> freeSlotMap) {
+    public SlotList(List<DateTimeDuration> init) {
+        this(new TreeSet<>(), new TreeMap<>());
+        init.forEach(this::addDuration);
+    }
+
+    private SlotList(TreeSet<DateTimeDuration> freeSlotSet, TreeMap<LocalDateTime, DateTimeDuration> freeSlotMap) {
         this.freeSlotSet = freeSlotSet;
         this.freeSlotMap = freeSlotMap;
     }
@@ -29,20 +34,28 @@ public class FreeSlotList implements Copyable<FreeSlotList> {
 
     public void excludeDuration(DateTimeDuration ed) {
         DateTimeDuration lastFreeSlot = this.freeSlotMap.lowerEntry(ed.getStartDateTime()).getValue();
-        List<DateTimeDuration> comp = lastFreeSlot.relativeComplementOf(ed);
-        deleteDuration(lastFreeSlot);
-        comp.forEach(this::addDuration);
+        if(lastFreeSlot.isOverlapping(ed)) {
+            List<DateTimeDuration> comp = lastFreeSlot.relativeComplementOf(ed);
+            deleteDuration(lastFreeSlot);
+            comp.forEach(this::addDuration);
+        }
+    }
+
+    public SlotList intersectionWith(SlotList another) {
+        SlotList ans = getCopy();
+        another.freeSlotSet.forEach(ans::excludeDuration);
+        return ans;
     }
 
     public void includeDuration(DateTimeDuration ed) {
         DateTimeDuration lastFreeSlot = this.freeSlotMap.floorEntry(ed.getStartDateTime()).getValue();
         DateTimeDuration nextFreeSlot = this.freeSlotMap.ceilingEntry(ed.getEndDateTime()).getValue();
 
-        if(ed.isImmidiatelyAfter(lastFreeSlot)) {
+        if(ed.isConnected(lastFreeSlot)) {
             deleteDuration(lastFreeSlot);
             ed = new DateTimeDuration(lastFreeSlot.getStartDateTime(), ed.getEndDateTime());
         }
-        if(nextFreeSlot.isImmidiatelyAfter(ed)) {
+        if(nextFreeSlot.isConnected(ed)) {
             deleteDuration(nextFreeSlot);
             ed = new DateTimeDuration(ed.getStartDateTime(), nextFreeSlot.getEndDateTime());
         }
@@ -59,12 +72,16 @@ public class FreeSlotList implements Copyable<FreeSlotList> {
         this.freeSlotSet.remove(d);
     }
 
+    public int size() {
+        return this.freeSlotSet.size();
+    }
+
     public boolean contains(DateTimeDuration d) {
         return this.freeSlotSet.contains(d);
     }
 
     @Override
-    public FreeSlotList getCopy() {
-        return new FreeSlotList(new TreeSet<>(this.freeSlotSet), new TreeMap<>(this.freeSlotMap));
+    public SlotList getCopy() {
+        return new SlotList(new TreeSet<>(this.freeSlotSet), new TreeMap<>(this.freeSlotMap));
     }
 }

@@ -59,9 +59,14 @@ public class Schedule implements ScheduleModel {
         this.wholeSchedule.addEvent(event, freeSlot);
     }
 
-    public void deleteEvent(Event event) {
-        this.absoluteSchedule.deleteEvent(event);
-        this.wholeSchedule.deleteEvent(event);
+    public boolean deleteEvent(Event event) {
+        if(this.absoluteSchedule.contains(event)) {
+            this.absoluteSchedule.deleteEvent(event);
+            this.wholeSchedule.deleteEvent(event);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     // For scheduler use only

@@ -26,7 +26,25 @@ public class DateTimeDuration implements Comparable<DateTimeDuration>, Copyable<
     private Duration duration;
 
     public DateTimeDuration(LocalDateTime start, LocalDateTime stop) {
-        this(start, stop, Duration.between(start, stop));
+        this.startDateTime = start;
+        this.endDateTime = stop;
+        if(start.compareTo(stop) < 0) {
+            this.duration = Duration.between(start, stop);
+        } else {
+            this.duration = Duration.ZERO;
+        }
+    }
+
+    public DateTimeDuration(LocalDate date, LocalTime start, LocalTime end) {
+        if(start.compareTo(end) < 0) {
+            this.startDateTime = LocalDateTime.of(date, start);
+            this.endDateTime = LocalDateTime.of(date, end);
+            this.duration = Duration.between(this.startDateTime, this.endDateTime);
+        } else {
+            this.startDateTime = LocalDateTime.of(date, start);
+            this.endDateTime = LocalDateTime.of(date.plusDays(1), end);
+            this.duration = Duration.between(this.startDateTime, this.endDateTime);
+        }
     }
 
     DateTimeDuration(Duration duration) {
@@ -109,6 +127,15 @@ public class DateTimeDuration implements Comparable<DateTimeDuration>, Copyable<
         return this.startDateTime;
     }
 
+    public void setStartDate(LocalDate date) {
+        this.startDateTime = LocalDateTime.of(date, this.startDateTime.toLocalTime());
+        this.endDateTime = this.startDateTime.plus(this.duration);
+    }
+
+    public LocalDate getStartDate() {
+        return this.startDateTime.toLocalDate();
+    }
+
     public LocalDateTime getEndDateTime() {
         return this.endDateTime;
     }
@@ -125,9 +152,16 @@ public class DateTimeDuration implements Comparable<DateTimeDuration>, Copyable<
         return (long) Math.ceil((toDays() + 0.0) / 7);
     }
 
+    public DateTimeDuration plusDays(long days) {
+        DateTimeDuration d = getCopy();
+        d.startDateTime = d.startDateTime.plusDays(days);
+        d.endDateTime = d.endDateTime.plusDays(days);
+        return d;
+    }
+
     public boolean isOverlapping(DateTimeDuration another) {
-        return this.startDateTime.compareTo(another.endDateTime) <= 0 &&
-                this.endDateTime.compareTo(another.startDateTime) >= 0;
+        return this.startDateTime.compareTo(another.endDateTime) < 0 &&
+                this.endDateTime.compareTo(another.startDateTime) > 0;
     }
 
     public boolean isSubsetOf(DateTimeDuration another) {
@@ -137,6 +171,11 @@ public class DateTimeDuration implements Comparable<DateTimeDuration>, Copyable<
 
     public boolean isImmidiatelyAfter(DateTimeDuration another) {
         return this.startDateTime.equals(another.endDateTime);
+    }
+
+    public boolean isConnected(DateTimeDuration another) {
+        return this.startDateTime.compareTo(another.endDateTime) <= 0 &&
+                this.endDateTime.compareTo(another.startDateTime) >= 0;
     }
 
     public List<DateTimeDuration> relativeComplementOf(DateTimeDuration another) {
@@ -154,6 +193,22 @@ public class DateTimeDuration implements Comparable<DateTimeDuration>, Copyable<
             lst.add(this);
         }
         return lst;
+    }
+
+    public DateTimeDuration intersectionWith(DateTimeDuration another) {
+        LocalDateTime start;
+        LocalDateTime end;
+        if(another.startDateTime.compareTo(this.startDateTime) > 0) {
+            start = another.startDateTime;
+        } else {
+            start = this.startDateTime;
+        }
+        if(another.endDateTime.compareTo(this.endDateTime) < 0) {
+            end = another.endDateTime;
+        } else {
+            end = this.endDateTime;
+        }
+        return new DateTimeDuration(start, end);
     }
 
     @Override

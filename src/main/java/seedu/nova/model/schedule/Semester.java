@@ -2,7 +2,7 @@ package seedu.nova.model.schedule;
 
 import seedu.nova.model.common.event.Event;
 import seedu.nova.model.common.time.DateTimeDuration;
-import seedu.nova.model.common.time.FreeSlotList;
+import seedu.nova.model.common.time.SlotList;
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -18,7 +18,7 @@ public class Semester {
     List<Week> weekList;
     TreeSet<LocalDate> weekStartDateSet;
     List<Event> eventList;
-    FreeSlotList freeSlotList;
+    SlotList freeSlotList;
 
     public Semester(int id, LocalDate startDate, LocalDate endDate) {
         this.id = id;
@@ -39,10 +39,10 @@ public class Semester {
         }
 
         this.eventList = new ArrayList<>();
-        this.freeSlotList = new FreeSlotList(this.scheduleDuration);
+        this.freeSlotList = new SlotList(this.scheduleDuration);
     }
 
-    private Semester(int id, List<Week> weekList, List<Event> eventList, FreeSlotList freeSlotList) {
+    private Semester(int id, List<Week> weekList, List<Event> eventList, SlotList freeSlotList) {
         this.id = id;
         this.weekList = weekList;
         this.eventList = eventList;
@@ -89,5 +89,9 @@ public class Semester {
         for(int i = startWeek; i <= endWeek; i++) {
             this.weekList.get(i).deleteEvent(event);
         }
+    }
+
+    boolean contains(Event event) {
+        return this.eventList.contains(event);
     }
 }

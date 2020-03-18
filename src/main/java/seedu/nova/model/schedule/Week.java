@@ -2,7 +2,7 @@ package seedu.nova.model.schedule;
 
 import seedu.nova.model.common.event.Event;
 import seedu.nova.model.common.time.DateTimeDuration;
-import seedu.nova.model.common.time.FreeSlotList;
+import seedu.nova.model.common.time.SlotList;
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -14,7 +14,7 @@ public class Week {
     DateTimeDuration weekDuration;
     List<Day> sevenDays;
     List<Event> eventList;
-    FreeSlotList freeSlotList;
+    SlotList freeSlotList;
 
     public Week(LocalDate date) {
         this.weekDuration = DateTimeDuration.parseWeekFromDate(date);
@@ -29,10 +29,10 @@ public class Week {
         }
 
         this.eventList = new ArrayList<>();
-        this.freeSlotList = new FreeSlotList(this.weekDuration);
+        this.freeSlotList = new SlotList(this.weekDuration);
     }
 
-    private Week(List<Day> sevenDays, List<Event> eventList, FreeSlotList freeSlotList) {
+    private Week(List<Day> sevenDays, List<Event> eventList, SlotList freeSlotList) {
         this.sevenDays = sevenDays;
         this.eventList = eventList;
         this.freeSlotList = freeSlotList;
