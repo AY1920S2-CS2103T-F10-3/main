@@ -1,5 +1,7 @@
 package seedu.nova.model.common.time;
 
+import seedu.nova.model.common.Copyable;
+
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -9,7 +11,7 @@ import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DateTimeDuration implements Comparable<DateTimeDuration> {
+public class DateTimeDuration implements Comparable<DateTimeDuration>, Copyable<DateTimeDuration> {
     private static final DateTimeFormatter[] defaultDateF = new DateTimeFormatter[]{
             DateTimeFormatter.ofPattern("yyyy-mm-dd")
     };
@@ -24,12 +26,16 @@ public class DateTimeDuration implements Comparable<DateTimeDuration> {
     private Duration duration;
 
     public DateTimeDuration(LocalDateTime start, LocalDateTime stop) {
-        this.startDateTime = start;
-        this.endDateTime = stop;
-        this.duration = Duration.between(start, stop);
+        this(start, stop, Duration.between(start, stop));
     }
 
     DateTimeDuration(Duration duration) {
+        this.duration = duration;
+    }
+
+    private DateTimeDuration(LocalDateTime start, LocalDateTime end, Duration duration) {
+        this.startDateTime = start;
+        this.endDateTime = end;
         this.duration = duration;
     }
 
@@ -163,5 +169,10 @@ public class DateTimeDuration implements Comparable<DateTimeDuration> {
         } else {
             return super.equals(obj);
         }
+    }
+
+    @Override
+    public DateTimeDuration getCopy() {
+        return new DateTimeDuration(this.startDateTime, this.endDateTime, this.duration);
     }
 }

@@ -10,7 +10,7 @@ import static seedu.nova.logic.parser.CliSyntax.PREFIX_TAG;
 import java.util.Set;
 import java.util.stream.Stream;
 
-import seedu.nova.logic.commands.AddCommand;
+import seedu.nova.logic.commands.addressbook.AddCommand;
 import seedu.nova.logic.parser.exceptions.ParseException;
 import seedu.nova.model.common.person.Address;
 import seedu.nova.model.common.person.Email;

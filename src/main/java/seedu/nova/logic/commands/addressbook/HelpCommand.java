@@ -1,5 +1,7 @@
-package seedu.nova.logic.commands;
+package seedu.nova.logic.commands.addressbook;
 
+import seedu.nova.logic.commands.Command;
+import seedu.nova.logic.commands.CommandResult;
 import seedu.nova.model.Model;
 
 /**

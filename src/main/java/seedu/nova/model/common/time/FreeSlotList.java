@@ -1,7 +1,6 @@
 package seedu.nova.model.common.time;
 
-import seedu.nova.model.common.time.DateTimeDuration;
-
+import seedu.nova.model.common.Copyable;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -9,14 +8,18 @@ import java.util.SortedSet;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-public class FreeSlotList {
+public class FreeSlotList implements Copyable<FreeSlotList> {
     TreeSet<DateTimeDuration> freeSlotSet;
     TreeMap<LocalDateTime, DateTimeDuration> freeSlotMap;
 
     public FreeSlotList(DateTimeDuration init) {
-        this.freeSlotMap = new TreeMap<>();
-        this.freeSlotSet = new TreeSet<>();
+        this(new TreeSet<>(), new TreeMap<>());
         addDuration(init);
+    }
+
+    private FreeSlotList(TreeSet<DateTimeDuration> freeSlotSet, TreeMap<LocalDateTime, DateTimeDuration> freeSlotMap) {
+        this.freeSlotSet = freeSlotSet;
+        this.freeSlotMap = freeSlotMap;
     }
 
     public SortedSet<DateTimeDuration> getFreeSlotList(Duration greaterThan) {
@@ -58,5 +61,10 @@ public class FreeSlotList {
 
     public boolean contains(DateTimeDuration d) {
         return this.freeSlotSet.contains(d);
+    }
+
+    @Override
+    public FreeSlotList getCopy() {
+        return new FreeSlotList(new TreeSet<>(this.freeSlotSet), new TreeMap<>(this.freeSlotMap));
     }
 }

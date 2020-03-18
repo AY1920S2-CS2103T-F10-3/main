@@ -6,7 +6,7 @@ import static seedu.nova.logic.parser.CliSyntax.PREFIX_REMARK;
 
 import seedu.nova.commons.core.index.Index;
 import seedu.nova.commons.exceptions.IllegalValueException;
-import seedu.nova.logic.commands.RemarkCommand;
+import seedu.nova.logic.commands.addressbook.RemarkCommand;
 import seedu.nova.logic.parser.exceptions.ParseException;
 import seedu.nova.model.common.person.Remark;
 

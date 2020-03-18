@@ -1,7 +1,6 @@
 package seedu.nova.model.tools;
 
 import seedu.nova.model.common.event.Event;
-import seedu.nova.model.plan.WeakEvent;
 import seedu.nova.model.schedule.Schedule;
 
 import java.util.List;

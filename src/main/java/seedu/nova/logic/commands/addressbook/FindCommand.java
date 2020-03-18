@@ -1,8 +1,10 @@
-package seedu.nova.logic.commands;
+package seedu.nova.logic.commands.addressbook;
 
 import static java.util.Objects.requireNonNull;
 
 import seedu.nova.commons.core.Messages;
+import seedu.nova.logic.commands.Command;
+import seedu.nova.logic.commands.CommandResult;
 import seedu.nova.model.Model;
 import seedu.nova.model.common.person.NameContainsKeywordsPredicate;
 

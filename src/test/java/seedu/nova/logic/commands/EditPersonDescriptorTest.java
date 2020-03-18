@@ -12,7 +12,7 @@ import static seedu.nova.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.nova.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.nova.logic.commands.addressbook.EditCommand.EditPersonDescriptor;
 import seedu.nova.testutil.EditPersonDescriptorBuilder;
 
 public class EditPersonDescriptorTest {

@@ -6,6 +6,7 @@ import static seedu.nova.testutil.TypicalPersons.getTypicalAddressBook;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.nova.logic.commands.addressbook.RemarkCommand;
 import seedu.nova.model.addressbook.NovaAddressBook;
 import seedu.nova.model.Model;
 import seedu.nova.model.ModelManager;

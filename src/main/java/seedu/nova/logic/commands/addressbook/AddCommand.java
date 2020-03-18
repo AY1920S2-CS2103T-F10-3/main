@@ -1,4 +1,4 @@
-package seedu.nova.logic.commands;
+package seedu.nova.logic.commands.addressbook;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.nova.logic.parser.CliSyntax.PREFIX_ADDRESS;
@@ -7,6 +7,8 @@ import static seedu.nova.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.nova.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.nova.logic.parser.CliSyntax.PREFIX_TAG;
 
+import seedu.nova.logic.commands.Command;
+import seedu.nova.logic.commands.CommandResult;
 import seedu.nova.logic.commands.exceptions.CommandException;
 import seedu.nova.model.Model;
 import seedu.nova.model.common.person.Person;

@@ -34,8 +34,8 @@ import static seedu.nova.testutil.TypicalIndexes.INDEX_THIRD_PERSON;
 import org.junit.jupiter.api.Test;
 
 import seedu.nova.commons.core.index.Index;
-import seedu.nova.logic.commands.EditCommand;
-import seedu.nova.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.nova.logic.commands.addressbook.EditCommand;
+import seedu.nova.logic.commands.addressbook.EditCommand.EditPersonDescriptor;
 import seedu.nova.model.common.person.Address;
 import seedu.nova.model.common.person.Email;
 import seedu.nova.model.common.person.Name;

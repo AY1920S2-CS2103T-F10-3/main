@@ -4,7 +4,7 @@ import static seedu.nova.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import java.util.Arrays;
 
-import seedu.nova.logic.commands.FindCommand;
+import seedu.nova.logic.commands.addressbook.FindCommand;
 import seedu.nova.logic.parser.exceptions.ParseException;
 import seedu.nova.model.common.person.NameContainsKeywordsPredicate;
 

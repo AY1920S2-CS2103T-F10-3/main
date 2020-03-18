@@ -1,12 +1,13 @@
 package seedu.nova.model.common.event;
 
+import seedu.nova.model.common.Copyable;
 import seedu.nova.model.common.time.DateTimeDuration;
 
 import static seedu.nova.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.time.LocalDateTime;
 
-public class Event implements Comparable<Event> {
+public class Event implements Comparable<Event>, Copyable<Event> {
     private final Name name;
 
     private final DateTimeDuration dateTime;
@@ -40,5 +41,10 @@ public class Event implements Comparable<Event> {
     @Override
     public int compareTo(Event o) {
         return this.dateTime.compareTo(o.dateTime);
+    }
+
+    @Override
+    public Event getCopy() {
+        return new Event(this.name.getCopy(), this.dateTime.getCopy());
     }
 }

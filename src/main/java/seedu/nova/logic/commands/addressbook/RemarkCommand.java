@@ -1,4 +1,4 @@
-package seedu.nova.logic.commands;
+package seedu.nova.logic.commands.addressbook;
 
 import static seedu.nova.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.nova.model.Model.PREDICATE_SHOW_ALL_PERSONS;
@@ -7,6 +7,8 @@ import java.util.List;
 
 import seedu.nova.commons.core.Messages;
 import seedu.nova.commons.core.index.Index;
+import seedu.nova.logic.commands.Command;
+import seedu.nova.logic.commands.CommandResult;
 import seedu.nova.logic.commands.exceptions.CommandException;
 import seedu.nova.model.Model;
 import seedu.nova.model.common.person.Person;

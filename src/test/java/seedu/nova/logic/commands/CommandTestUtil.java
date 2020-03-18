@@ -14,6 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import seedu.nova.commons.core.index.Index;
+import seedu.nova.logic.commands.addressbook.EditCommand;
 import seedu.nova.logic.commands.exceptions.CommandException;
 import seedu.nova.model.addressbook.NovaAddressBook;
 import seedu.nova.model.Model;

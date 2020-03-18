@@ -17,9 +17,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
-import seedu.nova.logic.commands.AddCommand;
+import seedu.nova.logic.commands.addressbook.AddCommand;
 import seedu.nova.logic.commands.CommandResult;
-import seedu.nova.logic.commands.ListCommand;
+import seedu.nova.logic.commands.addressbook.ListCommand;
 import seedu.nova.logic.commands.exceptions.CommandException;
 import seedu.nova.logic.parser.exceptions.ParseException;
 import seedu.nova.model.Model;

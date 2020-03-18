@@ -3,7 +3,7 @@ package seedu.nova.logic.parser;
 import static seedu.nova.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import seedu.nova.commons.core.index.Index;
-import seedu.nova.logic.commands.DeleteCommand;
+import seedu.nova.logic.commands.addressbook.DeleteCommand;
 import seedu.nova.logic.parser.exceptions.ParseException;
 
 /**

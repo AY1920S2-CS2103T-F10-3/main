@@ -8,8 +8,8 @@ import static seedu.nova.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Set;
 
-import seedu.nova.logic.commands.AddCommand;
-import seedu.nova.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.nova.logic.commands.addressbook.AddCommand;
+import seedu.nova.logic.commands.addressbook.EditCommand.EditPersonDescriptor;
 import seedu.nova.model.common.person.Person;
 import seedu.nova.model.common.tag.Tag;
 

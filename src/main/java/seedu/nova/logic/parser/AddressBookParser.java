@@ -6,16 +6,16 @@ import static seedu.nova.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import seedu.nova.logic.commands.AddCommand;
-import seedu.nova.logic.commands.ClearCommand;
+import seedu.nova.logic.commands.addressbook.AddCommand;
+import seedu.nova.logic.commands.addressbook.ClearCommand;
 import seedu.nova.logic.commands.Command;
-import seedu.nova.logic.commands.DeleteCommand;
-import seedu.nova.logic.commands.EditCommand;
-import seedu.nova.logic.commands.ExitCommand;
-import seedu.nova.logic.commands.FindCommand;
-import seedu.nova.logic.commands.HelpCommand;
-import seedu.nova.logic.commands.ListCommand;
-import seedu.nova.logic.commands.RemarkCommand;
+import seedu.nova.logic.commands.addressbook.DeleteCommand;
+import seedu.nova.logic.commands.addressbook.EditCommand;
+import seedu.nova.logic.commands.addressbook.ExitCommand;
+import seedu.nova.logic.commands.addressbook.FindCommand;
+import seedu.nova.logic.commands.addressbook.HelpCommand;
+import seedu.nova.logic.commands.addressbook.ListCommand;
+import seedu.nova.logic.commands.addressbook.RemarkCommand;
 import seedu.nova.logic.parser.exceptions.ParseException;
 
 /**

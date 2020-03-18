@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import seedu.nova.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.nova.logic.commands.addressbook.EditCommand.EditPersonDescriptor;
 import seedu.nova.model.common.person.Address;
 import seedu.nova.model.common.person.Email;
 import seedu.nova.model.common.person.Name;

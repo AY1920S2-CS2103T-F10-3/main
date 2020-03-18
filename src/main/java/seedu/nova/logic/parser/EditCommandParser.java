@@ -14,8 +14,8 @@ import java.util.Optional;
 import java.util.Set;
 
 import seedu.nova.commons.core.index.Index;
-import seedu.nova.logic.commands.EditCommand;
-import seedu.nova.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.nova.logic.commands.addressbook.EditCommand;
+import seedu.nova.logic.commands.addressbook.EditCommand.EditPersonDescriptor;
 import seedu.nova.logic.parser.exceptions.ParseException;
 import seedu.nova.model.common.tag.Tag;
 

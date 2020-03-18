@@ -31,7 +31,7 @@ import static seedu.nova.testutil.TypicalPersons.BOB;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.nova.logic.commands.AddCommand;
+import seedu.nova.logic.commands.addressbook.AddCommand;
 import seedu.nova.model.common.person.Address;
 import seedu.nova.model.common.person.Email;
 import seedu.nova.model.common.person.Name;
