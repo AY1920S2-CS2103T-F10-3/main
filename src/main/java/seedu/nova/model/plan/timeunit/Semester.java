@@ -58,7 +58,7 @@ public class Semester implements Copyable<Semester> {
         return this.eventList;
     }
 
-    List<TimedDuration> getFreeSlots(Duration greaterThan) {
+    List<DateTimeDuration> getFreeSlots(Duration greaterThan) {
         return this.freeSlotList.getSlotList(greaterThan);
     }
 

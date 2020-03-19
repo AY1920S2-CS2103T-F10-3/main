@@ -23,7 +23,8 @@ public class DateTimeSlotList implements SlotList<DateTimeDuration> {
         init.forEach(this::addDuration);
     }
 
-    private DateTimeSlotList(TreeSet<DateTimeDuration> freeSlotSet, TreeMap<LocalDateTime, DateTimeDuration> freeSlotMap) {
+    private DateTimeSlotList(TreeSet<DateTimeDuration> freeSlotSet,
+                             TreeMap<LocalDateTime, DateTimeDuration> freeSlotMap) {
         this.freeSlotSet = freeSlotSet;
         this.freeSlotMap = freeSlotMap;
     }
@@ -50,28 +51,33 @@ public class DateTimeSlotList implements SlotList<DateTimeDuration> {
 
     public void excludeDuration(DateTimeDuration ed) {
         DateTimeDuration lastFreeSlot = this.freeSlotMap.floorEntry(ed.getStartDateTime()).getValue();
-        if(lastFreeSlot.isOverlapping(ed)) {
+        if (lastFreeSlot.isOverlapping(ed)) {
             List<TimedDuration> comp = lastFreeSlot.relativeComplementOf(ed);
             deleteDuration(lastFreeSlot);
             comp.forEach(this::addDuration);
         }
     }
 
-    public DateTimeSlotList intersectionWith(DateTimeSlotList another) {
+    public DateTimeSlotList relativeComplimentOf(DateTimeSlotList another) {
         DateTimeSlotList ans = getCopy();
         another.freeSlotSet.forEach(ans::excludeDuration);
         return ans;
+    }
+
+    public List<DateTimeDuration> intersectWith(TimedDuration lst) {
+        return this.freeSlotSet.stream().parallel().map(x -> (DateTimeDuration) x.intersectWith(lst)).filter(
+                x -> !x.isZero()).collect(Collectors.toList());
     }
 
     public void includeDuration(DateTimeDuration ed) {
         DateTimeDuration lastFreeSlot = this.freeSlotMap.floorEntry(ed.getStartDateTime()).getValue();
         DateTimeDuration nextFreeSlot = this.freeSlotMap.ceilingEntry(ed.getEndDateTime()).getValue();
 
-        if(ed.isConnected(lastFreeSlot)) {
+        if (ed.isConnected(lastFreeSlot)) {
             deleteDuration(lastFreeSlot);
             ed = new DateTimeDuration(lastFreeSlot.getStartDateTime(), ed.getEndDateTime());
         }
-        if(nextFreeSlot.isConnected(ed)) {
+        if (nextFreeSlot.isConnected(ed)) {
             deleteDuration(nextFreeSlot);
             ed = new DateTimeDuration(ed.getStartDateTime(), nextFreeSlot.getEndDateTime());
         }

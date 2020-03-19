@@ -2,6 +2,8 @@ package seedu.nova.model.plan;
 
 import seedu.nova.model.common.event.Event;
 import seedu.nova.model.common.time.duration.DateTimeDuration;
+import seedu.nova.model.plan.task.AdoptedEvent;
+import seedu.nova.model.plan.task.WeakTask;
 import seedu.nova.model.plan.timeunit.Day;
 import seedu.nova.model.plan.timeunit.Week;
 import seedu.nova.model.schedule.Schedule;
@@ -13,7 +15,7 @@ import java.util.List;
 
 public interface Plan extends JsonParsable {
     void createAndAddTask(String taskName, Duration duration, DateTimeDuration possibleRange);
-    List<Task> getTaskList();
+    List<WeakTask> getTaskList();
     List<Event> getOrphanEventList();
 
     Day getDay(LocalDate date) throws OutOfScopeException;
@@ -25,5 +27,5 @@ public interface Plan extends JsonParsable {
      * @param dtd
      * @return weak event
      */
-    WeakEvent scheduleWeakEvent(Task task, Schedule schedule);
+    AdoptedEvent scheduleWeakEvent(WeakTask task, Schedule schedule);
 }

@@ -8,6 +8,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 public interface TimedDuration extends Comparable<TimedDuration>, Copyable<TimedDuration> {
+    boolean isZero();
     DayOfWeek getStartDay();
     DayOfWeek getEndDay();
     LocalTime getStartTime();
@@ -18,4 +19,5 @@ public interface TimedDuration extends Comparable<TimedDuration>, Copyable<Timed
     boolean isOverlapping(TimedDuration another);
     boolean isSubsetOf(TimedDuration another);
     List<TimedDuration> relativeComplementOf(TimedDuration another);
+    TimedDuration intersectWith(TimedDuration another);
 }

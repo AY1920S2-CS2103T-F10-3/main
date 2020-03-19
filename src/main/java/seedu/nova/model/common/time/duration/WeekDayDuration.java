@@ -12,6 +12,10 @@ public class WeekDayDuration implements TimedDuration {
     LocalTime endTime;
     Duration duration;
 
+    public boolean isZero() {
+        return this.duration.isZero();
+    }
+
     public WeekDayDuration() {
         this.startDow = DayOfWeek.MONDAY;
         this.startTime = LocalTime.of(0, 0, 0);
@@ -133,6 +137,16 @@ public class WeekDayDuration implements TimedDuration {
             return another.relativeComplementOf(toDateTimeDuration(((DateTimeDuration) another).getStartDate()));
         } else {
             return toDateTimeDuration(LocalDate.now()).relativeComplementOf(
+                    ((WeekDayDuration) another).toDateTimeDuration(LocalDate.now()));
+        }
+    }
+
+    @Override
+    public TimedDuration intersectWith(TimedDuration another) {
+        if (another instanceof DateTimeDuration) {
+            return another.intersectWith(toDateTimeDuration(((DateTimeDuration) another).getStartDate()));
+        } else {
+            return toDateTimeDuration(LocalDate.now()).intersectWith(
                     ((WeekDayDuration) another).toDateTimeDuration(LocalDate.now()));
         }
     }

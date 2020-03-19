@@ -1,6 +1,5 @@
 package seedu.nova.model.common.time.duration;
 
-import seedu.nova.model.common.Copyable;
 import seedu.nova.model.common.time.TimeUtil;
 
 import java.time.*;
@@ -9,14 +8,20 @@ import java.util.List;
 
 public class DateTimeDuration implements TimedDuration {
 
+    public static final TimedDuration ZERO = new DateTimeDuration(Duration.ZERO);
+
     private LocalDateTime startDateTime;
     private LocalDateTime endDateTime;
     private Duration duration;
 
+    public boolean isZero() {
+        return this.duration.isZero();
+    }
+
     public DateTimeDuration(LocalDateTime start, LocalDateTime stop) {
         this.startDateTime = start;
         this.endDateTime = stop;
-        if(start.compareTo(stop) < 0) {
+        if (start.compareTo(stop) < 0) {
             this.duration = Duration.between(start, stop);
         } else {
             this.duration = Duration.ZERO;
@@ -24,7 +29,7 @@ public class DateTimeDuration implements TimedDuration {
     }
 
     public DateTimeDuration(LocalDate date, LocalTime start, LocalTime end) {
-        if(start.compareTo(end) < 0) {
+        if (start.compareTo(end) < 0) {
             this.startDateTime = LocalDateTime.of(date, start);
             this.endDateTime = LocalDateTime.of(date, end);
             this.duration = Duration.between(this.startDateTime, this.endDateTime);
@@ -90,13 +95,13 @@ public class DateTimeDuration implements TimedDuration {
         return this.startDateTime;
     }
 
+    public LocalDate getStartDate() {
+        return this.startDateTime.toLocalDate();
+    }
+
     public void setStartDate(LocalDate date) {
         this.startDateTime = LocalDateTime.of(date, this.startDateTime.toLocalTime());
         this.endDateTime = this.startDateTime.plus(this.duration);
-    }
-
-    public LocalDate getStartDate() {
-        return this.startDateTime.toLocalDate();
     }
 
     public LocalTime getStartTime() {
@@ -132,7 +137,7 @@ public class DateTimeDuration implements TimedDuration {
     }
 
     public DateTimeDuration plusDays(long days) {
-        DateTimeDuration d = getCopy();
+        DateTimeDuration d = cast(getCopy());
         d.startDateTime = d.startDateTime.plusDays(days);
         d.endDateTime = d.endDateTime.plusDays(days);
         return d;
@@ -145,7 +150,7 @@ public class DateTimeDuration implements TimedDuration {
 
     private DateTimeDuration cast(TimedDuration another) {
         DateTimeDuration d;
-        if(another instanceof DateTimeDuration) {
+        if (another instanceof DateTimeDuration) {
             d = (DateTimeDuration) another;
         } else {
             d = ((WeekDayDuration) another).toDateTimeDuration(getStartDate());
@@ -193,20 +198,25 @@ public class DateTimeDuration implements TimedDuration {
         return lst;
     }
 
-    public DateTimeDuration intersectionWith(DateTimeDuration another) {
+    public TimedDuration intersectWith(TimedDuration another) {
+        DateTimeDuration d = cast(another);
         LocalDateTime start;
         LocalDateTime end;
-        if(another.startDateTime.compareTo(this.startDateTime) > 0) {
-            start = another.startDateTime;
+        if (d.startDateTime.compareTo(this.startDateTime) > 0) {
+            start = d.startDateTime;
         } else {
             start = this.startDateTime;
         }
-        if(another.endDateTime.compareTo(this.endDateTime) < 0) {
-            end = another.endDateTime;
+        if (d.endDateTime.compareTo(this.endDateTime) < 0) {
+            end = d.endDateTime;
         } else {
             end = this.endDateTime;
         }
-        return new DateTimeDuration(start, end);
+        if (end.compareTo(start) > 0) {
+            return new DateTimeDuration(start, end);
+        } else {
+            return ZERO;
+        }
     }
 
     @Override
