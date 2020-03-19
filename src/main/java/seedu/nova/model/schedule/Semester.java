@@ -58,6 +58,10 @@ public class Semester implements TimeUnit {
         return this.eventList;
     }
 
+    public DateTimeDuration getScheduleDuration() {
+        return this.scheduleDuration;
+    }
+
     public List<DateTimeDuration> getFreeSlotList(Duration greaterThan) {
         return this.freeSlotList.getSlotList(greaterThan);
     }

@@ -2,6 +2,7 @@ package seedu.nova.model.plan;
 
 import seedu.nova.model.common.event.Event;
 import seedu.nova.model.common.time.duration.WeekDayDuration;
+import seedu.nova.model.common.time.slotlist.DateTimeSlotList;
 import seedu.nova.model.plan.task.AdoptedEvent;
 import seedu.nova.model.plan.task.Task;
 import seedu.nova.model.schedule.Day;
@@ -23,7 +24,8 @@ public interface Plan extends JsonParsable {
     List<AdoptedEvent> getEventsOfTask(Task task);
 
     boolean addOrphanEvent(Event event);
+    boolean removeOrphanEvent(Event event);
 
     // records every events created in a map
-    List<AdoptedEvent> scheduleEvents(Task task, TimeUnit timetable);
+    AdoptedEvent scheduleEvents(Task task, DateTimeSlotList freeSlotForAWeek);
 }

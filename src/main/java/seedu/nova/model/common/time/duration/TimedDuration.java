@@ -4,6 +4,7 @@ import seedu.nova.model.common.Copyable;
 
 import java.time.DayOfWeek;
 import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 

@@ -2,29 +2,64 @@ package seedu.nova.model.tools;
 
 import seedu.nova.model.common.event.Event;
 import seedu.nova.model.common.time.duration.DateTimeDuration;
+import seedu.nova.model.plan.AbsolutePlan;
 import seedu.nova.model.plan.Plan;
-import seedu.nova.model.plan.task.AdoptedEvent;
+import seedu.nova.model.schedule.Semester;
+import seedu.nova.model.schedule.TimeUnitOpException;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class NovaScheduler implements Scheduler {
-    ScheduleModel schedule;
+    Plan defaultPlan;
+    List<Plan> planList;
 
-    public NovaScheduler(ScheduleModel schedule) {
-        this.schedule = schedule;
+    Semester sem;
+
+    public NovaScheduler(LocalDate startDate, LocalDate endDate) {
+        this.sem = new Semester(0, startDate, endDate);
     }
 
-    public List<DateTimeDuration> getAvailableSlotForEvent(Event event) {
-        if(event instanceof AdoptedEvent) {
-            return this.schedule.getStrictFreeSlots(event.getDuration());
-        } else {
-            return this.schedule.getAllFreeSlots(event.getDuration());
+    @Override
+    public DateTimeDuration getDateTimeDuration() {
+        return this.sem.getScheduleDuration();
+    }
+
+    @Override
+    public List<Plan> getUserDefinedPlanList() {
+        return this.planList;
+    }
+
+    @Override
+    public List<Event> getEventDefaultPlan() {
+        return this.defaultPlan.getOrphanEventList();
+    }
+
+    @Override
+    public Plan createAndAddPlan(String name) {
+        Plan newPlan = new AbsolutePlan(getDateTimeDuration());
+        this.planList.add(newPlan);
+        return newPlan;
+    }
+
+    @Override
+    public boolean addEvent(Event event) {
+        try {
+            this.sem.addEvent(event);
+            return this.defaultPlan.addOrphanEvent(event);
+        } catch(TimeUnitOpException tuoe) {
+            return false;
         }
     }
 
-    public List<Event> generateEventFromPlan(Plan plan) {
-        for(Task task : plan.getTaskList()) {
+    @Override
+    public boolean deleteEvent(Event event) {
+        this.sem.deleteEvent(event);
+        return this.defaultPlan.removeOrphanEvent(event);
+    }
 
-        }
+    @Override
+    public boolean schedulePlan(Plan plan) {
+        return false;
     }
 }

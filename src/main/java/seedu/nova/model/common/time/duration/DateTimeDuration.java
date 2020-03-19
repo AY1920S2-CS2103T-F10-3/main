@@ -116,6 +116,10 @@ public class DateTimeDuration implements TimedDuration {
         return this.endDateTime;
     }
 
+    public LocalDate getEndDate() {
+        return this.endDateTime.toLocalDate();
+    }
+
     public LocalTime getEndTime() {
         return this.endDateTime.toLocalTime();
     }

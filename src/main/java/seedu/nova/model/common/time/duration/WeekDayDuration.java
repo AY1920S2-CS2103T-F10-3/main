@@ -87,6 +87,11 @@ public class WeekDayDuration implements TimedDuration {
     }
 
     @Override
+    public LocalDate getEndDate() {
+        return null;
+    }
+
+    @Override
     public DayOfWeek getEndDay() {
         return this.endDow;
     }

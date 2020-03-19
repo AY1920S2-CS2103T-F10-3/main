@@ -9,7 +9,6 @@ import seedu.nova.storage.JsonParsable;
  */
 public interface Model extends JsonParsable {
     AddressBookModel getAddressBook();
-    Plan getPlan();
     ScheduleModel getSchedule();
 
     void setAddressBook(AddressBookModel addressBook);

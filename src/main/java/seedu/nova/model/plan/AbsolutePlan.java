@@ -79,6 +79,11 @@ public class AbsolutePlan implements Plan {
     }
 
     @Override
+    public boolean removeOrphanEvent(Event event) {
+        return this.orphanEventList.remove(event);
+    }
+
+    @Override
     public List<AdoptedEvent> scheduleEvents(Task task, TimeUnit timetable) {
         List<AdoptedEvent> lst = new ArrayList<>();
         TreeMap<LocalDate, List<DateTimeDuration>> map = task.getPossibleSlot(timetable.getFreeSlotList());

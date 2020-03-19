@@ -53,7 +53,7 @@ public class AbsoluteTask extends Task {
         return map;
     }
 
-    public Event generateEvent(DateTimeDuration dtd) {
+    public AdoptedEvent generateEvent(DateTimeDuration dtd) {
         return new AdoptedEvent(this.name, dtd, this);
     }
 }
