@@ -2,11 +2,12 @@ package seedu.nova.model.schedule;
 
 import org.json.simple.JSONObject;
 import seedu.nova.model.common.event.Event;
-import seedu.nova.model.common.time.DateTimeDuration;
+import seedu.nova.model.common.time.duration.DateTimeDuration;
+import seedu.nova.model.plan.timeunit.Semester;
 
 import java.time.Duration;
 import java.time.LocalDate;
-import java.util.SortedSet;
+import java.util.List;
 import java.util.TreeSet;
 
 public class Schedule implements ScheduleModel {
@@ -45,18 +46,18 @@ public class Schedule implements ScheduleModel {
         return this.wholeSchedule.getEventList();
     }
 
-    public SortedSet<DateTimeDuration> getAllFreeSlots(Duration greaterThan) {
+    public List<DateTimeDuration> getAllFreeSlots(Duration greaterThan) {
         return this.absoluteSchedule.getFreeSlots(greaterThan);
     }
 
-    public SortedSet<DateTimeDuration> getStrictFreeSlots(Duration greaterThan) {
+    public List<DateTimeDuration> getStrictFreeSlots(Duration greaterThan) {
         return this.wholeSchedule.getFreeSlots(greaterThan);
     }
 
     @Override
     public boolean addEvent(Event event) {
         DateTimeDuration d = event.getDateTimeDuration();
-        SortedSet<DateTimeDuration> freeSlotSet = getStrictFreeSlots(d.getDuration());
+        List<DateTimeDuration> freeSlotSet = getStrictFreeSlots(d.getDuration());
         for(DateTimeDuration freeSlot : freeSlotSet) {
             if(d.isSubsetOf(freeSlot)) {
                 addEvent(event, freeSlot);

@@ -1,25 +1,22 @@
 package seedu.nova.model.common.event;
 
 import seedu.nova.model.common.Copyable;
-import seedu.nova.model.common.time.DateTimeDuration;
+import seedu.nova.model.common.time.duration.DateTimeDuration;
 
 import static seedu.nova.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 public class Event implements Comparable<Event>, Copyable<Event> {
-    private final Name name;
+    private final String name;
 
     private final DateTimeDuration dateTime;
 
-    public Event(Name name, DateTimeDuration dateTime) {
+    public Event(String name, DateTimeDuration dateTime) {
         requireAllNonNull(name, dateTime);
         this.name = name;
         this.dateTime = dateTime;
-    }
-
-    public Name getName() {
-        return this.name;
     }
 
     public DateTimeDuration getDateTimeDuration() {
@@ -34,6 +31,10 @@ public class Event implements Comparable<Event>, Copyable<Event> {
         return this.dateTime.getEndDateTime();
     }
 
+    public Duration getDuration() {
+        return this.dateTime.getDuration();
+    }
+
     public boolean isCrashed(Event anotherEvent) {
         return this.dateTime.isOverlapping(anotherEvent.dateTime);
     }
@@ -45,6 +46,6 @@ public class Event implements Comparable<Event>, Copyable<Event> {
 
     @Override
     public Event getCopy() {
-        return new Event(this.name.getCopy(), this.dateTime.getCopy());
+        return new Event(this.name, this.dateTime.getCopy());
     }
 }

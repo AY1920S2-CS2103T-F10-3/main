@@ -1,25 +1,13 @@
-package seedu.nova.model.common.time;
+package seedu.nova.model.common.time.duration;
 
 import seedu.nova.model.common.Copyable;
+import seedu.nova.model.common.time.TimeUtil;
 
-import java.time.Duration;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
+import java.time.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DateTimeDuration implements Comparable<DateTimeDuration>, Copyable<DateTimeDuration> {
-    private static final DateTimeFormatter[] defaultDateF = new DateTimeFormatter[]{
-            DateTimeFormatter.ofPattern("yyyy-mm-dd")
-    };
-    private static final DateTimeFormatter[] defaultTimeF = new DateTimeFormatter[]{
-            DateTimeFormatter.ofPattern("hh:mm a")
-    };
-    private static LocalTime beginDayTime = LocalTime.of(0, 0, 0);
-    private static LocalTime endDayTime = LocalTime.of(23, 59, 59);
+public class DateTimeDuration implements TimedDuration {
 
     private LocalDateTime startDateTime;
     private LocalDateTime endDateTime;
@@ -47,7 +35,13 @@ public class DateTimeDuration implements Comparable<DateTimeDuration>, Copyable<
         }
     }
 
-    DateTimeDuration(Duration duration) {
+    public DateTimeDuration(LocalDate date, LocalTime start, Duration duration) {
+        this.startDateTime = LocalDateTime.of(date, start);
+        this.duration = duration;
+        this.endDateTime = this.startDateTime.plus(duration);
+    }
+
+    private DateTimeDuration(Duration duration) {
         this.duration = duration;
     }
 
@@ -58,41 +52,28 @@ public class DateTimeDuration implements Comparable<DateTimeDuration>, Copyable<
     }
 
     public static DateTimeDuration parseDayFromDate(String date) throws DurationParseException {
-        return parseDayFromDate(parseDate(date));
+        return parseDayFromDate(TimeUtil.parseDate(date));
+    }
+
+    public static DateTimeDuration parseDuration(Duration duration) {
+        return new DateTimeDuration(duration);
     }
 
     public static DateTimeDuration parseDayFromDate(LocalDate lDate) {
         return new DateTimeDuration(
-                LocalDateTime.of(LocalDate.of(lDate.getYear(), lDate.getMonth(), lDate.getDayOfMonth()), beginDayTime),
-                LocalDateTime.of(lDate, endDayTime)
+                LocalDateTime.of(LocalDate.of(lDate.getYear(), lDate.getMonth(), lDate.getDayOfMonth()),
+                        TimeUtil.beginDayTime),
+                LocalDateTime.of(lDate, TimeUtil.endDayTime)
         );
-    }
-
-    public static DateTimeDuration parseWeekFromDate(String date) throws DurationParseException {
-        return parseWeekFromDate(parseDate(date));
     }
 
     public static DateTimeDuration parseWeekFromDate(LocalDate monDate) {
         int offset = monDate.getDayOfWeek().getValue() - 1;
         return new DateTimeDuration(
                 LocalDateTime.of(LocalDate.of(monDate.getYear(), monDate.getMonth(),
-                        monDate.getDayOfMonth() - offset), beginDayTime),
+                        monDate.getDayOfMonth() - offset), TimeUtil.beginDayTime),
                 LocalDateTime.of(LocalDate.of(monDate.getYear(), monDate.getMonth(),
-                        monDate.getDayOfMonth() + 7 - offset), endDayTime)
-        );
-    }
-
-    public static DateTimeDuration parseFromDateTime(String date, String startTime, long durationInMin) throws
-            DurationParseException
-    {
-        return parseFromDateTime(parseDate(date), parseTime(startTime), durationInMin);
-    }
-
-    public static DateTimeDuration parseFromDateTime(LocalDate date, LocalTime startTime, long durationInMin) {
-        LocalDateTime dt = LocalDateTime.of(date, startTime);
-        return new DateTimeDuration(
-                dt,
-                dt.plusMinutes(durationInMin)
+                        monDate.getDayOfMonth() + 7 - offset), TimeUtil.endDayTime)
         );
     }
 
@@ -103,25 +84,7 @@ public class DateTimeDuration implements Comparable<DateTimeDuration>, Copyable<
         );
     }
 
-    public static LocalDate parseDate(String date) throws DurationParseException {
-        for (DateTimeFormatter f : DateTimeDuration.defaultDateF) {
-            try {
-                return LocalDate.parse(date, f);
-            } catch (DateTimeParseException dtpe) {
-            }
-        }
-        throw new DurationParseException();
-    }
-
-    public static LocalTime parseTime(String time) throws DurationParseException {
-        for (DateTimeFormatter f : DateTimeDuration.defaultTimeF) {
-            try {
-                return LocalTime.parse(time, f);
-            } catch (DateTimeParseException dtpe) {
-            }
-        }
-        throw new DurationParseException();
-    }
+    //-----getters
 
     public LocalDateTime getStartDateTime() {
         return this.startDateTime;
@@ -136,8 +99,24 @@ public class DateTimeDuration implements Comparable<DateTimeDuration>, Copyable<
         return this.startDateTime.toLocalDate();
     }
 
+    public LocalTime getStartTime() {
+        return this.startDateTime.toLocalTime();
+    }
+
+    public DayOfWeek getStartDay() {
+        return this.startDateTime.getDayOfWeek();
+    }
+
     public LocalDateTime getEndDateTime() {
         return this.endDateTime;
+    }
+
+    public LocalTime getEndTime() {
+        return this.endDateTime.toLocalTime();
+    }
+
+    public DayOfWeek getEndDay() {
+        return this.endDateTime.getDayOfWeek();
     }
 
     public Duration getDuration() {
@@ -159,35 +138,54 @@ public class DateTimeDuration implements Comparable<DateTimeDuration>, Copyable<
         return d;
     }
 
-    public boolean isOverlapping(DateTimeDuration another) {
-        return this.startDateTime.compareTo(another.endDateTime) < 0 &&
-                this.endDateTime.compareTo(another.startDateTime) > 0;
+    public void makeSameWeekWith(DateTimeDuration d) {
+        int offset = getStartDate().getDayOfWeek().getValue() - d.getStartDate().getDayOfWeek().getValue();
+        setStartDate(d.getStartDate().plusDays(offset));
     }
 
-    public boolean isSubsetOf(DateTimeDuration another) {
-        return this.startDateTime.compareTo(another.startDateTime) >= 0 &&
-                this.endDateTime.compareTo(another.endDateTime) <= 0;
+    private DateTimeDuration cast(TimedDuration another) {
+        DateTimeDuration d;
+        if(another instanceof DateTimeDuration) {
+            d = (DateTimeDuration) another;
+        } else {
+            d = ((WeekDayDuration) another).toDateTimeDuration(getStartDate());
+        }
+        return d;
+    }
+
+    public boolean isOverlapping(TimedDuration another) {
+        DateTimeDuration d = cast(another);
+        return this.startDateTime.compareTo(d.endDateTime) < 0 &&
+                this.endDateTime.compareTo(d.startDateTime) > 0;
+    }
+
+    public boolean isSubsetOf(TimedDuration another) {
+        DateTimeDuration d = cast(another);
+        return this.startDateTime.compareTo(d.startDateTime) >= 0 &&
+                this.endDateTime.compareTo(d.endDateTime) <= 0;
     }
 
     public boolean isImmidiatelyAfter(DateTimeDuration another) {
         return this.startDateTime.equals(another.endDateTime);
     }
 
-    public boolean isConnected(DateTimeDuration another) {
-        return this.startDateTime.compareTo(another.endDateTime) <= 0 &&
-                this.endDateTime.compareTo(another.startDateTime) >= 0;
+    public boolean isConnected(TimedDuration another) {
+        DateTimeDuration d = cast(another);
+        return this.startDateTime.compareTo(d.endDateTime) <= 0 &&
+                this.endDateTime.compareTo(d.startDateTime) >= 0;
     }
 
-    public List<DateTimeDuration> relativeComplementOf(DateTimeDuration another) {
-        List<DateTimeDuration> lst = new ArrayList<>();
-        if (isOverlapping(another)) {
-            if (another.startDateTime.compareTo(this.startDateTime) > 0) {
+    public List<TimedDuration> relativeComplementOf(TimedDuration another) {
+        DateTimeDuration d = cast(another);
+        List<TimedDuration> lst = new ArrayList<>();
+        if (isOverlapping(d)) {
+            if (d.startDateTime.compareTo(this.startDateTime) > 0) {
                 lst.add(DateTimeDuration.parseFromDateTime(this.startDateTime,
-                        Duration.between(this.startDateTime, another.startDateTime)));
+                        Duration.between(this.startDateTime, d.startDateTime)));
             }
-            if (another.endDateTime.compareTo(this.endDateTime) < 0) {
-                lst.add(DateTimeDuration.parseFromDateTime(another.endDateTime,
-                        Duration.between(this.endDateTime, another.endDateTime)));
+            if (d.endDateTime.compareTo(this.endDateTime) < 0) {
+                lst.add(DateTimeDuration.parseFromDateTime(d.endDateTime,
+                        Duration.between(this.endDateTime, d.endDateTime)));
             }
         } else {
             lst.add(this);
@@ -212,8 +210,8 @@ public class DateTimeDuration implements Comparable<DateTimeDuration>, Copyable<
     }
 
     @Override
-    public int compareTo(DateTimeDuration o) {
-        return this.duration.compareTo(o.duration);
+    public int compareTo(TimedDuration o) {
+        return this.duration.compareTo(o.getDuration());
     }
 
     @Override

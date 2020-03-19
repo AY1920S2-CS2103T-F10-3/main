@@ -8,7 +8,7 @@ import org.json.simple.JSONObject;
 import seedu.nova.commons.core.LogsCenter;
 import seedu.nova.model.addressbook.AddressBookModel;
 import seedu.nova.model.addressbook.NovaAddressBook;
-import seedu.nova.model.plan.PlanModel;
+import seedu.nova.model.plan.Plan;
 import seedu.nova.model.plan.StudyPlan;
 import seedu.nova.model.schedule.Schedule;
 import seedu.nova.model.schedule.ScheduleModel;
@@ -20,13 +20,13 @@ public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     public AddressBookModel abModel;
-    public PlanModel pModel;
+    public Plan pModel;
     public ScheduleModel sModel;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
-    public ModelManager(AddressBookModel abModel, PlanModel pModel, ScheduleModel sModel) {
+    public ModelManager(AddressBookModel abModel, Plan pModel, ScheduleModel sModel) {
         requireAllNonNull(abModel, pModel, sModel);
 
         logger.fine("Initializing with address book: " + abModel);
@@ -48,7 +48,7 @@ public class ModelManager implements Model {
         return this.abModel;
     }
 
-    public PlanModel getPlan() {
+    public Plan getPlan() {
         return this.pModel;
     }
 
@@ -67,7 +67,7 @@ public class ModelManager implements Model {
 
     public static ModelManager parseFromJson(JSONObject jo) {
         AddressBookModel abModel = (AddressBookModel) jo.get("abModel");
-        PlanModel pModel = (PlanModel) jo.get("pModel");
+        Plan pModel = (Plan) jo.get("pModel");
         ScheduleModel sModel = (ScheduleModel) jo.get("sModel");
         return new ModelManager(abModel, pModel, sModel);
     }

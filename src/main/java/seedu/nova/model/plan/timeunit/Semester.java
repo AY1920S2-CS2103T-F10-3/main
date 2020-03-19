@@ -1,16 +1,16 @@
-package seedu.nova.model.schedule;
+package seedu.nova.model.plan.timeunit;
 
 import seedu.nova.model.common.Copyable;
 import seedu.nova.model.common.event.Event;
-import seedu.nova.model.common.time.DateTimeDuration;
-import seedu.nova.model.common.time.SlotList;
+import seedu.nova.model.common.time.duration.DateTimeDuration;
+import seedu.nova.model.common.time.duration.TimedDuration;
+import seedu.nova.model.common.time.slotlist.DateTimeSlotList;
 
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.SortedSet;
 import java.util.TreeSet;
 
 public class Semester implements Copyable<Semester> {
@@ -19,7 +19,7 @@ public class Semester implements Copyable<Semester> {
     List<Week> weekList;
     TreeSet<LocalDate> weekStartDateSet;
     TreeSet<Event> eventList;
-    SlotList freeSlotList;
+    DateTimeSlotList freeSlotList;
 
     public Semester(int id, LocalDate startDate, LocalDate endDate) {
         this.id = id;
@@ -40,10 +40,10 @@ public class Semester implements Copyable<Semester> {
         }
 
         this.eventList = new TreeSet<>();
-        this.freeSlotList = new SlotList(this.scheduleDuration);
+        this.freeSlotList = new DateTimeSlotList(this.scheduleDuration);
     }
 
-    private Semester(int id, List<Week> weekList, TreeSet<Event> eventList, SlotList freeSlotList) {
+    private Semester(int id, List<Week> weekList, TreeSet<Event> eventList, DateTimeSlotList freeSlotList) {
         this.id = id;
         this.weekList = weekList;
         this.eventList = eventList;
@@ -58,8 +58,8 @@ public class Semester implements Copyable<Semester> {
         return this.eventList;
     }
 
-    SortedSet<DateTimeDuration> getFreeSlots(Duration greaterThan) {
-        return this.freeSlotList.getFreeSlotList(greaterThan);
+    List<TimedDuration> getFreeSlots(Duration greaterThan) {
+        return this.freeSlotList.getSlotList(greaterThan);
     }
 
     public void addEvent(Event event, DateTimeDuration freeSlot) {
@@ -80,7 +80,7 @@ public class Semester implements Copyable<Semester> {
         }
     }
 
-    void deleteEvent(Event event) {
+    public void deleteEvent(Event event) {
         DateTimeDuration ed = event.getDateTimeDuration();
         this.eventList.remove(event);
         this.freeSlotList.includeDuration(ed);
@@ -92,7 +92,7 @@ public class Semester implements Copyable<Semester> {
         }
     }
 
-    boolean contains(Event event) {
+    public boolean contains(Event event) {
         return this.eventList.contains(event);
     }
 

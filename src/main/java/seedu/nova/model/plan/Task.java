@@ -1,19 +1,18 @@
 package seedu.nova.model.plan;
 
-import seedu.nova.model.common.time.DateTimeDuration;
-import seedu.nova.model.common.time.SlotList;
+import seedu.nova.model.common.event.Event;
+import seedu.nova.model.common.time.duration.WeekDayDuration;
 
-import java.time.Duration;
 import java.util.List;
 
+//read blabla twice 2 hr..
 public class Task {
-    String taskName;
-    Duration duration;
-    SlotList slotList;
+    // events to be rescheduled
+    List<Event> eventList;
+    WeekDayDuration wdd;
 
-    Task(String taskName, Duration duration, SlotList lst) {
-        this.taskName = taskName;
-        this.duration = duration;
-        this.slotList = lst;
+    Task(List<WeakEvent> eventList, WeekDayDuration wdd) {
+        this.eventList = eventList;
+        this.wdd = wdd;
     }
 }

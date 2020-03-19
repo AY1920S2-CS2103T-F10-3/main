@@ -1,23 +1,21 @@
-package seedu.nova.model.schedule;
+package seedu.nova.model.plan.timeunit;
 
 import seedu.nova.model.common.Copyable;
 import seedu.nova.model.common.event.Event;
-import seedu.nova.model.common.time.DateTimeDuration;
-import seedu.nova.model.common.time.SlotList;
+import seedu.nova.model.common.time.duration.DateTimeDuration;
+import seedu.nova.model.common.time.slotlist.DateTimeSlotList;
 
 import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.SortedSet;
 import java.util.TreeSet;
-import java.util.stream.Collectors;
 
 public class Week implements Copyable<Week> {
     DateTimeDuration weekDuration;
     List<Day> sevenDays;
     TreeSet<Event> eventList;
-    SlotList freeSlotList;
+    DateTimeSlotList freeSlotList;
 
     public Week(LocalDate date) {
         this.weekDuration = DateTimeDuration.parseWeekFromDate(date);
@@ -32,17 +30,17 @@ public class Week implements Copyable<Week> {
         }
 
         this.eventList = new TreeSet<>();
-        this.freeSlotList = new SlotList(this.weekDuration);
+        this.freeSlotList = new DateTimeSlotList(this.weekDuration);
     }
 
-    private Week(List<Day> sevenDays, TreeSet<Event> eventList, SlotList freeSlotList) {
+    private Week(List<Day> sevenDays, TreeSet<Event> eventList, DateTimeSlotList freeSlotList) {
         this.sevenDays = sevenDays;
         this.eventList = eventList;
         this.freeSlotList = freeSlotList;
     }
 
-    SortedSet<DateTimeDuration> getFreeSlots(Duration greaterThan) {
-        return this.freeSlotList.getFreeSlotList(greaterThan);
+    List<DateTimeDuration> getFreeSlots(Duration greaterThan) {
+        return this.freeSlotList.getSlotList(greaterThan);
     }
 
     void addEvent(Event event) {
