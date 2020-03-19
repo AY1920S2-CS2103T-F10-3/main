@@ -37,6 +37,10 @@ public class Week implements TimeUnit {
         this.freeSlotList = new DateTimeSlotList(this.weekDuration);
     }
 
+    public DateTimeDuration getDuration() {
+        return this.weekDuration;
+    }
+
     public List<DateTimeDuration> getFreeSlotList(Duration greaterThan) {
         return this.freeSlotList.getSlotList(greaterThan);
     }
@@ -45,7 +49,7 @@ public class Week implements TimeUnit {
         return this.freeSlotList;
     }
 
-    public boolean addEvent(Event event) throws TimeUnitOpException {
+    public boolean addEvent(Event event) {
         DateTimeDuration ed = event.getDateTimeDuration();
         if (this.freeSlotList.isSupersetOf(ed)) {
             int startDay = ed.getStartDateTime().getDayOfWeek().getValue();
@@ -57,7 +61,7 @@ public class Week implements TimeUnit {
             this.freeSlotList.excludeDuration(ed);
             return this.eventList.add(event);
         } else {
-            throw new TimeUnitOpException();
+            return false;
         }
     }
 

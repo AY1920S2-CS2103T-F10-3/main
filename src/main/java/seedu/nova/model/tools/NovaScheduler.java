@@ -5,7 +5,6 @@ import seedu.nova.model.common.time.duration.DateTimeDuration;
 import seedu.nova.model.plan.AbsolutePlan;
 import seedu.nova.model.plan.Plan;
 import seedu.nova.model.schedule.Semester;
-import seedu.nova.model.schedule.TimeUnitOpException;
 
 import java.time.LocalDate;
 import java.util.List;

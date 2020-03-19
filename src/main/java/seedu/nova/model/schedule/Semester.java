@@ -58,7 +58,7 @@ public class Semester implements TimeUnit {
         return this.eventList;
     }
 
-    public DateTimeDuration getScheduleDuration() {
+    public DateTimeDuration getDuration() {
         return this.scheduleDuration;
     }
 
@@ -70,7 +70,7 @@ public class Semester implements TimeUnit {
         return this.freeSlotList;
     }
 
-    public boolean addEvent(Event event) throws TimeUnitOpException {
+    public boolean addEvent(Event event) {
         DateTimeDuration ed = event.getDateTimeDuration();
         if (this.freeSlotList.isSupersetOf(ed)) {
             int startWeek = this.weekStartDateSet.headSet(ed.getStartDateTime().toLocalDate()).size();
@@ -82,7 +82,7 @@ public class Semester implements TimeUnit {
             this.freeSlotList.excludeDuration(ed);
             return this.eventList.add(event);
         } else {
-            throw new TimeUnitOpException();
+            return false;
         }
     }
 

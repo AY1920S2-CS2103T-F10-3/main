@@ -32,6 +32,10 @@ public class Day implements TimeUnit {
         this.freeSlotList = new DateTimeSlotList(this.dayDuration);
     }
 
+    public DateTimeDuration getDuration() {
+        return this.dayDuration;
+    }
+
     public List<DateTimeDuration> getFreeSlotList(Duration greaterThan) {
         return this.freeSlotList.getSlotList(greaterThan);
     }
@@ -40,13 +44,13 @@ public class Day implements TimeUnit {
         return this.freeSlotList;
     }
 
-    public boolean addEvent(Event event) throws TimeUnitOpException {
+    public boolean addEvent(Event event) {
         DateTimeDuration ed = event.getDateTimeDuration();
         if(this.freeSlotList.isSupersetOf(ed)) {
             this.freeSlotList.excludeDuration(ed);
             return this.eventList.add(event);
         } else {
-            throw new TimeUnitOpException();
+            return false;
         }
     }
 

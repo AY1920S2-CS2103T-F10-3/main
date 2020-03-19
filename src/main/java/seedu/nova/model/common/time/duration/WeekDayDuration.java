@@ -61,15 +61,13 @@ public class WeekDayDuration implements TimedDuration {
         return 86400 * endDow.getValue() + (int) (endTime.toNanoOfDay() / 1000000000);
     }
 
-    DateTimeDuration toDateTimeDuration(LocalDate sameWeek) {
-        LocalDate startDate =
-                sameWeek.plusDays(this.startDow.getValue() - sameWeek.getDayOfWeek().getValue());
-        LocalDate endDate = sameWeek.plusDays(this.endDow.getValue() - sameWeek.getDayOfWeek().getValue());
-        if (this.startDow.getValue() > this.endDow.getValue()) {
+    public DateTimeDuration toDateTimeDuration(LocalDate sameWeek) {
+        LocalDateTime startDate = LocalDateTime.of(TimeUtil.dateOfSameWeek(this.startDow, sameWeek), this.startTime);
+        LocalDateTime endDate = LocalDateTime.of(TimeUtil.dateOfSameWeek(this.endDow, sameWeek), this.endTime);
+        if (getStartValue() > getEndValue()) {
             endDate = endDate.plusDays(7);
         }
-        return new DateTimeDuration(LocalDateTime.of(startDate, this.startTime), LocalDateTime.of(endDate,
-                this.endTime));
+        return new DateTimeDuration(startDate, endDate);
     }
 
     public static WeekDayDuration parseDuration(Duration duration) {
@@ -84,11 +82,6 @@ public class WeekDayDuration implements TimedDuration {
     @Override
     public LocalTime getStartTime() {
         return this.startTime;
-    }
-
-    @Override
-    public LocalDate getEndDate() {
-        return null;
     }
 
     @Override

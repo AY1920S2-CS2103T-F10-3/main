@@ -5,7 +5,6 @@ import seedu.nova.logic.commands.CommandResult;
 import seedu.nova.logic.commands.exceptions.CommandException;
 import seedu.nova.logic.commands.schedule.AddEventCommand;
 import seedu.nova.model.Model;
-import seedu.nova.model.plan.StudyPlan;
 
 import static java.util.Objects.requireNonNull;
 
