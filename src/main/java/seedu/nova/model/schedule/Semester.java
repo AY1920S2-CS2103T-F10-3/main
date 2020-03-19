@@ -1,21 +1,19 @@
 package seedu.nova.model.schedule;
 
 import seedu.nova.model.common.event.Event;
+import seedu.nova.model.common.time.TimeUtil;
 import seedu.nova.model.common.time.duration.DateTimeDuration;
 import seedu.nova.model.common.time.slotlist.DateTimeSlotList;
 
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.TreeSet;
+import java.util.*;
 
 public class Semester implements TimeUnit {
     int id;
     DateTimeDuration scheduleDuration;
-    List<Week> weekList;
-    TreeSet<LocalDate> weekStartDateSet;
+    TreeMap<LocalDate, Week> weekMap;
     List<Event> eventList;
     DateTimeSlotList freeSlotList;
 
@@ -30,10 +28,9 @@ public class Semester implements TimeUnit {
     private void initialise() {
         LocalDate d = this.scheduleDuration.getStartDateTime().toLocalDate();
         LocalDate dd = this.scheduleDuration.getEndDateTime().toLocalDate();
-        this.weekList = new ArrayList<>();
+        this.weekMap = new TreeMap<>();
         while(d.compareTo(dd) < 0) {
-            this.weekStartDateSet.add(d);
-            this.weekList.add(new Week(d));
+            this.weekMap.put(d, new Week(d));
             d = d.plusDays(7);
         }
 
@@ -41,12 +38,10 @@ public class Semester implements TimeUnit {
         this.freeSlotList = new DateTimeSlotList(this.scheduleDuration);
     }
 
-    private Semester(int id, List<Week> weekList, List<Event> eventList,
-                     TreeSet<LocalDate> weekStartDateSet, DateTimeSlotList freeSlotList) {
+    private Semester(int id, TreeMap<LocalDate, Week> weekMap, List<Event> eventList, DateTimeSlotList freeSlotList) {
         this.id = id;
-        this.weekList = weekList;
+        this.weekMap = weekMap;
         this.eventList = eventList;
-        this.weekStartDateSet = weekStartDateSet;
         this.freeSlotList = freeSlotList;
     }
 
@@ -70,13 +65,25 @@ public class Semester implements TimeUnit {
         return this.freeSlotList;
     }
 
+    public Week getWeek(LocalDate sameWeekAs) {
+        LocalDate d = TimeUtil.getMondayOfWeek(sameWeekAs);
+        return this.weekMap.getOrDefault(d, null);
+    }
+
+    public void replaceWeek(Week week) {
+        this.weekMap.put(week.weekDuration.getStartDate(), week);
+    }
+
     public boolean addEvent(Event event) {
         DateTimeDuration ed = event.getDateTimeDuration();
         if (this.freeSlotList.isSupersetOf(ed)) {
-            int startWeek = this.weekStartDateSet.headSet(ed.getStartDateTime().toLocalDate()).size();
-            int endWeek = this.weekStartDateSet.headSet(ed.getEndDateTime().toLocalDate()).size();
-            for (int i = startWeek; i <= endWeek; i++) {
-                this.weekList.get(i).addEvent(event);
+            SortedMap<LocalDate, Week> startWeekMap = this.weekMap.headMap(ed.getStartDateTime().toLocalDate());
+            LocalDate endDate = this.weekMap.ceilingEntry(ed.getEndDateTime().toLocalDate()).getKey();
+            for (Map.Entry<LocalDate, Week> e : startWeekMap.entrySet()) {
+                if(e.getKey().compareTo(endDate) > 0) {
+                    break;
+                }
+                e.getValue().addEvent(event);
             }
 
             this.freeSlotList.excludeDuration(ed);
@@ -89,8 +96,8 @@ public class Semester implements TimeUnit {
     public boolean deleteEvent(Event event) {
         DateTimeDuration ed = event.getDateTimeDuration();
 
-        for(Week wk : this.weekList) {
-            wk.deleteEvent(event);
+        for(Map.Entry<LocalDate, Week> e : this.weekMap.entrySet()) {
+            e.getValue().deleteEvent(event);
         }
 
         this.freeSlotList.includeDuration(ed);
@@ -103,7 +110,7 @@ public class Semester implements TimeUnit {
 
     @Override
     public Semester getCopy() {
-        return new Semester(this.id, new ArrayList<>(this.weekList), new ArrayList<>(this.eventList),
-                new TreeSet<>(this.weekStartDateSet), this.freeSlotList.getCopy());
+        return new Semester(this.id, new TreeMap<>(this.weekMap), new ArrayList<>(this.eventList),
+                this.freeSlotList.getCopy());
     }
 }

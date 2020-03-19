@@ -9,15 +9,22 @@ import seedu.nova.model.schedule.Week;
 import java.util.*;
 
 public class AbsolutePlan implements Plan {
+    String name;
     List<Task> taskList;
     WeekDaySlotList freeSlotList;
 
     List<Event> orphanEventList;
 
-    public AbsolutePlan() {
+    public AbsolutePlan(String name) {
+        this.name = name;
         this.taskList = new ArrayList<>();
         this.orphanEventList = new ArrayList<>();
         this.freeSlotList = new WeekDaySlotList();
+    }
+
+    @Override
+    public String getName() {
+        return this.name;
     }
 
     @Override
@@ -25,21 +32,20 @@ public class AbsolutePlan implements Plan {
         return this.taskList;
     }
 
-    public Task createAndAddTask(String taskName, WeekDayDuration onExactDuration) {
-        Task newTask = new AbsoluteTask(taskName, onExactDuration);
-        this.taskList.add(newTask);
-        this.freeSlotList.excludeDuration(onExactDuration);
-        return newTask;
+    public boolean addTask(Task task) {
+        AbsoluteTask at = (AbsoluteTask) task;
+        this.freeSlotList.excludeDuration(at.getWeekDayDuration());
+        return this.taskList.add(at);
     }
 
     @Override
-    public boolean deleteTask(Task task) throws ImpossibleTaskException {
+    public boolean deleteTask(Task task) {
         if (task instanceof AbsoluteTask) {
             WeekDayDuration wdd = ((AbsoluteTask) task).getWeekDayDuration();
             this.freeSlotList.includeDuration(wdd);
             return this.taskList.remove(task);
         } else {
-            throw new ImpossibleTaskException();
+            return false;
         }
     }
 
