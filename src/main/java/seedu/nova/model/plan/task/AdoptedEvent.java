@@ -10,4 +10,14 @@ public class AdoptedEvent extends Event {
         super(name, dateTime);
         this.task = task;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if(o instanceof AdoptedEvent) {
+            return this.task.equals(((AdoptedEvent) o).task)
+                    && super.equals(o);
+        } else {
+            return super.equals(o);
+        }
+    }
 }

@@ -10,8 +10,6 @@ import seedu.nova.model.addressbook.AddressBookModel;
 import seedu.nova.model.addressbook.NovaAddressBook;
 import seedu.nova.model.plan.Plan;
 import seedu.nova.model.plan.StudyPlan;
-import seedu.nova.model.schedule.Schedule;
-import seedu.nova.model.schedule.ScheduleModel;
 
 /**
  * Represents the in-memory model of the address book data.

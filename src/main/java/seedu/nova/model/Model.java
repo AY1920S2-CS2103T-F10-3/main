@@ -2,7 +2,6 @@ package seedu.nova.model;
 
 import seedu.nova.model.addressbook.AddressBookModel;
 import seedu.nova.model.plan.Plan;
-import seedu.nova.model.schedule.ScheduleModel;
 import seedu.nova.storage.JsonParsable;
 
 /**

@@ -44,6 +44,10 @@ public class DateTimeSlotList implements SlotList<DateTimeDuration> {
         return this.freeSlotSet.stream().parallel().filter(x -> x.isSubsetOf(d)).collect(Collectors.toList());
     }
 
+    public boolean isSupersetOf(TimedDuration d) {
+        return this.freeSlotSet.stream().parallel().anyMatch(x -> x.isSubsetOf(d));
+    }
+
     public List<DateTimeDuration> getSlotOn(DayOfWeek day) {
         return this.freeSlotSet.stream().parallel().filter(x -> x.getStartDate().getDayOfWeek().equals(day)).collect(
                 Collectors.toList());

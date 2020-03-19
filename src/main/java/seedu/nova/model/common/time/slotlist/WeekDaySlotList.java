@@ -83,6 +83,11 @@ public class WeekDaySlotList implements SlotList<WeekDayDuration> {
         }
     }
 
+    @Override
+    public boolean isSupersetOf(TimedDuration td) {
+        return this.freeSlotSet.stream().parallel().anyMatch(x -> x.isSubsetOf(td));
+    }
+
     public List<WeekDayDuration> intersectWith(TimedDuration lst) {
         return this.freeSlotSet.stream().parallel().map(x -> (WeekDayDuration) x.intersectWith(lst)).filter(
                 x -> !x.isZero()).collect(Collectors.toList());

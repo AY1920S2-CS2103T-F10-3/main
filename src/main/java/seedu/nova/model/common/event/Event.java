@@ -45,6 +45,15 @@ public class Event implements Comparable<Event>, Copyable<Event> {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if(o instanceof Event) {
+            return this.name.equals(((Event) o).name) && this.dateTime.equals(((Event) o).dateTime);
+        } else {
+            return super.equals(o);
+        }
+    }
+
+    @Override
     public Event getCopy() {
         return new Event(this.name, this.dateTime.getCopy());
     }

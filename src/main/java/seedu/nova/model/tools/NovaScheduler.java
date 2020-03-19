@@ -4,7 +4,6 @@ import seedu.nova.model.common.event.Event;
 import seedu.nova.model.common.time.duration.DateTimeDuration;
 import seedu.nova.model.plan.Plan;
 import seedu.nova.model.plan.task.AdoptedEvent;
-import seedu.nova.model.schedule.ScheduleModel;
 
 import java.util.List;
 

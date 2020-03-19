@@ -1,12 +1,12 @@
 package seedu.nova.model.plan;
 
 import seedu.nova.model.common.event.Event;
-import seedu.nova.model.common.time.duration.DateTimeDuration;
+import seedu.nova.model.common.time.duration.WeekDayDuration;
 import seedu.nova.model.plan.task.AdoptedEvent;
-import seedu.nova.model.plan.task.WeakTask;
-import seedu.nova.model.plan.timeunit.Day;
-import seedu.nova.model.plan.timeunit.Week;
-import seedu.nova.model.schedule.Schedule;
+import seedu.nova.model.plan.task.Task;
+import seedu.nova.model.schedule.Day;
+import seedu.nova.model.schedule.TimeUnit;
+import seedu.nova.model.schedule.Week;
 import seedu.nova.storage.JsonParsable;
 
 import java.time.Duration;
@@ -14,18 +14,16 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface Plan extends JsonParsable {
-    void createAndAddTask(String taskName, Duration duration, DateTimeDuration possibleRange);
-    List<WeakTask> getTaskList();
+    List<Task> getTaskList();
+    Task createAndAddTask(String taskName, Duration duration, WeekDayDuration possibleRange) throws
+            ImpossibleTaskException;
+    boolean deleteTask(Task task) throws ImpossibleTaskException;
+
     List<Event> getOrphanEventList();
+    List<AdoptedEvent> getEventsOfTask(Task task);
 
-    Day getDay(LocalDate date) throws OutOfScopeException;
-    Week getWeek(LocalDate sameWeekAs) throws OutOfScopeException;
+    boolean addOrphanEvent(Event event);
 
-    /**
-     * Create an event that associates the task. This is the only way to create weak events.
-     * @param task
-     * @param dtd
-     * @return weak event
-     */
-    AdoptedEvent scheduleWeakEvent(WeakTask task, Schedule schedule);
+    // records every events created in a map
+    List<AdoptedEvent> scheduleEvents(Task task, TimeUnit timetable);
 }

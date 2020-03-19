@@ -42,6 +42,10 @@ public class TimeUtil {
         return sameWeekWith.plusDays(offset);
     }
 
+    public static LocalDate getMondayOfWeek(LocalDate weekOf) {
+        return weekOf.minusDays(weekOf.getDayOfWeek().getValue() - 1);
+    }
+
     public static LocalDateTime toDateTime(DayOfWeek dow, LocalDate sameWeekWith, LocalTime time) {
         return LocalDateTime.of(dateOfSameWeek(dow, sameWeekWith), time);
     }

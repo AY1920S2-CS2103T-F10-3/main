@@ -13,6 +13,7 @@ public interface SlotList<T extends TimedDuration> extends Copyable<SlotList<T>>
     List<T> getSlotContaining(TimedDuration d);
 
     List<T> intersectWith(TimedDuration td);
+    boolean isSupersetOf(TimedDuration td);
 
     void includeDuration(T ed);
     void excludeDuration(T ed);

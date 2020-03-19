@@ -5,7 +5,9 @@ import seedu.nova.model.common.time.duration.DateTimeDuration;
 import seedu.nova.model.common.time.slotlist.DateTimeSlotList;
 
 import java.time.Duration;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.TreeMap;
 
 public abstract class Task {
     String name;
@@ -16,7 +18,7 @@ public abstract class Task {
         this.duration = duration;
     }
 
-    public abstract List<DateTimeDuration> getPossibleSlot(DateTimeSlotList dsl);
+    public abstract TreeMap<LocalDate, List<DateTimeDuration>> getPossibleSlot(DateTimeSlotList dsl);
 
-    public abstract Event generateEvent(DateTimeDuration dtd);
+    public abstract AdoptedEvent generateEvent(DateTimeDuration dtd);
 }

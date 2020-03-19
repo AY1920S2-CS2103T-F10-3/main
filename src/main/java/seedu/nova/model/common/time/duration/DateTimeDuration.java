@@ -136,6 +136,17 @@ public class DateTimeDuration implements TimedDuration {
         return (long) Math.ceil((toDays() + 0.0) / 7);
     }
 
+    public List<LocalDate> getWeekStartList() {
+        List<LocalDate> lst = new ArrayList<>();
+        LocalDate d = this.startDateTime.toLocalDate();
+        LocalDate dd = this.endDateTime.toLocalDate();
+        while(d.compareTo(dd) <= 0) {
+            lst.add(d);
+            d = d.plusDays(7);
+        }
+        return lst;
+    }
+
     public DateTimeDuration plusDays(long days) {
         DateTimeDuration d = cast(getCopy());
         d.startDateTime = d.startDateTime.plusDays(days);
@@ -149,13 +160,11 @@ public class DateTimeDuration implements TimedDuration {
     }
 
     private DateTimeDuration cast(TimedDuration another) {
-        DateTimeDuration d;
         if (another instanceof DateTimeDuration) {
-            d = (DateTimeDuration) another;
+            return (DateTimeDuration) another;
         } else {
-            d = ((WeekDayDuration) another).toDateTimeDuration(getStartDate());
+            return ((WeekDayDuration) another).toDateTimeDuration(getStartDate());
         }
-        return d;
     }
 
     public boolean isOverlapping(TimedDuration another) {
