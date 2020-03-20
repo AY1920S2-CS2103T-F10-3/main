@@ -98,7 +98,7 @@ The `UI` component,
 image::LogicClassDiagram.png[]
 
 *API* :
-link:{repoURL}/src/main/java/seedu/address/logic/Logic.java[`Logic.java`]
+link:{repoURL}/src/main/java/seedu/nova/logic/Logic.java[`Logic.java`]
 
 .  `Logic` uses the `AddressBookParser` class to parse the user command.
 .  This results in a `Command` object which is executed by the `LogicManager`.
@@ -119,7 +119,7 @@ NOTE: The lifeline for `DeleteCommandParser` should end at the destroy marker (X
 .Structure of the Model Component
 image::ModelClassDiagram.png[]
 
-*API* : link:{repoURL}/src/main/java/seedu/address/model/Model.java[`Model.java`]
+*API* : link:{repoURL}/src/main/java/seedu/nova/model/Model.java[`Model.java`]
 
 The `Model`,
 
@@ -139,7 +139,7 @@ image:BetterModelClassDiagram.png[]
 .Structure of the Storage Component
 image::StorageClassDiagram.png[]
 
-*API* : link:{repoURL}/src/main/java/seedu/address/storage/Storage.java[`Storage.java`]
+*API* : link:{repoURL}/src/main/java/seedu/nova/storage/Storage.java[`Storage.java`]
 
 The `Storage` component,
 
@@ -149,7 +149,7 @@ The `Storage` component,
 [[Design-Commons]]
 === Common classes
 
-Classes used by multiple components are in the `seedu.addressbook.commons` package.
+Classes used by multiple components are in the `seedu.nova.commons` package.
 
 == Implementation
 
@@ -354,6 +354,12 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |Student | View my timetable | Can check when my classes are
 
+|`* * *` |Student | Add plan | Add a study plan to group all the events
+
+|`* * *` |Student | Delete plan | Delete a study plan
+
+|`* * *` |Student | Schedule plan | Schedule a plan to timetable
+
 |`* *`   |Student | Easily find my free slots without looking at my schedule | Do not need to strain my eyes
 
 |`* *`   |Forgetful student | Set reminders for upcoming events | Will remember to attend them
@@ -365,7 +371,7 @@ _{More to be added}_
 [appendix]
 == Use Cases
 
-(For all use cases below, the *System* is the `NOVA` and the *Actor* is the `student`, unless specified otherwise)
+(For all use cases below, the *System* is the `nova` and the *Actor* is the `student`, unless specified otherwise)
 
 [discrete]
 === Use case 1: Delete a contact
