@@ -9,6 +9,8 @@ import seedu.nova.commons.core.LogsCenter;
 import seedu.nova.model.addressbook.AddressBookModel;
 import seedu.nova.model.addressbook.NovaAddressBook;
 import seedu.nova.model.plan.Plan;
+import seedu.nova.model.tools.NovaScheduler;
+import seedu.nova.model.tools.Scheduler;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -16,57 +18,50 @@ import seedu.nova.model.plan.Plan;
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    public AddressBookModel abModel;
-    public Plan pModel;
-    public ScheduleModel sModel;
+    AddressBookModel abModel;
+    Scheduler scheduler;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
-    public ModelManager(AddressBookModel abModel, Plan pModel, ScheduleModel sModel) {
-        requireAllNonNull(abModel, pModel, sModel);
+    public ModelManager(AddressBookModel abModel, Scheduler scheduler) {
+        requireAllNonNull(abModel, scheduler);
 
         logger.fine("Initializing with address book: " + abModel);
 
         this.abModel = abModel;
-        this.pModel = pModel;
-        this.sModel = sModel;
+        this.scheduler = scheduler;
     }
 
     public ModelManager() {
-        this(new NovaAddressBook(), new StudyPlan(), new Schedule());
-    }
-
-    public void setAddressBook(AddressBookModel abModel) {
-        this.abModel = abModel;
+        this(new NovaAddressBook(), new NovaScheduler());
     }
 
     public AddressBookModel getAddressBook() {
         return this.abModel;
     }
 
-    public Plan getPlan() {
-        return this.pModel;
+    public void setAddressBook(AddressBookModel abModel) {
+        this.abModel = abModel;
     }
 
-    public ScheduleModel getSchedule() {
-        return this.sModel;
+    public Scheduler getScheduler() {
+        return this.scheduler;
+    }
+
+    public static ModelManager parseFromJson(JSONObject jo) {
+        AddressBookModel abModel = (AddressBookModel) jo.get("abModel");
+        Plan pModel = (Plan) jo.get("pModel");
+        Scheduler scheduler = (Scheduler) jo.get("scheduler");
+        return new ModelManager(abModel, scheduler);
     }
 
     @Override
     public JSONObject toJsonObject() {
         JSONObject jo = new JSONObject();
         jo.put("abModel", this.abModel.toJsonObject());
-        jo.put("pModel", this.pModel.toJsonObject());
-        jo.put("sModel", this.sModel.toJsonObject());
+        jo.put("scheduler", this.scheduler.toJsonObject());
         return jo;
-    }
-
-    public static ModelManager parseFromJson(JSONObject jo) {
-        AddressBookModel abModel = (AddressBookModel) jo.get("abModel");
-        Plan pModel = (Plan) jo.get("pModel");
-        ScheduleModel sModel = (ScheduleModel) jo.get("sModel");
-        return new ModelManager(abModel, pModel, sModel);
     }
 
 }

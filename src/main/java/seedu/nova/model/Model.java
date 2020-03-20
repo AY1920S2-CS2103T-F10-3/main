@@ -2,6 +2,7 @@ package seedu.nova.model;
 
 import seedu.nova.model.addressbook.AddressBookModel;
 import seedu.nova.model.plan.Plan;
+import seedu.nova.model.tools.Scheduler;
 import seedu.nova.storage.JsonParsable;
 
 /**
@@ -9,7 +10,7 @@ import seedu.nova.storage.JsonParsable;
  */
 public interface Model extends JsonParsable {
     AddressBookModel getAddressBook();
-    ScheduleModel getSchedule();
+    Scheduler getScheduler();
 
     void setAddressBook(AddressBookModel addressBook);
 }

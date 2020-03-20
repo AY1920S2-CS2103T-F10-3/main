@@ -25,7 +25,7 @@ public class DeleteEventCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        if (!model.getSchedule().deleteEvent(toDelete)) {
+        if (!model.getScheduler().deleteEvent(toDelete)) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         }
         return new CommandResult(String.format(MESSAGE_SUCCESS, toDelete));

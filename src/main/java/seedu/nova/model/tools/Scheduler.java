@@ -6,17 +6,17 @@ import seedu.nova.model.common.time.duration.WeekDayDuration;
 import seedu.nova.model.common.time.slotlist.DateTimeSlotList;
 import seedu.nova.model.plan.Plan;
 import seedu.nova.model.plan.Task;
-import seedu.nova.model.schedule.Day;
 import seedu.nova.model.schedule.Week;
+import seedu.nova.storage.JsonParsable;
 
 import java.time.LocalDate;
 import java.util.List;
 
-public interface Scheduler {
+public interface Scheduler extends JsonParsable {
     DateTimeDuration getDateTimeDuration();
 
     List<Plan> getUserDefinedPlanList();
-    Plan createAndAddPlan(String name);
+    boolean createAndAddPlan(String name);
     boolean removePlan(Plan plan);
 
     Plan getDefaultPlan();

@@ -3,34 +3,33 @@ package seedu.nova.logic.commands.studyplan;
 import seedu.nova.logic.commands.Command;
 import seedu.nova.logic.commands.CommandResult;
 import seedu.nova.logic.commands.exceptions.CommandException;
-import seedu.nova.logic.commands.schedule.AddEventCommand;
 import seedu.nova.model.Model;
 
 import static java.util.Objects.requireNonNull;
 
-public class GenerateEventCommand extends Command {
+public class GeneratePlanCommand extends Command {
     public static final String MESSAGE_SUCCESS = "New person added: %1$s";
 
-    StudyPlan plan;
+    String newPlanName;
 
-    public GenerateEventCommand(StudyPlan plan) {
-        requireNonNull(plan);
-        this.plan = plan;
+    public GeneratePlanCommand(String planName) {
+        requireNonNull(planName);
+        this.newPlanName = planName;
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        if (!model.getSchedule().addEvent(toAdd)) {
+        if (!model.getScheduler().createAndAddPlan(newPlanName)) {
             throw new CommandException("");
         }
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, newPlanName));
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof AddEventCommand // instanceof handles nulls
-                && toAdd.equals(((AddEventCommand) other).toAdd));
+                || (other instanceof GeneratePlanCommand // instanceof handles nulls
+                && newPlanName.equals(((GeneratePlanCommand) other).newPlanName));
     }
 }

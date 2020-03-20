@@ -45,7 +45,7 @@ public class AddEventCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        if (!model.getSchedule().addEvent(toAdd)) {
+        if (!model.getScheduler().addEvent(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         }
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));

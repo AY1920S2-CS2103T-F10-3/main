@@ -1,5 +1,6 @@
 package seedu.nova.model.tools;
 
+import org.json.simple.JSONObject;
 import seedu.nova.model.common.event.Event;
 import seedu.nova.model.common.time.duration.DateTimeDuration;
 import seedu.nova.model.common.time.duration.WeekDayDuration;
@@ -93,5 +94,10 @@ public class NovaScheduler implements Scheduler {
     @Override
     public void replaceWeek(Week week) {
         this.sem.replaceWeek(week);
+    }
+
+    @Override
+    public JSONObject toJsonObject() {
+        return null;
     }
 }
