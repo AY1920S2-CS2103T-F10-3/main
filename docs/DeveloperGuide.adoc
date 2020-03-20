@@ -354,12 +354,6 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |Student | View my timetable | Can check when my classes are
 
-|`* * *` |Student | Add plan | Add a study plan to group all the events
-
-|`* * *` |Student | Delete plan | Delete a study plan
-
-|`* * *` |Student | Schedule plan | Schedule a plan to timetable
-
 |`* *`   |Student | Easily find my free slots without looking at my schedule | Do not need to strain my eyes
 
 |`* *`   |Forgetful student | Set reminders for upcoming events | Will remember to attend them
