@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import seedu.nova.commons.exceptions.IllegalValueException;
-import seedu.nova.model.Category;
+import seedu.nova.model.category.Category;
 
 /**
  * Jackson-friendly version of {@link Category}.

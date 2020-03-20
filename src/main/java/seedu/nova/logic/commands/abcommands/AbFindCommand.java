@@ -5,7 +5,7 @@ import static java.util.Objects.requireNonNull;
 import seedu.nova.logic.commands.Command;
 import seedu.nova.logic.commands.CommandResult;
 import seedu.nova.model.Model;
-import seedu.nova.model.addressbook.person.NameContainsKeywordsPredicate;
+import seedu.nova.model.person.NameContainsKeywordsPredicate;
 
 /**
  * Finds and lists all persons in address book whose name contains any of the argument keywords.
@@ -29,11 +29,10 @@ public class AbFindCommand extends Command {
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        model.getAddressBookManager().updateFilteredPersonList(predicate);
+        model.updateFilteredPersonList(predicate);
         String listOfPeople = "Found the following: " + "\n";
-        for (int i = 0; i < model.getAddressBookManager().getFilteredPersonList().size(); i++) {
-            listOfPeople =
-                    listOfPeople + (i + 1) + ". " + model.getAddressBookManager().getFilteredPersonList().get(i) + "\n";
+        for (int i = 0; i < model.getFilteredPersonList().size(); i++) {
+            listOfPeople = listOfPeople + (i + 1) + ". " + model.getFilteredPersonList().get(i) + "\n";
         }
 
         return new CommandResult(listOfPeople);

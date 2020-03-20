@@ -10,12 +10,12 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.nova.commons.exceptions.IllegalValueException;
-import seedu.nova.model.Category;
-import seedu.nova.model.addressbook.person.Email;
-import seedu.nova.model.addressbook.person.Name;
-import seedu.nova.model.addressbook.person.Person;
-import seedu.nova.model.addressbook.person.Phone;
-import seedu.nova.model.addressbook.person.Remark;
+import seedu.nova.model.category.Category;
+import seedu.nova.model.person.Email;
+import seedu.nova.model.person.Name;
+import seedu.nova.model.person.Person;
+import seedu.nova.model.person.Phone;
+import seedu.nova.model.person.Remark;
 
 /**
  * Jackson-friendly version of {@link Person}.

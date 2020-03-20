@@ -4,8 +4,8 @@ import static java.util.Objects.requireNonNull;
 
 import seedu.nova.logic.commands.Command;
 import seedu.nova.logic.commands.CommandResult;
+import seedu.nova.model.AddressBook;
 import seedu.nova.model.Model;
-import seedu.nova.model.addressbook.AddressBook;
 
 /**
  * Clears the nova book.
@@ -19,7 +19,7 @@ public class AbClearCommand extends Command {
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        model.getAddressBookManager().setAddressBook(new AddressBook());
+        model.setAddressBook(new AddressBook());
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }

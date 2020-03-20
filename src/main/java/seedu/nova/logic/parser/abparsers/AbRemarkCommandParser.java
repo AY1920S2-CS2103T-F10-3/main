@@ -12,7 +12,7 @@ import seedu.nova.logic.parser.CliSyntax;
 import seedu.nova.logic.parser.Parser;
 import seedu.nova.logic.parser.ParserUtil;
 import seedu.nova.logic.parser.exceptions.ParseException;
-import seedu.nova.model.addressbook.person.Remark;
+import seedu.nova.model.person.Remark;
 
 /**
  * Parses input arguments and creates a new {@code AbRemarkCommand} object

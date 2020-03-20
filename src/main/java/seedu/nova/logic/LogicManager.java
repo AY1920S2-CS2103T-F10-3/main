@@ -14,8 +14,8 @@ import seedu.nova.logic.commands.exceptions.CommandException;
 import seedu.nova.logic.parser.LogicParser;
 import seedu.nova.logic.parser.exceptions.ParseException;
 import seedu.nova.model.Model;
-import seedu.nova.model.addressbook.ReadOnlyAddressBook;
-import seedu.nova.model.addressbook.person.Person;
+import seedu.nova.model.ReadOnlyAddressBook;
+import seedu.nova.model.person.Person;
 import seedu.nova.storage.Storage;
 
 
@@ -48,7 +48,7 @@ public class LogicManager implements Logic {
         try {
             //We can deduce that the previous line of code modifies model in some way
             // since it's being stored here.
-            storage.saveAddressBook(model.getAddressBookManager().getAddressBook());
+            storage.saveAddressBook(model.getAddressBook());
         } catch (IOException ioe) {
             throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
         }
@@ -58,12 +58,12 @@ public class LogicManager implements Logic {
 
     @Override
     public ReadOnlyAddressBook getAddressBook() {
-        return model.getAddressBookManager().getAddressBook();
+        return model.getAddressBook();
     }
 
     @Override
     public ObservableList<Person> getFilteredPersonList() {
-        return model.getAddressBookManager().getFilteredPersonList();
+        return model.getFilteredPersonList();
     }
 
     @Override

@@ -9,7 +9,8 @@ import seedu.nova.logic.commands.Command;
 import seedu.nova.logic.commands.CommandResult;
 import seedu.nova.logic.commands.exceptions.CommandException;
 import seedu.nova.model.Model;
-import seedu.nova.model.plan.AbsoluteTask;
+import seedu.nova.model.event.Event;
+import seedu.nova.model.event.Lesson;
 
 /**
  * adds a Lesson into the Schedule.
@@ -29,18 +30,18 @@ public class EventAddLessonCommand extends Command {
             + PREFIX_TIME + "Friday 10:00 11:00 ";
 
     public static final String MESSAGE_SUCCESS = "New lesson has been added: \n%1$s";
-    private AbsoluteTask toAdd;
+    private Event toAdd;
 
-    public EventAddLessonCommand(AbsoluteTask lessonTask) {
-        requireNonNull(lessonTask);
-        this.toAdd = lessonTask;
+    public EventAddLessonCommand(Event lesson) {
+        requireNonNull(lesson);
+        this.toAdd = lesson;
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        model.getSchedulerManager().addAbsoluteTask(toAdd);
+        model.addLesson((Lesson) toAdd);
 
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }

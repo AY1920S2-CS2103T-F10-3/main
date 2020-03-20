@@ -11,8 +11,8 @@ import seedu.nova.logic.parser.ArgumentTokenizer;
 import seedu.nova.logic.parser.Parser;
 import seedu.nova.logic.parser.ParserUtil;
 import seedu.nova.logic.parser.exceptions.ParseException;
-import seedu.nova.model.addressbook.person.Name;
-import seedu.nova.model.addressbook.person.NameContainsKeywordsPredicate;
+import seedu.nova.model.person.Name;
+import seedu.nova.model.person.NameContainsKeywordsPredicate;
 
 /**
  * Parses input arguments and creates a new AbFindCommand object

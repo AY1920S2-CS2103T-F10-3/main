@@ -14,9 +14,8 @@ import seedu.nova.logic.parser.Parser;
 import seedu.nova.logic.parser.ParserUtil;
 import seedu.nova.logic.parser.Prefix;
 import seedu.nova.logic.parser.exceptions.ParseException;
-import seedu.nova.model.common.time.duration.WeekDayDuration;
-import seedu.nova.model.event.EventDetails;
-import seedu.nova.model.plan.AbsoluteTask;
+import seedu.nova.model.event.Event;
+import seedu.nova.model.event.Lesson;
 
 /**
  * Parses input arguments and creates a new EventAddLessonCommand object
@@ -53,9 +52,8 @@ public class EventAddLessonCommandParser implements Parser<EventAddLessonCommand
         LocalTime startTime = ParserUtil.parseTime(dateTimeArr[1]);
         LocalTime endTime = ParserUtil.parseTime(dateTimeArr[2]);
 
-        EventDetails details = new EventDetails(desc, venue);
-        WeekDayDuration wdd = new WeekDayDuration(day, startTime, endTime);
-        return new EventAddLessonCommand(new AbsoluteTask(details, wdd));
+        Event lesson = new Lesson(desc, venue, startTime, endTime, day);
+        return new EventAddLessonCommand(lesson);
     }
 
     /**

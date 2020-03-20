@@ -19,7 +19,7 @@ import seedu.nova.logic.parser.CliSyntax;
 import seedu.nova.logic.parser.Parser;
 import seedu.nova.logic.parser.ParserUtil;
 import seedu.nova.logic.parser.exceptions.ParseException;
-import seedu.nova.model.Category;
+import seedu.nova.model.category.Category;
 
 /**
  * Parses input arguments and creates a new AbEditCommand object

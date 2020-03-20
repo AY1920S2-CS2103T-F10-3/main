@@ -20,12 +20,11 @@ public class AbListCommand extends Command {
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        model.getAddressBookManager().updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        String listOfPeople = model.getAddressBookManager().getAddressBook().getPersonList().size() > 0
+        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        String listOfPeople = model.getAddressBook().getPersonList().size() > 0
                 ? "Listed all contacts:\n" : "There is no contact saved.";
-        for (int i = 0; i < model.getAddressBookManager().getAddressBook().getPersonList().size(); i++) {
-            listOfPeople = listOfPeople + (i + 1) + ". "
-                    + model.getAddressBookManager().getAddressBook().getPersonList().get(i) + "\n";
+        for (int i = 0; i < model.getAddressBook().getPersonList().size(); i++) {
+            listOfPeople = listOfPeople + (i + 1) + ". " + model.getAddressBook().getPersonList().get(i) + "\n";
         }
 
         return new CommandResult(listOfPeople);

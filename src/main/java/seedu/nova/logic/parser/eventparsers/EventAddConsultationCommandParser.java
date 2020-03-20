@@ -14,9 +14,8 @@ import seedu.nova.logic.parser.Parser;
 import seedu.nova.logic.parser.ParserUtil;
 import seedu.nova.logic.parser.Prefix;
 import seedu.nova.logic.parser.exceptions.ParseException;
-import seedu.nova.model.common.time.duration.DateTimeDuration;
+import seedu.nova.model.event.Consultation;
 import seedu.nova.model.event.Event;
-import seedu.nova.model.event.EventDetails;
 
 /**
  * Parses input arguments and creates a new EventAddConsultationCommand object
@@ -53,9 +52,8 @@ public class EventAddConsultationCommandParser implements Parser<EventAddConsult
         LocalTime startTime = ParserUtil.parseTime(dateTimeArr[1]);
         LocalTime endTime = ParserUtil.parseTime(dateTimeArr[2]);
 
-        EventDetails details = new EventDetails(desc, venue);
-        DateTimeDuration dtd = new DateTimeDuration(date, startTime, endTime);
-        return new EventAddConsultationCommand(new Event(details, dtd));
+        Event consultation = new Consultation(desc, venue, startTime, endTime, date);
+        return new EventAddConsultationCommand(consultation);
     }
 
     /**

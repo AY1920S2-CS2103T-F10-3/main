@@ -10,8 +10,8 @@ import seedu.nova.logic.commands.Command;
 import seedu.nova.logic.commands.CommandResult;
 import seedu.nova.logic.commands.exceptions.CommandException;
 import seedu.nova.model.Model;
-import seedu.nova.model.addressbook.person.Person;
-import seedu.nova.model.addressbook.person.Remark;
+import seedu.nova.model.person.Person;
+import seedu.nova.model.person.Remark;
 
 
 /**
@@ -48,7 +48,7 @@ public class AbRemarkCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
-        List<Person> lastShownList = model.getAddressBookManager().getFilteredPersonList();
+        List<Person> lastShownList = model.getFilteredPersonList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
@@ -58,8 +58,8 @@ public class AbRemarkCommand extends Command {
         Person editedPerson = new Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
                 personToEdit.getCategory(), remark);
 
-        model.getAddressBookManager().setPerson(personToEdit, editedPerson);
-        model.getAddressBookManager().updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
+        model.setPerson(personToEdit, editedPerson);
+        model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
 
         return new CommandResult(generateSuccessMessage(editedPerson));
     }

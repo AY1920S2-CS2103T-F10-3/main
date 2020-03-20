@@ -16,12 +16,12 @@ import seedu.nova.logic.parser.Parser;
 import seedu.nova.logic.parser.ParserUtil;
 import seedu.nova.logic.parser.Prefix;
 import seedu.nova.logic.parser.exceptions.ParseException;
-import seedu.nova.model.Category;
-import seedu.nova.model.addressbook.person.Email;
-import seedu.nova.model.addressbook.person.Name;
-import seedu.nova.model.addressbook.person.Person;
-import seedu.nova.model.addressbook.person.Phone;
-import seedu.nova.model.addressbook.person.Remark;
+import seedu.nova.model.category.Category;
+import seedu.nova.model.person.Email;
+import seedu.nova.model.person.Name;
+import seedu.nova.model.person.Person;
+import seedu.nova.model.person.Phone;
+import seedu.nova.model.person.Remark;
 
 /**
  * Parses input arguments and creates a new AbAddCommand object

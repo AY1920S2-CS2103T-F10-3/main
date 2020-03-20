@@ -12,7 +12,7 @@ import seedu.nova.commons.exceptions.DataConversionException;
 import seedu.nova.commons.exceptions.IllegalValueException;
 import seedu.nova.commons.util.FileUtil;
 import seedu.nova.commons.util.JsonUtil;
-import seedu.nova.model.addressbook.ReadOnlyAddressBook;
+import seedu.nova.model.ReadOnlyAddressBook;
 
 /**
  * A class to access AddressBook data stored as a json file on the hard disk.

@@ -6,8 +6,8 @@ import java.util.Optional;
 
 import seedu.nova.commons.exceptions.DataConversionException;
 import seedu.nova.commons.util.JsonUtil;
-import seedu.nova.model.userpref.ReadOnlyUserPrefs;
-import seedu.nova.model.userpref.UserPrefs;
+import seedu.nova.model.ReadOnlyUserPrefs;
+import seedu.nova.model.UserPrefs;
 
 /**
  * A class to access UserPrefs stored in the hard disk as a json file
