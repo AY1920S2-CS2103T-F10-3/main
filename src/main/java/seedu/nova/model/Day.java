@@ -12,7 +12,7 @@ import seedu.nova.logic.commands.exceptions.CommandException;
 public class Day {
 
     private static final String MESSAGE_SLOT_CONFLICT = "There is another event during that time";
-
+    
     private LinkedList<Event> events;
     private LocalDate date;
 
