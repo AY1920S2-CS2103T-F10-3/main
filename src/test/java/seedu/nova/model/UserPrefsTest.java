@@ -3,7 +3,6 @@ package seedu.nova.model;
 import static seedu.nova.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
-import seedu.nova.model.userpref.UserPrefs;
 
 public class UserPrefsTest {
 

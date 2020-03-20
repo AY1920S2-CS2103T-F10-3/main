@@ -28,12 +28,12 @@ import org.junit.jupiter.api.Test;
 
 import seedu.nova.logic.commands.abcommands.AbAddCommand;
 import seedu.nova.logic.parser.abparsers.AbAddCommandParser;
-//import seedu.nova.model.addressbook.person.Address;
-import seedu.nova.model.Category;
-import seedu.nova.model.addressbook.person.Email;
-import seedu.nova.model.addressbook.person.Name;
-import seedu.nova.model.addressbook.person.Person;
-import seedu.nova.model.addressbook.person.Phone;
+//import seedu.nova.model.person.Address;
+import seedu.nova.model.category.Category;
+import seedu.nova.model.person.Email;
+import seedu.nova.model.person.Name;
+import seedu.nova.model.person.Person;
+import seedu.nova.model.person.Phone;
 import seedu.nova.testutil.PersonBuilder;
 
 public class AbAddCommandParserTest {

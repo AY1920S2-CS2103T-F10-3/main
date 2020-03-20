@@ -9,8 +9,8 @@ import java.util.Set;
 
 import seedu.nova.logic.commands.abcommands.AbAddCommand;
 import seedu.nova.logic.commands.abcommands.AbEditCommand.EditPersonDescriptor;
-import seedu.nova.model.Category;
-import seedu.nova.model.addressbook.person.Person;
+import seedu.nova.model.category.Category;
+import seedu.nova.model.person.Person;
 
 /**
  * A utility class for Person.

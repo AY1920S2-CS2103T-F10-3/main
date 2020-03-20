@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.nova.logic.commands.abcommands.AbFindCommand;
 import seedu.nova.logic.parser.abparsers.AbFindCommandParser;
-//import seedu.nova.model.addressbook.person.NameContainsKeywordsPredicate;
+//import seedu.nova.model.person.NameContainsKeywordsPredicate;
 
 public class AbFindCommandParserTest {
 

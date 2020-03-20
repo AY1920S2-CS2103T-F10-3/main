@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.nova.commons.exceptions.IllegalValueException;
 import seedu.nova.commons.util.JsonUtil;
-//import seedu.nova.model.addressbook.AddressBook;
+//import seedu.nova.model.AddressBook;
 //import seedu.nova.testutil.TypicalPersons;
 
 public class JsonSerializableAddressBookTest {

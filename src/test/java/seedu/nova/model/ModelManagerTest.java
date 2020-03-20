@@ -16,10 +16,7 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import seedu.nova.commons.core.GuiSettings;
-import seedu.nova.model.addressbook.AddressBook;
-import seedu.nova.model.addressbook.person.NameContainsKeywordsPredicate;
-import seedu.nova.model.schedule.Scheduler;
-import seedu.nova.model.userpref.UserPrefs;
+import seedu.nova.model.person.NameContainsKeywordsPredicate;
 import seedu.nova.testutil.AddressBookBuilder;
 
 public class ModelManagerTest {
@@ -30,7 +27,7 @@ public class ModelManagerTest {
     public void constructor() {
         assertEquals(new UserPrefs(), modelManager.getUserPrefs());
         assertEquals(new GuiSettings(), modelManager.getGuiSettings());
-        assertEquals(new AddressBook(), new AddressBook(modelManager.getAddressBookManager().getAddressBook()));
+        assertEquals(new AddressBook(), new AddressBook(modelManager.getAddressBook()));
     }
 
     @Test
@@ -78,24 +75,23 @@ public class ModelManagerTest {
 
     @Test
     public void hasPerson_nullPerson_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> modelManager.getAddressBookManager().hasPerson(null));
+        assertThrows(NullPointerException.class, () -> modelManager.hasPerson(null));
     }
 
     @Test
     public void hasPerson_personNotInAddressBook_returnsFalse() {
-        assertFalse(modelManager.getAddressBookManager().hasPerson(ALICE));
+        assertFalse(modelManager.hasPerson(ALICE));
     }
 
     @Test
     public void hasPerson_personInAddressBook_returnsTrue() {
-        modelManager.getAddressBookManager().addPerson(ALICE);
-        assertTrue(modelManager.getAddressBookManager().hasPerson(ALICE));
+        modelManager.addPerson(ALICE);
+        assertTrue(modelManager.hasPerson(ALICE));
     }
 
     @Test
     public void getFilteredPersonList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class,
-                () -> modelManager.getAddressBookManager().getFilteredPersonList().remove(0));
+        assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredPersonList().remove(0));
     }
 
     @Test
@@ -105,9 +101,9 @@ public class ModelManagerTest {
         UserPrefs userPrefs = new UserPrefs();
 
         // same values -> returns true
-        modelManager = new ModelManager(addressBook, userPrefs, new Scheduler(LocalDate.of(2020, 1, 13),
+        modelManager = new ModelManager(addressBook, userPrefs, new Schedule(LocalDate.of(2020, 1, 13),
                 LocalDate.of(2020, 5, 3)));
-        ModelManager modelManagerCopy = new ModelManager(addressBook, userPrefs, new Scheduler(LocalDate.of(2020, 1,
+        ModelManager modelManagerCopy = new ModelManager(addressBook, userPrefs, new Schedule(LocalDate.of(2020, 1,
                 13), LocalDate.of(2020, 5, 3)));
         assertTrue(modelManager.equals(modelManagerCopy));
 
@@ -122,22 +118,21 @@ public class ModelManagerTest {
 
         // different addressBook -> returns false
         assertFalse(modelManager.equals(new ModelManager(differentAddressBook, userPrefs,
-                new Scheduler(LocalDate.of(2020, 1, 13), LocalDate.of(2020, 5, 3)))));
+                new Schedule(LocalDate.of(2020, 1, 13), LocalDate.of(2020, 5, 3)))));
 
         // different filteredList -> returns false
         String[] keywords = ALICE.getName().fullName.split("\\s+");
-        modelManager.getAddressBookManager().updateFilteredPersonList(
-                new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
-        assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs, new Scheduler(LocalDate.of(2020, 1,
+        modelManager.updateFilteredPersonList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
+        assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs, new Schedule(LocalDate.of(2020, 1,
                 13), LocalDate.of(2020, 5, 3)))));
 
         // resets modelManager to initial state for upcoming tests
-        modelManager.getAddressBookManager().updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        modelManager.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
 
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();
         differentUserPrefs.setAddressBookFilePath(Paths.get("differentFilePath"));
         assertFalse(modelManager.equals(new ModelManager(addressBook, differentUserPrefs,
-                new Scheduler(LocalDate.of(2020, 1, 13), LocalDate.of(2020, 5, 3)))));
+                new Schedule(LocalDate.of(2020, 1, 13), LocalDate.of(2020, 5, 3)))));
     }
 }

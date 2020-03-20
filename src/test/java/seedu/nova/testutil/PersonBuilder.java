@@ -3,13 +3,13 @@ package seedu.nova.testutil;
 import java.util.HashSet;
 import java.util.Set;
 
-import seedu.nova.model.Category;
-import seedu.nova.model.addressbook.person.Email;
-import seedu.nova.model.addressbook.person.Name;
-import seedu.nova.model.addressbook.person.Person;
-import seedu.nova.model.addressbook.person.Phone;
-import seedu.nova.model.addressbook.person.Remark;
-import seedu.nova.model.common.util.SampleDataUtil;
+import seedu.nova.model.category.Category;
+import seedu.nova.model.person.Email;
+import seedu.nova.model.person.Name;
+import seedu.nova.model.person.Person;
+import seedu.nova.model.person.Phone;
+import seedu.nova.model.person.Remark;
+import seedu.nova.model.util.SampleDataUtil;
 
 
 /**

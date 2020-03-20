@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import seedu.nova.model.addressbook.AddressBook;
-import seedu.nova.model.addressbook.person.Person;
+import seedu.nova.model.AddressBook;
+import seedu.nova.model.person.Person;
 
 /**
  * A utility class containing a list of {@code Person} objects to be used in tests.
