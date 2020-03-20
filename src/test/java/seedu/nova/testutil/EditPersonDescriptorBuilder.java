@@ -4,13 +4,12 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import seedu.nova.logic.commands.addressbook.EditCommand.EditPersonDescriptor;
-import seedu.nova.model.common.person.Address;
-import seedu.nova.model.common.person.Email;
-import seedu.nova.model.common.person.Name;
-import seedu.nova.model.common.person.Person;
-import seedu.nova.model.common.person.Phone;
-import seedu.nova.model.common.tag.Tag;
+import seedu.nova.logic.commands.abcommands.AbEditCommand.EditPersonDescriptor;
+import seedu.nova.model.category.Category;
+import seedu.nova.model.person.Email;
+import seedu.nova.model.person.Name;
+import seedu.nova.model.person.Person;
+import seedu.nova.model.person.Phone;
 
 /**
  * A utility class to help with building EditPersonDescriptor objects.
@@ -35,8 +34,7 @@ public class EditPersonDescriptorBuilder {
         descriptor.setName(person.getName());
         descriptor.setPhone(person.getPhone());
         descriptor.setEmail(person.getEmail());
-        descriptor.setAddress(person.getAddress());
-        descriptor.setTags(person.getTags());
+        descriptor.setCategories(person.getCategory());
     }
 
     /**
@@ -64,20 +62,12 @@ public class EditPersonDescriptorBuilder {
     }
 
     /**
-     * Sets the {@code Address} of the {@code EditPersonDescriptor} that we are building.
-     */
-    public EditPersonDescriptorBuilder withAddress(String address) {
-        descriptor.setAddress(new Address(address));
-        return this;
-    }
-
-    /**
-     * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code EditPersonDescriptor}
+     * Parses the {@code tags} into a {@code Set<Category>} and set it to the {@code EditPersonDescriptor}
      * that we are building.
      */
     public EditPersonDescriptorBuilder withTags(String... tags) {
-        Set<Tag> tagSet = Stream.of(tags).map(Tag::new).collect(Collectors.toSet());
-        descriptor.setTags(tagSet);
+        Set<Category> categorySet = Stream.of(tags).map(Category::new).collect(Collectors.toSet());
+        descriptor.setCategories(categorySet);
         return this;
     }
 

@@ -3,7 +3,6 @@ package seedu.nova.model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.nova.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static seedu.nova.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.nova.testutil.Assert.assertThrows;
 import static seedu.nova.testutil.TypicalPersons.ALICE;
@@ -18,15 +17,13 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.nova.model.addressbook.NovaAddressBook;
-import seedu.nova.model.addressbook.ReadOnlyAddressBook;
-import seedu.nova.model.common.person.Person;
-import seedu.nova.model.common.person.exceptions.DuplicatePersonException;
+import seedu.nova.model.person.Person;
+import seedu.nova.model.person.exceptions.DuplicatePersonException;
 import seedu.nova.testutil.PersonBuilder;
 
 public class AddressBookTest {
 
-    private final NovaAddressBook addressBook = new NovaAddressBook();
+    private final AddressBook addressBook = new AddressBook();
 
     @Test
     public void constructor() {
@@ -40,7 +37,7 @@ public class AddressBookTest {
 
     @Test
     public void resetData_withValidReadOnlyAddressBook_replacesData() {
-        NovaAddressBook newData = getTypicalAddressBook();
+        AddressBook newData = getTypicalAddressBook();
         addressBook.resetData(newData);
         assertEquals(newData, addressBook);
     }
@@ -48,7 +45,7 @@ public class AddressBookTest {
     @Test
     public void resetData_withDuplicatePersons_throwsDuplicatePersonException() {
         // Two persons with the same identity fields
-        Person editedAlice = new PersonBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
+        Person editedAlice = new PersonBuilder(ALICE).withTags(VALID_TAG_HUSBAND)
                 .build();
         List<Person> newPersons = Arrays.asList(ALICE, editedAlice);
         AddressBookStub newData = new AddressBookStub(newPersons);
@@ -75,7 +72,7 @@ public class AddressBookTest {
     @Test
     public void hasPerson_personWithSameIdentityFieldsInAddressBook_returnsTrue() {
         addressBook.addPerson(ALICE);
-        Person editedAlice = new PersonBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
+        Person editedAlice = new PersonBuilder(ALICE).withTags(VALID_TAG_HUSBAND)
                 .build();
         assertTrue(addressBook.hasPerson(editedAlice));
     }

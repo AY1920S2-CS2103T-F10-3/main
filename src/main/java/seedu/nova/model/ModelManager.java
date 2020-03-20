@@ -1,67 +1,200 @@
 package seedu.nova.model;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.nova.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.nio.file.Path;
+import java.time.LocalDate;
+import java.util.function.Predicate;
 import java.util.logging.Logger;
 
-import org.json.simple.JSONObject;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import seedu.nova.commons.core.GuiSettings;
 import seedu.nova.commons.core.LogsCenter;
-import seedu.nova.model.addressbook.AddressBookModel;
-import seedu.nova.model.addressbook.NovaAddressBook;
-import seedu.nova.model.plan.Plan;
-import seedu.nova.model.tools.NovaScheduler;
-import seedu.nova.model.tools.Scheduler;
+import seedu.nova.logic.parser.ModeEnum;
+import seedu.nova.model.event.Event;
+import seedu.nova.model.event.Lesson;
+import seedu.nova.model.person.Person;
+import seedu.nova.model.progresstracker.ProgressTracker;
 
 /**
- * Represents the in-memory model of the address book data.
+ * Represents the in-memory model of the data.
  */
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    AddressBookModel abModel;
-    Scheduler scheduler;
+    private final AddressBook addressBook;
+    private final UserPrefs userPrefs;
+    private final FilteredList<Person> filteredPersons;
+    private final Schedule schedule;
+    private final ProgressTracker progressTracker;
+    private Mode mode;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
-    public ModelManager(AddressBookModel abModel, Scheduler scheduler) {
-        requireAllNonNull(abModel, scheduler);
+    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs, Schedule schedule) {
+        super();
+        requireAllNonNull(addressBook, userPrefs);
 
-        logger.fine("Initializing with address book: " + abModel);
+        logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
 
-        this.abModel = abModel;
-        this.scheduler = scheduler;
+        this.addressBook = new AddressBook(addressBook);
+        this.userPrefs = new UserPrefs(userPrefs);
+        this.progressTracker = new ProgressTracker();
+        filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        this.schedule = schedule;
+        this.mode = new Mode(ModeEnum.ADDRESSBOOK);
     }
 
     public ModelManager() {
-        this(new NovaAddressBook(), new NovaScheduler());
+        this(new AddressBook(), new UserPrefs(), new Schedule(LocalDate.of(2020, 1, 13), LocalDate.of(2020, 5, 3)));
     }
 
-    public AddressBookModel getAddressBook() {
-        return this.abModel;
-    }
+    //=========== UserPrefs ==================================================================================
 
-    public void setAddressBook(AddressBookModel abModel) {
-        this.abModel = abModel;
-    }
-
-    public Scheduler getScheduler() {
-        return this.scheduler;
-    }
-
-    public static ModelManager parseFromJson(JSONObject jo) {
-        AddressBookModel abModel = (AddressBookModel) jo.get("abModel");
-        Plan pModel = (Plan) jo.get("pModel");
-        Scheduler scheduler = (Scheduler) jo.get("scheduler");
-        return new ModelManager(abModel, scheduler);
+    @Override
+    public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
+        requireNonNull(userPrefs);
+        this.userPrefs.resetData(userPrefs);
     }
 
     @Override
-    public JSONObject toJsonObject() {
-        JSONObject jo = new JSONObject();
-        jo.put("abModel", this.abModel.toJsonObject());
-        jo.put("scheduler", this.scheduler.toJsonObject());
-        return jo;
+    public ReadOnlyUserPrefs getUserPrefs() {
+        return userPrefs;
+    }
+
+    @Override
+    public GuiSettings getGuiSettings() {
+        return userPrefs.getGuiSettings();
+    }
+
+    @Override
+    public void setGuiSettings(GuiSettings guiSettings) {
+        requireNonNull(guiSettings);
+        userPrefs.setGuiSettings(guiSettings);
+    }
+
+    @Override
+    public Path getAddressBookFilePath() {
+        return userPrefs.getAddressBookFilePath();
+    }
+
+    @Override
+    public void setAddressBookFilePath(Path addressBookFilePath) {
+        requireNonNull(addressBookFilePath);
+        userPrefs.setAddressBookFilePath(addressBookFilePath);
+    }
+
+    //=========== Mode ==================================================================================
+    @Override
+    public Mode getMode() {
+        return mode;
+    }
+
+    //=========== ProgressTracker ==================================================================================
+    @Override
+    public ProgressTracker getProgressTracker() {
+        return progressTracker;
+    }
+
+    //=========== AddressBook ================================================================================
+    @Override
+    public void setAddressBook(ReadOnlyAddressBook addressBook) {
+        this.addressBook.resetData(addressBook);
+    }
+
+    @Override
+    public ReadOnlyAddressBook getAddressBook() {
+        return addressBook;
+    }
+
+    @Override
+    public boolean hasPerson(Person person) {
+        requireNonNull(person);
+        return addressBook.hasPerson(person);
+    }
+
+    @Override
+    public void deletePerson(Person target) {
+        addressBook.removePerson(target);
+    }
+
+    @Override
+    public void addPerson(Person person) {
+        addressBook.addPerson(person);
+        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+    }
+
+    @Override
+    public void setPerson(Person target, Person editedPerson) {
+        requireAllNonNull(target, editedPerson);
+
+        addressBook.setPerson(target, editedPerson);
+    }
+
+    //=========== Filtered Person List Accessors =============================================================
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
+     * {@code versionedAddressBook}
+     */
+    @Override
+    public ObservableList<Person> getFilteredPersonList() {
+        return filteredPersons;
+    }
+
+    @Override
+    public void updateFilteredPersonList(Predicate<Person> predicate) {
+        requireNonNull(predicate);
+        filteredPersons.setPredicate(predicate);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        // short circuit if same object
+        if (obj == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(obj instanceof ModelManager)) {
+            return false;
+        }
+
+        // state check
+        ModelManager other = (ModelManager) obj;
+        return addressBook.equals(other.addressBook)
+                && userPrefs.equals(other.userPrefs)
+                && filteredPersons.equals(other.filteredPersons);
+    }
+
+    //=========== Scheduler Methods =============================================================
+
+    @Override
+    public String viewSchedule(LocalDate date) {
+
+        return schedule.view(date);
+
+    }
+
+    @Override
+    public boolean isWithinSem(LocalDate date) {
+
+        return schedule.checkDateValidity(date);
+
+    }
+
+    //=========== Event and Schedule =============================================================
+    @Override
+    public void addEvent(Event e) {
+        // schedule.addEvent(e);
+    }
+
+    @Override
+    public void addLesson(Lesson l) {
+        // schedule.addLesson(l);le
     }
 
 }

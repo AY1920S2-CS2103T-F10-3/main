@@ -1,48 +1,32 @@
 package seedu.nova.storage;
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-import seedu.nova.model.Model;
-import seedu.nova.model.ModelManager;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.Optional;
 
-import java.io.*;
+import seedu.nova.commons.exceptions.DataConversionException;
+import seedu.nova.model.ReadOnlyAddressBook;
+import seedu.nova.model.ReadOnlyUserPrefs;
+import seedu.nova.model.UserPrefs;
 
-public class Storage implements JsonStorage<Model> {
-    private static final String DEFAULT_PATH = "./nova.json";
-    File originFl;
+/**
+ * API of the Storage component
+ */
+public interface Storage extends AddressBookStorage, UserPrefsStorage {
 
-    public Storage() {
-        this(DEFAULT_PATH);
-    }
+    @Override
+    Optional<UserPrefs> readUserPrefs() throws DataConversionException, IOException;
 
-    public Storage(String path) {
-        this.originFl = new File(path);
-    }
+    @Override
+    void saveUserPrefs(ReadOnlyUserPrefs userPrefs) throws IOException;
 
-    public void setPath(String url) {
-        this.originFl = new File(url);
-    }
+    @Override
+    Path getAddressBookFilePath();
 
-    public boolean fileExists() {
-        return this.originFl.isFile();
-    }
+    @Override
+    Optional<ReadOnlyAddressBook> readAddressBook() throws DataConversionException, IOException;
 
-    public boolean createFile() throws IOException {
-        return new File(this.originFl.getParent()).mkdirs() && this.originFl.createNewFile();
-    }
+    @Override
+    void saveAddressBook(ReadOnlyAddressBook addressBook) throws IOException;
 
-    public Model readFromJson() throws IOException, ParseException {
-        JSONObject jo = (JSONObject) new JSONParser().parse(new FileReader(this.originFl));
-        return ModelManager.parseFromJson(jo);
-    }
-
-    public void saveJsonParsable(Model t) throws IOException {
-        JSONObject jo = t.toJsonObject();
-        PrintWriter pw = new PrintWriter(this.originFl);
-        pw.write(jo.toJSONString());
-
-        pw.flush();
-        pw.close();
-    }
 }

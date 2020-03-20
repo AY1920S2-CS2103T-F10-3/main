@@ -1,11 +1,11 @@
 package seedu.nova.logic.commands;
 
 import static seedu.nova.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.nova.logic.commands.addressbook.ExitCommand.MESSAGE_EXIT_ACKNOWLEDGEMENT;
+import static seedu.nova.logic.commands.commoncommands.ExitCommand.MESSAGE_EXIT_ACKNOWLEDGEMENT;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.nova.logic.commands.addressbook.ExitCommand;
+import seedu.nova.logic.commands.commoncommands.ExitCommand;
 import seedu.nova.model.Model;
 import seedu.nova.model.ModelManager;
 

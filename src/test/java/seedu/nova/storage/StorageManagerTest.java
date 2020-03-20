@@ -11,8 +11,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import seedu.nova.commons.core.GuiSettings;
-import seedu.nova.model.addressbook.NovaAddressBook;
-import seedu.nova.model.addressbook.ReadOnlyAddressBook;
+import seedu.nova.model.AddressBook;
+import seedu.nova.model.ReadOnlyAddressBook;
+import seedu.nova.model.UserPrefs;
 
 public class StorageManagerTest {
 
@@ -53,10 +54,10 @@ public class StorageManagerTest {
          * {@link JsonAddressBookStorage} class.
          * More extensive testing of UserPref saving/reading is done in {@link JsonAddressBookStorageTest} class.
          */
-        NovaAddressBook original = getTypicalAddressBook();
+        AddressBook original = getTypicalAddressBook();
         storageManager.saveAddressBook(original);
         ReadOnlyAddressBook retrieved = storageManager.readAddressBook().get();
-        assertEquals(original, new NovaAddressBook(retrieved));
+        assertEquals(original, new AddressBook(retrieved));
     }
 
     @Test

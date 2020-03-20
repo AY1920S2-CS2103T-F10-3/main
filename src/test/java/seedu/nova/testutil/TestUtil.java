@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 
 import seedu.nova.commons.core.index.Index;
 import seedu.nova.model.Model;
-import seedu.nova.model.common.person.Person;
+import seedu.nova.model.person.Person;
 
 /**
  * A utility class for test cases.

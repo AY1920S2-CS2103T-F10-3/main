@@ -16,14 +16,15 @@ endif::[]
 
 :repoURL: https://github.com/AY1920S2-CS2103T-F10-3/main/releases
 
-By: `Team CS2103T-F10-3`      Since: `Feb 2020`      Licence: `MIT`
+By: `Team CS2103T-F10-3`      Since: `Mar 2020`      Licence: `MIT`
 
 == Introduction
 
 Next-gen Organizing Virtual Assistant (NOVA) is a one-stop desktop application for CS2103T students to manage all CS2103T related activities, from studying to planning project meetings. NOVA is designed for users who prefer to use the Command Line Interface (CLI).
 
-image::GUI_v2.0.png[width="790"]
-Fig 1: GUI of NOVA
+image::GUI_v2.0.png[width="790" align="center"]
+[.text-center]
+_[.small]#Fig 1: GUI of NOVA#_
 
 == Quick Start
 
@@ -31,388 +32,390 @@ Fig 1: GUI of NOVA
 .  Download the latest `nova.jar` link:{repoURL}/releases[here].
 .  Copy the file to the folder you want to use as the home folder for your NOVA.
 .  Double-click the file to start the app. The GUI should appear in a few seconds.
-+
-.  Type the command in the command box and press kbd:[Enter] to execute it. +
+.  Type the command in the command box and press kbd:[Enter] to execute it.
 .  Some example commands you can try:
 
-* *`list all`* : lists all contacts
-* **`contact add`**`n\John Doe p\98765432 c\classmate` : adds a contact named `John Doe` to the Address Book and categorise as classmate
+* *`nav ab`*: navigates to address book mode
+** *`list `* : lists all contacts
+** *`add`*`n\John Doe p\98765432 e\john@gmail.com c\classmate` : adds a contact named `John Doe` to the Address Book and
+categorise as classmate
 * *`exit`* : exits the app
 
 .  Refer to <<Features>> for details of each command.
 
 [[Features]]
 == Features
-Features are group together in modes of operation. There is a set of common commands and also within every mode, there is a set of commands for you to use and get things done.
+Features are grouped together in modes of operation. There is a set of common commands and within every mode,
+there is also a set of commands for you to use and get things done.
 
 === Common
 NOVA offers a set of common functionalities across all modes.
 
 ==== Exit : `exit`
-When exiting NOVA with the `exit` command, the contacts, schedules and notes will be saved.
+You can exit NOVA with this command. While exiting NOVA, contacts, schedules and
+notes will be saved.
+
+==== Navigation: `nav`
+You can navigate to the desired mode to use its features.
+
+Format: +
+`nav [home/ab/schedule/tracker]`
+
+[NOTE]
+`ab` refers to address book.
+
+Example: +
+`nav ab`
+
+Change the mode of operation to address book.
 
 === Address Book
+The address book feature allows you to keep in contact with your teammates and classmates. Access this mode by entering
+the command `nav ab`.
 
-The address book feature allows you to keep in contact with your teammates and classmates.
+image::addressbook.png[width="790" align="center"]
 
-image::addressbook.png[width="790"]
-
-Fig 2.1: GUI of NOVA after user typed contact add n\John Doe p\12345678 c\teammate
+[.text-center]
+_[.small]#Fig 3.2: GUI of NOVA after user typed contact `add n\John Doe p\12345678 c\teammate`#_
 
 ==== Add Contact: `add`
-
 You can add your classmate or teammate as contact.
 
-Format: `contact add n\[name] p\[phone number] c\[classmate/teammate]`
+Format: `add n\[name] p\[phone number] e\[email address] c\[classmate/teammate]`
 
-Example:
+[NOTE]
+====
+* `[name]` is not case-sensitive. (E.g. "Jane doe" is the same as "jane Doe")
+* `[classmate/teammate]` is not case-sensitive. (E.g. "ClassMate" is the same as "classmate")
+* The name you add will be automatically formatted. (E.g. "jane doe" will become "Jane Doe")
+====
 
-* `contact add n\John Doe p\12345678 c\classmate`
+Example: +
+`add n\John Doe p\12345678 c\classmate`
 
-Note:
-
-* `[name]` is not case-sensitive (Jane doe is the same as jane Doe).
-* The name you add will be automatically formatted (jane doe will become Jane Doe).
+Adds a new contact with name John Doe, phone number 12345678 into the classmate category.
 
 ==== Edit Contact: `edit`
+You can edit the contacts that you have added. If the contact you want to edit does not exist, NOVA will let you know.
 
-You can edit the contacts that you have added. If the contact you tried to edit does not exist, NOVA will let you know.
+Format: `edit INDEX n\[name] p\[phone number] e\[email address] c\[classmate/teammate]`
 
-Format: `contact edit n\[name] p\[phone number] c\[classmate/teammate]`
+[NOTE]
+====
+* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. +
+The index **must be a positive integer** 1, 2, 3, …
+* At least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
+* `[name]` is not case-sensitive. (E.g. "Jane doe" is the same as "jane Doe")
+* `[classmate/teammate]` is not case-sensitive. (E.g. "ClassMate" is the same as "classmate")
+====
 
-Example:
+Example: +
+`edit n\John Doe p\88888888 c\classmate`
 
-* `contact edit n\John Doe p\88888888 c\classmate`
-
-Note:
-
-* `[name]` is not case-sensitive (Jane doe is the same as jane Doe).
+Edits the phone number of John Doe to 88888888.
 
 ==== Delete Contact : `delete`
-
 You can delete a contact that you have added. If the contact you try to delete does not exist, NOVA will let you know.
 
-Format: `contact delete n\[name]`
+Format: `delete INDEX`
 
-Example:
+[NOTE]
+====
+* Deletes the person at the specified `INDEX`.
+* The index refers to the index number shown in the displayed person list.
+* The index **must be a positive integer** 1, 2, 3, …​
+====
 
-* `contact delete n\John Doe`
+Example: +
+`delete 1`
 
-Note:
+Deletes contact at index 1 from your address book.
 
-* `[name]` is not case-sensitive (Jane doe is the same as jane Doe).
+==== Clear all Contacts: `clear`
+You can clear the contacts that you have added in your address book. If there is no contact, NOVA will let you know.
 
-==== Delete All Contacts: `delete all`
+Format: `clear`
 
-You can delete all the contacts that you have added in your address book. If there is no contact, NOVA will let you know.
+==== List all Contacts: `list`
+You can list the contact's name, phone number and category of all contacts.
 
-Format: `contact delete all`
-
-Example:
-
-* `contact delete all`
-
-==== List All Contacts: `list`
-
-NOVA will list the contact's name, phone number and category of all contacts.
-
-Format: `contact list`
-
-Example:
-
-* `contact list`
+Format: `list`
 
 ==== List Category Contact: `list [classmate/teammate]`
+You can list the name and phone number of all the contacts under one of the categories.
 
-NOVA will list the name and phone number of all the contacts under that category. NOVA will also list the category specific remarks.
+Format: `list c\[classmate/teammate]`
 
-Format: `contact list c\[classmate/teammate]`
+[NOTE]
+====
+* `[classmate/teammate]` is not case-sensitive. (E.g. "ClassMate" is the same as "classmate")
+* There are only `classmate` and `teammate` categories.
+====
 
 Example:
 
-* `contact list c\classmate`
-* `contact list c\teammate`
+* `list c\classmate` +
+Lists all your contacts in the `classmate` category.
 
-Note:
-
-* `[classmate/teammate]` is not case-sensitive.
-* There are only classmate and teammate categories.
+* `list c\teammate` +
+Lists all your contacts in the `teammate` category.
 
 ==== Find Contact: `find`
+You can find a contact added to the address book easily with a name.
 
-NOVA will find a specific contact added to the address book.
+Format: `find n\[name]`
 
-Format: `contact find n\[name]`
+[NOTE]
+`[name]` is not case-sensitive. (E.g. "Jane doe" is the same as "jane Doe")
 
-Example:
-
-* `contact find n\john DOE`
-
-Note:
-
-* `[name]` is not case-sensitive (Jane doe is the same as jane Doe)
+Example: +
+`find n\john DOE`
 
 ==== Add Picture to Contact: `addpic`
+You can add a profile picture to a contact in your address book.
 
-NOVA will find a specific contact added to the address book and add the picture.
+Format: `addpic INDEX pa\[path]`
 
-Format: `contact addpic n\[name] pa\[path]`
+[NOTE]
+====
+* Adds profile picture of the person at the specified INDEX. The index refers to the index number shown in
+the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
+* Absolute file path is used for `[path]`.
+====
 
-Example:
+Example: +
+`addpic 2 pa\C:\Users\aloha\Desktop\aloha.png`
 
-* `contact addpic n\john doe pa\C:\Users\aloha\Desktop\aloha.png`
-
-Note:
-
-* `[name]` is not case-sensitive (Jane doe is the same as jane Doe)
-
-==== Update Picture to Contact: `updatepic`
-
-NOVA will find a specific contact added to the address book and edit the picture.
-
-Format: `contact updatepic n\[name] pa\[path]`
-
-Example:
-
-* `contact updatepic n\john doe pa\C:\Users\aloha\Desktop\updatedAloha.png`
-
-Note:
-
-* `[name]` is not case-sensitive (Jane doe is the same as jane Doe)
+Sets the profile picture of contact at index 1 to aloha.png.
 
 ==== Delete Picture in Contact: `deletepic`
+You can delete the profile picture of a contact in your address book.
 
-NOVA will find a specific contact added to the address book and edit the picture.
+Format: `deletepic INDEX`
 
-Format: `contact deletepic n\[name]`
+[NOTE]
+====
+* Deletes the picture at the specified INDEX.
+* The index refers to the index number shown in the displayed person list.
+* The index **must be a positive integer** 1, 2, 3, …​
+====
 
-Example:
+Example: +
+`deletepic 2`
 
-* `contact deletepic n\john doe`
-
-Note:
-
-* `[name]` is not case-sensitive (Jane doe is the same as jane Doe)
+Deletes the profile picture contact at index 1.
 
 ==== Add Category Specific Remarks: `remark`
+You can add remarks, that are category specific, to a contact.
 
-NOVA will find a specific contact added to the address book and add the remark according to category.
+Format: `remark INDEX r\[description]`
 
-Format: `contact remark c\[classmate/teammate] n\[name] d\[description]`
+[NOTE]
+`[name]` is not case-sensitive. (E.g. "Jane doe" is the same as "jane Doe")
 
-Example:
+Example: +
+`remark 2 r\He's a nice teammate`
 
-* `contact remark c\teammate n\john DOE d\He's cuteeee!`
+Adds the remark "He's a nice teammate" to contact at index 2.
 
-Note:
+==== Undo Command: `undo`
+You can undo a command that you have entered.
 
-* `[name]` is not case-sensitive (Jane doe is the same as jane Doe)
+Format: `undo`
 
-==== Undo Your Command: `undo`
+==== Redo Command: `redo`
 
-NOVA will find the second latest command that was done by the user and go to that state.
+You can redo undone commands.
 
-Format: `contact undo`
+Format: `redo`
 
-Example:
+[WARNING]
+After you successfully enter a new command, you will lose all the undone commands.
 
-* `contact undo`
+==== Short Form [v2.0]:
+You can use the short form of your command.
 
-==== Redo Your Command: `redo`
+=== Manage Events
+You can track events by adding them into the organizer and manage them easily. Access this mode by entering
+the command `nav schedule`.
 
-NOVA will redo commands.
-
-Format: `contact redo`
-
-Example:
-
-* `contact redo`
-
-==== Short Form [v2.0]
-
-You can use the short form of contact `c` in your command.
-
-Example:
-
-* `c redo`
-* `c add n\Hee Haw p\88887777 c\classmate`
-
-=== Manage Plans
-Commands that will help you in managing your events.
-
-
-image::ManageEventsUI.png[width="790"]
-_[.small]#Figure 2.2: GUI of NOVA after user typed `meeting d\CS2103T website set-up v\COM1 t\2020-02-20 14:00 1`#_
+image::ManageEventsUI.png[width="790" align="center"]
+[.text-center]
+_[.small]#Figure 3.3: GUI of NOVA after user typed +
+`meeting d\CS2103T website set-up v\COM1 t\2020-02-20 14:00 15:00`#_
 
 
 ==== Add a Meeting: `meeting`
-
 You can add a meeting as one of your events.
 
-Format: `meeting d\[description] v\[venue] t\[YYYY-MM-DD] [HH:MM] [duration]`
+Format: `meeting d\[description] v\[venue] t\[YYYY-MM-DD] [Start time (HH:MM)] [End time (HH:MM)]`
 
-Example:
+Example: +
+`meeting d\CS2103T website set-up v\COM1 t\2020-02-20 14:00 15:00`
 
-* `meeting d\CS2103T website set-up v\COM1 t\2020-02-20 14:00 1`
+Creates an event for a team meeting at COM1 on 20 Feb 2020 to set up CS2103T website from 2pm to 3pm.
 
 ==== Add a Study Session: `study`
-
 You can add a study session as one of your events.
 
-Format: `study d\[description] v\[venue] t\[YYYY-MM-DD] [HH:MM] [duration]`
+Format: `study d\[description] v\[venue] t\[YYYY-MM-DD] [Start time (HH:MM)] [End time (HH:MM)]`
 
-Example:
+Example: +
+`study d\cool peeps revision v\COM1 t\2020-02-20 16:00 17:00`
 
-* `study d\cool peeps revision v\COM1 t\2020-02-20 16:00 1`
+Creates an event for study session at COM1 on 20 Feb 2020 from 4pm to 5pm.
 
 
 ==== Add a Consultation Session: `consultation`
-
 You can add a consultation session as one of your events.
 
-Format: `consultation d\[description] v\[venue] t\[YYYY-MM-DD] [HH:MM] [duration]`
+Format: `consultation d\[description] v\[venue] t\[YYYY-MM-DD] [Start time (HH:MM)] [End time (HH:MM)]`
 
-Example:
+Example: +
+`consultation d\clarify UML v\COM1 t\2020-02-20 15:00 16:00`
 
-* `consultation d\clarify UML v\COM1 t\2020-02-20 15:00 1`
-
+Creates an event for consultation at COM1 on 20 Feb 2020 to clarify UML from 3pm to 4pm.
 
 ==== Add a Lesson: `lesson`
 You can add a lesson as one of your events.
 
-Format: `lesson d\[description] v\[venue] t\[day] [HH:MM] [duration]`
+Format: `lesson d\[description] v\[venue] t\[day] [Start time (HH:MM)] [End time (HH:MM)]`
 
-Example:
+Example: +
+`lesson d\CS2103T tutorial v\COM1-B103 t\Monday 15:00 17:00`
 
-* `lesson d\CS2103T tutorial v\COM1-B103 t\Monday 15:00 2`
-
+Creates an event for CS2103T tutorial at COM1-B103 on Monday from 3pm to 5pm.
 
 ==== Delete Event: `delete`
 You can delete an event that you no longer want.
 
 Format: `delete t\[YYYY-MM-DD] i\[index]`
 
-Example:
+[NOTE]
+`[index]` must be a positive integer. (E.g. 1, 2, 3, ...)
 
-* `delete t\2020-02-20 i\2`
+Example: +
+`delete t\2020-02-20 i\2`
 
-Note:
-
-* `[index]` must be a positive integer e.g. 1, 2, 3...
-
+Deletes the second event on 20 Feb 2020.
 
 ==== Mark Event as Done: `done`
 You can mark an event as done once it has been completed.
 
 Format: `done t\[YYYY-MM-DD] i\[index]`
 
-Example:
+[NOTE]
+`[index]` must be a positive integer. (E.g. 1, 2, 3, ...)
 
-* `done t\2020-02-20 i\2`
+Example: +
+`done t\2020-02-20 i\2`
 
-Note:
-
-* `[index]` must be a positive integer e.g. 1, 2, 3...
-
+Marks the second event on 20 Feb 2020 as completed.
 
 ==== Find Event: `find`
 You can find the events that contain the keywords.
 
-Format: `find event [keywords]`
+Format: `find event k\[keywords]`
 
-Example:
+[NOTE]
+`[keywords]` are case insensitive. (E.g. "cool peeps" will match "Cool Peeps")
 
-* `find event cool peeps`
+Example: +
+`find event cool peeps`
 
-Note:
-
-* `[keywords]` are case insensitive e.g. `cool peeps` will match `Cool Peeps`
-
+Finds the events with description containing cool or peeps.
 
 ==== Add Notes to Event: `note`
 You can add additional notes about an event.
 
 Format: `note d\[description] t\[YYYY-MM-DD] i\[index]`
 
-Example:
+[NOTE]
+`[index]` must be a positive integer. (E.g. 1, 2, 3, ...)
 
-* `note d\Remember to bring your charger! t\2020-02-20 i\2`
+Example: +
+`note d\Remember to bring your charger! t\2020-02-20 i\2`
 
-Note:
-
-* `[index]` must be a positive integer e.g. 1, 2, 3...
-
+Adds a note with description "Remember to bring your charger!" to the second event on 20 Feb 2020.
 
 ==== Repeat an Event: `repeat`
 You can add repeated events which occur weekly for a given number of times.
 
-Format: `repeat [number] t\[YYYY-MM-DD] i\[index]`
+Format: `repeat t\[YYYY-MM-DD] i\[index] c\[count]`
 
-Example:
-`repeat 3 t\2020-03-02 i\2` +
-Your first event on 2nd March 2020 will be repeated for the next 3 weeks.
+[NOTE]
+`[index]` and `[count]` must be a positive integer. (E.g. 1, 2, 3, ...)
 
-Note:
+Example: +
+`repeat 3 t\2020-03-02 i\2`
 
-* `[number]` must be a positive integer e.g. 1, 2, 3...
-* `[index]` must be a positive integer e.g. 1, 2, 3...
+Your second event on 2nd March 2020 will be repeated for the next 3 weeks.
 
 === Using Schedule
-Learn how to work with the schedule you have created in NOVA.
+Learn how to work with the schedule you have created in NOVA. You need to be in schedule mode. Enter the schedule
+mode by entering the command `nav schedule`.
 
-image::GUI_UsingSchedule.png[width = "790"]
+image::GUI_UsingSchedule.png[width = "790" align="center"]
 [.text-center]
-_[.small]#Fig 3.1: GUI of NOVA after entering the command freeslot 2020-03-02.#_
+_[.small]#Fig 3.4: GUI of NOVA after entering the command `freeslot 2020-03-02`.#_
 
 ==== View Schedule of a Day: `view`
 You can view the schedule of a specified day.
 
 Format: +
-`view [YYYY-MM-DD]`
+`view t\[YYYY-MM-DD]`
 
 Example: +
-`view 2020-02-29` +
+`view t\2020-02-29`
+
 Shows your schedule on 29 Feb 2020
 
 ==== View Schedule of a Week: `view`
 You can view the schedule of a specified week.
 
 Format: +
-`view week [week #]`
+`view week i\[week #]`
+
+[NOTE]
+`[week #]` must be a positive integer. (E.g. 1, 2, 3, ...)
 
 Example: +
-`view week 6` +
+`view week i\6`
+
 Shows your schedule of week 6 of the semester.
 
-==== View Schedule of a Month: `view`
+==== View Schedule of a Month [v2.0]: `view`
 You can view the schedule of a specified month.
 
 Format: +
-`view [MMM]`
+`view t\[MMM]`
 
 [NOTE]
-The 3-letter month is not case sensitive. +
-(JAN is the same as jan)
+`[MMM]` is not case sensitive. (JAN is the same as jan)
 
 Example: +
-`view mar` +
+`view t\mar`
+
 Shows you a list of events in March.
 
 ==== View Timetable: `view`
 You can view the timetable that you have created.
 
 Format: +
-`view timetable` +
+`view timetable`
+
 Shows you your timetable.
 
 ==== Find Free Slots: `freeslot`
 You can find free slots on a day easily within your schedule without going through your schedule.
 
 Format: +
-`freeslot [YYYY-MM-DD]`
+`freeslot t\[YYYY-MM-DD]`
 
 Example: +
-`freeslot 2020-02-29` +
+`freeslot t\2020-02-29`
+
 Finds the free slots on 29 Feb 2020.
 
 ==== Set Reminder: `reminder`
@@ -422,136 +425,153 @@ Format: +
 `reminder d\[decription] t\[YYYY-MM-DD]`
 
 Example: +
-`reminder d\project meeting t\2020-03-02` +
+`reminder d\project meeting t\2020-03-02`
+
 Set a reminder for the project meeting on 2 Mar 2020.
 
 === Study Planner
-Make study plan for a period of time and keep track of the progress daily
+You can make your own study plans and keep track of your progress daily.
 
-It is a smart scheduler that generates\modifies events (put on calendar) based on the plan
+//KIV - For further rephrasing
+//Make study plan for a period of time and keep track of the progress daily. It is a smart scheduler that
+//generates\modifies events (put on calendar) based on the plan.
 
-==== Create new plan: `plan`
-Create a new study plan within a period (user are expected to start the plan at the start date, and complete the plan by the end date)
+==== Create Plan: `plan`
+You can create a new study plan within a time frame of your choice.
 
-Format: `plan p\[plan name] d\[start date (YYYY-MM-DD)] [end date (YYYY-MM-DD)]`
+Format: +
+`plan p\[plan name] d\[start date (YYYY-MM-DD)] [end date (YYYY-MM-DD)]`
 
-Example:
+Example: +
+`plan p\prepare CS2103 exam d\ 2020-01-20 2020-06-20`
 
-* `plan p\prepare CS2103 exam d\ 2020-01-20 2020-06-20`
+Creates a new plan “prepare CS2103” which starts from 20 Jan 2020 and expected to complete by 20 Jun 2020.
 
-Create a new plan “prepare CS2103”. The plan starts from 20 Jan 2020, expected to complete by 20 Jun 2020
+==== Delete Plan: `delete`
+You can delete a plan and all the tasks within it. All the allocated time slots for the plan will be freed from your
+schedule.
 
-==== Accomplish plan: `accomplish`
-Delete a plan and all its related task and subsequently all event that are associated with it
+Format: +
+`delete p\[plan name]`
 
-Format: `accomplish p\[plan name]`
+Example: +
+`delete p\prepare CS2103 exam`
 
-Example:
+Removes the plan “prepare cs2103 exam”
 
-* `accomplish p\prepare CS2103 exam`
+==== Add Task: `add`
+You can add a task into a plan.
 
-Remove the plan “prepare cs2103 exam”
+Format: +
+`add p\[plan name] t\[task name]`
+
+Example: +
+`add p\prepare cs2103 exam t\read cs2103 textbook`
+
+Creates a new task called "read cs2103 textbook" and adds it into the plan "prepare cs2103 exam".
 
 ==== Complete Task: `done`
-Mark a specific task as completed
+You can mark a specific task as done once you completed it.
 
-Format: `done [plan name] [task name]`
+Format: +
+`done p\[plan name] t\[task name]`
 
-Example:
+Example: +
+`done p\prepare cs2103 exam t\read cs2103 textbook`
 
-* `done \p prepare cs2103 exam t\ read cs2103 textbook`
-
-Mark the task “read cs2103 textbook” as done
+Marks the task “read cs2103 textbook” as done.
 
 ==== Delete Task: `delete`
 Delete a specific task in the plan
 
-Format: `delete [plan name] [task name]`
+Format: +
+`delete p\[plan name] t\[task name]`
 
-Example:
+Example: +
+`delete p\prepare cs2103 exam t\read cs2103 textbook`
 
-* `delete p\ prepare cs2103 exam t\ read cs2103 textbook`
+Deletes the task “read cs2103 textbook” in the plan “prepare cs2103 exam”
 
-Delete the task “read cs2103 textbook” in plan “prepare cs2103 exam”
+//
+// Maybe want to add your schedule/reschedule?
+//
 
 === Progress Tracker
-A tracker to help you track your study and project progress.
+A tracker to help you track your study and project progress. Access this mode by entering
+the command `nav tracker`.
 
-image::GUI_ProgressTracker.png[width="790"]
-Fig 2.4: GUI of NOVA after typing command nav progress tracker.
+image::GUI_ProgressTracker.png[width="790" align="center"]
+[.text-center]
+_[.small]#Fig 3.5: GUI of NOVA after typing command `nav progress tracker`#_
 
 ==== Add Notes: `add note`
 You can view notes you have added to projects and syllabus in the progress tracker.
 
-Format: `add note c\[chapter number\ project] n\[note]`
+Format: `add note c\[chapter name / ip / tp] n\[note]`
 
-Example:
-
-* `add note c\OOP n\Object-Oriented Programming (OOP) is a programming paradigm`
+Example: +
+`add note c\OOP n\Object-Oriented Programming (OOP) is a programming paradigm`
 
 Add note “Object-Oriented Programming (OOP) is a programming paradigm” to OOP chapter of the syllabus.
 
 ==== Delete Notes: `delete note`
-You can delete notes you have added to projects and syllabus in the progress tracker.
+You can delete the notes that you have added to projects and syllabus in the progress tracker.
 
-Format: `delete note [chapter number/ project] [note number]`
+Format: `delete note c\[chapter name / ip / tp] i\[note number]`
 
-Example:
-
-* `delete note OOP 3`
+Example: +
+`delete note c\OOP i\3`
 
 Deletes note number 3 of OOP chapter of the syllabus in the progress tracker.
 
 ==== View Notes: `view note`
-You can view notes you have added to projects and syllabus in the progress tracker.
+You can view the notes that you have added to projects and syllabus in the progress tracker.
 
-Format: `view note [chapter number/ project]`
+Format: `view note c\[chapter name / ip / tp]`
 
-Example:
-
-* `view note OOP`
+Example: +
+`view note c\OOP`
 
 Shows notes added to the OOP chapter of the syllabus.
 
-==== Set Done: `done`
-You can set tasks in the progress tracker as done.
+==== Complete Tasks: `done`
+You can mark tasks in the progress tracker as done.
 
-Format: `done [chapter number/ project]`
+Format: `done c\[chapter name / project]`
 
-Example:
+Example: +
+`done c\OOP`
 
-* `done OOP`
-
-Sets OOP as done in progress tracker.
+Sets the OOP chapter as done in progress tracker.
 
 ==== Add Project Task: `add`
 You can add tasks under projects in the progress tracker.
 
-Format: `add [project] [task]`
+Format: `add p\[ip / tp] t\[task]`
 
-Example:
-
-* `Add IP Level-7 Duke`
+Example: +
+`Add p\IP t\Level-7 Duke`
 
 Adds tasks “Level-7 Duke” to IP in progress tracker.
 
 ==== Delete Project Task: `delete`
 You can remove tasks under projects in the progress tracker.
 
-Format: `delete [project] [task number]`
+Format: `delete p\[project] i\[task number]`
 
-Example:
-
-* `delete IP 3`
+Example: +
+`delete p\IP i\3`
 
 Deletes task 3 of IP in progress tracker.
 
 == FAQ
 
 *Q*: How do I transfer my data to another Computer? +
-*A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous NOVA folder.
+*A*: You can install the app on the other computer and overwrite the empty data file it creates with the file that
+contains the data of your previous NOVA folder.
+
+*Q*: How can I delete all my data in one go? +
+*A*: You can go to the folder where your jar file is located at on your computer and delete all the files and folders
+except your jar file.
 
 == Glossary
-
-
-

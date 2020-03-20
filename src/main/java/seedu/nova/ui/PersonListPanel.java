@@ -8,7 +8,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import seedu.nova.commons.core.LogsCenter;
-import seedu.nova.model.common.person.Person;
+import seedu.nova.model.person.Person;
 
 /**
  * Panel containing the list of persons.

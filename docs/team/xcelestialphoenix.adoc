@@ -24,6 +24,8 @@ NOVA is a desktop application to help CS2103T with event planning and managing s
 ** Enhancements to existing features:
 
 ** Documentation:
+*** Performs quality check on UG and DG
+*** Standardize format of UG
 
 ** Community:
 

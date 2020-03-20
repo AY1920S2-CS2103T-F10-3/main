@@ -100,7 +100,7 @@ At this point, your application is working as intended and all your tests are pa
 What's left to do is to clean up references to `Address` in test data and documentation.
 
 In `src/test/data/`, data meant for testing purposes are stored.
-While keeping the `nova` field in the json files does not cause the tests to fail, it is not good practice to let cruft from old features accumulate.
+While keeping the `address` field in the json files does not cause the tests to fail, it is not good practice to let cruft from old features accumulate.
 
 .invalidPersonAddressBook.json
 [source, json]
@@ -114,4 +114,4 @@ While keeping the `nova` field in the json files does not cause the tests to fai
   } ]
 }
 ```
-You can go through each individual `json` file and manually remove the `nova` field.
+You can go through each individual `json` file and manually remove the `address` field.

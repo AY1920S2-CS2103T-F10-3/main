@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
-import seedu.nova.model.common.person.Person;
+import seedu.nova.model.person.Person;
 
 /**
  * An UI component that displays information of a {@code Person}.
@@ -35,15 +35,13 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label phone;
     @FXML
-    private Label address;
-    @FXML
     private Label email;
 
     @FXML
     private Label remark;
 
     @FXML
-    private FlowPane tags;
+    private FlowPane categories;
 
     public PersonCard(Person person, int displayedIndex) {
         super(FXML);
@@ -51,11 +49,12 @@ public class PersonCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         name.setText(person.getName().fullName);
         phone.setText(person.getPhone().value);
-        address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
-        person.getTags().stream()
-                .sorted(Comparator.comparing(tag -> tag.tagName))
-                .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+        //To retain the old UI's label for category (aka tag),
+        //DarkTheme.css's tags into categories.
+        person.getCategory().stream()
+                .sorted(Comparator.comparing(category -> category.categoryName))
+                .forEach(category -> categories.getChildren().add(new Label(category.categoryName)));
         remark.setText(person.getRemark().value);
     }
 
