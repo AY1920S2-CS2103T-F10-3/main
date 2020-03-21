@@ -20,7 +20,7 @@ public interface SlotList<T extends TimedDuration> {
 
     boolean isSupersetOf(TimedDuration td);
 
-    void includeDuration(T ed);
+    void includeDuration(TimedDuration ed);
 
-    void excludeDuration(T ed);
+    void excludeDuration(TimedDuration ed);
 }

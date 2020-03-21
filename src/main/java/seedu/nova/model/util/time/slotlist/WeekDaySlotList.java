@@ -10,6 +10,7 @@ import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 import seedu.nova.model.util.Copyable;
+import seedu.nova.model.util.time.duration.DateTimeDuration;
 import seedu.nova.model.util.time.duration.TimedDuration;
 import seedu.nova.model.util.time.duration.WeekDayDuration;
 
@@ -46,8 +47,17 @@ public class WeekDaySlotList implements SlotList<WeekDayDuration>, Copyable<Week
         return this.freeSlotSet.stream().parallel().filter(x -> x.isSubsetOf(d)).collect(Collectors.toList());
     }
 
+    private WeekDayDuration cast(TimedDuration td) {
+        if (td instanceof DateTimeDuration) {
+            return ((DateTimeDuration) td).toWeekDayDuration();
+        } else {
+            return (WeekDayDuration) td;
+        }
+    }
+
     @Override
-    public void includeDuration(WeekDayDuration ed) {
+    public void includeDuration(TimedDuration td) {
+        WeekDayDuration ed = cast(td);
         WeekDayDuration lastSlot = this.freeSlotMap.floorEntry(ed.getEndValue()).getValue();
         SortedMap<Integer, WeekDayDuration> tailMap = this.freeSlotMap.tailMap(ed.getStartValue());
         Map.Entry<Integer, WeekDayDuration> endSlot = this.freeSlotMap.higherEntry(ed.getEndValue());
@@ -70,7 +80,8 @@ public class WeekDaySlotList implements SlotList<WeekDayDuration>, Copyable<Week
     }
 
     @Override
-    public void excludeDuration(WeekDayDuration ed) {
+    public void excludeDuration(TimedDuration td) {
+        WeekDayDuration ed = cast(td);
         WeekDayDuration lastSlot = this.freeSlotMap.floorEntry(ed.getEndValue()).getValue();
         SortedMap<Integer, WeekDayDuration> tailMap = this.freeSlotMap.tailMap(ed.getStartValue());
         Map.Entry<Integer, WeekDayDuration> endSlot = this.freeSlotMap.higherEntry(ed.getEndValue());

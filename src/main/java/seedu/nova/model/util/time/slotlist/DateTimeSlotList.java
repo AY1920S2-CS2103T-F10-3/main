@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 import seedu.nova.model.util.Copyable;
 import seedu.nova.model.util.time.duration.DateTimeDuration;
 import seedu.nova.model.util.time.duration.TimedDuration;
+import seedu.nova.model.util.time.duration.WeekDayDuration;
 
 /**
  * Container for DateTimeDuration
@@ -71,12 +72,22 @@ public class DateTimeSlotList implements SlotList<DateTimeDuration>, Copyable<Da
                 Collectors.toList());
     }
 
+    private DateTimeDuration cast(TimedDuration td) {
+        if (td instanceof WeekDayDuration) {
+            return ((WeekDayDuration) td).toDateTimeDuration(this.freeSlotMap.firstEntry().getValue().getStartDate());
+        } else {
+            return (DateTimeDuration) td;
+        }
+    }
+
     /**
      * delete the duration ed from the list of durations.
      *
-     * @param ed timed duration to delete
+     * @param td timed duration to delete
      */
-    public void excludeDuration(DateTimeDuration ed) {
+    @Override
+    public void excludeDuration(TimedDuration td) {
+        DateTimeDuration ed = cast(td);
         Map.Entry<LocalDateTime, DateTimeDuration> lastFreeSlot = this.freeSlotMap.floorEntry(ed.getStartDateTime());
         SortedMap<LocalDateTime, DateTimeDuration> nextFreeSlotMap = this.freeSlotMap.tailMap(ed.getStartDateTime());
 
@@ -122,9 +133,11 @@ public class DateTimeSlotList implements SlotList<DateTimeDuration>, Copyable<Da
     /**
      * add ed back to list
      *
-     * @param ed datetimeduration
+     * @param td Timedduration
      */
-    public void includeDuration(DateTimeDuration ed) {
+    @Override
+    public void includeDuration(TimedDuration td) {
+        DateTimeDuration ed = cast(td);
         Map.Entry<LocalDateTime, DateTimeDuration> lastFreeSlot = this.freeSlotMap.floorEntry(ed.getStartDateTime());
         SortedMap<LocalDateTime, DateTimeDuration> nextFreeSlotMap = this.freeSlotMap.tailMap(ed.getStartDateTime());
 

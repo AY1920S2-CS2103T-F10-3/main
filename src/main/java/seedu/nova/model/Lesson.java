@@ -25,7 +25,7 @@ public class Lesson extends Event {
      */
     public Lesson(String description, String venue, LocalTime startTime, LocalTime endTime,
                   DayOfWeek day) {
-        super(description, venue, startTime, endTime, null);
+        super(description, venue, startTime, endTime, day);
         this.day = day;
         this.wdd = new WeekDayDuration(day, startTime, endTime);
     }

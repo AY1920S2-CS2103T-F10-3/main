@@ -294,7 +294,7 @@ public class DateTimeDuration implements TimedDuration {
      * convert this to WeekDauDuration. If duration more than a week, return a whole week
      * @return WeekDayDuration
      */
-    WeekDayDuration toWeekDayDuration() {
+    public WeekDayDuration toWeekDayDuration() {
         if (this.duration.compareTo(new WeekDayDuration().getDuration()) >= 0) {
             return new WeekDayDuration();
         } else {

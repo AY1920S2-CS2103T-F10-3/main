@@ -1,9 +1,12 @@
 package seedu.nova.model;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 import seedu.nova.model.util.time.duration.DateTimeDuration;
+import seedu.nova.model.util.time.duration.TimedDuration;
+import seedu.nova.model.util.time.duration.WeekDayDuration;
 
 /**
  * The type Event stub.
@@ -15,7 +18,7 @@ public class Event {
     private LocalTime startTime;
     private LocalTime endTime;
     private LocalDate date;
-    private DateTimeDuration dtd;
+    private TimedDuration dtd;
 
     /**
      * Instantiates a new Event stub.
@@ -33,6 +36,24 @@ public class Event {
         this.startTime = startTime;
         this.endTime = endTime;
         this.dtd = new DateTimeDuration(date, startTime, endTime);
+    }
+
+    /**
+     * Instantiates a new Event stub.
+     *
+     * @param description the description
+     * @param venue       the venue
+     * @param startTime   the start time
+     * @param endTime     the end time
+     * @param date        the date
+     */
+    public Event(String description, String venue, LocalTime startTime, LocalTime endTime, DayOfWeek dow) {
+        this.description = description;
+        this.date = null;
+        this.venue = venue;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.dtd = new WeekDayDuration(dow, startTime, endTime);
     }
 
     /**
@@ -90,11 +111,11 @@ public class Event {
     }
 
     /**
-     * Gets DateTimeDuration.
+     * Gets TimedDuration.
      *
-     * @return the DateTimeDuration
+     * @return the TimedDuration
      */
-    public DateTimeDuration getDtd() {
+    public TimedDuration getDtd() {
         return dtd;
     }
 
