@@ -47,6 +47,11 @@ public class WeekDaySlotList implements SlotList<WeekDayDuration>, Copyable<Week
         return this.freeSlotSet.stream().parallel().filter(x -> x.isSubsetOf(d)).collect(Collectors.toList());
     }
 
+    /**
+     * cast into week day duration
+     * @param td
+     * @return
+     */
     private WeekDayDuration cast(TimedDuration td) {
         if (td instanceof DateTimeDuration) {
             return ((DateTimeDuration) td).toWeekDayDuration();

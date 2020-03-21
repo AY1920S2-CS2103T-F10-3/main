@@ -72,6 +72,12 @@ public class DateTimeSlotList implements SlotList<DateTimeDuration>, Copyable<Da
                 Collectors.toList());
     }
 
+    /**
+     * if td is WeekDayDuration, cast it into DateTimeDuration by setting the startDate to the same as the forst
+     * entry of freeSlotMap
+     * @param td = timed duration
+     * @return DateTimeDuration
+     */
     private DateTimeDuration cast(TimedDuration td) {
         if (td instanceof WeekDayDuration) {
             return ((WeekDayDuration) td).toDateTimeDuration(this.freeSlotMap.firstEntry().getValue().getStartDate());

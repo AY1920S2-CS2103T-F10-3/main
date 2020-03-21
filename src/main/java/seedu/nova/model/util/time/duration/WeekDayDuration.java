@@ -48,6 +48,11 @@ public class WeekDayDuration implements TimedDuration {
         this.duration = duration;
     }
 
+    /**
+     * Make a WeekDayDuration representation of duration for comparison purpose only.
+     * @param duration = duration
+     * @return WeekDayDurationc
+     */
     public static WeekDayDuration parseDuration(Duration duration) {
         return new WeekDayDuration(null, null, duration);
     }
