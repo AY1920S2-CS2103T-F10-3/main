@@ -145,6 +145,19 @@ public class Event implements Comparable<Event> {
         return getStartDateTime().compareTo(event.getStartDateTime());
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Event) {
+            return desc.equals(((Event) obj).desc)
+                    && venue.equals(((Event) obj).venue)
+                    && date.equals(((Event) obj).date)
+                    && startTime.equals(((Event) obj).startTime)
+                    && endTime.equals(((Event) obj).endTime);
+        } else {
+            return super.equals(obj);
+        }
+    }
+
     public void markDone() {
         isDone = true;
     }
