@@ -1,10 +1,9 @@
-package seedu.nova.model;
+package seedu.nova.model.schedule;
 
 import java.time.LocalDate;
-import java.util.List;
 
-import seedu.nova.logic.commands.exceptions.CommandException;
-import seedu.nova.model.util.time.duration.DateTimeDuration;
+import seedu.nova.model.event.Event;
+import seedu.nova.model.event.Lesson;
 import seedu.nova.model.util.time.slotlist.DateTimeSlotList;
 
 /**
@@ -37,13 +36,17 @@ public class Week {
         dtsl = DateTimeSlotList.ofWeek(date);
     }
 
+    Day getDay(LocalDate date) {
+        return days[date.getDayOfWeek().getValue() - 1];
+    }
+
     /**
      * Add event.
      *
      * @param event the event
-     * @throws CommandException the command exception
+     * @throws SchedulerException the command exception
      */
-    public void addEvent(Event event) throws CommandException {
+    public boolean addEvent(Event event) throws SchedulerException {
 
         LocalDate date = event.getDate();
         int day = date.getDayOfWeek().getValue() - 1;
@@ -52,17 +55,17 @@ public class Week {
             days[day] = new Day(date);
         }
 
-        days[day].addEvent(event);
         dtsl.excludeDuration(event.getDtd());
+        return days[day].addEvent(event);
     }
 
     /**
      * Add lesson.
      *
      * @param lesson the lesson
-     * @throws CommandException the command exception
+     * @throws SchedulerException the command exception
      */
-    public void addLesson(Lesson lesson) throws CommandException {
+    public void addLesson(Lesson lesson) throws SchedulerException {
 
         int day = lesson.getDay().getValue() - 1;
 
@@ -93,9 +96,10 @@ public class Week {
 
     /**
      * Get free slots in the form of DateTimeDuration
+     *
      * @return list of free slots
      */
-    public List<DateTimeDuration> getFreeSlots() {
-        return dtsl.getSlotList();
+    public DateTimeSlotList getFreeSlot() {
+        return dtsl;
     }
 }

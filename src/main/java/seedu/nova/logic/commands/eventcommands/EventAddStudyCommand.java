@@ -40,7 +40,11 @@ public class EventAddStudyCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        model.addEvent(toAdd);
+        try {
+            model.addEvent(toAdd);
+        } catch (Exception e) {
+            throw new CommandException("failure");
+        }
 
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }

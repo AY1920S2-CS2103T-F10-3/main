@@ -14,8 +14,8 @@ import org.junit.jupiter.api.BeforeEach;
 
 import seedu.nova.model.Model;
 import seedu.nova.model.ModelManager;
-import seedu.nova.model.Schedule;
 import seedu.nova.model.UserPrefs;
+import seedu.nova.model.schedule.Schedule;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for AbListCommand.

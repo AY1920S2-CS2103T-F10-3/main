@@ -1,7 +1,9 @@
 package seedu.nova.model;
 
 import java.nio.file.Path;
+import java.time.Duration;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
@@ -9,24 +11,30 @@ import seedu.nova.commons.core.GuiSettings;
 import seedu.nova.model.event.Event;
 import seedu.nova.model.event.Lesson;
 import seedu.nova.model.person.Person;
+import seedu.nova.model.plan.ImpossibleTaskException;
+import seedu.nova.model.plan.Task;
+import seedu.nova.model.plan.TaskFreq;
 import seedu.nova.model.progresstracker.ProgressTracker;
+import seedu.nova.model.schedule.SchedulerException;
 
 /**
  * The API of the Model component.
  */
 public interface Model {
-    /** {@code Predicate} that always evaluate to true */
-    Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
-
     /**
-     * Replaces user prefs data with the data in {@code userPrefs}.
+     * {@code Predicate} that always evaluate to true
      */
-    void setUserPrefs(ReadOnlyUserPrefs userPrefs);
+    Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
 
     /**
      * Returns the user prefs.
      */
     ReadOnlyUserPrefs getUserPrefs();
+
+    /**
+     * Replaces user prefs data with the data in {@code userPrefs}.
+     */
+    void setUserPrefs(ReadOnlyUserPrefs userPrefs);
 
     /**
      * Returns the user prefs' GUI settings.
@@ -49,12 +57,14 @@ public interface Model {
     void setAddressBookFilePath(Path addressBookFilePath);
 
     /**
+     * Returns the AddressBook
+     */
+    ReadOnlyAddressBook getAddressBook();
+
+    /**
      * Replaces nova book data with the data in {@code addressBook}.
      */
     void setAddressBook(ReadOnlyAddressBook addressBook);
-
-    /** Returns the AddressBook */
-    ReadOnlyAddressBook getAddressBook();
 
     /**
      * Returns true if a person with the same identity as {@code person} exists in the nova book.
@@ -80,11 +90,14 @@ public interface Model {
      */
     void setPerson(Person target, Person editedPerson);
 
-    /** Returns an unmodifiable view of the filtered person list */
+    /**
+     * Returns an unmodifiable view of the filtered person list
+     */
     ObservableList<Person> getFilteredPersonList();
 
     /**
      * Updates the filter of the filtered person list to filter by the given {@code predicate}.
+     *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
@@ -97,7 +110,19 @@ public interface Model {
 
     ProgressTracker getProgressTracker();
 
-    void addEvent(Event e);
+    boolean addEvent(Event e) throws SchedulerException;
 
-    public void addLesson(Lesson l);
+    boolean addLesson(Lesson l) throws SchedulerException;
+
+    //==============studyplanner=============
+
+    void resetPlan();
+
+    boolean addRoutineTask(String name, TaskFreq freq, Duration duration);
+
+    boolean addFlexibleTask(String name, TaskFreq freq, Duration min, Duration max);
+
+    List<Task> getTaskList();
+
+    Event generateTaskEvent(Task task, LocalDate date) throws ImpossibleTaskException;
 }

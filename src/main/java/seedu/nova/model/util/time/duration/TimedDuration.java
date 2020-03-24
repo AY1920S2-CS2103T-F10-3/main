@@ -11,6 +11,10 @@ import seedu.nova.model.util.Copyable;
  * Combination of duration with some time data structure
  */
 public interface TimedDuration extends Comparable<TimedDuration>, Copyable<TimedDuration> {
+    static int getDayTimeValue(DayOfWeek dow, LocalTime lt) {
+        return 86400 * dow.getValue() + (int) (lt.toNanoOfDay() / 1000000000);
+    }
+
     boolean isZero();
 
     DayOfWeek getStartDay();

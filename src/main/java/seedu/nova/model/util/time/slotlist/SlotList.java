@@ -1,6 +1,7 @@
 package seedu.nova.model.util.time.slotlist;
 
 import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import seedu.nova.model.util.time.duration.TimedDuration;
@@ -15,6 +16,8 @@ public interface SlotList<T extends TimedDuration> {
     List<T> getSlotList(Duration greaterThan);
 
     List<T> getSlotContaining(TimedDuration d);
+
+    List<T> getSlotAfter(LocalDateTime ldt);
 
     List<T> intersectWith(TimedDuration td);
 

@@ -63,6 +63,10 @@ public class DateTimeSlotList implements SlotList<DateTimeDuration>, Copyable<Da
         return this.freeSlotSet.stream().parallel().filter(d::isSubsetOf).collect(Collectors.toList());
     }
 
+    public List<DateTimeDuration> getSlotAfter(LocalDateTime dateTime) {
+        return new ArrayList<>(this.freeSlotMap.tailMap(dateTime).values());
+    }
+
     public boolean isSupersetOf(TimedDuration d) {
         return this.freeSlotSet.stream().parallel().anyMatch(d::isSubsetOf);
     }
@@ -75,6 +79,7 @@ public class DateTimeSlotList implements SlotList<DateTimeDuration>, Copyable<Da
     /**
      * if td is WeekDayDuration, cast it into DateTimeDuration by setting the startDate to the same as the forst
      * entry of freeSlotMap
+     *
      * @param td = timed duration
      * @return DateTimeDuration
      */

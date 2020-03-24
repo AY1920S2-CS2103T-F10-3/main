@@ -7,9 +7,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.nova.testutil.Assert.assertThrows;
 
 import java.nio.file.Path;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -26,6 +28,9 @@ import seedu.nova.model.ReadOnlyUserPrefs;
 import seedu.nova.model.event.Event;
 import seedu.nova.model.event.Lesson;
 import seedu.nova.model.person.Person;
+import seedu.nova.model.plan.ImpossibleTaskException;
+import seedu.nova.model.plan.Task;
+import seedu.nova.model.plan.TaskFreq;
 import seedu.nova.model.progresstracker.ProgressTracker;
 import seedu.nova.testutil.PersonBuilder;
 
@@ -171,11 +176,38 @@ public class AbAddCommandTest {
         }
 
         @Override
-        public void addEvent(Event e) {
+        public boolean addEvent(Event e) {
+            return false;
         }
 
         @Override
-        public void addLesson(Lesson l) {
+        public boolean addLesson(Lesson l) {
+            return false;
+        }
+
+        @Override
+        public void resetPlan() {
+
+        }
+
+        @Override
+        public boolean addRoutineTask(String name, TaskFreq freq, Duration duration) {
+            return false;
+        }
+
+        @Override
+        public boolean addFlexibleTask(String name, TaskFreq freq, Duration min, Duration max) {
+            return false;
+        }
+
+        @Override
+        public List<Task> getTaskList() {
+            return null;
+        }
+
+        @Override
+        public Event generateTaskEvent(Task task, LocalDate date) throws ImpossibleTaskException {
+            return null;
         }
 
         public ProgressTracker getProgressTracker() {

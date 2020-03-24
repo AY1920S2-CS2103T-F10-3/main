@@ -66,11 +66,11 @@ public class WeekDayDuration implements TimedDuration {
     }
 
     public int getStartValue() {
-        return 86400 * getStartDay().getValue() + (int) (getStartTime().toNanoOfDay() / 1000000000);
+        return TimedDuration.getDayTimeValue(getStartDay(), getStartTime());
     }
 
     public int getEndValue() {
-        return 86400 * getEndDay().getValue() + (int) (getEndTime().toNanoOfDay() / 1000000000);
+        return TimedDuration.getDayTimeValue(getEndDay(), getEndTime());
     }
 
     /**

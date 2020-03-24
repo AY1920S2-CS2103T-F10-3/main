@@ -1,6 +1,7 @@
 package seedu.nova.model.util.time.slotlist;
 
 import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -45,6 +46,11 @@ public class WeekDaySlotList implements SlotList<WeekDayDuration>, Copyable<Week
     @Override
     public List<WeekDayDuration> getSlotContaining(TimedDuration d) {
         return this.freeSlotSet.stream().parallel().filter(x -> x.isSubsetOf(d)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<WeekDayDuration> getSlotAfter(LocalDateTime ldt) {
+        return null;
     }
 
     /**

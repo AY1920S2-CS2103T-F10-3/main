@@ -41,7 +41,11 @@ public class EventAddLessonCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        model.addLesson((Lesson) toAdd);
+        try {
+            model.addLesson((Lesson) toAdd);
+        } catch (Exception e) {
+            throw new CommandException("failure");
+        }
 
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
