@@ -33,13 +33,13 @@ public class StudyPlan implements Plan {
     }
 
     @Override
-    public Task searchTask(TaskDetails taskDetails) {
-        return map.get(taskDetails);
+    public boolean deleteTask(Task task) {
+        return map.remove(task.details, task);
     }
 
     @Override
-    public boolean deleteTask(Task task) {
-        return map.remove(task.details, task);
+    public Task searchTask(TaskDetails taskDetails) {
+        return map.get(taskDetails);
     }
 
     @Override

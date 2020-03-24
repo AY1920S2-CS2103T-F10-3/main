@@ -32,6 +32,7 @@ import seedu.nova.model.plan.ImpossibleTaskException;
 import seedu.nova.model.plan.Task;
 import seedu.nova.model.plan.TaskFreq;
 import seedu.nova.model.progresstracker.ProgressTracker;
+import seedu.nova.model.schedule.SchedulerException;
 import seedu.nova.testutil.PersonBuilder;
 
 public class AbAddCommandTest {
@@ -177,6 +178,11 @@ public class AbAddCommandTest {
 
         @Override
         public boolean addEvent(Event e) {
+            return false;
+        }
+
+        @Override
+        public boolean deleteEvent(Event e) throws SchedulerException {
             return false;
         }
 

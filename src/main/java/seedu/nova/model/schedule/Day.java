@@ -5,7 +5,6 @@ import java.util.Iterator;
 import java.util.TreeSet;
 
 import seedu.nova.model.event.Event;
-import seedu.nova.model.event.Lesson;
 import seedu.nova.model.util.time.slotlist.DateTimeSlotList;
 
 /**
@@ -49,14 +48,13 @@ public class Day {
     }
 
     /**
-     * Add lesson.
+     * Delete event.
      *
-     * @param lesson the lesson
-     * @throws SchedulerException the command exception
+     * @param event the event
      */
-    public boolean addLesson(Lesson lesson) throws SchedulerException {
-        Lesson l = new Lesson(lesson, date);
-        return addEvent(l);
+    public boolean deleteEvent(Event event) {
+        dtsl.includeDuration(event.getDtd());
+        return events.remove(event);
     }
 
     /**

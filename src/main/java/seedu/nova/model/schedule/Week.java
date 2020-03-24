@@ -3,7 +3,6 @@ package seedu.nova.model.schedule;
 import java.time.LocalDate;
 
 import seedu.nova.model.event.Event;
-import seedu.nova.model.event.Lesson;
 import seedu.nova.model.util.time.slotlist.DateTimeSlotList;
 
 /**
@@ -60,21 +59,20 @@ public class Week {
     }
 
     /**
-     * Add lesson.
+     * Add event.
      *
-     * @param lesson the lesson
+     * @param event the event
      * @throws SchedulerException the command exception
      */
-    public boolean addLesson(Lesson lesson) throws SchedulerException {
+    public boolean deleteEvent(Event event) throws SchedulerException {
 
-        int day = lesson.getDay().getValue() - 1;
-
+        LocalDate date = event.getDate();
+        int day = date.getDayOfWeek().getValue() - 1;
         if (days[day] == null) {
-            days[day] = new Day(startDate.plusDays(day));
+            throw new SchedulerException("");
         }
-
-        dtsl.excludeDuration(lesson.getDtd());
-        return days[day].addLesson(lesson);
+        dtsl.includeDuration(event.getDtd());
+        return days[day].deleteEvent(event);
     }
 
     /**

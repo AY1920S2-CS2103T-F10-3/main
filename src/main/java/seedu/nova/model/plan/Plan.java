@@ -15,9 +15,9 @@ public interface Plan {
 
     boolean addTask(Task task);
 
-    Task searchTask(TaskDetails taskDetails);
-
     boolean deleteTask(Task task);
+
+    Task searchTask(TaskDetails taskDetails);
 
     Event generateTaskEvent(Task task, Day day) throws ImpossibleTaskException;
 }

@@ -69,10 +69,26 @@ public class Schedule {
     }
 
     /**
+     * Delete event.
+     *
+     * @param event the event
+     * @throws SchedulerException the scheduler exception
+     */
+    public boolean deleteEvent(Event event) throws SchedulerException {
+
+        LocalDate date = event.getDate();
+        int weekNumber = calWeekNumber(date);
+        if (weeks[weekNumber] == null) {
+            throw new SchedulerException("");
+        }
+        return weeks[weekNumber].deleteEvent(event);
+    }
+
+    /**
      * Add lesson.
      *
      * @param lesson the lesson
-     * @throws SchedulerException the command exception
+     * @throws SchedulerException the scheduler exception
      */
     public boolean addLesson(Lesson lesson) throws SchedulerException {
         boolean ans = true;
@@ -86,7 +102,7 @@ public class Schedule {
             if (weeks[i] == null) {
                 weeks[i] = new Week(startDate.plusWeeks(i));
             }
-            ans &= weeks[i].addLesson(lesson);
+            ans &= weeks[i].addEvent(lesson);
         }
         return ans;
     }

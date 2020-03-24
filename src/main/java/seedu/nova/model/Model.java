@@ -111,6 +111,8 @@ public interface Model {
 
     boolean addEvent(Event e) throws SchedulerException;
 
+    boolean deleteEvent(Event e) throws SchedulerException;
+
     boolean addLesson(Lesson l) throws SchedulerException;
 
     //==============studyplanner=============

@@ -18,6 +18,7 @@ import seedu.nova.commons.core.LogsCenter;
 import seedu.nova.logic.parser.ModeEnum;
 import seedu.nova.model.event.Event;
 import seedu.nova.model.event.Lesson;
+import seedu.nova.model.event.WeakEvent;
 import seedu.nova.model.person.Person;
 import seedu.nova.model.plan.Plan;
 import seedu.nova.model.plan.StrongTask;
@@ -202,6 +203,14 @@ public class ModelManager implements Model {
     @Override
     public boolean addEvent(Event e) throws SchedulerException {
         return schedule.addEvent(e);
+    }
+
+    @Override
+    public boolean deleteEvent(Event e) throws SchedulerException {
+        if (e instanceof WeakEvent) {
+            boolean a = ((WeakEvent) e).getOriginTask().deleteEvent(e);
+        }
+        return schedule.deleteEvent(e);
     }
 
     @Override
