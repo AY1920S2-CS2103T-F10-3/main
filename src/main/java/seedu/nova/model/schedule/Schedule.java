@@ -50,7 +50,7 @@ public class Schedule {
     }
 
     /**
-     * Add event.
+     * Adds event.
      *
      * @param event the event
      * @throws SchedulerException the command exception
@@ -108,7 +108,7 @@ public class Schedule {
     }
 
     /**
-     * View string.
+     * Views schedule on specified date.
      *
      * @param date the date
      * @return the string

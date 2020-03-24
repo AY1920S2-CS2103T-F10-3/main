@@ -38,11 +38,6 @@ public class Lesson extends Event {
         day = lesson.day;
     }
 
-    /**
-     * Gets day.
-     *
-     * @return the day
-     */
     public DayOfWeek getDay() {
         return day;
     }

@@ -58,7 +58,7 @@ public class ModelManager implements Model {
         this.progressTracker = new ProgressTracker();
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         this.schedule = schedule;
-        this.mode = new Mode(ModeEnum.ADDRESSBOOK);
+        this.mode = new Mode(ModeEnum.HOME);
     }
 
     public ModelManager() {

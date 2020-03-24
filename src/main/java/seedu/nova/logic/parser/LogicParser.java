@@ -54,6 +54,8 @@ public class LogicParser {
 
         if (!matcher.matches()) {
             switch (mode) {
+            case HOME:
+                //throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, NavHelpCommand.MESSAGE_USAGE));
 
             case ADDRESSBOOK:
                 throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AbHelpCommand.MESSAGE_USAGE));
@@ -84,7 +86,8 @@ public class LogicParser {
         } else {
             //check mode
             switch (mode) {
-
+            case HOME:
+                return navCommandParser.parse(arguments.trim());
             case ADDRESSBOOK:
                 //return addressBookParser.parseCommand(userInput);
                 return addressBookParser.parseCommand(commandWord, arguments);

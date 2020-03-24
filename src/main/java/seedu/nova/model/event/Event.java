@@ -67,15 +67,6 @@ public class Event implements Comparable<Event> {
     }
 
     /**
-     * Gets dayOfWeek
-     *
-     * @return the dayOfWeek
-     */
-    public DayOfWeek getDayOfWeek() {
-        return dtd.getStartDay();
-    }
-
-    /**
      * Sets date.
      *
      * @param date the date
@@ -85,21 +76,12 @@ public class Event implements Comparable<Event> {
     }
 
     /**
-     * Sets start time.
+     * Gets dayOfWeek
      *
-     * @param startTime the startTime
+     * @return the dayOfWeek
      */
-    public void setStartTime(LocalTime startTime) {
-        this.startTime = startTime;
-    }
-
-    /**
-     * Sets end time.
-     *
-     * @param endTime the endTime
-     */
-    public void setEndTime(LocalTime endTime) {
-        this.endTime = endTime;
+    public DayOfWeek getDayOfWeek() {
+        return dtd.getStartDay();
     }
 
     /**
@@ -112,12 +94,30 @@ public class Event implements Comparable<Event> {
     }
 
     /**
+     * Sets start time.
+     *
+     * @param startTime the startTime
+     */
+    public void setStartTime(LocalTime startTime) {
+        this.startTime = startTime;
+    }
+
+    /**
      * Gets end time.
      *
      * @return the end time
      */
     public LocalTime getEndTime() {
         return endTime;
+    }
+
+    /**
+     * Sets end time.
+     *
+     * @param endTime the endTime
+     */
+    public void setEndTime(LocalTime endTime) {
+        this.endTime = endTime;
     }
 
     /**

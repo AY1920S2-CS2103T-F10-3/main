@@ -9,7 +9,7 @@ import seedu.nova.logic.commands.ptcommands.PtListCommand;
 import seedu.nova.logic.parser.exceptions.ParseException;
 
 /**
- * Parses user input for schedule feature.
+ * Parses user input for progress tracker feature.
  */
 public class ProgresstrackerParser {
 

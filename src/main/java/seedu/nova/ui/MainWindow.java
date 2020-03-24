@@ -1,5 +1,6 @@
 package seedu.nova.ui;
 
+import java.time.LocalDate;
 import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
@@ -12,6 +13,7 @@ import seedu.nova.commons.core.LogsCenter;
 import seedu.nova.logic.Logic;
 import seedu.nova.logic.commands.CommandResult;
 import seedu.nova.logic.commands.exceptions.CommandException;
+import seedu.nova.logic.parser.ModeEnum;
 import seedu.nova.logic.parser.exceptions.ParseException;
 
 /**
@@ -78,6 +80,31 @@ public class MainWindow extends UiPart<Stage> {
         helpHolder.getChildren().add(helpBox.getRoot());
 
         helpBox.setHelp(logic.getModel().getMode().getModeEnum().name());
+
+        //add schedule for the day in homepage
+        try {
+            //get localdate fof today
+            String today = LocalDate.now().toString();
+
+            //set mode to schedule first
+            logic.getModel().getMode().setModeEnum(ModeEnum.SCHEDULE);
+
+            CommandResult commandResult = logic.execute("view t\\" + today);
+            ResultDisplay r = new ResultDisplay();
+            r.setFeedbackToUser(commandResult.getFeedbackToUser());
+
+            resultDisplayPlaceholder.getChildren().add(r.getRoot());
+
+            //set mode back to home
+            logic.getModel().getMode().setModeEnum(ModeEnum.HOME);
+        } catch (CommandException | ParseException e) {
+            String commandText = "view t\\" + LocalDate.now().toString();
+            logger.info("Invalid command: " + commandText);
+
+            ResultDisplay r = new ResultDisplay();
+            r.setFeedbackToUser(e.getMessage());
+            resultDisplayPlaceholder.getChildren().add(r.getRoot());
+        }
     }
 
     /**

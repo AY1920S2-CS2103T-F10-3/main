@@ -14,6 +14,8 @@ public class NavCommandParser implements Parser<NavCommand> {
     public NavCommand parse(String args) throws ParseException {
         requireNonNull(args);
         switch (args) {
+        case "home":
+            return new NavCommand(ModeEnum.HOME);
 
         case "addressbook":
             return new NavCommand(ModeEnum.ADDRESSBOOK);
