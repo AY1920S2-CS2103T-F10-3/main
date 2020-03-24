@@ -67,6 +67,15 @@ public class Event implements Comparable<Event> {
     }
 
     /**
+     * Gets dayOfWeek
+     *
+     * @return the dayOfWeek
+     */
+    public DayOfWeek getDayOfWeek() {
+        return dtd.getStartDay();
+    }
+
+    /**
      * Sets date.
      *
      * @param date the date

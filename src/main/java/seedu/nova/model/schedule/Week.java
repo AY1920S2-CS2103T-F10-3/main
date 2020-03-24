@@ -3,6 +3,7 @@ package seedu.nova.model.schedule;
 import java.time.LocalDate;
 
 import seedu.nova.model.event.Event;
+import seedu.nova.model.util.time.TimeUtil;
 import seedu.nova.model.util.time.slotlist.DateTimeSlotList;
 
 /**
@@ -47,11 +48,10 @@ public class Week {
      */
     public boolean addEvent(Event event) throws SchedulerException {
 
-        LocalDate date = event.getDate();
-        int day = date.getDayOfWeek().getValue() - 1;
+        int day = event.getDayOfWeek().getValue() - 1;
 
         if (days[day] == null) {
-            days[day] = new Day(date);
+            days[day] = new Day(TimeUtil.dateOfSameWeek(event.getDayOfWeek(), startDate));
         }
 
         dtsl.excludeDuration(event.getDtd());
