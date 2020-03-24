@@ -76,6 +76,24 @@ public class Event implements Comparable<Event> {
     }
 
     /**
+     * Sets start time.
+     *
+     * @param startTime the startTime
+     */
+    public void setStartTime(LocalTime startTime) {
+        this.startTime = startTime;
+    }
+
+    /**
+     * Sets end time.
+     *
+     * @param endTime the endTime
+     */
+    public void setEndTime(LocalTime endTime) {
+        this.endTime = endTime;
+    }
+
+    /**
      * Gets start time.
      *
      * @return the start time

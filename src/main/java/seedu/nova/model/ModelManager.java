@@ -19,7 +19,6 @@ import seedu.nova.logic.parser.ModeEnum;
 import seedu.nova.model.event.Event;
 import seedu.nova.model.event.Lesson;
 import seedu.nova.model.person.Person;
-import seedu.nova.model.plan.ImpossibleTaskException;
 import seedu.nova.model.plan.Plan;
 import seedu.nova.model.plan.StrongTask;
 import seedu.nova.model.plan.StudyPlan;
@@ -232,8 +231,9 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public Event generateTaskEvent(Task task, LocalDate date) throws ImpossibleTaskException {
-        return task.generateEventOnDay(schedule.getDay(date));
+    public boolean generateTaskEvent(Task task, LocalDate date) throws Exception {
+        Event event = plan.generateTaskEvent(task, schedule.getDay(date));
+        return schedule.addEvent(event);
     }
 
 }

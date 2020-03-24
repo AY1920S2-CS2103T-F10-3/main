@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import seedu.nova.model.event.Event;
+import seedu.nova.model.schedule.Day;
+
 /**
  * Plan with definite tasks
  */
@@ -37,5 +40,10 @@ public class StudyPlan implements Plan {
     @Override
     public boolean deleteTask(Task task) {
         return map.remove(task.details, task);
+    }
+
+    @Override
+    public Event generateTaskEvent(Task task, Day day) throws ImpossibleTaskException {
+        return task.generateEventOnDay(day);
     }
 }

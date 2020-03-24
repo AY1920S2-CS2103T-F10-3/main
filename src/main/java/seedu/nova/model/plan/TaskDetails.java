@@ -37,4 +37,10 @@ public class TaskDetails {
             return super.equals(obj);
         }
     }
+
+    @Override
+    public int hashCode() {
+        return name.hashCode() ^ freq.hashCode();
+    }
+
 }

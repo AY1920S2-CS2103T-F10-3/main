@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 import seedu.nova.model.event.Event;
+import seedu.nova.model.event.WeakEvent;
 import seedu.nova.model.schedule.Day;
 import seedu.nova.model.util.time.duration.DateTimeDuration;
 import seedu.nova.model.util.time.slotlist.DateTimeSlotList;
@@ -31,12 +32,7 @@ public class StrongTask extends Task {
             throw new ImpossibleTaskException();
         } else {
             DateTimeDuration dtd = getBestTimeframe(possibleSlot);
-            Event newEvent = new Event(
-                    getName(),
-                    null,
-                    dtd.getStartTime(),
-                    dtd.getEndTime(),
-                    dtd.getStartDate());
+            Event newEvent = new WeakEvent(getName(), dtd, this);
             this.dayEventMap.put(dtd.getStartDate(), newEvent);
             return newEvent;
         }

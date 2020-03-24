@@ -206,8 +206,8 @@ public class AbAddCommandTest {
         }
 
         @Override
-        public Event generateTaskEvent(Task task, LocalDate date) throws ImpossibleTaskException {
-            return null;
+        public boolean generateTaskEvent(Task task, LocalDate date) throws ImpossibleTaskException {
+            return false;
         }
 
         public ProgressTracker getProgressTracker() {
