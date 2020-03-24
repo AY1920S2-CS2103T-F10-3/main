@@ -65,7 +65,7 @@ public class Week {
      * @param lesson the lesson
      * @throws SchedulerException the command exception
      */
-    public void addLesson(Lesson lesson) throws SchedulerException {
+    public boolean addLesson(Lesson lesson) throws SchedulerException {
 
         int day = lesson.getDay().getValue() - 1;
 
@@ -73,8 +73,8 @@ public class Week {
             days[day] = new Day(startDate.plusDays(day));
         }
 
-        days[day].addLesson(lesson);
         dtsl.excludeDuration(lesson.getDtd());
+        return days[day].addLesson(lesson);
     }
 
     /**

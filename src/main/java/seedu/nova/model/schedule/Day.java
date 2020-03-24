@@ -54,10 +54,9 @@ public class Day {
      * @param lesson the lesson
      * @throws SchedulerException the command exception
      */
-    public void addLesson(Lesson lesson) throws SchedulerException {
+    public boolean addLesson(Lesson lesson) throws SchedulerException {
         Lesson l = new Lesson(lesson, date);
-        addEvent(l);
-        dtsl.excludeDuration(l.getDtd());
+        return addEvent(l);
     }
 
     /**

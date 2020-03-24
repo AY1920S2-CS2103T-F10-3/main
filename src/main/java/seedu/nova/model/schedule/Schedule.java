@@ -75,7 +75,7 @@ public class Schedule {
      * @throws SchedulerException the command exception
      */
     public boolean addLesson(Lesson lesson) throws SchedulerException {
-
+        boolean ans = true;
         for (int i = 0; i < 14; i++) {
 
             if (i == ACTUAL_RECESS_WEEK) {
@@ -86,9 +86,9 @@ public class Schedule {
             if (weeks[i] == null) {
                 weeks[i] = new Week(startDate.plusWeeks(i));
             }
-            weeks[i].addLesson(lesson);
+            ans &= weeks[i].addLesson(lesson);
         }
-        return true;
+        return ans;
     }
 
     /**
