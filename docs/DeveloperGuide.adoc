@@ -98,7 +98,7 @@ The `UI` component,
 image::LogicClassDiagram.png[]
 
 *API* :
-link:{repoURL}/src/main/java/seedu/address/logic/Logic.java[`Logic.java`]
+link:{repoURL}/src/main/java/seedu/nova/logic/Logic.java[`Logic.java`]
 
 .  `Logic` uses the `AddressBookParser` class to parse the user command.
 .  This results in a `Command` object which is executed by the `LogicManager`.
@@ -119,7 +119,7 @@ NOTE: The lifeline for `DeleteCommandParser` should end at the destroy marker (X
 .Structure of the Model Component
 image::ModelClassDiagram.png[]
 
-*API* : link:{repoURL}/src/main/java/seedu/address/model/Model.java[`Model.java`]
+*API* : link:{repoURL}/src/main/java/seedu/nova/model/Model.java[`Model.java`]
 
 The `Model`,
 
@@ -139,7 +139,7 @@ image:BetterModelClassDiagram.png[]
 .Structure of the Storage Component
 image::StorageClassDiagram.png[]
 
-*API* : link:{repoURL}/src/main/java/seedu/address/storage/Storage.java[`Storage.java`]
+*API* : link:{repoURL}/src/main/java/seedu/nova/storage/Storage.java[`Storage.java`]
 
 The `Storage` component,
 
@@ -149,7 +149,7 @@ The `Storage` component,
 [[Design-Commons]]
 === Common classes
 
-Classes used by multiple components are in the `seedu.addressbook.commons` package.
+Classes used by multiple components are in the `seedu.nova.commons` package.
 
 == Implementation
 
@@ -358,6 +358,15 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* *`   |Forgetful student | Set reminders for upcoming events | Will remember to attend them
 
+|`* * *` |Student | Add tasks to study plan | Can add study tasks to my study plan
+
+|`* * *` |Student | Delete tasks on study plan | Can delete study tasks if I don't need it anymore
+
+|`* * *` |Student | Generate event from a task | If I feel like I want to do a study task today, I can generate an
+event on today's schedule so that I can keep up with my study plan.
+
+|`* *`   |Student | View statistics of my task progress | Can see how much I've done for each task on my study plan.
+
 |=======================================================================
 
 _{More to be added}_
@@ -493,6 +502,78 @@ Use case ends.
 
 [none]
 * 2a. The timetable is empty.
++
+Use case ends.
+
+[discrete]
+=== Use case 8: User add a task into study plan.
+
+*MSS*
+
+1.  User enter command to create a task with name specified by user.
+2.  Study Planner of NOVA adds the task into study plan.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. There is already a task with the same name.
+*   1a1. NOVA shows error message.
++
+Use case ends.
+
+[discrete]
+=== Use case 9: User add a task into study plan
+
+*MSS*
+
+1.  User enter command to delete a task with name specified by user.
+2.  Study Planner of NOVA deletes the task.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. No task with the name specified exists in study plan.
+*   1a1. NOVA shows error message.
++
+Use case ends.
+
+[discrete]
+=== Use case 10: User view statistics of every tasks in study plan
+
+*MSS*
+
+1.  User enter command to view statistics of every tasks in study plan.
+2.  NOVA calculates and shows all the statistics of every task.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. No task in study plan.
+*   1a1. NOVA shows error message.
++
+Use case ends.
+
+[discrete]
+=== Use case 11: User schedules a task into a particular day.
+
+*MSS*
+
+1.  User enter command to schedules a task into a particular day.
+2.  NOVA generates and adds the event into schedule.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. Unable to generate event.
+*   1a1. NOVA shows error message.
 +
 Use case ends.
 
