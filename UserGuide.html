@@ -70,12 +70,13 @@
 </li>
 <li><a href="#progress-tracker">3.6. Progress Tracker</a>
 <ul class="sectlevel3">
-<li><a href="#add-notes-code-add-note-code">3.6.1. Add Notes: <code>add note</code></a></li>
-<li><a href="#delete-notes-code-delete-note-code">3.6.2. Delete Notes: <code>delete note</code></a></li>
-<li><a href="#view-notes-code-view-note-code">3.6.3. View Notes: <code>view note</code></a></li>
+<li><a href="#add-project-task-code-add-code">3.6.1. Add Project Task: <code>add</code></a></li>
+<li><a href="#view-project-task-code-view-code">3.6.2. View Project Task: <code>view</code></a></li>
+<li><a href="#delete-project-task-code-delete-code">3.6.3. Delete Project Task: <code>delete</code></a></li>
 <li><a href="#complete-tasks-code-done-code">3.6.4. Complete Tasks: <code>done</code></a></li>
-<li><a href="#add-project-task-code-add-code">3.6.5. Add Project Task: <code>add</code></a></li>
-<li><a href="#delete-project-task-code-delete-code">3.6.6. Delete Project Task: <code>delete</code></a></li>
+<li><a href="#add-notes-code-add-note-code">3.6.5. Add Notes: <code>add note</code></a></li>
+<li><a href="#view-notes-code-view-note-code">3.6.6. View Notes: <code>view note</code></a></li>
+<li><a href="#delete-notes-code-delete-note-code">3.6.7. Delete Notes: <code>delete note</code></a></li>
 </ul>
 </li>
 </ul>
@@ -178,7 +179,7 @@ notes will be saved.</p>
 </div>
 <div class="paragraph">
 <p>Format:<br>
-<code>nav [home/ab/schedule/tracker]</code></p>
+<code>nav [home/ab/schedule/progresstracker]</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1025,8 +1026,8 @@ schedule.</p>
 <div class="sect2">
 <h3 id="progress-tracker"><a class="link" href="#progress-tracker">3.6. Progress Tracker</a></h3>
 <div class="paragraph">
-<p>A tracker to help you track your study and project progress. Access this mode by entering
-the command <code>nav tracker</code>.</p>
+<p>A tracker to help you track your project progress. Access this mode by entering
+the command <code>nav progresstracker</code>.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -1037,51 +1038,114 @@ the command <code>nav tracker</code>.</p>
 <p><em><span class="small">Fig 3.5: GUI of NOVA after typing command <code>nav progress tracker</code></span></em></p>
 </div>
 <div class="sect3">
-<h4 id="add-notes-code-add-note-code"><a class="link" href="#add-notes-code-add-note-code">3.6.1. Add Notes: <code>add note</code></a></h4>
+<h4 id="add-project-task-code-add-code"><a class="link" href="#add-project-task-code-add-code">3.6.1. Add Project Task: <code>add</code></a></h4>
 <div class="paragraph">
-<p>You can view notes you have added to projects and syllabus in the progress tracker.</p>
+<p>You can add tasks under projects in the progress tracker.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>add note c\[chapter name / ip / tp] n\[note]</code></p>
+<p>Format: <code>add p\[ip/tp] w\[week] t\[task number]</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The week number and task number <strong>must be a positive integer</strong> 1, 2, 3, …</p>
+</li>
+<li>
+<p>Only IP and TP projects are available in the progress tracker</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Example:<br>
-<code>add note c\OOP n\Object-Oriented Programming (OOP) is a programming paradigm</code></p>
+<code>Add p\ip w\3 t\Level-7 Duke</code></p>
 </div>
 <div class="paragraph">
-<p>Add note “Object-Oriented Programming (OOP) is a programming paradigm” to OOP chapter of the syllabus.</p>
+<p>Adds tasks “Level-7 Duke” to week 3 of IP in progress tracker.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="delete-notes-code-delete-note-code"><a class="link" href="#delete-notes-code-delete-note-code">3.6.2. Delete Notes: <code>delete note</code></a></h4>
+<h4 id="view-project-task-code-view-code"><a class="link" href="#view-project-task-code-view-code">3.6.2. View Project Task: <code>view</code></a></h4>
 <div class="paragraph">
-<p>You can delete the notes that you have added to projects and syllabus in the progress tracker.</p>
+<p>You can view tasks under a certain week for projects in the progress tracker.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>delete note c\[chapter name / ip / tp] i\[note number]</code></p>
+<p>Format: <code>view p\[ip/tp] w\[week]</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The week number and task number <strong>must be a positive integer</strong> 1, 2, 3, …</p>
+</li>
+<li>
+<p>Only IP and TP projects are available in the progress tracker</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Example:<br>
-<code>delete note c\OOP i\3</code></p>
+<code>view p\ip w\3</code></p>
 </div>
 <div class="paragraph">
-<p>Deletes note number 3 of OOP chapter of the syllabus in the progress tracker.</p>
+<p>Lists tasks in week 3 of IP in progress tracker.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="view-notes-code-view-note-code"><a class="link" href="#view-notes-code-view-note-code">3.6.3. View Notes: <code>view note</code></a></h4>
+<h4 id="delete-project-task-code-delete-code"><a class="link" href="#delete-project-task-code-delete-code">3.6.3. Delete Project Task: <code>delete</code></a></h4>
 <div class="paragraph">
-<p>You can view the notes that you have added to projects and syllabus in the progress tracker.</p>
+<p>You can remove tasks under projects in the progress tracker.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>view note c\[chapter name / ip / tp]</code></p>
+<p>Format: <code>delete p\[ip/tp] w\[week] t\[task number]</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The week number and task number <strong>must be a positive integer</strong> 1, 2, 3, …</p>
+</li>
+<li>
+<p>Only IP and TP projects are available in the progress tracker</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Example:<br>
-<code>view note c\OOP</code></p>
+<code>delete p\ip w\3 t\3</code></p>
 </div>
 <div class="paragraph">
-<p>Shows notes added to the OOP chapter of the syllabus.</p>
+<p>Deletes task 3 in week 3 of IP in progress tracker.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1090,46 +1154,146 @@ the command <code>nav tracker</code>.</p>
 <p>You can mark tasks in the progress tracker as done.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>done c\[chapter name / project]</code></p>
+<p>Format: <code>done p\[ip/tp] w\[week] t\[task number]</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The week number and task number <strong>must be a positive integer</strong> 1, 2, 3, …</p>
+</li>
+<li>
+<p>Only IP and TP projects are available in the progress tracker</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Example:<br>
-<code>done c\OOP</code></p>
+<code>done p\ip w\3 t\2</code></p>
 </div>
 <div class="paragraph">
-<p>Sets the OOP chapter as done in progress tracker.</p>
+<p>Sets task 2 in week 3 of IP in progress tracker as done.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="add-project-task-code-add-code"><a class="link" href="#add-project-task-code-add-code">3.6.5. Add Project Task: <code>add</code></a></h4>
+<h4 id="add-notes-code-add-note-code"><a class="link" href="#add-notes-code-add-note-code">3.6.5. Add Notes: <code>add note</code></a></h4>
 <div class="paragraph">
-<p>You can add tasks under projects in the progress tracker.</p>
+<p>You can add notes to projects tasks in the progress tracker.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>add p\[ip / tp] t\[task]</code></p>
+<p>Format: <code>add note p\[ip/tp] w\[week] t\[task number] n\note</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The week number and task number <strong>must be a positive integer</strong> 1, 2, 3, …</p>
+</li>
+<li>
+<p>Only IP and TP projects are available in the progress tracker</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Example:<br>
-<code>Add p\IP t\Level-7 Duke</code></p>
+<code>add note p\ip w\3 t\2 n\Need create branch and tag</code></p>
 </div>
 <div class="paragraph">
-<p>Adds tasks “Level-7 Duke” to IP in progress tracker.</p>
+<p>Add note “Need create branch and tag” to task 2 in week 3 of IP in progress tracker.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="delete-project-task-code-delete-code"><a class="link" href="#delete-project-task-code-delete-code">3.6.6. Delete Project Task: <code>delete</code></a></h4>
+<h4 id="view-notes-code-view-note-code"><a class="link" href="#view-notes-code-view-note-code">3.6.6. View Notes: <code>view note</code></a></h4>
 <div class="paragraph">
-<p>You can remove tasks under projects in the progress tracker.</p>
+<p>You can view the notes that you have added to projects and syllabus in the progress tracker.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>delete p\[project] i\[task number]</code></p>
+<p>Format: <code>view note p\[ip/tp] w\[week number] t\[task number]</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The week number and task number <strong>must be a positive integer</strong> 1, 2, 3, …</p>
+</li>
+<li>
+<p>Only IP and TP projects are available in the progress tracker</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Example:<br>
-<code>delete p\IP i\3</code></p>
+<code>view note p\[ip] w\3 t\2</code></p>
 </div>
 <div class="paragraph">
-<p>Deletes task 3 of IP in progress tracker.</p>
+<p>Lists notes under task 2 in week 3 of IP in the progress tracker.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="delete-notes-code-delete-note-code"><a class="link" href="#delete-notes-code-delete-note-code">3.6.7. Delete Notes: <code>delete note</code></a></h4>
+<div class="paragraph">
+<p>You can delete the notes that you have added to projects in the progress tracker.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>delete note p\[ip/tp] w\[week] t\[task number] i\[note number]</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The week, task and note number <strong>must be a positive integer</strong> 1, 2, 3, …</p>
+</li>
+<li>
+<p>Only IP and TP projects are available in the progress tracker</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Example:<br>
+<code>delete note p\[ip] w\3 t\2 i\2</code></p>
+</div>
+<div class="paragraph">
+<p>Deletes note number 2 under task 2 of week 3 of IP in the progress tracker.</p>
 </div>
 </div>
 </div>
@@ -1155,4 +1319,4 @@ except your jar file.</p>
 <div class="sectionbody">
 
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-23 04:10:20 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-25 12:10:19 UTC</div></div></div></body></html>
