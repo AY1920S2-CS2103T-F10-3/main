@@ -16,6 +16,10 @@ public class TaskDetails {
         this.freq = freq;
     }
 
+    static TaskDetails ofName(String name) {
+        return new TaskDetails(name, null, null);
+    }
+
     String getName() {
         return name;
     }
@@ -31,8 +35,7 @@ public class TaskDetails {
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof TaskDetails) {
-            return name.equals(((TaskDetails) obj).name)
-                    && freq.equals(((TaskDetails) obj).freq);
+            return name.equals(((TaskDetails) obj).name);
         } else {
             return super.equals(obj);
         }
@@ -51,7 +54,7 @@ public class TaskDetails {
 
     @Override
     public int hashCode() {
-        return name.hashCode() ^ freq.hashCode();
+        return name.hashCode();
     }
 
 }

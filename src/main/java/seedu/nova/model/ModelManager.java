@@ -24,7 +24,6 @@ import seedu.nova.model.plan.Plan;
 import seedu.nova.model.plan.StrongTask;
 import seedu.nova.model.plan.StudyPlan;
 import seedu.nova.model.plan.Task;
-import seedu.nova.model.plan.TaskDetails;
 import seedu.nova.model.plan.TaskFreq;
 import seedu.nova.model.plan.WeakTask;
 import seedu.nova.model.progresstracker.ProgressTracker;
@@ -241,8 +240,8 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public Task searchTask(TaskDetails details) {
-        return plan.searchTask(details);
+    public Task searchTask(String name) {
+        return plan.searchTask(name);
     }
 
     @Override

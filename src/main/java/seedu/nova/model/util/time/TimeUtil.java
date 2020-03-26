@@ -1,6 +1,7 @@
 package seedu.nova.model.util.time;
 
 import java.time.DayOfWeek;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -53,6 +54,19 @@ public interface TimeUtil {
             }
         }
         throw new DateTimeParseException("time format wrong", time, 0);
+    }
+
+    /**
+     * Number of weeks the two date spans, including the weeks that both dates are in.
+     * @param start start date
+     * @param end end date
+     * @return number of weeks
+     */
+    static int noOfWeeks(LocalDate start, LocalDate end) {
+        LocalDate monStart = getMondayOfWeek(start);
+        LocalDate monEnd = getMondayOfWeek(end);
+        return 2 + (int) Duration.between(LocalDateTime.of(monStart, BEGIN_DAY_TIME),
+                LocalDateTime.of(monEnd, BEGIN_DAY_TIME)).toDays() / 7;
     }
 
     /**

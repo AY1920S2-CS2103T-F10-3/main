@@ -38,8 +38,8 @@ public class StudyPlan implements Plan {
     }
 
     @Override
-    public Task searchTask(TaskDetails taskDetails) {
-        return map.get(taskDetails);
+    public Task searchTask(String name) {
+        return map.get(TaskDetails.ofName(name));
     }
 
     @Override

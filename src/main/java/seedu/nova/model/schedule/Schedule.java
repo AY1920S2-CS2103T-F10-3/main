@@ -8,6 +8,7 @@ import java.time.LocalTime;
 
 import seedu.nova.model.event.Event;
 import seedu.nova.model.event.Lesson;
+import seedu.nova.model.util.time.TimeUtil;
 
 /**
  * The type Schedule.
@@ -34,7 +35,11 @@ public class Schedule {
         this.startDate = startDate;
         this.endDate = endDate;
 
-        weeks = new Week[17];
+        weeks = new Week[TimeUtil.noOfWeeks(startDate, endDate)];
+        for (int i = 0; i < weeks.length; i++) {
+            weeks[i] = new Week(startDate.plusDays(7 * i));
+        }
+
 
         try {
             this.addLesson(new Lesson("CS2103 Tutorial", "COM1-B103", LocalTime.of(10, 0),

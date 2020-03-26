@@ -12,7 +12,6 @@ import seedu.nova.model.event.Event;
 import seedu.nova.model.event.Lesson;
 import seedu.nova.model.person.Person;
 import seedu.nova.model.plan.Task;
-import seedu.nova.model.plan.TaskDetails;
 import seedu.nova.model.plan.TaskFreq;
 import seedu.nova.model.progresstracker.ProgressTracker;
 import seedu.nova.model.schedule.SchedulerException;
@@ -126,7 +125,7 @@ public interface Model {
 
     List<Task> getTaskList();
 
-    Task searchTask(TaskDetails details);
+    Task searchTask(String name);
 
     boolean generateTaskEvent(Task task, LocalDate date) throws Exception;
 }

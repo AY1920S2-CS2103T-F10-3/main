@@ -17,7 +17,7 @@ public interface Plan {
 
     boolean deleteTask(Task task);
 
-    Task searchTask(TaskDetails taskDetails);
+    Task searchTask(String name);
 
     Event generateTaskEvent(Task task, Day day) throws ImpossibleTaskException;
 }

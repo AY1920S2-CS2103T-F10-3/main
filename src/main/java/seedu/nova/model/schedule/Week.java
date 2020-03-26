@@ -30,9 +30,11 @@ public class Week {
      * @param date the date
      */
     public Week(LocalDate date) {
-
+        startDate = TimeUtil.getMondayOfWeek(date);
         days = new Day[7];
-        startDate = date;
+        for (int i = 0; i < 7; i++) {
+            days[i] = new Day(startDate.plusDays(i));
+        }
         dtsl = DateTimeSlotList.ofWeek(date);
     }
 

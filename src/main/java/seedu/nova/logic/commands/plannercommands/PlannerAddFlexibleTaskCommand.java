@@ -8,8 +8,6 @@ import seedu.nova.logic.commands.Command;
 import seedu.nova.logic.commands.CommandResult;
 import seedu.nova.logic.commands.exceptions.CommandException;
 import seedu.nova.model.Model;
-import seedu.nova.model.plan.TaskDetails;
-import seedu.nova.model.plan.TaskFreq;
 
 /**
  * Add flexible task command
@@ -36,7 +34,7 @@ public class PlannerAddFlexibleTaskCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        if (model.searchTask(new TaskDetails(name, min, TaskFreq.DAILY)) != null) {
+        if (model.searchTask(name) != null) {
             return new CommandResult(MESSAGE_TASK_ADY_EXIST);
         }
         if (model.addFlexibleTask(name, min, max, total)) {
