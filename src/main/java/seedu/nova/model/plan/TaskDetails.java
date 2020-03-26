@@ -39,6 +39,17 @@ public class TaskDetails {
     }
 
     @Override
+    public String toString() {
+        String sb = "Name: "
+                + name
+                + "Duration: "
+                + duration
+                + "Frequency: "
+                + freq.toString();
+        return sb;
+    }
+
+    @Override
     public int hashCode() {
         return name.hashCode() ^ freq.hashCode();
     }

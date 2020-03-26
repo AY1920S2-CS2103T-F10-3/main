@@ -114,6 +114,11 @@ public abstract class Task {
     }
 
     @Override
+    public String toString() {
+        return details.toString();
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (obj instanceof Task) {
             return details.equals(((Task) obj).details);

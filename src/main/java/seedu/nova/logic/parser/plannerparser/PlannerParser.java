@@ -5,6 +5,7 @@ import static seedu.nova.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import seedu.nova.logic.commands.Command;
 import seedu.nova.logic.commands.plannercommands.PlannerAddFlexibleTaskCommand;
 import seedu.nova.logic.commands.plannercommands.PlannerAddRoutineTaskCommand;
+import seedu.nova.logic.commands.plannercommands.PlannerListTaskCommand;
 import seedu.nova.logic.parser.exceptions.ParseException;
 
 /**
@@ -26,6 +27,8 @@ public class PlannerParser {
             return new AddFlexibleTaskCommandParser().parse(arguments);
         case PlannerAddRoutineTaskCommand.COMMAND_WORD:
             return new AddRoutineTaskCommandParser().parse(arguments);
+        case PlannerListTaskCommand.COMMAND_WORD:
+            return new ListTaskCommandParser().parse(arguments);
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
