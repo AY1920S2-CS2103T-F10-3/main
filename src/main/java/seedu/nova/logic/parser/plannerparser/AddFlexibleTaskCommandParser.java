@@ -1,7 +1,6 @@
 package seedu.nova.logic.parser.plannerparser;
 
 import static seedu.nova.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.nova.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.nova.logic.parser.CliSyntax.PREFIX_MAX_DURATION;
 import static seedu.nova.logic.parser.CliSyntax.PREFIX_MIN_DURATION;
 import static seedu.nova.logic.parser.CliSyntax.PREFIX_TASK_NAME;
@@ -30,9 +29,11 @@ public class AddFlexibleTaskCommandParser implements Parser<PlannerAddFlexibleTa
     @Override
     public PlannerAddFlexibleTaskCommand parse(String args) throws ParseException {
 
-        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_DATE);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_TASK_NAME, PREFIX_TIME,
+                PREFIX_MIN_DURATION, PREFIX_MAX_DURATION);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_DATE) || !argMultimap.getPreamble().isEmpty()) {
+        if (!arePrefixesPresent(argMultimap, PREFIX_TASK_NAME, PREFIX_TIME, PREFIX_MIN_DURATION, PREFIX_MAX_DURATION)
+                || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(MESSAGE_INVALID_COMMAND_FORMAT);
         }
 

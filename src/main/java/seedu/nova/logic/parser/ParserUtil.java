@@ -213,7 +213,7 @@ public class ParserUtil {
      */
     public static TaskFreq parseTaskFreq(String freq) throws ParseException {
         requireNonNull(freq);
-        String trimmedFreq = freq.trim();
+        String trimmedFreq = freq.trim().toUpperCase();
         return TaskFreq.valueOf(trimmedFreq);
     }
 }
