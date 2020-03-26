@@ -33,9 +33,20 @@
 </li>
 </ul>
 </li>
-<li><a href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.3. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.4. Configuration</a></li>
+<li><a href="#view-tasks-under-ip-project">3.2. View tasks under IP project</a>
+<ul class="sectlevel3">
+<li><a href="#implementation-2">3.2.1. Implementation</a></li>
+<li><a href="#design-considerations-2">3.2.2. Design Considerations</a></li>
+</ul>
+</li>
+<li><a href="#view-schedule-for-a-specified-day">3.3. View schedule for a specified day</a>
+<ul class="sectlevel3">
+<li><a href="#implementation-3">3.3.1. Implementation</a></li>
+<li><a href="#design-considerations-3">3.3.2. Design Considerations</a></li>
+</ul>
+</li>
+<li><a href="#logging">3.4. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.5. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -183,7 +194,7 @@ The following class plays an important role at the architecture level:</p>
 <p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code> and <code>HelpBox</code>. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
@@ -278,26 +289,18 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <p>stores the Address Book data.</p>
 </li>
 <li>
+<p>stores a 'Schedule' object that represents the user&#8217;s schedule.</p>
+</li>
+<li>
+<p>stores a 'ProgressTracker' object that represents the user&#8217;s progress in their project tasks.</p>
+</li>
+<li>
 <p>exposes an unmodifiable <code>ObservableList&lt;Person&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
 </li>
 <li>
 <p>does not depend on any of the other three components.</p>
 </li>
 </ul>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book</code>, which <code>Person</code> can reference. This would allow <code>Address Book</code> to only require one <code>Tag</code> object per unique <code>Tag</code>, instead of each <code>Person</code> needing their own <code>Tag</code> object. An example of how such a model may look like is given below.<br>
-<br>
-<span class="image"><img src="images/BetterModelClassDiagram.png" alt="BetterModelClassDiagram"></span>
-</td>
-</tr>
-</table>
 </div>
 </div>
 <div class="sect2">
@@ -554,20 +557,164 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></h3>
+<h3 id="view-tasks-under-ip-project"><a class="link" href="#view-tasks-under-ip-project">3.2. View tasks under IP project</a></h3>
 <div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
+<p>The view tasks feature for the IP project allows the user to view a list of tasks that were added.</p>
+</div>
+<div class="sect3">
+<h4 id="implementation-2"><a class="link" href="#implementation-2">3.2.1. Implementation</a></h4>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the view tasks mechanism behaves at each step.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user keys in 'view p\ip w\2' into the command box.</p>
+</li>
+<li>
+<p>The user executes 'view p\ip w\2' to view the list of tasks in week 2 of IP project.</p>
+</li>
+<li>
+<p>'PtListCommandParser' creates a new 'PtListCommand'.</p>
+</li>
+<li>
+<p>'LogicManager' executes the 'PtListCommand'.</p>
+</li>
+<li>
+<p>'Model#listTasks()' is called and the list of tasks is retrieved.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the view tasks operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/PtSeqDiagram.png" alt="PtSeqDiagram">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.2. Design Considerations</a></h4>
+<div class="paragraph">
+<p>Aspect: Adding choice of week to view tasks</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> adding in choice of week to view tasks</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: more freedom to choose what to see as a user</p>
+</li>
+<li>
+<p>Cons: longer command to type</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> listing out the whole project tasks rather than letting user choose based on week</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: shorter command to type and user can see all their tasks at once</p>
+</li>
+<li>
+<p>Cons: if user wants to see tasks only for a specific week will be harder to scroll and find</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.3. Logging</a></h3>
+<h3 id="view-schedule-for-a-specified-day"><a class="link" href="#view-schedule-for-a-specified-day">3.3. View schedule for a specified day</a></h3>
+<div class="paragraph">
+<p>The view schedule feature allows the user to view their schedule for the day specified by them.</p>
+</div>
+<div class="sect3">
+<h4 id="implementation-3"><a class="link" href="#implementation-3">3.3.1. Implementation</a></h4>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the view schedule mechanism behaves at each step.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user keys in 'view t\2020-03-10' into the command box.</p>
+</li>
+<li>
+<p>The user executes 'view t\2020-03-10' to view their schedule on the 10th of March 2020.</p>
+</li>
+<li>
+<p>'ScViewDayCommandParser' creates a new 'ScViewDayCommand'.</p>
+</li>
+<li>
+<p>'LogicManager' executes the 'ScViewDayCommand'.</p>
+</li>
+<li>
+<p>'ModelManger#viewSechdule()' is called and the schedule for the day is retrieved.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the view tasks operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SchedulerSeqDiagram.png" alt="SchedulerSeqDiagram">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.3.2. Design Considerations</a></h4>
+<div class="paragraph">
+<p>Aspect: View schedule by day and not week</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> View schedule by day</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: more freedom to choose what to see as a user</p>
+</li>
+<li>
+<p>Cons: more typing to view schedule for more than one day</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> View schedule by week</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: user can see their whole week&#8217;s schedule at once</p>
+</li>
+<li>
+<p>Cons: might be too long and messy</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">3.4. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.4, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.5, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -598,7 +745,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.4. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.5. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -816,14 +963,8 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">keep track of my progress in terms of understanding for concepts and skills in CS2103T</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">make sure I don&#8217;t lag too far behind</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add notes to concepts and skills taught</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">value add to my learning process</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add notes to project tasks</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keep track of details regarding the tasks</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -1302,4 +1443,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-25 14:08:29 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-26 13:00:49 UTC</div></div></div></body></html>
