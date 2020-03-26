@@ -22,10 +22,16 @@
 </li>
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#proposed-undo-redo-feature">3.1. [Proposed] Undo/Redo feature</a>
+<li><a href="#manage-events">3.1. Manage Events</a>
 <ul class="sectlevel3">
-<li><a href="#proposed-implementation">3.1.1. Proposed Implementation</a></li>
-<li><a href="#design-considerations">3.1.2. Design Considerations</a>
+<li><a href="#implementation-marking-an-event-as-done">3.1.1. Implementation - Marking an event as done</a></li>
+<li><a href="#design-considerations">3.1.2. Design Considerations</a></li>
+</ul>
+</li>
+<li><a href="#proposed-undo-redo-feature">3.2. [Proposed] Undo/Redo feature</a>
+<ul class="sectlevel3">
+<li><a href="#proposed-implementation">3.2.1. Proposed Implementation</a></li>
+<li><a href="#design-considerations-2">3.2.2. Design Considerations</a>
 <ul class="sectlevel4">
 <li><a href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></li>
 <li><a href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></li>
@@ -33,20 +39,20 @@
 </li>
 </ul>
 </li>
-<li><a href="#view-tasks-under-ip-project">3.2. View tasks under IP project</a>
+<li><a href="#view-tasks-under-ip-project">3.3. View tasks under IP project</a>
 <ul class="sectlevel3">
-<li><a href="#implementation-2">3.2.1. Implementation</a></li>
-<li><a href="#design-considerations-2">3.2.2. Design Considerations</a></li>
-</ul>
-</li>
-<li><a href="#view-schedule-for-a-specified-day">3.3. View schedule for a specified day</a>
-<ul class="sectlevel3">
-<li><a href="#implementation-3">3.3.1. Implementation</a></li>
+<li><a href="#implementation-2">3.3.1. Implementation</a></li>
 <li><a href="#design-considerations-3">3.3.2. Design Considerations</a></li>
 </ul>
 </li>
-<li><a href="#logging">3.4. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.5. Configuration</a></li>
+<li><a href="#view-schedule-for-a-specified-day">3.4. View schedule for a specified day</a>
+<ul class="sectlevel3">
+<li><a href="#implementation-3">3.4.1. Implementation</a></li>
+<li><a href="#design-considerations-4">3.4.2. Design Considerations</a></li>
+</ul>
+</li>
+<li><a href="#logging">3.5. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.6. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -228,7 +234,10 @@ The following class plays an important role at the architecture level:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><code>Logic</code> uses the <code>AddressBookParser</code> class to parse the user command.</p>
+<p><code>Logic</code> uses the <code>LogicParser</code> class to determine which mode the user is in when they input a command.</p>
+</li>
+<li>
+<p>After which, the relevant parser is called (e.g. <code>EventParser</code> or <code>AddressBookParser</code>).</p>
 </li>
 <li>
 <p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
@@ -245,25 +254,13 @@ The following class plays an important role at the architecture level:</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("delete 1")</code> API call.</p>
+<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("done t\2020-03-20 i\2")</code> API call.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/DeleteSequenceDiagram.png" alt="DeleteSequenceDiagram">
+<img src="images/EventMarkDoneSeqDiagram.png" alt="EventMarkDoneSeqDiagram">
 </div>
-<div class="title">Figure 6. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The lifeline for <code>DeleteCommandParser</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-</td>
-</tr>
-</table>
+<div class="title">Figure 6. Interactions Inside the Logic Component for the <code>done t\2020-03-20 i\2</code> Command</div>
 </div>
 </div>
 <div class="sect2">
@@ -343,9 +340,112 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="proposed-undo-redo-feature"><a class="link" href="#proposed-undo-redo-feature">3.1. [Proposed] Undo/Redo feature</a></h3>
+<h3 id="manage-events"><a class="link" href="#manage-events">3.1. Manage Events</a></h3>
+<div class="paragraph">
+<p>The manage events feature handles the events of the user, including meetings, consultations, study sessions and lessons.
+Users are able to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>add events</p>
+</li>
+<li>
+<p>delete events</p>
+</li>
+<li>
+<p>mark events as done</p>
+</li>
+<li>
+<p>add notes to events</p>
+</li>
+<li>
+<p>find events</p>
+</li>
+<li>
+<p>repeat events</p>
+</li>
+</ul>
+</div>
 <div class="sect3">
-<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">3.1.1. Proposed Implementation</a></h4>
+<h4 id="implementation-marking-an-event-as-done"><a class="link" href="#implementation-marking-an-event-as-done">3.1.1. Implementation - Marking an event as done</a></h4>
+<div class="paragraph">
+<p>The mark as done feature allows users to mark events they have completed as done.
+This feature is facilitated by <code>EventParser</code>, <code>EventMarkDoneCommandParser</code> and <code>EventMarkDoneCommand</code>.
+The operation is exposed in the <code>Model</code> interface as <code>Model#markDone()</code>.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the mark event as done mechanism behaves at each step.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user does <code>view t\2020-03-20</code> to view their events on 20th March 2020.</p>
+</li>
+<li>
+<p>The user executes <code>done t\2020-03-20 i\2</code> command to mark the second event on 20th March 2020 as done.</p>
+</li>
+<li>
+<p><code>EventMarkDoneParser</code> creates a new <code>EventMarkDoneCommand</code>.</p>
+</li>
+<li>
+<p><code>LogicManager</code> executes the <code>EventMarkDoneCommand</code>.</p>
+</li>
+<li>
+<p><code>Model#markDone()</code> is called, and the <code>Schedule</code> object in <code>ModelManager</code> is updated.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the mark event as done operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/EventMarkDoneSeqDiagram.png" alt="EventMarkDoneSeqDiagram">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations</a></h4>
+<div class="paragraph">
+<p>Aspect: Syntax of Marking an Event as Done</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> choosing the event by its date and its index in the list of events on that date</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: relatively short to type, greater ease of implementation</p>
+</li>
+<li>
+<p>Cons: users have to view the list of events on that date before determining which event to mark as done</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> choosing the event by description</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: more recognisable for users</p>
+</li>
+<li>
+<p>Cons: difficulty in implementing as certain events may have the exact same descriptions</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="proposed-undo-redo-feature"><a class="link" href="#proposed-undo-redo-feature">3.2. [Proposed] Undo/Redo feature</a></h3>
+<div class="sect3">
+<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">3.2.1. Proposed Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>VersionedAddressBook</code>.
 It extends <code>AddressBook</code> with an undo/redo history, stored internally as an <code>addressBookStateList</code> and <code>currentStatePointer</code>.
@@ -487,7 +587,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -557,12 +657,12 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="view-tasks-under-ip-project"><a class="link" href="#view-tasks-under-ip-project">3.2. View tasks under IP project</a></h3>
+<h3 id="view-tasks-under-ip-project"><a class="link" href="#view-tasks-under-ip-project">3.3. View tasks under IP project</a></h3>
 <div class="paragraph">
 <p>The view tasks feature for the IP project allows the user to view a list of tasks that were added.</p>
 </div>
 <div class="sect3">
-<h4 id="implementation-2"><a class="link" href="#implementation-2">3.2.1. Implementation</a></h4>
+<h4 id="implementation-2"><a class="link" href="#implementation-2">3.3.1. Implementation</a></h4>
 <div class="paragraph">
 <p>Given below is an example usage scenario and how the view tasks mechanism behaves at each step.</p>
 </div>
@@ -595,7 +695,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.2. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.3.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p>Aspect: Adding choice of week to view tasks</p>
 </div>
@@ -632,12 +732,12 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="view-schedule-for-a-specified-day"><a class="link" href="#view-schedule-for-a-specified-day">3.3. View schedule for a specified day</a></h3>
+<h3 id="view-schedule-for-a-specified-day"><a class="link" href="#view-schedule-for-a-specified-day">3.4. View schedule for a specified day</a></h3>
 <div class="paragraph">
 <p>The view schedule feature allows the user to view their schedule for the day specified by them.</p>
 </div>
 <div class="sect3">
-<h4 id="implementation-3"><a class="link" href="#implementation-3">3.3.1. Implementation</a></h4>
+<h4 id="implementation-3"><a class="link" href="#implementation-3">3.4.1. Implementation</a></h4>
 <div class="paragraph">
 <p>Given below is an example usage scenario and how the view schedule mechanism behaves at each step.</p>
 </div>
@@ -670,7 +770,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.3.2. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.4.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p>Aspect: View schedule by day and not week</p>
 </div>
@@ -707,14 +807,14 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.4. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.5. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.5, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.6, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -745,7 +845,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.5. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.6. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -1443,4 +1543,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-26 13:00:49 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-26 13:04:13 UTC</div></div></div></body></html>
