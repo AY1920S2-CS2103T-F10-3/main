@@ -30,6 +30,7 @@ import seedu.nova.model.event.Lesson;
 import seedu.nova.model.person.Person;
 import seedu.nova.model.plan.ImpossibleTaskException;
 import seedu.nova.model.plan.Task;
+import seedu.nova.model.plan.TaskDetails;
 import seedu.nova.model.plan.TaskFreq;
 import seedu.nova.model.progresstracker.ProgressTracker;
 import seedu.nova.model.schedule.SchedulerException;
@@ -202,12 +203,17 @@ public class AbAddCommandTest {
         }
 
         @Override
-        public boolean addFlexibleTask(String name, TaskFreq freq, Duration min, Duration max) {
+        public boolean addFlexibleTask(String name, Duration total, Duration min, Duration max) {
             return false;
         }
 
         @Override
         public List<Task> getTaskList() {
+            return null;
+        }
+
+        @Override
+        public Task searchTask(TaskDetails details) {
             return null;
         }
 

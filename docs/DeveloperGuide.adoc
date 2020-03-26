@@ -81,7 +81,7 @@ image::UiClassDiagram.png[]
 
 *API* : link:{repoURL}/src/main/java/seedu/address/ui/Ui.java[`Ui.java`]
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
+The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay` and `HelpBox`. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
 
 The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the link:{repoURL}/src/main/java/seedu/address/ui/MainWindow.java[`MainWindow`] is specified in link:{repoURL}/src/main/resources/view/MainWindow.fxml[`MainWindow.fxml`]
 
@@ -100,18 +100,18 @@ image::LogicClassDiagram.png[]
 *API* :
 link:{repoURL}/src/main/java/seedu/nova/logic/Logic.java[`Logic.java`]
 
-.  `Logic` uses the `AddressBookParser` class to parse the user command.
+.  `Logic` uses the `LogicParser` class to determine which mode the user is in when they input a command.
+.  After which, the relevant parser is called (e.g. `EventParser` or `AddressBookParser`).
 .  This results in a `Command` object which is executed by the `LogicManager`.
 .  The command execution can affect the `Model` (e.g. adding a person).
 .  The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
 .  In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
 
-Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
+Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("done t\2020-03-20 i\2")` API call.
 
-.Interactions Inside the Logic Component for the `delete 1` Command
-image::DeleteSequenceDiagram.png[]
+.Interactions Inside the Logic Component for the `done t\2020-03-20 i\2` Command
+image::EventMarkDoneSeqDiagram.png[]
 
-NOTE: The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
 [[Design-Model]]
 === Model component
@@ -125,13 +125,10 @@ The `Model`,
 
 * stores a `UserPref` object that represents the user's preferences.
 * stores the Address Book data.
+* stores a 'Schedule' object that represents the user's schedule.
+* stores a 'ProgressTracker' object that represents the user's progress in their project tasks.
 * exposes an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * does not depend on any of the other three components.
-
-[NOTE]
-As a more OOP model, we can store a `Tag` list in `Address Book`, which `Person` can reference. This would allow `Address Book` to only require one `Tag` object per unique `Tag`, instead of each `Person` needing their own `Tag` object. An example of how such a model may look like is given below. +
- +
-image:BetterModelClassDiagram.png[]
 
 [[Design-Storage]]
 === Storage component
@@ -150,14 +147,83 @@ The `Storage` component,
 === Common classes
 
 Classes used by multiple components are in the `seedu.nova.commons` package.
+All of the classes under `Commons` work independently.
+
+Most notably,
+
+* *API* : link:{repoURL}/src/main/java/seedu/nova/commons/core/index/LogsCenter.java[`LogsCenter.java`] +
+The `LogsCenter` is used by NOVA to display logs when running NOVA in terminal.
+
+* *API* : link:{repoURL}/src/main/java/seedu/nova/commons/core/index/Messages.java[`Messages.java`] +
+The `Messages` is used by Address Book feature and deals with messages to display regarding Address Book.
 
 == Implementation
 
 This section describes some noteworthy details on how certain features are implemented.
 
+=== Manage Events
+The manage events feature handles the events of the user, including meetings, consultations, study sessions and lessons.
+Users are able to:
+
+* add events
+* delete events
+* mark events as done
+* add notes to events
+* find events
+* repeat events
+
+==== Implementation - Marking an event as done
+The mark as done feature allows users to mark events they have completed as done.
+This feature is facilitated by `EventParser`, `EventMarkDoneCommandParser` and `EventMarkDoneCommand`.
+The operation is exposed in the `Model` interface as `Model#markDone()`.
+
+Given below is an example usage scenario and how the mark event as done mechanism behaves at each step.
+
+1. The user does `view t\2020-03-20` to view their events on 20th March 2020.
+
+2. The user executes `done t\2020-03-20 i\2` command to mark the second event on 20th March 2020 as done.
+
+3. `EventMarkDoneParser` creates a new `EventMarkDoneCommand`.
+
+4. `LogicManager` executes the `EventMarkDoneCommand`.
+
+5. `Model#markDone()` is called, and the `Schedule` object in `ModelManager` is updated.
+
+The following sequence diagram shows how the mark event as done operation works:
+
+image::EventMarkDoneSeqDiagram.png[]
+
+
+==== Design Considerations
+Aspect: Syntax of Marking an Event as Done
+
+* **Alternative 1 (current choice):** choosing the event by its date and its index in the list of events on that date
+** Pros: relatively short to type, greater ease of implementation
+** Cons: users have to view the list of events on that date before determining which event to mark as done
+
+* **Alternative 2:** choosing the event by description
+** Pros: more recognisable for users
+** Cons: difficulty in implementing as certain events may have the exact same descriptions
+
+
 // tag::undoredo[]
-=== [Proposed] Undo/Redo feature
-==== Proposed Implementation
+=== Address Book
+The address book feature handles the contact list of the users. Users are able to:
+
+* add contacts
+* edit contacts
+* delete contacts
+* find contacts
+* list all contacts
+* list category specific contacts
+* add category specific remark for contacts
+* edit category specific remark for contacts
+* delete category specific remark for contacts
+* undo or redo command
+* add profile picture to contacts
+* delete profile picture to contacts
+
+==== Implementation - Undo or redo command
 
 The undo/redo mechanism is facilitated by `VersionedAddressBook`.
 It extends `AddressBook` with an undo/redo history, stored internally as an `addressBookStateList` and `currentStatePointer`.
@@ -177,11 +243,11 @@ image::UndoRedoState0.png[]
 
 Step 2. The user executes `delete 5` command to delete the 5th person in the address book. The `delete` command calls `Model#commitAddressBook()`, causing the modified state of the address book after the `delete 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted address book state.
 
-image::UndoRedoState1.png[]
+image::UndoRedoState1edited.png[]
 
 Step 3. The user executes `add n/David ...` to add a new person. The `add` command also calls `Model#commitAddressBook()`, causing another modified address book state to be saved into the `addressBookStateList`.
 
-image::UndoRedoState2.png[]
+image::UndoRedoState2edited.png[]
 
 [NOTE]
 If a command fails its execution, it will not call `Model#commitAddressBook()`, so the address book state will not be saved into the `addressBookStateList`.
@@ -237,12 +303,59 @@ image::CommitActivityDiagram.png[]
 ** Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as `HistoryManager` now needs to do two different things.
 // end::undoredo[]
 
-// tag::dataencryption[]
-=== [Proposed] Data Encryption
+=== View tasks under IP project
+The view tasks feature for the IP project allows the user to view a list of tasks that were added.
 
-_{Explain here how the data encryption feature will be implemented}_
+==== Implementation
+Given below is an example usage scenario and how the view tasks mechanism behaves at each step.
 
-// end::dataencryption[]
+1. The user keys in 'view p\ip w\2' into the command box.
+2. The user executes 'view p\ip w\2' to view the list of tasks in week 2 of IP project.
+3. 'PtListCommandParser' creates a new 'PtListCommand'.
+4. 'LogicManager' executes the 'PtListCommand'.
+5. 'Model#listTasks()' is called and the list of tasks is retrieved.
+
+The following sequence diagram shows how the view tasks operation works:
+
+image::PtSeqDiagram.png[]
+
+==== Design Considerations
+Aspect: Adding choice of week to view tasks
+
+* **Alternative 1 (current choice):** adding in choice of week to view tasks
+** Pros: more freedom to choose what to see as a user
+** Cons: longer command to type
+
+* **Alternative 2:** listing out the whole project tasks rather than letting user choose based on week
+** Pros: shorter command to type and user can see all their tasks at once
+** Cons: if user wants to see tasks only for a specific week will be harder to scroll and find
+
+=== View schedule for a specified day
+The view schedule feature allows the user to view their schedule for the day specified by them.
+
+==== Implementation
+Given below is an example usage scenario and how the view schedule mechanism behaves at each step.
+
+1. The user keys in 'view t\2020-03-10' into the command box.
+2. The user executes 'view t\2020-03-10' to view their schedule on the 10th of March 2020.
+3. 'ScViewDayCommandParser' creates a new 'ScViewDayCommand'.
+4. 'LogicManager' executes the 'ScViewDayCommand'.
+5. 'ModelManger#viewSechdule()' is called and the schedule for the day is retrieved.
+
+The following sequence diagram shows how the view tasks operation works:
+
+image::SchedulerSeqDiagram.png[]
+
+==== Design Considerations
+Aspect: View schedule by day and not week
+
+* **Alternative 1 (current choice):** View schedule by day
+** Pros: more freedom to choose what to see as a user
+** Cons: more typing to view schedule for more than one day
+
+* **Alternative 2:** View schedule by week
+** Pros: user can see their whole week's schedule at once
+** Cons: might be too long and messy
 
 === Logging
 
@@ -342,9 +455,7 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |student |mark tasks as done |track how many tasks I have finished
 
-|`* * *` |student |keep track of my progress in terms of understanding for concepts and skills in CS2103T |make sure I don't lag too far behind
-
-|`* * *` |student |add notes to concepts and skills taught |value add to my learning process
+|`* * *` |student |add notes to project tasks |keep track of details regarding the tasks
 
 |`* * *` |student |add project tasks |keep track of those project tasks
 
@@ -353,12 +464,6 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |`* * *` |Student | View my schedule for a week | Know what will happen for that week
 
 |`* * *` |Student | View my timetable | Can check when my classes are
-
-|`* * *` |Student | Add plan | Add a study plan to group all the events
-
-|`* * *` |Student | Delete plan | Delete a study plan
-
-|`* * *` |Student | Schedule plan | Schedule a plan to timetable
 
 |`* *`   |Student | Easily find my free slots without looking at my schedule | Do not need to strain my eyes
 

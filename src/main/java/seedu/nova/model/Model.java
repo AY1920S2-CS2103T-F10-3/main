@@ -12,6 +12,7 @@ import seedu.nova.model.event.Event;
 import seedu.nova.model.event.Lesson;
 import seedu.nova.model.person.Person;
 import seedu.nova.model.plan.Task;
+import seedu.nova.model.plan.TaskDetails;
 import seedu.nova.model.plan.TaskFreq;
 import seedu.nova.model.progresstracker.ProgressTracker;
 import seedu.nova.model.schedule.SchedulerException;
@@ -121,9 +122,11 @@ public interface Model {
 
     boolean addRoutineTask(String name, TaskFreq freq, Duration duration);
 
-    boolean addFlexibleTask(String name, TaskFreq freq, Duration min, Duration max);
+    boolean addFlexibleTask(String name, Duration total, Duration min, Duration max);
 
     List<Task> getTaskList();
+
+    Task searchTask(TaskDetails details);
 
     boolean generateTaskEvent(Task task, LocalDate date) throws Exception;
 }

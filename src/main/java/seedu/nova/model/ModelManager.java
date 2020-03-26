@@ -24,6 +24,7 @@ import seedu.nova.model.plan.Plan;
 import seedu.nova.model.plan.StrongTask;
 import seedu.nova.model.plan.StudyPlan;
 import seedu.nova.model.plan.Task;
+import seedu.nova.model.plan.TaskDetails;
 import seedu.nova.model.plan.TaskFreq;
 import seedu.nova.model.plan.WeakTask;
 import seedu.nova.model.progresstracker.ProgressTracker;
@@ -68,14 +69,14 @@ public class ModelManager implements Model {
     //=========== UserPrefs ==================================================================================
 
     @Override
-    public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
-        requireNonNull(userPrefs);
-        this.userPrefs.resetData(userPrefs);
+    public ReadOnlyUserPrefs getUserPrefs() {
+        return userPrefs;
     }
 
     @Override
-    public ReadOnlyUserPrefs getUserPrefs() {
-        return userPrefs;
+    public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
+        requireNonNull(userPrefs);
+        this.userPrefs.resetData(userPrefs);
     }
 
     @Override
@@ -112,15 +113,15 @@ public class ModelManager implements Model {
         return progressTracker;
     }
 
+    @Override
+    public ReadOnlyAddressBook getAddressBook() {
+        return addressBook;
+    }
+
     //=========== AddressBook ================================================================================
     @Override
     public void setAddressBook(ReadOnlyAddressBook addressBook) {
         this.addressBook.resetData(addressBook);
-    }
-
-    @Override
-    public ReadOnlyAddressBook getAddressBook() {
-        return addressBook;
     }
 
     @Override
@@ -230,13 +231,18 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public boolean addFlexibleTask(String name, TaskFreq freq, Duration min, Duration max) {
-        return plan.addTask(WeakTask.get(name, min, max, freq));
+    public boolean addFlexibleTask(String name, Duration total, Duration min, Duration max) {
+        return plan.addTask(WeakTask.get(name, min, max, total));
     }
 
     @Override
     public List<Task> getTaskList() {
         return plan.getTaskList();
+    }
+
+    @Override
+    public Task searchTask(TaskDetails details) {
+        return plan.searchTask(details);
     }
 
     @Override

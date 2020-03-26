@@ -16,14 +16,16 @@ import seedu.nova.model.util.time.slotlist.DateTimeSlotList;
  */
 public class WeakTask extends Task {
     private Duration maxDuration;
+    private Duration total;
 
-    private WeakTask(TaskDetails details, Duration maxDuration) {
+    private WeakTask(TaskDetails details, Duration maxDuration, Duration total) {
         super(details);
         this.maxDuration = maxDuration;
+        this.total = total;
     }
 
-    public static WeakTask get(String name, Duration mind, Duration maxd, TaskFreq freq) {
-        return new WeakTask(new TaskDetails(name, mind, freq), maxd);
+    public static WeakTask get(String name, Duration mind, Duration maxd, Duration total) {
+        return new WeakTask(new TaskDetails(name, mind, TaskFreq.DAILY), maxd, total);
     }
 
     public Duration getMaxDuration() {

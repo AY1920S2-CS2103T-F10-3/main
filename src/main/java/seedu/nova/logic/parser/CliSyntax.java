@@ -17,5 +17,11 @@ public class CliSyntax {
     public static final Prefix PREFIX_TIME = new Prefix("t\\");
     public static final Prefix PREFIX_KEYWORD = new Prefix("k\\");
     public static final Prefix PREFIX_PROJECT = new Prefix("p\\");
+    public static final Prefix PREFIX_TASK_NAME = new Prefix("p\\");
     public static final Prefix PREFIX_WEEK = new Prefix("w\\");
+
+    public static final Prefix PREFIX_MIN_DURATION = new Prefix("mind\\");
+    public static final Prefix PREFIX_MAX_DURATION = new Prefix("maxd\\");
+    public static final Prefix PREFIX_FREQ = new Prefix("f\\");
+    public static final Prefix PREFIX_DURATION = new Prefix("d\\");
 }

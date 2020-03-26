@@ -12,6 +12,7 @@ import seedu.nova.logic.commands.commoncommands.NavCommand;
 import seedu.nova.logic.parser.abparsers.AddressBookParser;
 import seedu.nova.logic.parser.eventparsers.EventParser;
 import seedu.nova.logic.parser.exceptions.ParseException;
+import seedu.nova.logic.parser.plannerparser.PlannerParser;
 import seedu.nova.logic.parser.ptparsers.ProgresstrackerParser;
 import seedu.nova.logic.parser.scparser.ScheduleParser;
 import seedu.nova.model.Model;
@@ -28,8 +29,9 @@ public class LogicParser {
     private final NavCommandParser navCommandParser;
     private final AddressBookParser addressBookParser;
     private final EventParser eventParser;
-    private final seedu.nova.logic.parser.scparser.ScheduleParser scheduleParser;
+    private final ScheduleParser scheduleParser;
     private final ProgresstrackerParser progresstrackerParser;
+    private final PlannerParser plannerParser;
     private Model model;
 
     public LogicParser(Model model) {
@@ -39,11 +41,13 @@ public class LogicParser {
         eventParser = new EventParser();
         scheduleParser = new ScheduleParser();
         progresstrackerParser = new ProgresstrackerParser();
+        plannerParser = new PlannerParser();
         this.model = model;
     }
 
     /**
      * Parses user input into command for execution.
+     *
      * @param userInput full user input string
      * @return the command based on the user input
      * @throws ParseException if the user input does not conform the expected format
@@ -100,6 +104,9 @@ public class LogicParser {
 
             case PROGRESSTRACKER:
                 return progresstrackerParser.parseCommand(commandWord, arguments);
+
+            case PLANNER:
+                return plannerParser.parseCommand(commandWord, arguments);
 
             default:
                 throw new ParseException("No such mode");
