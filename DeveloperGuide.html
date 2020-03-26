@@ -28,9 +28,9 @@
 <li><a href="#design-considerations">3.1.2. Design Considerations</a></li>
 </ul>
 </li>
-<li><a href="#proposed-undo-redo-feature">3.2. [Proposed] Undo/Redo feature</a>
+<li><a href="#address-book">3.2. Address Book</a>
 <ul class="sectlevel3">
-<li><a href="#proposed-implementation">3.2.1. Proposed Implementation</a></li>
+<li><a href="#implementation-undo-or-redo-command">3.2.1. Implementation - Undo or redo command</a></li>
 <li><a href="#design-considerations-2">3.2.2. Design Considerations</a>
 <ul class="sectlevel4">
 <li><a href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></li>
@@ -328,7 +328,23 @@ The following class plays an important role at the architecture level:</p>
 <div class="sect2">
 <h3 id="Design-Commons"><a class="link" href="#Design-Commons">2.6. Common classes</a></h3>
 <div class="paragraph">
-<p>Classes used by multiple components are in the <code>seedu.nova.commons</code> package.</p>
+<p>Classes used by multiple components are in the <code>seedu.nova.commons</code> package.
+All of the classes under <code>Commons</code> work independently.</p>
+</div>
+<div class="paragraph">
+<p>Most notably,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/src/main/java/seedu/nova/commons/core/index/LogsCenter.java"><code>LogsCenter.java</code></a><br>
+The <code>LogsCenter</code> is used by NOVA to display logs when running NOVA in terminal.</p>
+</li>
+<li>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/src/main/java/seedu/nova/commons/core/index/Messages.java"><code>Messages.java</code></a><br>
+The <code>Messages</code> is used by Address Book feature and deals with messages to display regarding Address Book.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -443,9 +459,52 @@ The operation is exposed in the <code>Model</code> interface as <code>Model#mark
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-undo-redo-feature"><a class="link" href="#proposed-undo-redo-feature">3.2. [Proposed] Undo/Redo feature</a></h3>
+<h3 id="address-book"><a class="link" href="#address-book">3.2. Address Book</a></h3>
+<div class="paragraph">
+<p>The address book feature handles the contact list of the users. Users are able to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>add contacts</p>
+</li>
+<li>
+<p>edit contacts</p>
+</li>
+<li>
+<p>delete contacts</p>
+</li>
+<li>
+<p>find contacts</p>
+</li>
+<li>
+<p>list all contacts</p>
+</li>
+<li>
+<p>list category specific contacts</p>
+</li>
+<li>
+<p>add category specific remark for contacts</p>
+</li>
+<li>
+<p>edit category specific remark for contacts</p>
+</li>
+<li>
+<p>delete category specific remark for contacts</p>
+</li>
+<li>
+<p>undo or redo command</p>
+</li>
+<li>
+<p>add profile picture to contacts</p>
+</li>
+<li>
+<p>delete profile picture to contacts</p>
+</li>
+</ul>
+</div>
 <div class="sect3">
-<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">3.2.1. Proposed Implementation</a></h4>
+<h4 id="implementation-undo-or-redo-command"><a class="link" href="#implementation-undo-or-redo-command">3.2.1. Implementation - Undo or redo command</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>VersionedAddressBook</code>.
 It extends <code>AddressBook</code> with an undo/redo history, stored internally as an <code>addressBookStateList</code> and <code>currentStatePointer</code>.
@@ -483,7 +542,7 @@ Additionally, it implements the following operations:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/UndoRedoState1.png" alt="UndoRedoState1">
+<img src="images/UndoRedoState1edited.png" alt="UndoRedoState1edited">
 </div>
 </div>
 <div class="paragraph">
@@ -491,7 +550,7 @@ Additionally, it implements the following operations:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/UndoRedoState2.png" alt="UndoRedoState2">
+<img src="images/UndoRedoState2edited.png" alt="UndoRedoState2edited">
 </div>
 </div>
 <div class="admonitionblock note">
@@ -1543,4 +1602,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-26 13:04:13 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-26 13:36:36 UTC</div></div></div></body></html>
