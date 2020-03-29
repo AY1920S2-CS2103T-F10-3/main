@@ -12,9 +12,9 @@ import org.junit.jupiter.api.Test;
 import seedu.nova.logic.commands.abcommands.AbAddCommand;
 import seedu.nova.model.Model;
 import seedu.nova.model.ModelManager;
+import seedu.nova.model.Schedule;
 import seedu.nova.model.UserPrefs;
 import seedu.nova.model.person.Person;
-import seedu.nova.model.schedule.Schedule;
 import seedu.nova.testutil.PersonBuilder;
 
 /**

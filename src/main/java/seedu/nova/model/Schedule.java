@@ -1,14 +1,11 @@
-package seedu.nova.model.schedule;
+package seedu.nova.model;
 
 import static java.time.temporal.ChronoUnit.DAYS;
 
-import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.time.LocalTime;
 
 import seedu.nova.model.event.Event;
 import seedu.nova.model.event.Lesson;
-import seedu.nova.model.util.time.TimeUtil;
 
 /**
  * The type Schedule.
@@ -35,32 +32,15 @@ public class Schedule {
         this.startDate = startDate;
         this.endDate = endDate;
 
-        weeks = new Week[TimeUtil.noOfWeeks(startDate, endDate)];
-        for (int i = 0; i < weeks.length; i++) {
-            weeks[i] = new Week(startDate.plusDays(7 * i));
-        }
-
-
-        try {
-            this.addLesson(new Lesson("CS2103 Tutorial", "COM1-B103", LocalTime.of(10, 0),
-                    LocalTime.of(11, 0), DayOfWeek.FRIDAY));
-        } catch (SchedulerException e) {
-            //Do nothing
-        }
-    }
-
-    public Day getDay(LocalDate date) {
-        int weekNumber = calWeekNumber(date);
-        return weeks[weekNumber].getDay(date);
+        weeks = new Week[17];
     }
 
     /**
      * Adds event.
      *
      * @param event the event
-     * @throws SchedulerException the command exception
      */
-    public boolean addEvent(Event event) throws SchedulerException {
+    public void addEvent(Event event) {
 
         LocalDate date = event.getDate();
         int weekNumber = calWeekNumber(date);
@@ -69,34 +49,17 @@ public class Schedule {
             weeks[weekNumber] = new Week(startDate.plusWeeks(weekNumber));
         }
 
-        return weeks[weekNumber].addEvent(event);
+        weeks[weekNumber].addEvent(event);
 
     }
 
     /**
-     * Delete event.
-     *
-     * @param event the event
-     * @throws SchedulerException the scheduler exception
-     */
-    public boolean deleteEvent(Event event) throws SchedulerException {
-
-        LocalDate date = event.getDate();
-        int weekNumber = calWeekNumber(date);
-        if (weeks[weekNumber] == null) {
-            throw new SchedulerException("");
-        }
-        return weeks[weekNumber].deleteEvent(event);
-    }
-
-    /**
-     * Add lesson.
+     * Adds lesson.
      *
      * @param lesson the lesson
-     * @throws SchedulerException the scheduler exception
      */
-    public boolean addLesson(Lesson lesson) throws SchedulerException {
-        boolean ans = true;
+    public void addLesson(Lesson lesson) {
+
         for (int i = 0; i < 14; i++) {
 
             if (i == ACTUAL_RECESS_WEEK) {
@@ -107,9 +70,8 @@ public class Schedule {
             if (weeks[i] == null) {
                 weeks[i] = new Week(startDate.plusWeeks(i));
             }
-            ans &= weeks[i].addEvent(lesson);
+            weeks[i].addLesson(lesson);
         }
-        return ans;
     }
 
     /**

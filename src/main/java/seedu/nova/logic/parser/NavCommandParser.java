@@ -29,9 +29,6 @@ public class NavCommandParser implements Parser<NavCommand> {
         case "progresstracker":
             return new NavCommand(ModeEnum.PROGRESSTRACKER);
 
-        case "planner":
-            return new NavCommand(ModeEnum.PLANNER);
-
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }

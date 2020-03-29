@@ -8,6 +8,5 @@ public enum ModeEnum {
     ADDRESSBOOK,
     EVENT,
     SCHEDULE,
-    PROGRESSTRACKER,
-    PLANNER
+    PROGRESSTRACKER
 }

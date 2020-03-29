@@ -11,7 +11,8 @@ import java.time.format.FormatStyle;
 public class StudySession extends Event {
 
     public StudySession(String desc, String venue, LocalTime startTime, LocalTime endTime, LocalDate date) {
-        super(desc, venue, startTime, endTime, date);
+        super(desc, venue, startTime, endTime);
+        this.date = date;
     }
 
     @Override
