@@ -74,7 +74,7 @@ _[.small]#Fig 4: GUI of NOVA#_
 
 * *`nav ab`*: navigates to address book mode.
 +
-image::userguide/GUI.png[width="790" align="center"]
+image::userguide/addressbook.png[width="790" align="center"]
 [.text-center]
 _[.small]#Fig 4.1: GUI of NOVA after entering `nav ab`#_
 +
@@ -82,14 +82,14 @@ You can use the following commands once you are in address book mode:
 
 ** *`list`* : lists all contacts
 +
-image::userguide/GUI.png[width="790" align="center"]
+image::userguide/addressbooklist.png[width="790" align="center"]
 [.text-center]
 _[.small]#Fig 4.2: GUI of NOVA after entering `list`#_
 +
 ** *`add`*`n\John Doe p\98765432 e\\john@gmail.com c\classmate` : adds a contact named *John Doe* to the Address Book
  and categorise as classmate
 +
-image::userguide/GUI.png[width="790" align="center"]
+image::userguide/addressbookadd.png[width="790" align="center"]
 [.text-center]
 _[.small]#Fig 4.3: GUI of NOVA after entering `add n\John Doe p\98765432 e\\john@gmail.com c\classmate`#_
 +
@@ -129,9 +129,9 @@ Suppose you want to use the address book, +
 
 NOVA will change the mode to address book as seen below.
 
-image::userguide/GUI.png[width="790" align="center"]
+image::userguide/addressbook.png[width="790" align="center"]
 [.text-center]
-_[.small]#Fig 5.1.2: GUI of NOVA after entering `nav schedule`#_
+_[.small]#Fig 5.1.2: GUI of NOVA after entering `nav ab`#_
 
 <<Top, [Back to Top]>>
 
@@ -140,7 +140,7 @@ Learn how to work with the Address Book in NOVA. The address book feature allows
 your teammates and classmates. Access this mode by entering the command `nav ab`. Your NOVA should look something
 like Figure 3.2 below.
 
-image::addressbook.png[width="790" align="center"]
+image::userguide/addressbook.png[width="790" align="center"]
 [.text-center]
 _[.small]#Fig 5.2: GUI of NOVA after user typed contact `nav ab`#_
 
@@ -158,17 +158,17 @@ The name you add will be automatically formatted. (E.g. "jane doe" will become "
 ====
 
 Example: +
-Suppose you want to add your classmate named Jane Doe, with phone number 12345678 and email address janedoe@gmail.com
+Suppose you want to add your classmate named Jane Doe, with phone number 98765432 and email address john@gmail.com
 into NOVA,
 
-`add n\Jane Doe p\12345678 e\\janedoe@gmail.com c\classmate`
+`add n\John Doe p\98765432 e\\john@gmail.com c\classmate`
 
-NOVA will add a new contact named Jane Doe, phone number 12345678 and email address janedoe@gmail.com into the
+NOVA will add a new contact named John Doe, phone number 98765432 and email address john@gmail.com into the
 classmate category as seen below.
 
-image::userguide/GUI.png[width="790" align="center"]
+image::userguide/addressbookadd.png[width="790" align="center"]
 [.text-center]
-_[.small]#Fig 5.2.1: GUI of NOVA after user typed contact `nav ab`#_
+_[.small]#Fig 5.2.1: GUI of NOVA after user typed contact `add n\John Doe p\98765432 e\\john@gmail.com c\classmate`#_
 
 <<Top, [Back to Top]>>
 
@@ -177,9 +177,9 @@ You can list the contact's name, phone number and category of all contacts.
 
 Format: `list`
 
-image::userguide/GUI.png[width="790" align="center"]
+image::userguide/addressbooklist.png[width="790" align="center"]
 [.text-center]
-_[.small]#Fig 5.2.2: GUI of NOVA after user typed contact `nav ab`#_
+_[.small]#Fig 5.2.2: GUI of NOVA after user typed contact `list`#_
 
 <<Top, [Back to Top]>>
 
@@ -202,9 +202,9 @@ Example:
 +
 NOVA will lists all your contacts in the `classmate` category as seen below.
 +
-image::userguide/GUI.png[width="790" align="center"]
+image::userguide/addressbooklistclassmate.png[width="790" align="center"]
 [.text-center]
-_[.small]#Fig 5.2: GUI of NOVA after user typed contact `nav ab`#_
+_[.small]#Fig 5.2: GUI of NOVA after user typed contact `list c\classmate`#_
 +
 * Suppose you want to view all the teammate contacts that you have added into NOVA,
 +
@@ -212,9 +212,9 @@ _[.small]#Fig 5.2: GUI of NOVA after user typed contact `nav ab`#_
 +
 NOVA will lists all your contacts in the `teammate` category as seen below.
 +
-image::userguide/GUI.png[width="790" align="center"]
+image::userguide/addressbooklistteammate.png[width="790" align="center"]
 [.text-center]
-_[.small]#Fig 5.2: GUI of NOVA after user typed contact `nav ab`#_
+_[.small]#Fig 5.2: GUI of NOVA after user typed contact `list c\teammate`#_
 +
 <<Top, [Back to Top]>>
 
@@ -236,19 +236,19 @@ Example:
 +
 NOVA will find and list saved contacts named Jane Doe.
 
-image::userguide/GUI.png[width="790" align="center"]
+image::userguide/addressbookfind.png[width="790" align="center"]
 [.text-center]
-_[.small]#Fig 5.2: GUI of NOVA after user typed contact `nav ab`#_
+_[.small]#Fig 5.2: GUI of NOVA after user typed contact `find n\Jane doe`#_
 
-* Or you can find Jane Doe with just Jane,
+* Or you can find Jane Doe with just Doe,
 +
-`find n\Jane`
+`find n\Doe`
 +
-NOVA will find and list saved contacts named Jane.
+NOVA will find and list saved contacts named Doe.
 
-image::userguide/GUI.png[width="790" align="center"]
+image::userguide/addressbookfinddoe.png[width="790" align="center"]
 [.text-center]
-_[.small]#Fig 5.2: GUI of NOVA after user typed contact `nav ab`#_
+_[.small]#Fig 5.2: GUI of NOVA after user typed contact `find n\Doe`#_
 
 <<Top, [Back to Top]>>
 
@@ -299,9 +299,9 @@ Suppose you want add remark to the first contact in your address book after usin
 
 NOVA will add the remark "He's a nice teammate" to the first contact in your address book.
 
-image::userguide/GUI.png[width="790" align="center"]
+image::userguide/addressbookremark.png[width="790" align="center"]
 [.text-center]
-_[.small]#Fig 5.2: GUI of NOVA after user typed contact `nav ab`#_
+_[.small]#Fig 5.2: GUI of NOVA after user typed contact `remark i\1 r\He's a nice teammate`#_
 
 <<Top, [Back to Top]>>
 
@@ -324,9 +324,9 @@ Suppose you want to delete the first contact in your address book after using th
 
 NOVA will delete the first contact in the list.
 
-image::userguide/GUI.png[width="790" align="center"]
+image::userguide/addressbookdelete.png[width="790" align="center"]
 [.text-center]
-_[.small]#Fig 5.2: GUI of NOVA after user typed contact `nav ab`#_
+_[.small]#Fig 5.2: GUI of NOVA after user typed contact `delete i\1`#_
 
 <<Top, [Back to Top]>>
 
@@ -338,9 +338,9 @@ Format: `clear`
 [WARNING]
 Using `clear` command will **delete all** the contacts that you have saved.
 
-image::userguide/GUI.png[width="790" align="center"]
+image::userguide/addressbookclear.png[width="790" align="center"]
 [.text-center]
-_[.small]#Fig 5.2: GUI of NOVA after user typed contact `nav ab`#_
+_[.small]#Fig 5.2: GUI of NOVA after user typed contact `clear`#_
 
 <<Top, [Back to Top]>>
 
@@ -349,9 +349,9 @@ You can undo a command that you have entered. If you cannot undo, NOVA will let 
 
 Format: `undo`
 
-image::userguide/GUI.png[width="790" align="center"]
+image::userguide/addressbookundo.png[width="790" align="center"]
 [.text-center]
-_[.small]#Fig 5.2: GUI of NOVA after user typed contact `nav ab`#_
+_[.small]#Fig 5.2: GUI of NOVA after user typed contact `undo`#_
 
 <<Top, [Back to Top]>>
 
@@ -364,9 +364,9 @@ Format: `redo`
 [WARNING]
 After you successfully entered a command (apart from undo) after an undo command, you will lose all undone commands.
 
-image::userguide/GUI.png[width="790" align="center"]
+image::userguide/addressbookredo.png[width="790" align="center"]
 [.text-center]
-_[.small]#Fig 5.2: GUI of NOVA after user typed contact `nav ab`#_
+_[.small]#Fig 5.2: GUI of NOVA after user typed contact `redo`#_
 
 <<Top, [Back to Top]>>
 
