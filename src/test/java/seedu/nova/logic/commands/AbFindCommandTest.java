@@ -31,11 +31,6 @@ public class AbFindCommandTest {
     private final Nova nova = new Nova();
     private final VersionedAddressBook ab = new VersionedAddressBook(getTypicalAddressBook());
 
-    /*private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs(), new Schedule(LocalDate.of(2020,
-            1, 13), LocalDate.of(2020, 5, 3)), new StudyPlan());
-    private Model expectedModel = new ModelManager(getTypicalAddressBook(), new UserPrefs(),
-            new Schedule(LocalDate.of(2020, 1, 13), LocalDate.of(2020, 5, 3)), new StudyPlan()); */
-
     @Test
     public void equals() {
         NameContainsKeywordsPredicate firstPredicate =

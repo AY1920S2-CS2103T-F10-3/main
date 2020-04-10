@@ -1,7 +1,6 @@
 package seedu.nova.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-//import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.nova.testutil.Assert.assertThrows;
@@ -24,17 +23,6 @@ public class AbAddCommandTest {
     public void constructor_nullPerson_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> new AbAddCommand(null));
     }
-
-    /*@Test
-    public void execute_personAcceptedByModel_addSuccessful() throws Exception {
-        ModelStubAcceptingPersonAdded modelStub = new ModelStubAcceptingPersonAdded();
-        Person validPerson = new PersonBuilder().build();
-
-        CommandResult commandResult = new AbAddCommand(validPerson).execute(modelStub);
-
-        assertEquals(String.format(AbAddCommand.MESSAGE_SUCCESS, validPerson), commandResult.getFeedbackToUser());
-        assertEquals(Arrays.asList(validPerson), modelStub.personsAdded);
-    } */
 
     @Test
     public void execute_duplicatePerson_throwsCommandException() {

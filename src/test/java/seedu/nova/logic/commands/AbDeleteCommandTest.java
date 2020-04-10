@@ -43,6 +43,7 @@ public class AbDeleteCommandTest {
                 AbDeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS, personToDelete);
 
         ModelManager expectedModel = new ModelManager(model.getNova(), new UserPrefs());
+
         //expectedModel.deletePerson(personToDelete);
 
         assertCommandSuccess(abDeleteCommand, model, expectedMessage, expectedModel);

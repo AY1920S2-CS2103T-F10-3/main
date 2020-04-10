@@ -10,15 +10,15 @@ import static seedu.nova.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 import static seedu.nova.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.nova.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
 import static seedu.nova.logic.commands.CommandTestUtil.PHONE_DESC_BOB;
-import static seedu.nova.logic.commands.CommandTestUtil.TAG_DESC_FRIEND;
-import static seedu.nova.logic.commands.CommandTestUtil.TAG_DESC_HUSBAND;
+import static seedu.nova.logic.commands.CommandTestUtil.TAG_DESC_CLASSMATE;
+import static seedu.nova.logic.commands.CommandTestUtil.TAG_DESC_TEAMMATE;
 import static seedu.nova.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
 import static seedu.nova.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.nova.logic.commands.CommandTestUtil.VALID_NAME_AMY;
 import static seedu.nova.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
 import static seedu.nova.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
-import static seedu.nova.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
-import static seedu.nova.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.nova.logic.commands.CommandTestUtil.VALID_TAG_CLASSMATE;
+import static seedu.nova.logic.commands.CommandTestUtil.VALID_TAG_TEAMMATE;
 import static seedu.nova.logic.parser.CliSyntax.PREFIX_CATEGORY;
 import static seedu.nova.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.nova.logic.parser.CommandParserTestUtil.assertParseSuccess;
@@ -90,9 +90,8 @@ public class AbEditCommandParserTest {
 
         // while parsing {@code PREFIX_TAG} alone will reset the tags of the {@code Person} being edited,
         // parsing it together with a valid tag results in error
-        /*assertParseFailure(parser, "1" + TAG_DESC_HUSBAND, Category.MESSAGE_CONSTRAINTS);
-        assertParseFailure(parser, "1" + TAG_DESC_FRIEND, Category.MESSAGE_CONSTRAINTS);
-        assertParseFailure(parser, "1" + TAG_DESC_HUSBAND, Category.MESSAGE_CONSTRAINTS);*/
+        assertParseFailure(parser, " i\\1" + " c\\classmates", Category.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, " i\\1" + " c\\teammates", Category.MESSAGE_CONSTRAINTS);
 
         // multiple invalid values, but only the first invalid value is captured
         assertParseFailure(parser, " i\\1" + INVALID_NAME_DESC + INVALID_EMAIL_DESC + VALID_PHONE_AMY,
@@ -102,12 +101,12 @@ public class AbEditCommandParserTest {
     @Test
     public void parse_allFieldsSpecified_success() {
         Index targetIndex = INDEX_SECOND_PERSON;
-        String userInput = " i\\" + targetIndex.getOneBased() + PHONE_DESC_BOB + TAG_DESC_HUSBAND
+        String userInput = " i\\" + targetIndex.getOneBased() + PHONE_DESC_BOB + TAG_DESC_TEAMMATE
                 + EMAIL_DESC_AMY + NAME_DESC_AMY;
 
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
                 .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_AMY)
-                .withTags(VALID_TAG_HUSBAND).build();
+                .withTags(VALID_TAG_TEAMMATE).build();
         AbEditCommand expectedCommand = new AbEditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
@@ -147,8 +146,8 @@ public class AbEditCommandParserTest {
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // tags
-        userInput = " i\\" + targetIndex.getOneBased() + TAG_DESC_FRIEND;
-        descriptor = new EditPersonDescriptorBuilder().withTags(VALID_TAG_FRIEND).build();
+        userInput = " i\\" + targetIndex.getOneBased() + TAG_DESC_CLASSMATE;
+        descriptor = new EditPersonDescriptorBuilder().withTags(VALID_TAG_CLASSMATE).build();
         expectedCommand = new AbEditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
     }

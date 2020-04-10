@@ -17,10 +17,4 @@ public class CategoryTest {
         assertThrows(IllegalArgumentException.class, () -> new Category(invalidTagName));
     }
 
-    @Test
-    public void isValidTagName() {
-        // null tag name
-        assertThrows(NullPointerException.class, () -> Category.isValidTagName(null));
-    }
-
 }

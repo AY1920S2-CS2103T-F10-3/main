@@ -5,8 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.nova.logic.commands.CommandTestUtil.DESC_AMY;
 import static seedu.nova.logic.commands.CommandTestUtil.DESC_BOB;
 import static seedu.nova.logic.commands.CommandTestUtil.VALID_NAME_BOB;
-//import static seedu.nova.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
-//import static seedu.nova.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.nova.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.nova.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.nova.logic.commands.CommandTestUtil.showPersonAtIndex;
@@ -30,7 +28,6 @@ import seedu.nova.model.person.Person;
 import seedu.nova.testutil.EditPersonDescriptorBuilder;
 import seedu.nova.testutil.PersonBuilder;
 
-/*
 /**
  * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand)
  * and unit tests for AbEditCommand.
@@ -50,8 +47,6 @@ public class AbEditCommandTest {
         AbEditCommand abEditCommand = new AbEditCommand(INDEX_FIRST_PERSON, descriptor);
 
         String expectedMessage = String.format(AbEditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedPerson);
-
-        //Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         Model expectedModel = new ModelManager(model.getNova(), new UserPrefs());
         expectedModel.setPerson(model.getFilteredPersonList().get(0), editedPerson);
 
@@ -72,26 +67,6 @@ public class AbEditCommandTest {
 
         assertCommandSuccess(abEditCommand, model, expectedMessage, expectedModel);
     }
-
-    /*@Test
-    public void execute_filteredList_success() {
-        nova.setAddressBookNova(ab);
-        Model model = new ModelManager(nova, new UserPrefs());
-
-        showPersonAtIndex(model, INDEX_FIRST_PERSON);
-
-        Person personInFilteredList = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        Person editedPerson = new PersonBuilder(personInFilteredList).withName(VALID_NAME_BOB).build();
-        AbEditCommand abEditCommand = new AbEditCommand(INDEX_FIRST_PERSON,
-                new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB).build());
-
-        String expectedMessage = String.format(AbEditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedPerson);
-
-        Model expectedModel = new ModelManager(model.getNova(), new UserPrefs());
-        expectedModel.setPerson(model.getFilteredPersonList().get(0), editedPerson);
-
-        assertCommandSuccess(abEditCommand, model, expectedMessage, expectedModel);
-    }*/
 
     @Test
     public void execute_duplicatePersonUnfilteredList_failure() {

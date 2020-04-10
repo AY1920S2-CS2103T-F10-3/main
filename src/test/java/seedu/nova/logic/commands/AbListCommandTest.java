@@ -44,7 +44,7 @@ public class AbListCommandTest {
                 + "4. Daniel Meier, Phone: 87652533, Email: cornelia@example.com, Category: classmate\n"
                 + "5. Elle Meyer, Phone: 9482224, Email: werner@example.com, Category: classmate\n"
                 + "6. Fiona Kunz, Phone: 9482427, Email: lydia@example.com, Category: classmate\n"
-                + "7. George Best, Phone: 9482442, Email: anna@example.com, Category: classmate\n";
+                + "7. George Best, Phone: 9482442, Email: anna@example.com, Category: teammate\n";
         assertCommandSuccess(new AbListCommand(), model, expectedMessage, expectedModel);
     }
 
@@ -59,7 +59,7 @@ public class AbListCommandTest {
                 + "4. Daniel Meier, Phone: 87652533, Email: cornelia@example.com, Category: classmate\n"
                 + "5. Elle Meyer, Phone: 9482224, Email: werner@example.com, Category: classmate\n"
                 + "6. Fiona Kunz, Phone: 9482427, Email: lydia@example.com, Category: classmate\n"
-                + "7. George Best, Phone: 9482442, Email: anna@example.com, Category: classmate\n";
+                + "7. George Best, Phone: 9482442, Email: anna@example.com, Category: teammate\n";
         assertCommandSuccess(new AbListCommand(), model, expectedMessage, expectedModel);
     }
 }
