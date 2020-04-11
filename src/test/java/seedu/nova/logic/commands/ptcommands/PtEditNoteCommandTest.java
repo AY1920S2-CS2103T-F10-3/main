@@ -3,6 +3,7 @@ package seedu.nova.logic.commands.ptcommands;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.nova.logic.commands.CommandTestUtil.assertCommandFailure;
+import static seedu.nova.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.nova.testutil.Assert.assertThrows;
 import static seedu.nova.testutil.TypicalPersons.getTypicalAddressBook;
 import static seedu.nova.testutil.TypicalPtTasks.getTypicalProgressTracker;
@@ -39,7 +40,6 @@ public class PtEditNoteCommandTest {
                 null));
     }
 
-    /*
     @Test
     public void execute_validProjectAndWeekAndTaskIndex_success() {
         nova.setProgressTrackerNova(pt);
@@ -54,7 +54,6 @@ public class PtEditNoteCommandTest {
 
         assertCommandSuccess(ptEditNoteCommand, model, expectedMessage, expectedModel);
     }
-    */
 
     @Test
     public void execute_invalidWeekIndex_throwsCommandException() {
