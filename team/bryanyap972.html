@@ -10,7 +10,7 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>NOVA is a desktop application to help CS2103T with event planning and managing schedules.</p>
+<p>NOVA is a desktop application to help CS2103T with event planning, managing schedules and keeping track of their project tasks.</p>
 </div>
 </div>
 </div>
@@ -23,13 +23,76 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>:</p>
+<p><strong>Major enhancement</strong>:
+I added the ability to add project tasks into individual and team project.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Allows users to add tasks into specific weeks of projects.</p>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>:</p>
+<p>Justification: This enables users to keep track of the tasks that they need to complete each week for the projects.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>:</p>
+<p>Highlights: The implementation required thinking of design restrictions such as having only 13 weeks since there are
+only 13 weeks in a semester before project submission as well as having only two projects in the module.</p>
+</li>
+<li>
+<p>Credits: The parsers used for the commands were modified versions of the parsers from AddressBook 3.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Major enhancement</strong>:
+I added the ability to navigate between the different features.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Allows users to navigate to the different features of the application.</p>
+</li>
+<li>
+<p>Justification: This enables the team to reuse command keywords since the parsers and commands can be separate now.
+This also enables users to receive feature specific information such as specific error messages and helpbox at the side.</p>
+</li>
+<li>
+<p>Highlights: This enhancement affects the parsers and command keywords that is available to the team to use.
+This also helped reduce the dependency of the different features and helped to link the different customisation and parsers
+together.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>:
+I added the ability to list tasks from a specific week of the projects. This allows the user to view the tasks that they
+have added.</p>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>:
+I added the ability to delete tasks. This allows the user to delete the tasks that they
+have added so that they can fix errors they made.</p>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>:
+I added the ability to edit tasks. This allows the user to edit the tasks that they
+have added so that they can fix minor errors they made without having to delete and re-add tasks.</p>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>:
+I added the ability to add a note to tasks. This allows users to add additional information to a task.</p>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>:
+I added the ability to delete note to tasks. This allows user to delete note that have been wrongly added.</p>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>:
+I added the ability to edit note added to tasks. This allows user to make corrections to errors in notes without having
+to delete and re-add a note.</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: <a href="https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2020-02-14&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=BryanYap972&amp;tabRepo=AY1920S2-CS2103T-F10-3%2Fmain%5Bmaster%5D" class="bare">https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2020-02-14&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=BryanYap972&amp;tabRepo=AY1920S2-CS2103T-F10-3%2Fmain%5Bmaster%5D</a></p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -37,18 +100,62 @@
 <ul>
 <li>
 <p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Acted as the main maintainer for team repository and ensured that code quality was up to standard before merging.</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p>Enhancements to existing features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Formatted GUI (added help box and the formatting of the components) and changed colour scheme of GUI
+(<a href="https://github.com/AY1920S2-CS2103T-F10-3/main/pull/112">#112</a>)</p>
 </li>
 <li>
-<p>Documentation:</p>
+<p>Changed the team&#8217;s website. Removed unnecessary links and headers (<a href="https://github.com/AY1920S2-CS2103T-F10-3/main/pull/57">#57</a>)</p>
+</li>
+<li>
+<p>Refactored AB3 storage to better fit the team features (<a href="https://github.com/AY1920S2-CS2103T-F10-3/main/pull/238">#238</a>).</p>
+</li>
+<li>
+<p>Added Home page and Help message for Home page (<a href="https://github.com/AY1920S2-CS2103T-F10-3/main/pull/190">#190</a>, <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/pull/401">#401</a>)</p>
+</li>
+<li>
+<p>Implemented LogicParser class to integrate the different features' parsers (<a href="https://github.com/AY1920S2-CS2103T-F10-3/main/pull/118">#118</a>)</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/pull/150">#150</a>, <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/pull/235">#235</a></p>
+</li>
+<li>
+<p>Rreported bugs and gave suggestions for other teams in the class (examples: <a href="https://github.com/nus-cs2103-AY1920S2/addressbook-level3/pull/14#pullrequestreview-382542427">1</a>, <a href="https://github.com/nus-cs2103-AY1920S2/addressbook-level3/pull/14#discussion_r388685822">2</a>, <a href="https://github.com/BryanYap972/ped/issues">3</a>).</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p>Tools:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Integrated travis CI into the project (<a href="https://github.com/AY1920S2-CS2103T-F10-3/main/pull/1">#1</a>).</p>
+</li>
+<li>
+<p>Integrated Netlify into the project.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -60,12 +167,598 @@
 <div class="sect1">
 <h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>|<em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>ProgressTracker section in user guide</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="progress-tracker"><a class="link" href="#progress-tracker">Progress Tracker</a></h3>
+<div class="paragraph">
+<p>Learn how to work with the progress tracker feature in NOVA. You can track important project tasks by adding them into the progress tracker
+and manage them easily. You need to be in Progress Tracker mode. Enter the Progress Tracker mode by entering the
+command <code>nav progresstracker</code>. Your NOVA should look something like Figure 5.5 below.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/userguide/progressTracker.png" alt="progressTracker" width="790">
+</div>
+</div>
+<div class="paragraph text-center">
+<p><em><span class="small">Fig 5.5: GUI of NOVA after typing command <code>nav progresstracker</code></span></em></p>
+</div>
+<div class="sect3">
+<h4 id="add-project-task-code-add-code"><a class="link" href="#add-project-task-code-add-code">Add Project Task: <code>add</code></a></h4>
+<div class="paragraph">
+<p>You can add tasks under projects in the progress tracker.</p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>add p\[ip/tp] w\[week number] d\[task description]</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Only <code>ip</code> and <code>tp</code> projects are available and are not case-sensitive</p>
+</li>
+<li>
+<p>There are only weeks 1 to 13 in each project</p>
+</li>
+<li>
+<p>When multiple same tags are keyed, the last tag will be taken as the input.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>add</code> is case-sensitive</p>
+</li>
+<li>
+<p><code>[week number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
+</li>
+<li>
+<p><code>[task description]</code> cannot be empty</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Example:<br>
+Suppose you want to add a task to week 3 of IP project to remind yourself to do up javaFx,</p>
+</div>
+<div class="paragraph">
+<p><code>add p\ip w\3 d\Do up javaFx</code></p>
+</div>
+<div class="paragraph">
+<p>NOVA will add a task “Do up javaFx” to week 3 of IP in progress tracker.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/userguide/addPtTaskResult.png" alt="addPtTaskResult" width="500">
+</div>
+</div>
+<div class="paragraph text-center">
+<p><em><span class="small">Fig 5.5.1: Display message after entering <code>add p\ip w\3 d\Do up javaFx</code></span></em></p>
+</div>
+<div class="paragraph">
+<p><a href="#Top">[Back to Top]</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="view-project-task-code-list-code"><a class="link" href="#view-project-task-code-list-code">View Project Task: <code>list</code></a></h4>
+<div class="paragraph">
+<p>You can view tasks under a certain week for projects in the progress tracker.</p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>list p\[ip/tp] w\[week number]</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Only <code>ip</code> and <code>tp</code> projects are available and are not case-sensitive</p>
+</li>
+<li>
+<p>There are only weeks 1 to 13 in each project</p>
+</li>
+<li>
+<p>When multiple same tags are keyed, the last tag will be taken as the input.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code> is case-sensitive</p>
+</li>
+<li>
+<p><code>[week number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Example:<br>
+Suppose you would like to view the tasks you have added to week 3 of IP project,</p>
+</div>
+<div class="paragraph">
+<p><code>list p\ip w\3</code></p>
+</div>
+<div class="paragraph">
+<p>NOVA will list the tasks in week 3 of IP project.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/userguide/listPtTask.png" alt="listPtTask" width="500">
+</div>
+</div>
+<div class="paragraph text-center">
+<p><em><span class="small">Fig 5.5.2: Display message after entering <code>list p\ip w\3</code></span></em></p>
+</div>
+<div class="paragraph">
+<p><a href="#Top">[Back to Top]</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="delete-project-task-code-delete-code"><a class="link" href="#delete-project-task-code-delete-code">Delete Project Task: <code>delete</code></a></h4>
+<div class="paragraph">
+<p>You can remove tasks under projects in the progress tracker.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>delete p\[ip/tp] w\[week number] t\[task number]</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Only <code>ip</code> and <code>tp</code> projects are available and are not case-sensitive</p>
+</li>
+<li>
+<p>There are only weeks 1 to 13 in each project</p>
+</li>
+<li>
+<p>When multiple same tags are keyed, the last tag will be taken as the input.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete</code> is case-sensitive</p>
+</li>
+<li>
+<p><code>[week number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
+</li>
+<li>
+<p><code>[task number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Example:<br>
+Suppose you wish to delete task number 1 in week 3 of IP project,</p>
+</div>
+<div class="paragraph">
+<p><code>delete p\ip w\3 t\1</code></p>
+</div>
+<div class="paragraph">
+<p>NOVA will delete task 1 in week 3 of IP in progress tracker.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/userguide/deletePtTaskResult.png" alt="deletePtTaskResult" width="500">
+</div>
+</div>
+<div class="paragraph text-center">
+<p><em><span class="small">Fig 5.5.3: Display message after entering <code>delete p\ip w\3 t\1</code></span></em></p>
+</div>
+<div class="paragraph">
+<p><a href="#Top">[Back to Top]</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="complete-tasks-code-done-code"><a class="link" href="#complete-tasks-code-done-code">Complete Tasks: <code>done</code></a></h4>
+<div class="paragraph">
+<p>You can mark tasks in the progress tracker as done.</p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>done p\[ip/tp] w\[week number] t\[task number]</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Only <code>ip</code> and <code>tp</code> projects are available and are not case-sensitive</p>
+</li>
+<li>
+<p>There are only weeks 1 to 13 in each project</p>
+</li>
+<li>
+<p>When multiple same tags are keyed, the last tag will be taken as the input.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>done</code> is case-sensitive</p>
+</li>
+<li>
+<p><code>[week number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
+</li>
+<li>
+<p><code>[task number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Example:<br>
+Suppose you wish to set task number 1 in week 3 of IP project as done or undone,</p>
+</div>
+<div class="paragraph">
+<p><code>done p\ip w\3 t\1</code></p>
+</div>
+<div class="paragraph">
+<p>NOVA will set task 1 in week 3 of IP in progress tracker as done/undone depending on it&#8217;s status originally.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/userguide/setDonePtTaskResult.png" alt="setDonePtTaskResult" width="500">
+</div>
+</div>
+<div class="paragraph text-center">
+<p><em><span class="small">Fig 5.5.4: Display message after entering <code>done p\ip w\3 t\1</code></span></em></p>
+</div>
+<div class="paragraph">
+<p><a href="#Top">[Back to Top]</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="add-notes-code-addnote-code"><a class="link" href="#add-notes-code-addnote-code">Add Notes: <code>addNote</code></a></h4>
+<div class="paragraph">
+<p>You can add notes to project tasks in the progress tracker.</p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>addNote p\[ip/tp] w\[week number] t\[task number] d\[note]</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Only <code>ip</code> and <code>tp</code> projects are available and are not case-sensitive</p>
+</li>
+<li>
+<p>There are only weeks 1 to 13 in each project</p>
+</li>
+<li>
+<p>When multiple same tags are keyed, the last tag will be taken as the input.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>addNote</code> is case-sensitive</p>
+</li>
+<li>
+<p><code>[week number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
+</li>
+<li>
+<p><code>[task number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
+</li>
+<li>
+<p><code>[note]</code> cannot be empty</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Example:<br>
+Suppose you wish to add a note to remind yourself to create a branch and tag for task number 2 in week 3 of IP project,</p>
+</div>
+<div class="paragraph">
+<p><code>addNote p\ip w\3 t\1 d\Need create branch and tag</code></p>
+</div>
+<div class="paragraph">
+<p>NOVA will add a note “Need create branch and tag” to task 1 in week 3 of IP.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/userguide/addPtNote.png" alt="addPtNote" width="500">
+</div>
+</div>
+<div class="paragraph text-center">
+<p><em><span class="small">Fig 5.5.5: Display message after entering <code>addNote p\ip w\3 t\1 d\Need create branch and tag</code></span></em></p>
+</div>
+<div class="paragraph">
+<p><a href="#Top">[Back to Top]</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="edit-note-code-editnote-code"><a class="link" href="#edit-note-code-editnote-code">Edit Note: <code>editNote</code></a></h4>
+<div class="paragraph">
+<p>You can edit the note that you have added to tasks in projects in the progress tracker.</p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>editNote p\[ip/tp] w\[week number] t\[task number] d\[new note]</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Only <code>ip</code> and <code>tp</code> projects are available and are not case-sensitive</p>
+</li>
+<li>
+<p>There are only weeks 1 to 13 in each project</p>
+</li>
+<li>
+<p>When multiple same tags are keyed, the last tag will be taken as the input.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>editNote</code> is case-sensitive</p>
+</li>
+<li>
+<p><code>[week number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
+</li>
+<li>
+<p><code>[task number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
+</li>
+<li>
+<p><code>[new note]</code> cannot be empty</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Example:<br>
+Suppose you wish to edit the note added in task 1 of week 3 in IP project,</p>
+</div>
+<div class="paragraph">
+<p><code>editNote p\ip w\3 t\1 d\consult tutor</code></p>
+</div>
+<div class="paragraph">
+<p>NOVA will edit the note under task 1 of week 3 of IP.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/userguide/editPtNote.png" alt="editPtNote" width="500">
+</div>
+</div>
+<div class="paragraph text-center">
+<p><em><span class="small">Fig 5.5.6: Display message after entering <code>editNote p\ip w\3 t\1 d\consult tutor</code></span></em></p>
+</div>
+<div class="paragraph">
+<p><a href="#Top">[Back to Top]</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="delete-note-code-deletenote-code"><a class="link" href="#delete-note-code-deletenote-code">Delete Note: <code>deleteNote</code></a></h4>
+<div class="paragraph">
+<p>You can delete the note that you have added to tasks in projects in the progress tracker.</p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>deleteNote p\[ip/tp] w\[week number] t\[task number]</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Only <code>ip</code> and <code>tp</code> projects are available and are not case-sensitive</p>
+</li>
+<li>
+<p>There are only weeks 1 to 13 in each project</p>
+</li>
+<li>
+<p>When multiple same tags are keyed, the last tag will be taken as the input.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>deleteNote</code> is case-sensitive</p>
+</li>
+<li>
+<p><code>[week number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
+</li>
+<li>
+<p><code>[task number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Example:<br>
+Suppose you wish to delete the note added in task 1 of week 3 in IP project,</p>
+</div>
+<div class="paragraph">
+<p><code>deleteNote p\ip w\3 t\1</code></p>
+</div>
+<div class="paragraph">
+<p>NOVA will delete the note under task 1 of week 3 of IP.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/userguide/deletePtNote.png" alt="deletePtNote" width="500">
+</div>
+</div>
+<div class="paragraph text-center">
+<p><em><span class="small">Fig 5.5.7: Display message after entering <code>deleteNote p\ip w\3 t\1</code></span></em></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Progress Tracker commands under Command Summary.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>|<em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 13:13:30 UTC</div></div></div></body></html>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 15:39:28 UTC</div></div></div></body></html>

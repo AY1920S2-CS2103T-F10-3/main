@@ -1456,16 +1456,37 @@ command <code>nav progresstracker</code>. Your NOVA should look something like F
 <div class="ulist">
 <ul>
 <li>
+<p>Only <code>ip</code> and <code>tp</code> projects are available and are not case-sensitive</p>
+</li>
+<li>
+<p>There are only weeks 1 to 13 in each project</p>
+</li>
+<li>
+<p>When multiple same tags are keyed, the last tag will be taken as the input.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>add</code> is case-sensitive</p>
+</li>
+<li>
 <p><code>[week number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
 </li>
 <li>
-<p>tasks must be added to the weeks in order (i.e. cannot add a task to week 2 before adding to week 1)</p>
-</li>
-<li>
 <p><code>[task description]</code> cannot be empty</p>
-</li>
-<li>
-<p>Only <code>ip</code> and <code>tp</code> projects are available</p>
 </li>
 </ul>
 </div>
@@ -1478,10 +1499,18 @@ command <code>nav progresstracker</code>. Your NOVA should look something like F
 Suppose you want to add a task to week 3 of IP project to remind yourself to do up javaFx,</p>
 </div>
 <div class="paragraph">
-<p><code>Add p\ip w\3 d\Do up javaFx</code></p>
+<p><code>add p\ip w\3 d\Do up javaFx</code></p>
 </div>
 <div class="paragraph">
 <p>NOVA will add a task “Do up javaFx” to week 3 of IP in progress tracker.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/userguide/addPtTaskResult.png" alt="addPtTaskResult" width="500">
+</div>
+</div>
+<div class="paragraph text-center">
+<p><em><span class="small">Fig 5.5.1: Display message after entering <code>add p\ip w\3 d\Do up javaFx</code></span></em></p>
 </div>
 <div class="paragraph">
 <p><a href="#Top">[Back to Top]</a></p>
@@ -1506,10 +1535,34 @@ Suppose you want to add a task to week 3 of IP project to remind yourself to do 
 <div class="ulist">
 <ul>
 <li>
-<p><code>[week number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
+<p>Only <code>ip</code> and <code>tp</code> projects are available and are not case-sensitive</p>
 </li>
 <li>
-<p>Only <code>ip</code> and <code>tp</code> projects are available</p>
+<p>There are only weeks 1 to 13 in each project</p>
+</li>
+<li>
+<p>When multiple same tags are keyed, the last tag will be taken as the input.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code> is case-sensitive</p>
+</li>
+<li>
+<p><code>[week number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
 </li>
 </ul>
 </div>
@@ -1526,6 +1579,14 @@ Suppose you would like to view the tasks you have added to week 3 of IP project,
 </div>
 <div class="paragraph">
 <p>NOVA will list the tasks in week 3 of IP project.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/userguide/listPtTask.png" alt="listPtTask" width="500">
+</div>
+</div>
+<div class="paragraph text-center">
+<p><em><span class="small">Fig 5.5.2: Display message after entering <code>list p\ip w\3</code></span></em></p>
 </div>
 <div class="paragraph">
 <p><a href="#Top">[Back to Top]</a></p>
@@ -1549,10 +1610,37 @@ Suppose you would like to view the tasks you have added to week 3 of IP project,
 <div class="ulist">
 <ul>
 <li>
-<p><code>[week number]</code> and <code>[task number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
+<p>Only <code>ip</code> and <code>tp</code> projects are available and are not case-sensitive</p>
 </li>
 <li>
-<p>Only <code>ip</code> and <code>tp</code> projects are available</p>
+<p>There are only weeks 1 to 13 in each project</p>
+</li>
+<li>
+<p>When multiple same tags are keyed, the last tag will be taken as the input.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete</code> is case-sensitive</p>
+</li>
+<li>
+<p><code>[week number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
+</li>
+<li>
+<p><code>[task number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
 </li>
 </ul>
 </div>
@@ -1562,13 +1650,21 @@ Suppose you would like to view the tasks you have added to week 3 of IP project,
 </div>
 <div class="paragraph">
 <p>Example:<br>
-Suppose you wish to delete task number 3 in week 3 of IP project,</p>
+Suppose you wish to delete task number 1 in week 3 of IP project,</p>
 </div>
 <div class="paragraph">
-<p><code>delete p\ip w\3 t\3</code></p>
+<p><code>delete p\ip w\3 t\1</code></p>
 </div>
 <div class="paragraph">
-<p>NOVA will delete task 3 in week 3 of IP in progress tracker.</p>
+<p>NOVA will delete task 1 in week 3 of IP in progress tracker.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/userguide/deletePtTaskResult.png" alt="deletePtTaskResult" width="500">
+</div>
+</div>
+<div class="paragraph text-center">
+<p><em><span class="small">Fig 5.5.3: Display message after entering <code>delete p\ip w\3 t\1</code></span></em></p>
 </div>
 <div class="paragraph">
 <p><a href="#Top">[Back to Top]</a></p>
@@ -1593,10 +1689,37 @@ Suppose you wish to delete task number 3 in week 3 of IP project,</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>[week number]</code> and <code>[task number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
+<p>Only <code>ip</code> and <code>tp</code> projects are available and are not case-sensitive</p>
 </li>
 <li>
-<p>Only <code>ip</code> and <code>tp</code> projects are available</p>
+<p>There are only weeks 1 to 13 in each project</p>
+</li>
+<li>
+<p>When multiple same tags are keyed, the last tag will be taken as the input.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>done</code> is case-sensitive</p>
+</li>
+<li>
+<p><code>[week number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
+</li>
+<li>
+<p><code>[task number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
 </li>
 </ul>
 </div>
@@ -1606,13 +1729,21 @@ Suppose you wish to delete task number 3 in week 3 of IP project,</p>
 </div>
 <div class="paragraph">
 <p>Example:<br>
-Suppose you wish to set task number 2 in week 3 of IP project as done or undone,</p>
+Suppose you wish to set task number 1 in week 3 of IP project as done or undone,</p>
 </div>
 <div class="paragraph">
-<p><code>done p\ip w\3 t\2</code></p>
+<p><code>done p\ip w\3 t\1</code></p>
 </div>
 <div class="paragraph">
-<p>NOVA will set task 2 in week 3 of IP in progress tracker as done/undone depending on it&#8217;s status originally.</p>
+<p>NOVA will set task 1 in week 3 of IP in progress tracker as done/undone depending on it&#8217;s status originally.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/userguide/setDonePtTaskResult.png" alt="setDonePtTaskResult" width="500">
+</div>
+</div>
+<div class="paragraph text-center">
+<p><em><span class="small">Fig 5.5.4: Display message after entering <code>done p\ip w\3 t\1</code></span></em></p>
 </div>
 <div class="paragraph">
 <p><a href="#Top">[Back to Top]</a></p>
@@ -1637,13 +1768,40 @@ Suppose you wish to set task number 2 in week 3 of IP project as done or undone,
 <div class="ulist">
 <ul>
 <li>
-<p><code>[week number]</code> and <code>[task number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
+<p>Only <code>ip</code> and <code>tp</code> projects are available and are not case-sensitive</p>
+</li>
+<li>
+<p>There are only weeks 1 to 13 in each project</p>
+</li>
+<li>
+<p>When multiple same tags are keyed, the last tag will be taken as the input.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>addNote</code> is case-sensitive</p>
+</li>
+<li>
+<p><code>[week number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
+</li>
+<li>
+<p><code>[task number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
 </li>
 <li>
 <p><code>[note]</code> cannot be empty</p>
-</li>
-<li>
-<p>Only <code>ip</code> and <code>tp</code> projects are available</p>
 </li>
 </ul>
 </div>
@@ -1656,10 +1814,18 @@ Suppose you wish to set task number 2 in week 3 of IP project as done or undone,
 Suppose you wish to add a note to remind yourself to create a branch and tag for task number 2 in week 3 of IP project,</p>
 </div>
 <div class="paragraph">
-<p><code>addNote p\ip w\3 t\2 d\Need create branch and tag</code></p>
+<p><code>addNote p\ip w\3 t\1 d\Need create branch and tag</code></p>
 </div>
 <div class="paragraph">
-<p>NOVA will add a note “Need create branch and tag” to task 2 in week 3 of IP.</p>
+<p>NOVA will add a note “Need create branch and tag” to task 1 in week 3 of IP.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/userguide/addPtNote.png" alt="addPtNote" width="500">
+</div>
+</div>
+<div class="paragraph text-center">
+<p><em><span class="small">Fig 5.5.5: Display message after entering <code>addNote p\ip w\3 t\1 d\Need create branch and tag</code></span></em></p>
 </div>
 <div class="paragraph">
 <p><a href="#Top">[Back to Top]</a></p>
@@ -1684,13 +1850,40 @@ Suppose you wish to add a note to remind yourself to create a branch and tag for
 <div class="ulist">
 <ul>
 <li>
-<p><code>week number</code>, <code>task number</code> and <code>note number</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
+<p>Only <code>ip</code> and <code>tp</code> projects are available and are not case-sensitive</p>
+</li>
+<li>
+<p>There are only weeks 1 to 13 in each project</p>
+</li>
+<li>
+<p>When multiple same tags are keyed, the last tag will be taken as the input.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>editNote</code> is case-sensitive</p>
+</li>
+<li>
+<p><code>[week number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
+</li>
+<li>
+<p><code>[task number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
 </li>
 <li>
 <p><code>[new note]</code> cannot be empty</p>
-</li>
-<li>
-<p>Only <code>ip</code> and <code>tp</code> projects are available</p>
 </li>
 </ul>
 </div>
@@ -1700,13 +1893,21 @@ Suppose you wish to add a note to remind yourself to create a branch and tag for
 </div>
 <div class="paragraph">
 <p>Example:<br>
-Suppose you wish to edit the note added in task 2 of week 3 in IP project,</p>
+Suppose you wish to edit the note added in task 1 of week 3 in IP project,</p>
 </div>
 <div class="paragraph">
-<p><code>editNote p\[ip] w\3 t\2 d\consult tutor</code></p>
+<p><code>editNote p\ip w\3 t\1 d\consult tutor</code></p>
 </div>
 <div class="paragraph">
-<p>NOVA will edit the note under task 2 of week 3 of IP.</p>
+<p>NOVA will edit the note under task 1 of week 3 of IP.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/userguide/editPtNote.png" alt="editPtNote" width="500">
+</div>
+</div>
+<div class="paragraph text-center">
+<p><em><span class="small">Fig 5.5.6: Display message after entering <code>editNote p\ip w\3 t\1 d\consult tutor</code></span></em></p>
 </div>
 <div class="paragraph">
 <p><a href="#Top">[Back to Top]</a></p>
@@ -1719,7 +1920,7 @@ Suppose you wish to edit the note added in task 2 of week 3 in IP project,</p>
 </div>
 <div class="paragraph">
 <p>Format:<br>
-<code>deleteNote p\[ip/tp] w\[week number] t\[task number] i\[note number]</code></p>
+<code>deleteNote p\[ip/tp] w\[week number] t\[task number]</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1731,10 +1932,37 @@ Suppose you wish to edit the note added in task 2 of week 3 in IP project,</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>[week number]</code>, <code>[task number]</code> and <code>[note number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
+<p>Only <code>ip</code> and <code>tp</code> projects are available and are not case-sensitive</p>
 </li>
 <li>
-<p>Only <code>ip</code> and <code>tp</code> projects are available</p>
+<p>There are only weeks 1 to 13 in each project</p>
+</li>
+<li>
+<p>When multiple same tags are keyed, the last tag will be taken as the input.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>deleteNote</code> is case-sensitive</p>
+</li>
+<li>
+<p><code>[week number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
+</li>
+<li>
+<p><code>[task number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
 </li>
 </ul>
 </div>
@@ -1744,16 +1972,22 @@ Suppose you wish to edit the note added in task 2 of week 3 in IP project,</p>
 </div>
 <div class="paragraph">
 <p>Example:<br>
-Suppose you wish to delete the note added in task 2 of week 3 in IP project,</p>
+Suppose you wish to delete the note added in task 1 of week 3 in IP project,</p>
 </div>
 <div class="paragraph">
-<p><code>deleteNote p\[ip] w\3 t\2 i\2</code></p>
+<p><code>deleteNote p\ip w\3 t\1</code></p>
 </div>
 <div class="paragraph">
-<p>NOVA will delete the note under task 2 of week 3 of IP.</p>
+<p>NOVA will delete the note under task 1 of week 3 of IP.</p>
 </div>
-<div class="paragraph">
-<p><a href="#Top">[Back to Top]</a></p>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/userguide/deletePtNote.png" alt="deletePtNote" width="500">
+</div>
+</div>
+<div class="paragraph text-center">
+<p><em><span class="small">Fig 5.5.7: Display message after entering <code>deleteNote p\ip w\3 t\1</code></span></em>
+<a href="#Top">[Back to Top]</a></p>
 </div>
 </div>
 </div>
@@ -1936,4 +2170,4 @@ contains the data of your previous NOVA folder.</p>
 <p><a href="#Top">[Back to Top]</a></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 13:13:30 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 15:39:28 UTC</div></div></div></body></html>
