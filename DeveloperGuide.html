@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">nova</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S2-CS2103T-F10-3/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>NOVA - Developer Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: <code>CS2103T-F10-3</code>      Since: <code>Feb 2020</code>      Licence: <code>MIT</code></p>
+<p>By: <code>CS2103T-F10-3</code>      Since: <code>Apr 2020</code>      Licence: <code>MIT</code></p>
 </div>
 </div>
 <div id="toc" class="toc">
@@ -51,15 +51,16 @@
 <li><a href="#design-considerations-2">3.3.2. Design Considerations</a></li>
 </ul>
 </li>
-<li><a href="#view-schedule-for-a-specified-day">3.4. View schedule for a specified day</a>
+<li><a href="#view-schedule">3.4. View schedule</a>
 <ul class="sectlevel3">
-<li><a href="#implementation-3">3.4.1. Implementation</a></li>
-<li><a href="#design-considerations-3">3.4.2. Design Considerations</a></li>
+<li><a href="#implementation-view-schedule-by-date">3.4.1. Implementation - View schedule by date</a></li>
+<li><a href="#implementation-view-schedule-by-week">3.4.2. Implementation - View schedule by week</a></li>
+<li><a href="#design-considerations-3">3.4.3. Design Considerations</a></li>
 </ul>
 </li>
 <li><a href="#view-available-free-slot-of-a-specific-day">3.5. View available free slot of a specific day</a>
 <ul class="sectlevel3">
-<li><a href="#implementation-4">3.5.1. Implementation</a></li>
+<li><a href="#implementation-3">3.5.1. Implementation</a></li>
 <li><a href="#design-considerations-4">3.5.2. Design Considerations</a>
 <ul class="sectlevel4">
 <li><a href="#aspect-calculating-free-slots-given-a-schedule">Aspect: Calculating free slots given a schedule</a></li>
@@ -69,7 +70,7 @@
 </li>
 <li><a href="#schedule-events-based-on-a-task-in-plan">3.6. Schedule events based on a task in plan.</a>
 <ul class="sectlevel3">
-<li><a href="#implementation-5">3.6.1. Implementation</a></li>
+<li><a href="#implementation-4">3.6.1. Implementation</a></li>
 <li><a href="#design-considerations-5">3.6.2. Design Considerations</a>
 <ul class="sectlevel4">
 <li><a href="#aspect-calculating-best-fit-time-frame-for-a-task">Aspect: Calculating best fit time frame for a task</a></li>
@@ -912,14 +913,38 @@ The lifeline for <code>AbDeleteCommandParser</code> should end at the destroy ma
 </div>
 </div>
 <div class="sect2">
-<h3 id="view-schedule-for-a-specified-day"><a class="link" href="#view-schedule-for-a-specified-day">3.4. View schedule for a specified day</a></h3>
+<h3 id="view-schedule"><a class="link" href="#view-schedule">3.4. View schedule</a></h3>
 <div class="paragraph">
-<p>The view schedule feature allows the user to view their schedule for the day specified by them.</p>
+<p>The view schedule feature allows users to view the events they have added into the schedule. Users are able to view the
+schedule by two time frames:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>By date</p>
+</li>
+<li>
+<p>By week</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following activity diagram shows what happens when a user inputs a view command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ViewCommandActivityDiagram.png" alt="ViewCommandActivityDiagram">
+</div>
 </div>
 <div class="sect3">
-<h4 id="implementation-3"><a class="link" href="#implementation-3">3.4.1. Implementation</a></h4>
+<h4 id="implementation-view-schedule-by-date"><a class="link" href="#implementation-view-schedule-by-date">3.4.1. Implementation - View schedule by date</a></h4>
 <div class="paragraph">
-<p>Given below is an example usage scenario and how the view schedule mechanism behaves at each step.</p>
+<p>The view feature allows users to see the events happening on the specified date.
+This feature is facilitated by <code>ScheduleParser</code>, <code>ScViewCommandParser</code> and <code>ScViewDayCommand</code>.
+The operation is exposed in the <code>Model</code> interface as <code>Model#view(LocalDate)</code>.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the view by date mechanism behaves at each step.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -927,7 +952,16 @@ The lifeline for <code>AbDeleteCommandParser</code> should end at the destroy ma
 <p>The user keys in 'view t\2020-03-10' into the command box.</p>
 </li>
 <li>
-<p>The user executes 'view t\2020-03-10' to view their schedule on the 10th of March 2020.</p>
+<p>The user executes 'view t\2020-03-10' to view their schedule on the 10 Mar 2020.</p>
+</li>
+<li>
+<p><code>LogicManager</code> calls LogicParser to parse the command.</p>
+</li>
+<li>
+<p><code>LogicParser</code> gets the mode from Model and passes the command word and the argument to ScheduleParser.</p>
+</li>
+<li>
+<p><code>ScheduleParser</code> checks the command word and calls ScViewDayCommandParser.</p>
 </li>
 <li>
 <p>'ScViewDayCommandParser' creates a new 'ScViewDayCommand'.</p>
@@ -936,7 +970,7 @@ The lifeline for <code>AbDeleteCommandParser</code> should end at the destroy ma
 <p>'LogicManager' executes the 'ScViewDayCommand'.</p>
 </li>
 <li>
-<p>'ModelManger#viewSechdule()' is called and the schedule for the day is retrieved.</p>
+<p>'ModelManger#viewSechdule(LocalDate)' is called and the schedule for the day is retrieved.</p>
 </li>
 </ol>
 </div>
@@ -945,39 +979,86 @@ The lifeline for <code>AbDeleteCommandParser</code> should end at the destroy ma
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/SchedulerSeqDiagram.png" alt="SchedulerSeqDiagram">
+<img src="images/viewDaySequenceDiagram.png" alt="viewDaySequenceDiagram">
+</div>
+</div>
+<div class="paragraph">
+<p>View week: Given below is an example usage scenario and how the view week mechanism behaves at each step.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user keys in 'view week i\6' into the command box.</p>
+</li>
+<li>
+<p>The user executes 'view week i\6' to view their schedule on the 6th week.</p>
+</li>
+<li>
+<p><code>LogicManager</code> calls LogicParser to parse the command.</p>
+</li>
+<li>
+<p><code>LogicParser</code> gets the mode from Model and passes the command word and the argument to ScheduleParser.</p>
+</li>
+<li>
+<p><code>ScheduleParser</code> checks the command word and the preamble and calls ScViewWeekCommandParser.</p>
+</li>
+<li>
+<p>'ScViewWeekCommandParser' creates a new 'ScViewWeekCommand'.</p>
+</li>
+<li>
+<p>'LogicManager' executes the 'ScViewWeekCommand'.</p>
+</li>
+<li>
+<p>'ModelManger#viewSechdule(int)' is called and the schedule for the week is retrieved.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementation-view-schedule-by-week"><a class="link" href="#implementation-view-schedule-by-week">3.4.2. Implementation - View schedule by week</a></h4>
+<div class="paragraph">
+<p>The view feature allows users to see the events happening throughout the specified week.
+This feature is facilitated by <code>ScheduleParser</code>, <code>ScViewCommandParser</code> and <code>ScViewWeekCommand</code>.
+The operation is exposed in the <code>Model</code> interface as <code>Model#view(int)</code>.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows what happens when a user inputs a view week command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/viewWeekSequenceDiagram.png" alt="viewWeekSequenceDiagram">
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.4.2. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.4.3. Design Considerations</a></h4>
 <div class="paragraph">
-<p>Aspect: View schedule by day and not week</p>
+<p>Aspect: View schedule by at most week and not month.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> View schedule by day</p>
+<p><strong>Alternative 1 (current choice):</strong> View schedule up to week</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: more freedom to choose what to see as a user</p>
+<p>Pros: Easier to fit the events into the display</p>
 </li>
 <li>
-<p>Cons: more typing to view schedule for more than one day</p>
+<p>Cons: Less ways for user to view schedule</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> View schedule by week</p>
+<p><strong>Alternative 2:</strong> View schedule up to month</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: user can see their whole week&#8217;s schedule at once</p>
+<p>Pros: User can see their whole month&#8217;s schedule at once</p>
 </li>
 <li>
-<p>Cons: might be too long and messy</p>
+<p>Cons: Might be too long and cannot fit into the display box</p>
 </li>
 </ul>
 </div>
@@ -992,7 +1073,7 @@ The lifeline for <code>AbDeleteCommandParser</code> should end at the destroy ma
 <p>The view free slots feature allows the user to view their available free slots on their schedule.</p>
 </div>
 <div class="sect3">
-<h4 id="implementation-4"><a class="link" href="#implementation-4">3.5.1. Implementation</a></h4>
+<h4 id="implementation-3"><a class="link" href="#implementation-3">3.5.1. Implementation</a></h4>
 <div class="paragraph">
 <p>Given below is an example usage scenario and how the view free slot mechanism behaves at each step.</p>
 </div>
@@ -1068,7 +1149,7 @@ events are added</p>
 <p>The plan feature allows the user to create an event based on the task user created in the plan.</p>
 </div>
 <div class="sect3">
-<h4 id="implementation-5"><a class="link" href="#implementation-5">3.6.1. Implementation</a></h4>
+<h4 id="implementation-4"><a class="link" href="#implementation-4">3.6.1. Implementation</a></h4>
 <div class="paragraph">
 <p>Given below is an example usage scenario and how the plan task mechanism behaves at each step.</p>
 </div>
@@ -1256,12 +1337,12 @@ in schedule.</p>
 <div class="paragraph">
 <p>Priorities: High (must have) - <code>* * *</code>, Medium (nice to have) - <code>* *</code>, Low (unlikely to have) - <code>*</code></p>
 </div>
-<table class="tableblock frame-all grid-all" style="width: 59%;">
+<table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 22%;">
-<col style="width: 23%;">
-<col style="width: 25%;">
-<col style="width: 30%;">
+<col style="width: 15%;">
+<col style="width: 15%;">
+<col style="width: 35%;">
+<col style="width: 35%;">
 </colgroup>
 <thead>
 <tr>
@@ -1273,200 +1354,200 @@ in schedule.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">add classmate or teammate’s name and contact information</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">contact them easily</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">edit classmate or teammate’s name and contact information</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Edit them if the information are changed</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">delete classmate or teammate’s contact</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">delete if not necessary anymore</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">categorise contacts into teammate or classmate</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">sort contacts according to category</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">add category specific remark</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">filter out a contact’s remark according to type of contact</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">edit category specific remark</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">edit remark if necessary</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">delete category specific remark</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">delete remark if it is not needed</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>*</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">add profile picture to added contact</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">know at a glance who is the person in my contact</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>*</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">edit profile picture to added contact</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">edit the picture if changes are necessary</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>*</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">delete profile picture to added contact</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">don&#8217;t need the contact picture within NOVA anymore</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">create meeting events</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">can keep track of my schedule</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">create study session events</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">can keep track of my schedule</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">create consultation events</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">can keep track of my schedule</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">create lesson events</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">can keep track of my schedule</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">note down the location of the meeting</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">know where to go</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">delete events</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">can get rid of events that I do not need anymore</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">add notes to events</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">can jot down additional details about the events</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">mark events as done</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">know which events I have completed</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">find events</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">can check if I have any specific events according to keyword(s)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">repeat events</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">can add multiple similar events at one go</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">forgetful student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">keep track of my project tasks</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">make sure all my project tasks are completed on time</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">mark tasks as done</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">track how many tasks I have finished</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">add notes to project tasks</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">keep track of details regarding the tasks</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">add project tasks</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">keep track of those project tasks</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">View my schedule for a day</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Know the flow of events on that day</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">View my schedule for a week</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Know what will happen for that week</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>*</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">View my timetable</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Can check when my classes are</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Easily find my free slots without looking at my schedule</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Do not need to strain my eyes</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Forgetful student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set reminders for upcoming events</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Will remember to attend them</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Add tasks to study plan</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Can add study tasks to my study plan</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Delete tasks on study plan</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Can delete study tasks if I don&#8217;t need it anymore</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Generate event from a task</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">If I feel like I want to do a study task today, I can generate an
 event on today&#8217;s schedule so that I can keep up with my study plan.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">View statistics of my task progress</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Can see how much I&#8217;ve done for each task on my study plan.</p></td>
@@ -2295,17 +2376,17 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </li>
 </ul>
 </div>
-<h3 id="use-case-21-view-the-timetable" class="discrete">Use case 21: View the timetable</h3>
+<h3 id="use-case-21-view-the-schedule-for-a-day" class="discrete">Use case 21: View the schedule for a day</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests for the timetable</p>
+<p>User requests for the schedule of a day.</p>
 </li>
 <li>
-<p>NOVA shows the timetable</p>
+<p>NOVA shows the schedule for the day.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2318,14 +2399,62 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a. The timetable is empty.</p>
+<p>1a. User enters the wrong format.</p>
+</li>
+<li>
+<p>1a1. NOVA displays the correct format for the command.</p>
+</li>
+<li>
+<p>2a. The schedule for the day is empty.</p>
+</li>
+<li>
+<p>2a1. NOVA displays that day does not have any events.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
 </li>
 </ul>
 </div>
-<h3 id="use-case-22-user-add-a-task-into-study-plan" class="discrete">Use case 22: User add a task into study plan.</h3>
+<h3 id="use-case-22-view-the-schedule-for-a-week" class="discrete">Use case 22: View the schedule for a week</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests for the schedule of a week.</p>
+</li>
+<li>
+<p>NOVA shows the schedule for the week.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User enters the wrong format.</p>
+</li>
+<li>
+<p>1a1. NOVA displays the correct format for the command.</p>
+</li>
+<li>
+<p>2a. The schedule for the week is empty.</p>
+</li>
+<li>
+<p>2a1. NOVA displays that week does not have any events.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-23-user-add-a-task-into-study-plan" class="discrete">Use case 23: User add a task into study plan.</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2358,7 +2487,7 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </li>
 </ul>
 </div>
-<h3 id="use-case-23-user-add-a-task-into-study-plan" class="discrete">Use case 23: User add a task into study plan</h3>
+<h3 id="use-case-24-user-add-a-task-into-study-plan" class="discrete">Use case 24: User add a task into study plan</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2391,7 +2520,7 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </li>
 </ul>
 </div>
-<h3 id="use-case-24-user-view-statistics-of-every-tasks-in-study-plan" class="discrete">Use case 24: User view statistics of every tasks in study plan</h3>
+<h3 id="use-case-25-user-view-statistics-of-every-tasks-in-study-plan" class="discrete">Use case 25: User view statistics of every tasks in study plan</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2424,7 +2553,7 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </li>
 </ul>
 </div>
-<h3 id="use-case-25-user-schedules-a-task-into-a-particular-day" class="discrete">Use case 25: User schedules a task into a particular day.</h3>
+<h3 id="use-case-26-user-schedules-a-task-into-a-particular-day" class="discrete">Use case 26: User schedules a task into a particular day.</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2452,11 +2581,13 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 <li>
 <p>1a1. NOVA shows error message.</p>
 <div class="paragraph">
-<p>Use case ends.
-<em>{More to be added}</em></p>
+<p>Use case ends.</p>
 </div>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p><em>{More to be added}</em></p>
 </div>
 </div>
 </div>
@@ -2467,27 +2598,27 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>11</code> or above installed.</p>
+<p>The application should work on any <a href="#mainstream-os">mainstream OS</a> provided that Java <code>11</code> or above is installed.</p>
+</li>
+<li>
+<p>The application should work on both 32-bit and 64-bit environments.</p>
 </li>
 <li>
 <p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
 </li>
 <li>
-<p>The application should respond to every command within one second.</p>
-</li>
-<li>
-<p>Technical requirements: The application should work on both 32-bit and 64-bit environments.</p>
-</li>
-<li>
 <p>The application should work without internet connection.</p>
 </li>
 <li>
-<p>The user should be able to navigate to other <a href="#mode">mode</a> just by using <code>nav</code> command.</p>
+<p>The application should respond to every command within one second.</p>
 </li>
 <li>
-<p>If student forgot to change the <a href="#mode">mode</a>, NOVA should display error message.</p>
+<p>The application should be easily modifiable to meet changing curriculum of CS2013T.</p>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p><em>{More to be added}</em></p>
 </div>
 </div>
 </div>
@@ -2594,4 +2725,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 20:52:20 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 21:30:49 UTC</div></div></div></body></html>

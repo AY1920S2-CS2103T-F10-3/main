@@ -3,76 +3,464 @@
 <link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">nova</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="../LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S2-CS2103T-F10-3/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Terence Ng - Project Portfolio</h1></div><div id="content"><div class="sect1">
 <h2 id="project-nova"><a class="link" href="#project-nova">PROJECT: NOVA</a></h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>Since: <code>Apr 2020</code></p>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>NOVA is a desktop application to help CS2103T with event planning and managing schedules.</p>
+<p>My team of 4 software engineering students and I were tasked to enhance a simple command line interface (CLI) desktop
+address book application for our project to cater to users who are accustomed to typing. We decided target fellow
+software engineering students as our users and expanded on the address book into an organizer, hoping to aid future
+software engineering students taking this module in managing their activities.</p>
+</div>
+<div class="paragraph">
+<p>We identified 4 main aspects that can be improved: contact management, activity management, study management and
+project task management. Thus, we developed a schedule, study planner, progress tracker and refined the given address
+book to cater to our problem. As a result, Next-gen Organization Virtual Assistant (NOVA) is born.</p>
+</div>
+<div class="paragraph">
+<p>This portfolio documents the contribution I made to Project NOVA. It contains a section on the summary of contributions
+towards the project as well as the user guide and developer guide.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>This section documents a summary of contributions towards the code base, documentation as well as other helpful
+contributions.</p>
+</div>
+<div class="sect3">
+<h4 id="major-enhancement-code-view-code-command"><a class="link" href="#major-enhancement-code-view-code-command">Major enhancement: <code>view</code> command</a></h4>
+<div class="paragraph">
+<p>I added the ability to view the activities in the schedule.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>:</p>
+<p>What it does: There are two levels of viewing (by date or by week). The <code>view</code> command allows the user to specify the
+date which he/she wants to view. Alternatively, the user can use the <code>view week</code> command to view the activities
+happening on that date.</p>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>:</p>
+<p>Justification: A schedule that cannot be viewed is useless. Users can choose whether to view the schedule at the
+daily level or the weekly level.</p>
 </li>
-<li>
-<p><strong>Code contributed</strong>:</p>
-</li>
-<li>
-<p><strong>Other contributions</strong>:</p>
+</ul>
+</div>
+<div class="paragraph">
+<p>Pull requests: <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/pull/143/files">#143</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="minor-enhancement-schedule-s-framework"><a class="link" href="#minor-enhancement-schedule-s-framework">Minor enhancement: Schedule&#8217;s framework</a></h4>
+<div class="paragraph">
+<p>I created the framework of the schedule in NOVA.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Project management:</p>
+<p>What it does: The framework offers a common platform for the other developers working on the schedule.</p>
 </li>
 <li>
-<p>Enhancements to existing features:</p>
+<p>Justification: Having a common framework reduces the conflict between different implementation of the schedule. It
+also helps us integrate our features easily.</p>
 </li>
 <li>
-<p>Documentation:</p>
+<p>Highlight: The implementation was challenging as a affects the implementation of events, view and study planner. A
+common agreement needed to be reached to ensure the schedule will not hinder the implementation of those features.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="code-contributed"><a class="link" href="#code-contributed">Code contributed:</a></h4>
+<div class="paragraph">
+<p>Here is the link to the code I have contributed:
+<a href="https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=f10-3&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2020-02-14&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=xCelestialPhoenix&amp;tabRepo=AY1920S2-CS2103T-F10-3%2Fmain%5Bmaster%5D">Code Dashboard</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="other-contributions"><a class="link" href="#other-contributions">Other contributions:</a></h4>
+<div class="paragraph">
+<p>These are some additional contributions I made to the project.</p>
+</div>
+<div class="sect4">
+<h5 id="project-management"><a class="link" href="#project-management">Project management:</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p>Performs quality check on UG and DG</p>
+<p>Maintained the documentation of the project on GitHub.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Ensured the team&#8217;s documentation is appropriate and free of error</p>
 </li>
 <li>
-<p>Standardize format of UG</p>
+<p>Standardized the format for all to follow so the final document is cohesive.</p>
 </li>
 </ul>
 </div>
 </li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="documentation"><a class="link" href="#documentation">Documentation:</a></h5>
+<div class="ulist">
+<ul>
 <li>
-<p>Community:</p>
+<p>Added the view commands under features (<a href="https://github.com/AY1920S2-CS2103T-F10-3/main/pull/31/files">#31</a>)</p>
 </li>
 <li>
-<p>Tools:</p>
+<p>Improved the introduction and about sections of the user guide (<a href="https://github.com/AY1920S2-CS2103T-F10-3/main/pull/226/files?file-filters%5B%5D=.adoc">#287</a>)</p>
+</li>
+<li>
+<p>Added a notations section to the user guide (<a href="https://github.com/AY1920S2-CS2103T-F10-3/main/pull/226/files?file-filters%5B%5D=.adoc">#287</a>)</p>
+</li>
+<li>
+<p>Added command summary (<a href="https://github.com/AY1920S2-CS2103T-F10-3/main/pull/274/files?short_path=d80058c#diff-d80058c033b9f127ec727c18cc84ce4d">#287</a>)</p>
+</li>
+<li>
+<p>Added a back to top link to improve navigability of the document (<a href="https://github.com/AY1920S2-CS2103T-F10-3/main/pull/287/files">#287</a>)</p>
 </li>
 </ul>
 </div>
+</div>
+<div class="sect4">
+<h5 id="community"><a class="link" href="#community">Community:</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Shared problems faced with others on the forum so people encountering similar problems as me can discuss our
+solutions (E.g. <a href="https://github.com/nus-cs2103-AY1920S2/forum/issues/20">1</a>, <a href="https://github.com/nus-cs2103-AY1920S2/forum/issues/67">2</a>).</p>
 </li>
 </ul>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
 <div class="sectionbody">
-
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Theses are my contributions towards the user guide.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="introduction"><a class="link" href="#introduction">Introduction</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Welcome to the user guide (UG) for Next-gen Organizing Virtual Assistant (NOVA).</p>
+</div>
+<div class="paragraph">
+<p>NOVA is a one-stop desktop application for CS2103T students to manage all CS2103T related activities. Be it studying
+or planning project meetings, NOVA has you covered. NOVA is designed for users who prefer to interact with programs
+through typing.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/userguide/guiComponents.png" alt="guiComponents" width="790">
+</div>
+</div>
+<div class="paragraph text-center">
+<p><em><span class="small">Fig 1: Components of NOVA</span></em></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="About"><a class="link" href="#About">About</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This UG is a reference guide to help you use NOVA. This document contains a <a href="#QuickStart">quick start</a> section to get
+you up and
+running soon.</p>
+</div>
+<div class="paragraph">
+<p>There is an entire <a href="#Features">section</a> dedicated to how to use any particular feature in NOVA. Examples are provided
+for your
+better understanding. We have also provided a <a href="#Summary">summary of commands</a> for your quick reference. Should you
+face any problems, take a look at the <a href="#FAQ">FAQ section</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Notation"><a class="link" href="#Notation">Notations</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this guide, you&#8217;ll be seeing the following markup being used.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This icon indicates details that could help you better understand how to use NOVA.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This icon indicates actions that could negatively affect your experience while using NOVA.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><code>Commands</code> and <code>input fields</code> are highlighted.
+==== View Schedule of a Day: <code>view</code>
+You can view the schedule of a specified day. If there is nothing to do on that day, NOVA will tell you.</p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>view t\[YYYY-MM-DD]</code></p>
+</div>
+<div class="paragraph">
+<p>Example:<br>
+Suppose you want to check out what events are happening on 29 Feb,<br></p>
+</div>
+<div class="paragraph">
+<p>enter the command: <code>view t\2020-02-20</code></p>
+</div>
+<div class="paragraph">
+<p>NOVA will show your schedule on 20 Feb 2020 as seen below.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/userguide/schedule_view_date.png" alt="schedule view date" width="500">
+</div>
+</div>
+<div class="paragraph text-center">
+<p><em><span class="small">Fig 5.3.7: Display message after entering <code>view t\2020-02-20</code></span></em></p>
+</div>
+<div class="paragraph">
+<p><a href="#Top">[Back to Top]</a></p>
+</div>
+<div class="sect3">
+<h4 id="view-schedule-of-a-week-code-view-code"><a class="link" href="#view-schedule-of-a-week-code-view-code">View Schedule of a Week: <code>view</code></a></h4>
+<div class="paragraph">
+<p>You can view the schedule of a specified week. IF there is nothing to do on that week, NOVA will tell you.</p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>view week i\[week #]</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>[week #]</code> must be a positive integer. (E.g. 1, 2, 3, &#8230;&#8203;)</p>
+</li>
+<li>
+<p>Week number for special weeks are as such:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Recess week is week 16</p>
+</li>
+<li>
+<p>Reading week is week 14</p>
+</li>
+<li>
+<p>Final examination week is week 15</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Example:<br>
+Suppose you are interested in what is going to happen in week 6 of the semester,<br></p>
+</div>
+<div class="paragraph">
+<p>enter the command: <code>view week i\6</code></p>
+</div>
+<div class="paragraph">
+<p>NOVA will show your schedule in week 6 of the semester as seen below.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/userguide/schedule_view_week.png" alt="schedule view week" width="500">
+</div>
+</div>
+<div class="paragraph text-center">
+<p><em><span class="small">Fig 5.3.8: Display message after entering <code>view week i\6</code></span></em></p>
+</div>
+<div class="paragraph">
+<p><a href="#Top">[Back to Top]</a></p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
 <div class="sectionbody">
-
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Theses are my contributions towards the developer guide.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="model-component"><a class="link" href="#model-component">Model component</a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ModelClassDiagram.png" alt="ModelClassDiagram">
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 20:52:20 UTC</div></div></div></body></html>
+<div class="title">Figure 1. Structure of the Model Component</div>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> : <a href="{repoURL}/src/main/java/seedu/nova/model/Model.java"><code>Model.java</code></a></p>
+</div>
+<div class="paragraph">
+<p>The <code>Model</code>,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>stores a <code>UserPref</code> object that represents the user&#8217;s preferences.</p>
+</li>
+<li>
+<p>stores the Address Book data.</p>
+</li>
+<li>
+<p>stores a 'Schedule' object that represents the user&#8217;s schedule.</p>
+</li>
+<li>
+<p>stores a 'ProgressTracker' object that represents the user&#8217;s progress in their project tasks.</p>
+</li>
+<li>
+<p>exposes an unmodifiable <code>ObservableList&lt;Person&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
+</li>
+<li>
+<p>does not depend on any of the other three components.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>|<code>* * *</code> |Student | View my schedule for a day| Know the flow of events on that day</p>
+</div>
+<div class="paragraph">
+<p>|<code>* * *</code> |Student | View my schedule for a week | Know what will happen for that week</p>
+</div>
+<div class="paragraph">
+<p>|<code>*</code> |Student | View my timetable | Can check when my classes are</p>
+</div>
+<h3 id="use-case-21-view-the-schedule-for-a-day" class="discrete">Use case 21: View the schedule for a day</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests for the schedule of a day.</p>
+</li>
+<li>
+<p>NOVA shows the schedule for the day.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User enters the wrong format.</p>
+</li>
+<li>
+<p>1a1. NOVA displays the correct format for the command.</p>
+</li>
+<li>
+<p>2a. The schedule for the day is empty.</p>
+</li>
+<li>
+<p>2a1. NOVA displays that day does not have any events.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-22-view-the-schedule-for-a-week" class="discrete">Use case 22: View the schedule for a week</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests for the schedule of a week.</p>
+</li>
+<li>
+<p>NOVA shows the schedule for the week.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User enters the wrong format.</p>
+</li>
+<li>
+<p>1a1. NOVA displays the correct format for the command.</p>
+</li>
+<li>
+<p>2a. The schedule for the week is empty.</p>
+</li>
+<li>
+<p>2a1. NOVA displays that week does not have any events.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 21:30:49 UTC</div></div></div></body></html>
