@@ -28,7 +28,7 @@
 <li><a href="#list-category-contact-code-list-code">5.2.3. List Category Contact: <code>list</code></a></li>
 <li><a href="#find-contact-code-find-code">5.2.4. Find Contact: <code>find</code></a></li>
 <li><a href="#edit-contact-code-edit-code">5.2.5. Edit Contact: <code>edit</code></a></li>
-<li><a href="#add-category-specific-remarks-code-remark-code">5.2.6. Add Category Specific Remarks: <code>remark</code></a></li>
+<li><a href="#add-edit-or-delete-remark-code-remark-code">5.2.6. Add, Edit or Delete Remark: <code>remark</code></a></li>
 <li><a href="#delete-contact-code-delete-code">5.2.7. Delete Contact: <code>delete</code></a></li>
 <li><a href="#clear-all-contacts-code-clear-code">5.2.8. Clear all Contacts: <code>clear</code></a></li>
 <li><a href="#undo-command-code-undo-code">5.2.9. Undo Command: <code>undo</code></a></li>
@@ -45,7 +45,7 @@
 <li><a href="#add-notes-to-event-code-note-code">5.3.6. Add Notes to Event: <code>note</code></a></li>
 <li><a href="#view-schedule-of-a-day-code-view-code">5.3.7. View Schedule of a Day: <code>view</code></a></li>
 <li><a href="#view-schedule-of-a-week-code-view-code">5.3.8. View Schedule of a Week: <code>view</code></a></li>
-<li><a href="#find-free-slots-v2-0-code-freeslot-code">5.3.9. Find Free Slots [v2.0]: <code>freeslot</code></a></li>
+<li><a href="#find-free-slots-code-freeslot-code">5.3.9. Find Free Slots: <code>freeslot</code></a></li>
 </ul>
 </li>
 <li><a href="#daily-study-planner">5.4. Daily Study Planner</a>
@@ -168,7 +168,7 @@ This icon indicates actions that could negatively affect your experience while u
 <p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/userguide/GUI.png" alt="GUI" width="790">
+<img src="images/ui.png" alt="ui" width="790">
 </div>
 </div>
 <div class="paragraph text-center">
@@ -201,7 +201,7 @@ This icon indicates actions that could negatively affect your experience while u
 <p><strong><code>list</code></strong> : lists all contacts</p>
 </li>
 <li>
-<p><strong><code>add</code></strong><code>n\John Doe p\98765432 e\john@gmail.com c\classmate</code> : adds a contact named <strong>John Doe</strong> to the Address Book
+<p><code>add n\John Doe p\98765432 e\john@gmail.com c\classmate</code> : adds a contact named <strong>John Doe</strong> to the Address Book
 and categorise as classmate</p>
 </li>
 </ul>
@@ -268,13 +268,13 @@ and within every mode, there is also a set of commands for you to use and get th
 </div>
 <div class="paragraph">
 <p>Example:<br>
-Suppose you want to use the address book,<br></p>
+Suppose you want to use the schedule,<br></p>
 </div>
 <div class="paragraph">
-<p><code>nav ab</code></p>
+<p><code>nav schedule</code></p>
 </div>
 <div class="paragraph">
-<p>NOVA will change the mode to address book as seen below.</p>
+<p>NOVA will change the mode to schedule as seen below.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -293,8 +293,9 @@ Suppose you want to use the address book,<br></p>
 <h3 id="address-book"><a class="link" href="#address-book">5.2. Address Book</a></h3>
 <div class="paragraph">
 <p>Learn how to work with the Address Book in NOVA. The address book feature allows you to keep in contact with
-your teammates and classmates. Access this mode by entering the command <code>nav ab</code>. Your NOVA should look something
-like Figure 3.2 below.</p>
+your teammates and classmates, and contacts are automatically sorted by alphabetical order.<br>
+Access this mode by entering the command <code>nav ab</code>. Your NOVA should look something
+like Figure 5.2 below.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -302,7 +303,7 @@ like Figure 3.2 below.</p>
 </div>
 </div>
 <div class="paragraph text-center">
-<p><em><span class="small">Fig 5.2: GUI of NOVA after user typed contact <code>nav ab</code></span></em></p>
+<p><em><span class="small">Fig 5.2: GUI of NOVA after entering <code>nav ab</code></span></em></p>
 </div>
 <div class="sect3">
 <h4 id="add-contact-code-add-code"><a class="link" href="#add-contact-code-add-code">5.2.1. Add Contact: <code>add</code></a></h4>
@@ -343,11 +344,20 @@ Suppose you want to add your classmate named Jane Doe, with phone number 1234567
 into NOVA,</p>
 </div>
 <div class="paragraph">
-<p><code>add n\Jane Doe p\12345678 e\janedoe@gmail.com c\classmate</code></p>
+<p>enter the command: <code>add n\Jane Doe p\12345678 e\janedoe@gmail.com c\classmate</code></p>
 </div>
 <div class="paragraph">
 <p>NOVA will add a new contact named Jane Doe, phone number 12345678 and email address <a href="mailto:janedoe@gmail.com">janedoe@gmail.com</a> into the
-classmate category as seen below.</p>
+classmate category and display a confirmation message as seen below.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/userguide/addressbook_add.png" alt="addressbook add" width="690">
+</div>
+</div>
+<div class="paragraph text-center">
+<p><em><span class="small">Fig 5.2.1: Display message after entering<br>
+<code>add n\Jane Doe p\12345678 e\janedoe@gmail.com c\classmate</code></span></em></p>
 </div>
 <div class="paragraph">
 <p><a href="#Top">[Back to Top]</a></p>
@@ -481,14 +491,25 @@ classmate category as seen below.</p>
 <div class="sect3">
 <h4 id="edit-contact-code-edit-code"><a class="link" href="#edit-contact-code-edit-code">5.2.5. Edit Contact: <code>edit</code></a></h4>
 <div class="paragraph">
-<p>You can edit the contacts that you have added. If the contact you want to edit does not exist, NOVA will let you know.</p>
-</div>
-<div class="paragraph">
-<p>At least one of the optional fields must be provided. Optional fields are <code>n\[name]</code>, <code>p\[phone number]</code>,
-<code>e\[email address]</code> or <code>c\[classmate/teammate]</code>.</p>
+<p>You can edit the contacts that you have added. If the contact you want to edit does not exist, NOVA will let you know.<br></p>
 </div>
 <div class="paragraph">
 <p>Format: <code>edit i\[index] n\[name] p\[phone number] e\[email address] c\[classmate/teammate]</code></p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <code>[index]</code> will apply on the list of your most recent <code>list</code>, <code>list c\[classmate/teamate]</code> or <code>find</code> command.
+Confirm the position of the contact in your most recent list to avoid editing other contact.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -500,7 +521,9 @@ classmate category as seen below.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Edits the contact at the specified <code>[index]</code> in the displayed contact list</p>
+<p>At least one of the optional fields must be provided.<br>
+Optional fields are <code>n\[name]</code>, <code>p\[phone number]</code>,
+<code>e\[email address]</code> or <code>c\[classmate/teammate]</code></p>
 </li>
 <li>
 <p>The <code>[index]</code> must be a positive integer. (E.g. 1, 2, 3, &#8230;&#8203;)</p>
@@ -522,26 +545,56 @@ classmate category as seen below.</p>
 </div>
 <div class="paragraph">
 <p>Example:<br>
-Suppose you want to edit the first contact&#8217;s phone number in your address book after using <code>list</code>,
-<code>list c\[classmate/teammate]</code> or <code>find</code> command,</p>
+Suppose you want to edit the Alex Yeoh&#8217;s phone number in your address book after using <code>list</code> as shown below,</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/userguide/addressbook_list.png" alt="addressbook list" width="690">
+</div>
+</div>
+<div class="paragraph text-center">
+<p><em><span class="small">Fig 5.2.5.1: Example display message after entering <code>list</code></span></em></p>
 </div>
 <div class="paragraph">
-<p><code>edit i\1 p\88888888</code></p>
+<p>enter the command: <code>edit i\1 p\88888888</code></p>
 </div>
 <div class="paragraph">
-<p>NOVA will edit the phone number of the first contact in your list to 88888888.</p>
+<p>NOVA will edit the phone number of Alex Yeoh to 88888888 as shown below.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/userguide/addressbook_edit.png" alt="addressbook edit" width="790">
+</div>
+</div>
+<div class="paragraph text-center">
+<p><em><span class="small">Fig 5.2.5.2: Display message after entering <code>edit i\1 p\88888888</code></span></em></p>
 </div>
 <div class="paragraph">
 <p><a href="#Top">[Back to Top]</a></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="add-category-specific-remarks-code-remark-code"><a class="link" href="#add-category-specific-remarks-code-remark-code">5.2.6. Add Category Specific Remarks: <code>remark</code></a></h4>
+<h4 id="add-edit-or-delete-remark-code-remark-code"><a class="link" href="#add-edit-or-delete-remark-code-remark-code">5.2.6. Add, Edit or Delete Remark: <code>remark</code></a></h4>
 <div class="paragraph">
 <p>You can add remarks that are category specific, to a contact.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>remark i\[index] r\[remark]</code></p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <code>[index]</code> will apply on the list of your most recent <code>list</code>, <code>list c\[classmate/teamate]</code> or <code>find</code> command.
+Confirm the position of the contact in your most recent list to avoid editing other contact.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -553,13 +606,10 @@ Suppose you want to edit the first contact&#8217;s phone number in your address 
 <div class="ulist">
 <ul>
 <li>
-<p>Adds category specific remark at the specified <code>[index]</code> in the displayed contact list</p>
-</li>
-<li>
 <p>The <code>[index]</code> must be a positive integer. (E.g. 1, 2, 3, &#8230;&#8203;)</p>
 </li>
 <li>
-<p>To remove any remarks that you have added for a contact, use <code>remark i\[index] r\</code></p>
+<p>To remove any remarks, use <code>remark i\[index] r\</code> or <code>remark i\[index]</code></p>
 </li>
 </ul>
 </div>
@@ -569,14 +619,21 @@ Suppose you want to edit the first contact&#8217;s phone number in your address 
 </div>
 <div class="paragraph">
 <p>Example:<br>
-Suppose you want add remark to the first contact in your address book after using <code>list</code>,
-<code>list c\[classmate/teammate]</code> or <code>find</code> command,</p>
+Suppose you want add remark to Bernice Yu in your address book after using <code>list</code> as seen in Fig 5.2.5.1,</p>
 </div>
 <div class="paragraph">
-<p><code>remark i\1 r\He&#8217;s a nice teammate</code></p>
+<p>enter the command: <code>remark i\2 r\She&#8217;s a nice teammate</code></p>
 </div>
 <div class="paragraph">
-<p>NOVA will add the remark "He&#8217;s a nice teammate" to the first contact in your address book.</p>
+<p>NOVA will add the remark "She&#8217;s a nice teammate" to Bernice Yu in your address book as shown below.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/userguide/addressbook_remark.png" alt="addressbook remark" width="790">
+</div>
+</div>
+<div class="paragraph text-center">
+<p><em><span class="small">Fig 5.2.6.2: Display message after entering <code>remark i\2 r\She&#8217;s a nice teammate</code></span></em></p>
 </div>
 <div class="paragraph">
 <p><a href="#Top">[Back to Top]</a></p>
@@ -589,6 +646,21 @@ Suppose you want add remark to the first contact in your address book after usin
 </div>
 <div class="paragraph">
 <p>Format: <code>delete i\[index]</code></p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <code>[index]</code> will apply on the list of your most recent <code>list</code>, <code>list c\[classmate/teamate]</code> or <code>find</code> command.
+Confirm the position of the contact in your most recent list to avoid editing other contact.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -613,14 +685,21 @@ Suppose you want add remark to the first contact in your address book after usin
 </div>
 <div class="paragraph">
 <p>Example:<br>
-Suppose you want to delete the first contact in your address book after using the <code>list</code>,
-<code>list c\[classmate/teammate]</code> or <code>find</code> command,</p>
+Suppose you want to delete Alex Yeoh&#8217;s contact after using the <code>list</code> as seen in Fig 5.2.5.1,</p>
 </div>
 <div class="paragraph">
-<p><code>delete i\1</code></p>
+<p>enter the command: <code>delete i\1</code></p>
 </div>
 <div class="paragraph">
-<p>NOVA will delete the first contact in the list.</p>
+<p>NOVA will delete Alex Yeoh from your the address book.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/userguide/addressbook_delete.png" alt="addressbook delete" width="790">
+</div>
+</div>
+<div class="paragraph text-center">
+<p><em><span class="small">Fig 5.2.7.2: Display message after entering <code>delete i\1</code></span></em></p>
 </div>
 <div class="paragraph">
 <p><a href="#Top">[Back to Top]</a></p>
@@ -718,8 +797,15 @@ If there is already an event in the time slot, NOVA will inform you.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<div class="paragraph">
+<div class="ulist">
+<ul>
+<li>
 <p>The <code>[End time (HH:MM)]</code> must be later than the <code>[Start time (HH:MM)]</code>.</p>
+</li>
+<li>
+<p>You can only add meetings to dates that fall within the semester.</p>
+</li>
+</ul>
 </div>
 </td>
 </tr>
@@ -727,21 +813,22 @@ If there is already an event in the time slot, NOVA will inform you.</p>
 </div>
 <div class="paragraph">
 <p>Example:<br>
-Suppose you wish to add a project meeting into your schedule, which is from 2pm to 3pm on 20 February 2020,<br></p>
+Suppose you wish to add a project meeting into your schedule, which is from 2pm to 3pm on 20 Feb 2020,<br></p>
 </div>
 <div class="paragraph">
-<p><code>meeting d\CS2103T website set-up v\COM1 t\2020-02-20 14:00 15:00</code></p>
+<p>enter the command: <code>meeting d\CS2103T website set-up v\COM1 t\2020-02-20 14:00 15:00</code></p>
 </div>
 <div class="paragraph">
-<p>NOVA will create an event for a team meeting at COM1 on 20 February 2020 to set up CS2103T website from 2pm to 3pm.</p>
+<p>NOVA will create an event for a team meeting at COM1 on 20 Feb 2020 to set up CS2103T website from 2pm to 3pm.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/userguide/EventMeeting.png" alt="EventMeeting" width="790">
+<img src="images/userguide/EventMeeting.png" alt="EventMeeting" width="500">
 </div>
 </div>
 <div class="paragraph text-center">
-<p><em><span class="small">Fig 5.3.1: GUI of NOVA after user typed <code>meeting d\CS2103T website set-up v\COM1 t\2020-02-20 14:00 15:00</code></span></em></p>
+<p><em><span class="small">Fig 5.3.1: Display message after entering<br>
+ <code>meeting d\CS2103T website set-up v\COM1 t\2020-02-20 14:00 15:00</code></span></em></p>
 </div>
 <div class="paragraph">
 <p><a href="#Top">[Back to Top]</a></p>
@@ -763,8 +850,15 @@ If there is already an event in the time slot, NOVA will inform you.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<div class="paragraph">
+<div class="ulist">
+<ul>
+<li>
 <p>The <code>[End time (HH:MM)]</code> must be later than the <code>[Start time (HH:MM)]</code>.</p>
+</li>
+<li>
+<p>You can only add study sessions to dates that fall within the semester.</p>
+</li>
+</ul>
 </div>
 </td>
 </tr>
@@ -772,21 +866,22 @@ If there is already an event in the time slot, NOVA will inform you.</p>
 </div>
 <div class="paragraph">
 <p>Example:<br>
-Suppose you wish to add a group study session from 4pm to 5pm on 20 February 2020,<br></p>
+Suppose you wish to add a group study session from 4pm to 5pm on 20 Feb 2020,<br></p>
 </div>
 <div class="paragraph">
-<p><code>study d\cool peeps revision v\COM1 t\2020-02-20 16:00 17:00</code></p>
+<p>enter the command: <code>study d\cool peeps revision v\COM1 t\2020-02-20 16:00 17:00</code></p>
 </div>
 <div class="paragraph">
 <p>NOVA will create an event for study session at COM1 on 20 Feb 2020 from 4pm to 5pm.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/userguide/EventStudy.png" alt="EventStudy" width="790">
+<img src="images/userguide/EventStudy.png" alt="EventStudy" width="500">
 </div>
 </div>
 <div class="paragraph text-center">
-<p><em><span class="small">Fig 5.3.2: GUI of NOVA after user typed <code>study d\cool peeps revision v\COM1 t\2020-02-20 16:00 17:00</code></span></em></p>
+<p><em><span class="small">Fig 5.3.2: Display message after entering<br>
+ <code>study d\cool peeps revision v\COM1 t\2020-02-20 16:00 17:00</code></span></em></p>
 </div>
 <div class="paragraph">
 <p><a href="#Top">[Back to Top]</a></p>
@@ -808,8 +903,15 @@ If there is already an event in the time slot, NOVA will inform you.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<div class="paragraph">
+<div class="ulist">
+<ul>
+<li>
 <p>The <code>[End time (HH:MM)]</code> must be later than the <code>[Start time (HH:MM)]</code>.</p>
+</li>
+<li>
+<p>You can only add consultation sessions to dates that fall within the semester.</p>
+</li>
+</ul>
 </div>
 </td>
 </tr>
@@ -817,21 +919,22 @@ If there is already an event in the time slot, NOVA will inform you.</p>
 </div>
 <div class="paragraph">
 <p>Example:<br>
-Suppose you wish to add a consultation session from 3pm to 4pm on 20 February 2020,<br></p>
+Suppose you wish to add a consultation session from 3pm to 4pm on 20 Feb 2020,<br></p>
 </div>
 <div class="paragraph">
-<p><code>consultation d\clarify UML v\COM1 t\2020-02-20 15:00 16:00</code></p>
+<p>enter the command: <code>consultation d\clarify UML v\COM1 t\2020-02-20 15:00 16:00</code></p>
 </div>
 <div class="paragraph">
 <p>NOVA will create an event for consultation at COM1 on 20 Feb 2020 to clarify UML from 3pm to 4pm.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/userguide/EventConsultation.png" alt="EventConsultation" width="790">
+<img src="images/userguide/EventConsultation.png" alt="EventConsultation" width="500">
 </div>
 </div>
 <div class="paragraph text-center">
-<p><em><span class="small">Fig 5.3.3: GUI of NOVA after user typed <code>consultation d\clarify UML v\COM1 t\2020-02-20 15:00 16:00</code></span></em></p>
+<p><em><span class="small">Fig 5.3.3: Display message after entering<br>
+ <code>consultation d\clarify UML v\COM1 t\2020-02-20 15:00 16:00</code></span></em></p>
 </div>
 <div class="paragraph">
 <p><a href="#Top">[Back to Top]</a></p>
@@ -840,7 +943,7 @@ Suppose you wish to add a consultation session from 3pm to 4pm on 20 February 20
 <div class="sect3">
 <h4 id="add-a-lesson-code-lesson-code"><a class="link" href="#add-a-lesson-code-lesson-code">5.3.4. Add a Lesson: <code>lesson</code></a></h4>
 <div class="paragraph">
-<p>You can add a lesson as one of your events.
+<p>You can add weekly lessons as one of your events.
 If there is already an event in the time slot, NOVA will inform you.</p>
 </div>
 <div class="paragraph">
@@ -853,8 +956,18 @@ If there is already an event in the time slot, NOVA will inform you.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<div class="paragraph">
+<div class="ulist">
+<ul>
+<li>
 <p>The <code>[End time (HH:MM)]</code> must be later than the <code>[Start time (HH:MM)]</code>.</p>
+</li>
+<li>
+<p>The lesson will be repeated weekly from weeks 1 to 13.</p>
+</li>
+<li>
+<p>There will not be lessons in the recess week.</p>
+</li>
+</ul>
 </div>
 </td>
 </tr>
@@ -865,18 +978,19 @@ If there is already an event in the time slot, NOVA will inform you.</p>
 Suppose you wish to add a weekly lesson from 3pm to 4pm on Friday,<br></p>
 </div>
 <div class="paragraph">
-<p><code>lesson d\CS2103T tutorial v\COM1-B103 t\Friday 15:00 16:00</code></p>
+<p>enter the command: <code>lesson d\CS2103T tutorial v\COM1-B103 t\Friday 15:00 16:00</code></p>
 </div>
 <div class="paragraph">
 <p>NOVA will create weekly events for CS2103T tutorial at COM1-B103 on Friday from 3pm to 4pm for the entire semester.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/userguide/EventLesson.png" alt="EventLesson" width="790">
+<img src="images/userguide/EventLesson.png" alt="EventLesson" width="500">
 </div>
 </div>
 <div class="paragraph text-center">
-<p><em><span class="small">Fig 5.3.4: GUI of NOVA after user typed <code>lesson d\CS2103T tutorial v\COM1-B103 t\Friday 15:00 16:00</code></span></em></p>
+<p><em><span class="small">Fig 5.3.4: Display message after entering<br>
+ <code>lesson d\CS2103T tutorial v\COM1-B103 t\Friday 15:00 16:00</code></span></em></p>
 </div>
 <div class="paragraph">
 <p><a href="#Top">[Back to Top]</a></p>
@@ -905,21 +1019,21 @@ If the event does not exist, NOVA will inform you.</p>
 </div>
 <div class="paragraph">
 <p>Example:<br>
-Suppose you wish to remove the second event from the list of events on 20 February 2020,<br></p>
+Suppose you wish to remove the second event from the list of events on 20 Feb 2020,<br></p>
 </div>
 <div class="paragraph">
-<p><code>delete t\2020-02-20 i\2</code></p>
+<p>enter the command: <code>delete t\2020-02-20 i\2</code></p>
 </div>
 <div class="paragraph">
 <p>NOVA will delete the second event on 20 Feb 2020.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/userguide/EventDelete.png" alt="EventDelete" width="790">
+<img src="images/userguide/EventDelete.png" alt="EventDelete" width="500">
 </div>
 </div>
 <div class="paragraph text-center">
-<p><em><span class="small">Fig 5.3.5: GUI of NOVA after user typed contact <code>delete t\2020-02-20 i\2</code></span></em></p>
+<p><em><span class="small">Fig 5.3.5: Display message after entering <code>delete t\2020-02-20 i\2</code></span></em></p>
 </div>
 <div class="paragraph">
 <p><a href="#Top">[Back to Top]</a></p>
@@ -950,7 +1064,7 @@ Suppose you wish to remove the second event from the list of events on 20 Februa
 Suppose you wish to add a note that indicates the work allocation to a meeting event,<br></p>
 </div>
 <div class="paragraph">
-<p><code>note d\Alice - Logic component in DG, Bob - UI component in DG t\2020-02-20 i\1</code></p>
+<p>enter the command: <code>note d\Alice - Logic component in DG, Bob - UI component in DG t\2020-02-20 i\1</code></p>
 </div>
 <div class="paragraph">
 <p>NOVA will add a note with the description "Alice - Logic component in DG, Bob - UI component in DG"
@@ -958,12 +1072,12 @@ to the first event on 20 Feb 2020.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/userguide/EventNote.png" alt="EventNote" width="790">
+<img src="images/userguide/EventNote.png" alt="EventNote" width="500">
 </div>
 </div>
 <div class="paragraph text-center">
-<p><em><span class="small">Fig 5.2: GUI of NOVA after user typed <code>note d\Alice - Logic component in DG,
-                                                 Bob - UI component in DG t\2020-02-20 i\1</code></span></em></p>
+<p><em><span class="small">Fig 5.3.6: Display message after entering<br>
+<code>note d\Alice - Logic component in DG, Bob - UI component in DG t\2020-02-20 i\1</code></span></em></p>
 </div>
 <div class="paragraph">
 <p><a href="#Top">[Back to Top]</a></p>
@@ -980,20 +1094,21 @@ to the first event on 20 Feb 2020.</p>
 </div>
 <div class="paragraph">
 <p>Example:<br>
-Suppose you want to check out what events are happening on 29 Feb,<br>
-<br>
-<code>view t\2020-02-29</code></p>
+Suppose you want to check out what events are happening on 29 Feb,<br></p>
 </div>
 <div class="paragraph">
-<p>NOVA will show your schedule on 29 Feb 2020 as seen below.</p>
+<p>enter the command: <code>view t\2020-02-20</code></p>
+</div>
+<div class="paragraph">
+<p>NOVA will show your schedule on 20 Feb 2020 as seen below.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/userguide/schedule_view_date.png" alt="schedule view date" width="790">
+<img src="images/userguide/schedule_view_date.png" alt="schedule view date" width="500">
 </div>
 </div>
 <div class="paragraph text-center">
-<p><em><span class="small">Fig 5.3.7: GUI of NOVA after user typed contact <code>view t\2020-02-29</code></span></em></p>
+<p><em><span class="small">Fig 5.3.7: Display message after entering <code>view t\2020-02-20</code></span></em></p>
 </div>
 <div class="paragraph">
 <p><a href="#Top">[Back to Top]</a></p>
@@ -1021,7 +1136,20 @@ Suppose you want to check out what events are happening on 29 Feb,<br>
 <p><code>[week #]</code> must be a positive integer. (E.g. 1, 2, 3, &#8230;&#8203;)</p>
 </li>
 <li>
+<p>Week number for special weeks are as such:</p>
+<div class="ulist">
+<ul>
+<li>
 <p>Recess week is week 16</p>
+</li>
+<li>
+<p>Reading week is week 14</p>
+</li>
+<li>
+<p>Final examination week is week 15</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -1031,27 +1159,28 @@ Suppose you want to check out what events are happening on 29 Feb,<br>
 </div>
 <div class="paragraph">
 <p>Example:<br>
-Suppose you are interested in what is going to happen in week 6 of the semester,<br>
-<br>
-<code>view week i\6</code></p>
+Suppose you are interested in what is going to happen in week 6 of the semester,<br></p>
+</div>
+<div class="paragraph">
+<p>enter the command: <code>view week i\6</code></p>
 </div>
 <div class="paragraph">
 <p>NOVA will show your schedule in week 6 of the semester as seen below.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/userguide/schedule_view_week.png" alt="schedule view week" width="790">
+<img src="images/userguide/schedule_view_week.png" alt="schedule view week" width="500">
 </div>
 </div>
 <div class="paragraph text-center">
-<p><em><span class="small">Fig 5.3.8: GUI of NOVA after user typed contact <code>view week i\6</code></span></em></p>
+<p><em><span class="small">Fig 5.3.8: Display message after entering <code>view week i\6</code></span></em></p>
 </div>
 <div class="paragraph">
 <p><a href="#Top">[Back to Top]</a></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="find-free-slots-v2-0-code-freeslot-code"><a class="link" href="#find-free-slots-v2-0-code-freeslot-code">5.3.9. Find Free Slots [v2.0]: <code>freeslot</code></a></h4>
+<h4 id="find-free-slots-code-freeslot-code"><a class="link" href="#find-free-slots-code-freeslot-code">5.3.9. Find Free Slots: <code>freeslot</code></a></h4>
 <div class="paragraph">
 <p>You can find free slots on a day easily within your schedule without looking through your schedule.</p>
 </div>
@@ -1061,12 +1190,13 @@ Suppose you are interested in what is going to happen in week 6 of the semester,
 </div>
 <div class="paragraph">
 <p>Example:<br>
-Suppose you want to find pockets of free time on 29 February 2020,<br>
-<br>
-<code>freeslot t\2020-02-29</code></p>
+Suppose you want to find pockets of free time on 20 Feb 2020,<br></p>
 </div>
 <div class="paragraph">
-<p>Finds the free slots on 29 Feb 2020.</p>
+<p>enter the command: <code>freeslot t\2020-02-20</code></p>
+</div>
+<div class="paragraph">
+<p>NOVA will show you your freeslots on 20 Feb 2020.</p>
 </div>
 <div class="paragraph">
 <p><a href="#Top">[Back to Top]</a></p>
@@ -1160,13 +1290,15 @@ being scheduled, these tasks will create events with duration as long as possibl
 </div>
 <div class="paragraph">
 <p>Example:<br>
-Suppose you want to create a flexible task "study vocabulary",</p>
+Suppose you want to create a flexible task "study vocabulary",<br>
+<br>
+<code>flexible p\study vocabulary t\100 mind\10 maxd\60</code></p>
 </div>
 <div class="paragraph">
-<p><code>flexible p\study vocabulary f\daily mind\10 maxd\60</code></p>
-</div>
-<div class="paragraph">
-<p>NOVA will create a new task “study vocabulary”</p>
+<p>NOVA will create a new task “study vocabulary”<br>
+When being scheduled, this task will create one event “study vocabulary” with duration as long as
+possible, from 10 minutes to 60 minutes.<br>
+The total duration of all the event scheduled will not exceed 100 minutes.</p>
 </div>
 <div class="paragraph">
 <p><a href="#Top">[Back to Top]</a></p>
@@ -1263,14 +1395,14 @@ If it is impossible to schedule an event for the task for that day, you will be 
 </div>
 <div class="paragraph">
 <p>Format:<br>
-<code>schedule p\[task name] d\[YYYY-MM-DD]</code><br></p>
+<code>schedule p\[task name] t\[YYYY-MM-DD]</code><br></p>
 </div>
 <div class="paragraph">
 <p>Example:<br>
 Suppose you want to schedule the weekly routine task "read cs2103 textbook",</p>
 </div>
 <div class="paragraph">
-<p><code>schedule p\read cs2103 textbook d\2020-03-20</code></p>
+<p><code>schedule p\read cs2103 textbook t\2020-03-20</code></p>
 </div>
 <div class="paragraph">
 <p>NOVA will finds a free slot bigger than 30 minutes as specified by the task, and creates an event “read cs2103
@@ -1279,7 +1411,7 @@ textbook” that lasts for 30 minutes on a random spot within the free slot.</p>
 <div class="paragraph">
 <p>Suppose you want to schedule the flexible task "study vocabulary",<br>
 <br>
-<code>schedule p\study vocabulary d\2020-03-20</code><br></p>
+<code>schedule p\study vocabulary t\2020-03-20</code><br></p>
 </div>
 <div class="paragraph">
 <p>NOVA will finds a free slot bigger than 10 minutes as specified by the task, and creates an event “read cs2103
@@ -1706,7 +1838,7 @@ event to your schedule</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">Deletes the event at the specified index on the specified day</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">freeslot t\[YYYY-MM-DD] [v2.0]</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">freeslot t\[YYYY-MM-DD]</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">Find pockets of free time you have on the specified day</p></td>
 </tr>
 <tr>
@@ -1804,4 +1936,4 @@ contains the data of your previous NOVA folder.</p>
 <p><a href="#Top">[Back to Top]</a></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 05:11:28 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 05:24:59 UTC</div></div></div></body></html>
