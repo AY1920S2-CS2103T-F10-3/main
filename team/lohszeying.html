@@ -10,7 +10,14 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>NOVA is a desktop application to help CS2103T with event planning and managing schedules.</p>
+<p>This portfolio sumarises my contribution to NOVA&#8217;s development.
+NOVA is a desktop application to help CS2103T with event planning and managing schedules, and is developed by a team of 5 members from NUS School of Computing.<br></p>
+</div>
+<div class="paragraph">
+<p>NOVA is written in Java, and has around 16kLOC.</p>
+</div>
+<div class="paragraph">
+<p>Within NOVA&#8217;s code, I am in charge of features related to Address Book</p>
 </div>
 </div>
 </div>
@@ -20,7 +27,21 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to sort and list contacts by category within Address Book mode</strong></p>
+<p><strong>Major enhancement</strong>: Refactored and implemented address book feature</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Allows the user to do contacts management on their fellow CS2103T students within NOVA</p>
+</li>
+<li>
+<p>Justification: This feature improves a product as a student using NOVA for CS2103T management would want to do
+contacts management on NOVA</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: added <strong>the ability to sort and list contacts by category within Address Book mode</strong></p>
 <div class="ulist">
 <ul>
 <li>
@@ -36,7 +57,20 @@
 </div>
 </li>
 <li>
-<p><strong>Major enhancement</strong>: added the <strong>ability to undo or redo commands within Address Book mode</strong></p>
+<p><strong>Minor enhancement</strong>: added <strong>the ability to view remarks only with list category command</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Allows the user to only view fellow classmate&#8217;s or teammate&#8217;s remark with list category command</p>
+</li>
+<li>
+<p>Justification: When users want to view their contact list, they would want to only view their necessary contact information</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: added the <strong>ability to undo or redo commands within Address Book mode</strong></p>
 <div class="ulist">
 <ul>
 <li>
@@ -68,6 +102,25 @@
 </div>
 </li>
 <li>
+<p><strong>Minor enhancement</strong>: added <strong>the ability to format contact&#8217;s name automatically</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Allows the user to quickly add or edit a contact without worry about the format of name, eg. whether the name starts with capital letter, or if is there many spaces in-between the name</p>
+</li>
+<li>
+<p>Justification: This feature allows the user to quickly add a contact and NOVA will automatically format the person&#8217;s name</p>
+</li>
+<li>
+<p>Highlights: There is a need to edit current implementation of <code>Name</code> class for this to work</p>
+</li>
+<li>
+<p>Example: User types <code>aLICe yeoH</code> into name parameter, and NOVA automatically converts it to <code>Alice Yeoh</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
 <p><strong>Code contributed</strong>: Please click <a href="https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=f10-3&amp;sort=totalCommits%20dsc&amp;sortWithin=title&amp;since=2020-02-14&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=lohszeying&amp;tabRepo=AY1920S2-CS2103T-F10-3%2Fmain%5Bmaster%5D">here</a> to see my code contributions</p>
 </li>
 <li>
@@ -79,7 +132,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.2.1</code> to <code>v1.3</code> (2 releases on GitHub)</p>
+<p>Managed releases <code>v1.2.1</code> to <code>v1.3</code> (2 releases on GitHub) <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/releases">here</a></p>
+</li>
+<li>
+<p>Refactored AddressBook commands (<a href="https://github.com/AY1920S2-CS2103T-F10-3/main/pull/86">#86</a>)</p>
 </li>
 </ul>
 </div>
@@ -89,22 +145,42 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Automatically format contact name, no matter how the user input. For example, if the user input the name as <code>AliCE yeoH</code>, NOVA will automatically format the name as <code>Alice Yeoh</code></p>
+<p>Edited index tag within NOVA&#8217;s Address Book from <code>[index]</code> to <code>i\[index]</code> (<a href="https://github.com/AY1920S2-CS2103T-F10-3/main/pull/244">#244</a>)</p>
 </li>
 <li>
-<p>Edited inde tag within NOVA&#8217;s Address Book from <code>[index]</code> to <code>i\[index]</code></p>
+<p>Sorted contact list alphabetically automatically (<a href="https://github.com/AY1920S2-CS2103T-F10-3/main/pull/347">#347</a>)</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
 <p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Updated About Us and team member&#8217;s portfolio with template (<a href="https://github.com/AY1920S2-CS2103T-F10-3/main/pull/23">#23</a>)</p>
+</li>
+<li>
+<p>Edited SettingUp.adoc, DevOps.adoc, Documentation.adoc, Testing.adoc to fit NOVA&#8217;s product (<a href="https://github.com/AY1920S2-CS2103T-F10-3/main/pull/355">#355</a>, <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/pull/416">#416</a>)</p>
+</li>
+<li>
+<p>Contributed and updated NOVA&#8217;s User Guide and Developer Guide. Details below.</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Gave suggestions to other team <a href="https://github.com/nus-cs2103-AY1920S2/addressbook-level3/pull/14#pullrequestreview-370052563">here</a></p>
 </li>
 <li>
-<p>Tools:</p>
+<p>Tested other team&#8217;s application and reported bugs <a href="https://github.com/lohszeying/ped/issues">here</a></p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -126,6 +202,12 @@
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>Written the User Guide <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/blob/master/docs/UserGuide.adoc">here</a>, most notably under the section <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/blob/master/docs/UserGuide.adoc#address-book">Address Book</a>.</p>
+</div>
+<div class="paragraph">
+<p>Note: <em>Special thanks to <a href="https://github.com/xCelestialPhoenix">@xcelestialphoenix</a> for helping to put screenshot for Address Book feature, and managing of documents for User Guide and Developer Guide!</em></p>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -141,5 +223,31 @@
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>Written the Developer Guide <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/blob/master/docs/DeveloperGuide.adoc">here</a>, most notably under section <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/blob/master/docs/DeveloperGuide.adoc#address-book">3.2</a>'s Address Book implementation.<br>
+Also edited section <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/blob/master/docs/DeveloperGuide.adoc#Design-Architecture">2.1</a>'s Figure 3, and edited section <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/pull/207">2.6</a>.</p>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 17:04:06 UTC</div></div></div></body></html>
+<div class="ulist">
+<ul>
+<li>
+<p>Added and edited Address Book&#8217;s user stories (<a href="https://github.com/AY1920S2-CS2103T-F10-3/main/pull/19">#19</a>, <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/pull/207">#207</a>, <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/pull/416">#416</a>)</p>
+</li>
+<li>
+<p>Added NFR (<a href="https://github.com/AY1920S2-CS2103T-F10-3/main/pull/19">#19</a>, <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/pull/355">#355</a>)</p>
+</li>
+<li>
+<p>Added use case (<a href="https://github.com/AY1920S2-CS2103T-F10-3/main/pull/355">#355</a>, <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/pull/416">#416</a>)</p>
+</li>
+<li>
+<p>Added glossary (<a href="https://github.com/AY1920S2-CS2103T-F10-3/main/pull/416">#416</a>)</p>
+</li>
+<li>
+<p>Edited Instructions for Manual Testing (<a href="https://github.com/AY1920S2-CS2103T-F10-3/main/pull/355">#355</a>)</p>
+</li>
+<li>
+<p>Removed product survey appendix (<a href="https://github.com/AY1920S2-CS2103T-F10-3/main/pull/416">#416</a>)</p>
+</li>
+</ul>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 17:36:51 UTC</div></div></div></body></html>
