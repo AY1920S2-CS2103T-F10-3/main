@@ -31,10 +31,16 @@
 <li><a href="#address-book">3.2. Address Book</a>
 <ul class="sectlevel3">
 <li><a href="#implementation-undo-or-redo-command">3.2.1. Implementation - Undo or redo command</a></li>
-<li><a href="#design-considerations-2">3.2.2. Design Considerations</a>
+<li><a href="#design-considerations-undo-or-redo-command">3.2.2. Design Considerations - Undo or redo command</a>
 <ul class="sectlevel4">
 <li><a href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></li>
 <li><a href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></li>
+</ul>
+</li>
+<li><a href="#implementation-delete-a-contact">3.2.3. Implementation - Delete a contact</a></li>
+<li><a href="#design-considerations-delete-a-contact">3.2.4. Design Considerations - Delete a contact</a>
+<ul class="sectlevel4">
+<li><a href="#aspect-deleting-a-contact-by-index-or-name">Aspect: Deleting a contact by index or name</a></li>
 </ul>
 </li>
 </ul>
@@ -42,19 +48,19 @@
 <li><a href="#view-tasks-under-ip-project">3.3. View tasks under IP project</a>
 <ul class="sectlevel3">
 <li><a href="#implementation-2">3.3.1. Implementation</a></li>
-<li><a href="#design-considerations-3">3.3.2. Design Considerations</a></li>
+<li><a href="#design-considerations-2">3.3.2. Design Considerations</a></li>
 </ul>
 </li>
 <li><a href="#view-schedule-for-a-specified-day">3.4. View schedule for a specified day</a>
 <ul class="sectlevel3">
 <li><a href="#implementation-3">3.4.1. Implementation</a></li>
-<li><a href="#design-considerations-4">3.4.2. Design Considerations</a></li>
+<li><a href="#design-considerations-3">3.4.2. Design Considerations</a></li>
 </ul>
 </li>
 <li><a href="#view-available-free-slot-of-a-specific-day">3.5. View available free slot of a specific day</a>
 <ul class="sectlevel3">
 <li><a href="#implementation-4">3.5.1. Implementation</a></li>
-<li><a href="#design-considerations-5">3.5.2. Design Considerations</a>
+<li><a href="#design-considerations-4">3.5.2. Design Considerations</a>
 <ul class="sectlevel4">
 <li><a href="#aspect-calculating-free-slots-given-a-schedule">Aspect: Calculating free slots given a schedule</a></li>
 </ul>
@@ -64,7 +70,7 @@
 <li><a href="#schedule-events-based-on-a-task-in-plan">3.6. Schedule events based on a task in plan.</a>
 <ul class="sectlevel3">
 <li><a href="#implementation-5">3.6.1. Implementation</a></li>
-<li><a href="#design-considerations-6">3.6.2. Design Considerations</a>
+<li><a href="#design-considerations-5">3.6.2. Design Considerations</a>
 <ul class="sectlevel4">
 <li><a href="#aspect-calculating-best-fit-time-frame-for-a-task">Aspect: Calculating best fit time frame for a task</a></li>
 </ul>
@@ -87,12 +93,10 @@
 </li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
 <li><a href="#glossary">Appendix E: Glossary</a></li>
-<li><a href="#product-survey">Appendix F: Product Survey</a></li>
-<li><a href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a>
+<li><a href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
-<li><a href="#launch-and-shutdown">G.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-person-in-address-book">G.2. Deleting a person in Address Book</a></li>
-<li><a href="#saving-data">G.3. Saving data</a></li>
+<li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
+<li><a href="#deleting-a-person-in-address-book">F.2. Deleting a person in Address Book</a></li>
 </ul>
 </li>
 </ul>
@@ -200,11 +204,12 @@ The following class plays an important role at the architecture level:</p>
 </div>
 <h4 id="how-the-architecture-components-interact-with-each-other" class="discrete">How the architecture components interact with each other</h4>
 <div class="paragraph">
-<p>The <em>Sequence Diagram</em> below shows how the components interact with each other for the scenario where the user issues the command <code>delete i\1</code> after navigating to Address Book mode with <code>nav ab</code>.</p>
+<p>The <em>Sequence Diagram</em> below shows how the components interact with each other for the scenario where the user issues the command <code>delete i\1</code> after navigating to Address Book mode with <code>nav ab</code>.<br>
+The same type of interaction applies to other mode within NOVA, such as Schedule mode, Planner mode or Progress Tracker mode.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/ArchitectureSequenceDiagram.png" alt="ArchitectureSequenceDiagram">
+<img src="images/ArchitectureSequenceDiagram.png" alt="ArchitectureSequenceDiagram" width="500">
 </div>
 <div class="title">Figure 3. Component interactions for <code>delete i\1</code> command</div>
 </div>
@@ -614,7 +619,7 @@ If the <code>currentStatePointer</code> is at index 0, pointing to the initial a
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The lifeline for <code>AbUndoCommand</code> and <code>AbUndoCommandParser</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+The lifeline for <code>AbUndoCommand</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </td>
 </tr>
 </table>
@@ -660,7 +665,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.2. Design Considerations</a></h4>
+<h4 id="design-considerations-undo-or-redo-command"><a class="link" href="#design-considerations-undo-or-redo-command">3.2.2. Design Considerations - Undo or redo command</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -728,6 +733,99 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="implementation-delete-a-contact"><a class="link" href="#implementation-delete-a-contact">3.2.3. Implementation - Delete a contact</a></h4>
+<div class="paragraph">
+<p>The edit feature allows users to edit a contact from Address Book. This feature is facilitated by <code>AddressBookParser</code>, <code>AbDeleteCommandParser</code> and <code>AbDeleteCommand</code>.
+The operation is exposed in the <code>Model</code> interface as <code>Model#deletePerson()</code>.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the delete mechanism behaves at each step.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user does <code>list</code>, <code>list c\classmate</code>, <code>list c\teammate</code>, or <code>find n\[name]</code> to view their contacts.</p>
+</li>
+<li>
+<p>The user executes <code>delete i\1</code> command to delete the first contact.</p>
+</li>
+<li>
+<p><code>AbDeleteCommandParser</code> creates a new <code>AbDeleteCommand</code>.</p>
+</li>
+<li>
+<p><code>LogicManager</code> executes the <code>AbDeleteCommand</code>.</p>
+</li>
+<li>
+<p><code>Model#deletePerson()</code> is called, and the <code>AddressBook</code> object in <code>ModelManager</code> is updated.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the delete operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AbDeleteSequenceDiagram.png" alt="AbDeleteSequenceDiagram">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The lifeline for <code>AbDeleteCommandParser</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following activity diagram shows how the delete mechanism works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AbDeleteActivityDiagram.png" alt="AbDeleteActivityDiagram" width="470">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-delete-a-contact"><a class="link" href="#design-considerations-delete-a-contact">3.2.4. Design Considerations - Delete a contact</a></h4>
+<div class="sect4">
+<h5 id="aspect-deleting-a-contact-by-index-or-name"><a class="link" href="#aspect-deleting-a-contact-by-index-or-name">Aspect: Deleting a contact by index or name</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use index tag to delete contact</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Shorter command to type by using index</p>
+</li>
+<li>
+<p>Cons: Users need to use <code>list</code>, <code>list c\classmate</code>, <code>list c\teammate</code> or <code>find n\[name]</code> command before deleting contact</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Use name to delete contact</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: No need to use <code>list</code>, <code>list c\classmate</code>, <code>list c\teammate</code> or <code>find n\[name]</code> prior to deleting contact</p>
+</li>
+<li>
+<p>Cons: Need to handle deletion of contacts with the same name</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="view-tasks-under-ip-project"><a class="link" href="#view-tasks-under-ip-project">3.3. View tasks under IP project</a></h3>
@@ -776,7 +874,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.3.2. Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.3.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p>Aspect: Adding choice of week to view tasks</p>
 </div>
@@ -851,7 +949,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.4.2. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.4.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p>Aspect: View schedule by day and not week</p>
 </div>
@@ -926,7 +1024,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.5.2. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.5.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-calculating-free-slots-given-a-schedule"><a class="link" href="#aspect-calculating-free-slots-given-a-schedule">Aspect: Calculating free slots given a schedule</a></h5>
 <div class="ulist">
@@ -1015,7 +1113,7 @@ in schedule.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.6.2. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.6.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-calculating-best-fit-time-frame-for-a-task"><a class="link" href="#aspect-calculating-best-fit-time-frame-for-a-task">Aspect: Calculating best fit time frame for a task</a></h5>
 <div class="ulist">
@@ -1195,7 +1293,7 @@ in schedule.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">categorise contacts into teammate or classmate</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sort contacts according to category</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -1207,13 +1305,13 @@ in schedule.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">edit category specific remark</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">edit remark if necessary</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">delete category specific remark</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delete remark if it is not needed</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
@@ -1231,7 +1329,7 @@ in schedule.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">delete profile picture to added contact</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">don&#8217;t need the contact picture within NOVA anymore</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -1392,9 +1490,6 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Student enters <code>nav ab</code> to enter address book mode, or is already in address book mode</p>
-</li>
-<li>
 <p>Student enters add command with the contact’s name, phone number, email and category</p>
 </li>
 <li>
@@ -1411,11 +1506,11 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. Student is not in address book mode</p>
+<p>1a. Student did not include compulsory field</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. Depending on the mode the student is on, NOVA informs student that the command is unknown</p>
+<p>1a1. NOVA informs student to include compulsory field</p>
 <div class="paragraph">
 <p>Use case resumes at step 1</p>
 </div>
@@ -1424,26 +1519,13 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </div>
 </li>
 <li>
-<p>2a. Student did not include compulsory field</p>
+<p>1b. Student did not adhere to format required for adding contact</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a1. NOVA informs student to include compulsory field</p>
+<p>1b1. NOVA informs student that the format is invalid, and provides an example of a correct format</p>
 <div class="paragraph">
-<p>Use case resumes at step 2</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>2b. Student did not adhere to format required for adding contact</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2b1. NOVA informs student that the format is invalid, and provides an example of a correct format</p>
-<div class="paragraph">
-<p>Use case resumes at step 2</p>
+<p>Use case resumes at step 1</p>
 </div>
 </li>
 </ul>
@@ -1457,9 +1539,6 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </div>
 <div class="olist arabic">
 <ol class="arabic">
-<li>
-<p>Student enters <code>nav ab</code> to enter address book mode, or is already in address book mode</p>
-</li>
 <li>
 <p>Student enters list command</p>
 </li>
@@ -1477,24 +1556,11 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. Student is not in address book mode</p>
+<p>1a. There is no contacts saved</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. Depending on the mode the student is on, NOVA informs student that the command is unknown</p>
-<div class="paragraph">
-<p>Use case resumes at step 1</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>2a. There is no contacts saved</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a1. NOVA informs student that the list is empty</p>
+<p>1a1. NOVA informs student that the list is empty</p>
 <div class="paragraph">
 <p>Use case end</p>
 </div>
@@ -1510,9 +1576,6 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </div>
 <div class="olist arabic">
 <ol class="arabic">
-<li>
-<p>Student enters <code>nav ab</code> to enter address book mode, or is already in address book mode</p>
-</li>
 <li>
 <p>Student enters list category command</p>
 </li>
@@ -1530,24 +1593,11 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. Student is not in address book mode</p>
+<p>1a. There is no contacts saved under that category</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. Depending on the mode the student is on, NOVA informs student that the command is unknown</p>
-<div class="paragraph">
-<p>Use case resumes at step 1</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>2a. There is no contacts saved under that category</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a1. NOVA informs student that the list of that category is empty</p>
+<p>1a1. NOVA informs student that the list of that category is empty</p>
 <div class="paragraph">
 <p>Use case end</p>
 </div>
@@ -1563,9 +1613,6 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </div>
 <div class="olist arabic">
 <ol class="arabic">
-<li>
-<p>Student enters <code>nav ab</code> to enter address book mode, or is already in address book mode</p>
-</li>
 <li>
 <p>Student enters find command</p>
 </li>
@@ -1583,24 +1630,11 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. Student is not in address book mode</p>
+<p>1a. There is no contact that matches what the student type</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. Depending on the mode the student is on, NOVA informs student that the command is unknown</p>
-<div class="paragraph">
-<p>Use case resumes at step 1</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>2a. There is no contact that matches what the student type</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a1. NOVA prints an empty list</p>
+<p>1a1. NOVA prints an empty list</p>
 <div class="paragraph">
 <p>Use case end</p>
 </div>
@@ -1616,9 +1650,6 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </div>
 <div class="olist arabic">
 <ol class="arabic">
-<li>
-<p>Student enters <code>nav ab</code> to enter address book mode, or is already in address book mode</p>
-</li>
 <li>
 <p>Student used <code>list</code>, <code>list c\classmate</code>, <code>list c\teammate</code> or <code>find</code> command</p>
 </li>
@@ -1639,11 +1670,11 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. Student is not in address book mode</p>
+<p>1a. Student did not use <code>list</code>, <code>list c\classmate</code>, <code>list c\teammate</code> or <code>find</code> command before using <code>edit</code> command</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. Depending on the mode the student is on, NOVA informs student that the command is unknown</p>
+<p>1a1. Student edits information of the wrong contact, and NOVA informs the student to use <code>undo</code> command if wrong contact is edited</p>
 <div class="paragraph">
 <p>Use case resumes at step 1</p>
 </div>
@@ -1652,11 +1683,11 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </div>
 </li>
 <li>
-<p>2a. Student did not use <code>list</code>, <code>list c\classmate</code>, <code>list c\teammate</code> or <code>find</code> command before using <code>edit</code> command</p>
+<p>2a. Student did not adhere to format required for editing contact</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a1. Student edits information of the wrong contact, and NOVA informs the student to use <code>undo</code> command if wrong contact is edited</p>
+<p>2a1. NOVA informs student that the format is invalid, and provides an example of a correct format</p>
 <div class="paragraph">
 <p>Use case resumes at step 2</p>
 </div>
@@ -1665,26 +1696,13 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </div>
 </li>
 <li>
-<p>3a. Student did not adhere to format required for editing contact</p>
+<p>2b. Student did not include at least 1 compulsory field</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a1. NOVA informs student that the format is invalid, and provides an example of a correct format</p>
+<p>2b1. NOVA informs student to include at least 1 compulsory field</p>
 <div class="paragraph">
-<p>Use case resumes at step 3</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>3b. Student did not include at least 1 compulsory field</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>3b1. NOVA informs student to include at least 1 compulsory field</p>
-<div class="paragraph">
-<p>Use case resumes at step 3</p>
+<p>Use case resumes at step 2</p>
 </div>
 </li>
 </ul>
@@ -1698,9 +1716,6 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </div>
 <div class="olist arabic">
 <ol class="arabic">
-<li>
-<p>Student enters <code>nav ab</code> to enter address book mode, or is already in address book mode</p>
-</li>
 <li>
 <p>Student used <code>list</code>, <code>list c\classmate</code>, <code>list c\teammate</code> or <code>find</code> command</p>
 </li>
@@ -1721,11 +1736,11 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. Student is not in address book mode</p>
+<p>1a. Student did not use <code>list</code>, <code>list c\classmate</code>, <code>list c\teammate</code> or <code>find</code> command before using <code>delete</code> command</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. Depending on the mode the student is on, NOVA informs student that the command is unknown</p>
+<p>1a1. Student deletes the wrong contact, and NOVA informs the student to use <code>undo</code> command if wrong contact is deleted</p>
 <div class="paragraph">
 <p>Use case resumes at step 1</p>
 </div>
@@ -1734,11 +1749,11 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </div>
 </li>
 <li>
-<p>2a. Student did not use <code>list</code>, <code>list c\classmate</code>, <code>list c\teammate</code> or <code>find</code> command before using <code>delete</code> command</p>
+<p>2a. NOVA cannot find the contact in the contact list</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a1. Student deletes the wrong contact, and NOVA informs the student to use <code>undo</code> command if wrong contact is deleted</p>
+<p>2a1. NOVA informs student that the contact to delete does not exist</p>
 <div class="paragraph">
 <p>Use case resumes at step 2</p>
 </div>
@@ -1747,26 +1762,13 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </div>
 </li>
 <li>
-<p>3a. NOVA cannot find the contact in the contact list</p>
+<p>2b. Student provides a wrong format to delete</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a1. NOVA informs student that the contact to delete does not exist</p>
+<p>2b1. NOVA informs student that the format is invalid, and provides an example of a correct format</p>
 <div class="paragraph">
-<p>Use case resumes at step 3</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>3b. Student provides a wrong format to delete</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>3b1. NOVA informs student that the format is invalid, and provides an example of a correct format</p>
-<div class="paragraph">
-<p>Use case resumes at step 3</p>
+<p>Use case resumes at step 2</p>
 </div>
 </li>
 </ul>
@@ -1780,9 +1782,6 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </div>
 <div class="olist arabic">
 <ol class="arabic">
-<li>
-<p>Student enters <code>nav ab</code> to enter address book mode, or is already in address book mode</p>
-</li>
 <li>
 <p>Student used <code>list</code>, <code>list c\classmate</code>, <code>list c\teammate</code> or <code>find</code> command</p>
 </li>
@@ -1803,11 +1802,11 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. Student is not in address book mode</p>
+<p>1a. Student did not use <code>list</code>, <code>list c\classmate</code>, <code>list c\teammate</code> or <code>find</code> command before using <code>remark</code> command</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. Depending on the mode the student is on, NOVA informs student that the command is unknown</p>
+<p>1a1. Student adds, edits or deletes remark of the wrong contact, and NOVA informs the student to use <code>undo</code> command if student add, edit or delete remark on the wrong contact</p>
 <div class="paragraph">
 <p>Use case resumes at step 1</p>
 </div>
@@ -1816,11 +1815,11 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </div>
 </li>
 <li>
-<p>2a. Student did not use <code>list</code>, <code>list c\classmate</code>, <code>list c\teammate</code> or <code>find</code> command before using <code>remark</code> command</p>
+<p>2a. NOVA cannot find the contact in the contact list</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a1. Student adds, edits or deletes remark of the wrong contact, and NOVA informs the student to use <code>undo</code> command if student add, edit or delete remark on the wrong contact</p>
+<p>2a1. NOVA informs student that the contact to add, edit or delete mark does not exist</p>
 <div class="paragraph">
 <p>Use case resumes at step 2</p>
 </div>
@@ -1829,26 +1828,13 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </div>
 </li>
 <li>
-<p>3a. NOVA cannot find the contact in the contact list</p>
+<p>2b. Student provides a wrong format to add, edit or delete</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a1. NOVA informs student that the contact to add, edit or delete mark does not exist</p>
+<p>2b1. NOVA informs student that the format is invalid, and provides an example of a correct format</p>
 <div class="paragraph">
-<p>Use case resumes at step 3</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>3b. Student provides a wrong format to add, edit or delete</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>3b1. NOVA informs student that the format is invalid, and provides an example of a correct format</p>
-<div class="paragraph">
-<p>Use case resumes at step 3</p>
+<p>Use case resumes at step 2</p>
 </div>
 </li>
 </ul>
@@ -1863,9 +1849,6 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Student enters <code>nav ab</code> to enter address book mode, or is already in address book mode</p>
-</li>
-<li>
 <p>Student used <code>add</code>, <code>edit</code>, <code>delete</code> or <code>remark</code> prior</p>
 </li>
 <li>
@@ -1879,32 +1862,16 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. Student is not in address book mode</p>
+<p>1a. Student did not use <code>add</code>, <code>edit</code>, <code>delete</code> or <code>remark</code> prior to using <code>undo</code></p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. Depending on the mode the student is on, NOVA informs student that the command is unknown</p>
+<p>1a1. NOVA informs the student that there are no more commands to undo</p>
 <div class="paragraph">
 <p>Use case resumes at step 1</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>2a. Student did not use <code>add</code>, <code>edit</code>, <code>delete</code> or <code>remark</code> prior to using <code>undo</code></p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a1. NOVA informs the student that there are no more commands to undo</p>
-<div class="paragraph">
-<p>Use case resumes at step 2</p>
 </div>
 </li>
 </ul>
@@ -1918,9 +1885,6 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </div>
 <div class="olist arabic">
 <ol class="arabic">
-<li>
-<p>Student enters <code>nav ab</code> to enter address book mode, or is already in address book mode</p>
-</li>
 <li>
 <p>Student used <code>undo</code> successfully prior to using <code>redo</code></p>
 </li>
@@ -1941,26 +1905,13 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. Student is not in address book mode</p>
+<p>1a. Student did not use <code>undo</code> prior to using <code>redo</code></p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. Depending on the mode the student is on, NOVA informs student that the command is unknown</p>
+<p>1a1. NOVA informs the student that there are no more commands to redo</p>
 <div class="paragraph">
 <p>Use case resumes at step 1</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>2a. Student did not use <code>undo</code> prior to using <code>redo</code></p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a1. NOVA informs the student that there are no more commands to redo</p>
-<div class="paragraph">
-<p>Use case resumes at step 2</p>
 </div>
 </li>
 </ul>
@@ -2457,12 +2408,12 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 <p>The application should work without internet connection.</p>
 </li>
 <li>
-<p>The user should be able to navigate to other mode just by using <code>nav</code> command.</p>
+<p>The user should be able to navigate to other <a href="#mode">mode</a> just by using <code>nav</code> command.</p>
+</li>
+<li>
+<p>If student forgot to change the <a href="#mode">mode</a>, NOVA should display error message.</p>
 </li>
 </ol>
-</div>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
 </div>
 </div>
 </div>
@@ -2475,49 +2426,16 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 <dd>
 <p>Windows, Linux, OS-X</p>
 </dd>
+<dt class="hdlist1"><a id="mode"></a> Mode</dt>
+<dd>
+<p>Mode of operation within NOVA, such as Address Book with <code>nav ab</code>, Schedule with <code>nav schedule</code>, Planner with <code>nav planner</code>, and Progress Tracker with <code>nav progresstracker</code>.</p>
+</dd>
 </dl>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="product-survey"><a class="link" href="#product-survey">Appendix F: Product Survey</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><strong>Product Name</strong></p>
-</div>
-<div class="paragraph">
-<p>Author: &#8230;&#8203;</p>
-</div>
-<div class="paragraph">
-<p>Pros:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Cons:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a></h2>
+<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Given below are instructions to test the app manually.</p>
@@ -2535,7 +2453,7 @@ These instructions only provide a starting point for testers to work on; testers
 </table>
 </div>
 <div class="sect2">
-<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">G.1. Launch and Shutdown</a></h3>
+<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">F.1. Launch and Shutdown</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2568,12 +2486,9 @@ Expected: The most recent window size and location is retained.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person-in-address-book"><a class="link" href="#deleting-a-person-in-address-book">G.2. Deleting a person in Address Book</a></h3>
+<h3 id="deleting-a-person-in-address-book"><a class="link" href="#deleting-a-person-in-address-book">F.2. Deleting a person in Address Book</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2603,29 +2518,6 @@ Expected: Similar to previous.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">G.3. Saving data</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Dealing with missing/corrupted data files</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 19:14:40 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 19:19:36 UTC</div></div></div></body></html>
