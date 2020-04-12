@@ -60,7 +60,11 @@
 <li><a href="#dev-ops">6. Dev Ops</a></li>
 <li><a href="#product-scope">Appendix A: Product Scope</a></li>
 <li><a href="#user-stories">Appendix B: User Stories</a></li>
-<li><a href="#use-cases">Appendix C: Use Cases</a></li>
+<li><a href="#use-cases">Appendix C: Use Cases</a>
+<ul class="sectlevel2">
+<li><a href="#use-case-16-add-notes-to-a-task-in-progress-tracker">C.1. Use case 16: Add notes to a task in progress tracker</a></li>
+</ul>
+</li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
 <li><a href="#glossary">Appendix E: Glossary</a></li>
 <li><a href="#product-survey">Appendix F: Product Survey</a></li>
@@ -203,7 +207,7 @@ The following class plays an important role at the architecture level:</p>
 <p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code> and <code>HelpBox</code>. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
+<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files (HelpBox does not have a <code>.fxml</code> file) that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component,</p>
@@ -718,19 +722,19 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>The user keys in 'view p\ip w\2' into the command box.</p>
+<p>The user keys in <code>list p\ip w\2</code> into the command box.</p>
 </li>
 <li>
-<p>The user executes 'view p\ip w\2' to view the list of tasks in week 2 of the IP project.</p>
+<p>The user executes `list p\ip w\2'`to view the list of tasks in week 2 of the IP project.</p>
 </li>
 <li>
-<p>'PtListCommandParser' creates a new 'PtListCommand'.</p>
+<p><code>PtListCommandParser</code> creates a new <code>PtListCommand</code>.</p>
 </li>
 <li>
-<p>'LogicManager' executes the 'PtListCommand'.</p>
+<p><code>LogicManager</code> executes the <code>PtListCommand</code>.</p>
 </li>
 <li>
-<p>'Model#listTasks()' is called and the list of tasks is retrieved.</p>
+<p><code>Model#listTasks()</code> is called and the list of tasks is retrieved.</p>
 </li>
 </ol>
 </div>
@@ -740,6 +744,14 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="imageblock">
 <div class="content">
 <img src="images/PtSeqDiagram.png" alt="PtSeqDiagram">
+</div>
+</div>
+<div class="paragraph">
+<p>The following activity diagram shows what happens when a user inputs a list command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ListPtActivityDiagram.png" alt="ListPtActivityDiagram">
 </div>
 </div>
 </div>
@@ -1784,7 +1796,173 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </li>
 </ul>
 </div>
-<h3 id="use-case-11-add-notes-to-a-project-task-in-project-section-of-progress-tracker" class="discrete">Use case 11: Add notes to a project task in project section of progress tracker</h3>
+<h3 id="use-case-11-add-task-to-a-project-of-progress-tracker" class="discrete">Use case 11: Add task to a project of progress tracker</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enter command to add task to a project.</p>
+</li>
+<li>
+<p>Progress tracker adds task to the project.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. No such project exist.</p>
+</li>
+<li>
+<p>1a1. NOVA shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-12-user-edits-a-task" class="discrete">Use case 12: User edits a task.</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enter command to edit task.</p>
+</li>
+<li>
+<p>Progress tracker replaces old task description with new description.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. No such task exist.</p>
+</li>
+<li>
+<p>1a1. NOVA shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-13-user-deletes-a-task" class="discrete">Use case 13: User deletes a task.</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enter command to delete task.</p>
+</li>
+<li>
+<p>Progress tracker deletes task.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. Task to be deleted does not exist.</p>
+</li>
+<li>
+<p>1a1. NOVA shows error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-14-user-lists-tasks-in-a-week-of-a-project" class="discrete">Use case 14: User lists tasks in a week of a project.</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enter command to list tasks.</p>
+</li>
+<li>
+<p>Progress tracker lists task.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. No such tasks exists in the week specified.</p>
+</li>
+<li>
+<p>1a1. NOVA shows error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-15-user-set-an-added-task-as-done" class="discrete">Use case 15: User set an added task as done.</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enter command to set task as done.</p>
+</li>
+<li>
+<p>Progress tracker sets task as done.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. No such tasks exists.</p>
+</li>
+<li>
+<p>1a1. NOVA shows error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="use-case-16-add-notes-to-a-task-in-progress-tracker"><a class="link" href="#use-case-16-add-notes-to-a-task-in-progress-tracker">C.1. Use case 16: Add notes to a task in progress tracker</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1817,7 +1995,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </li>
 </ul>
 </div>
-<h3 id="use-case-12-user-edits-a-note" class="discrete">Use case 12: User edits a note.</h3>
+<h3 id="use-case-17-user-edits-a-note" class="discrete">Use case 17: User edits a note.</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1843,14 +2021,14 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <p>1a. No prior note was added.</p>
 </li>
 <li>
-<p>1a1. NOVA adds edit as new note.</p>
+<p>1a1. NOVA shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
 </li>
 </ul>
 </div>
-<h3 id="use-case-13-user-deletes-a-note" class="discrete">Use case 13: User deletes a note.</h3>
+<h3 id="use-case-18-user-deletes-a-note" class="discrete">Use case 18: User deletes a note.</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1883,7 +2061,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </li>
 </ul>
 </div>
-<h3 id="use-case-14-view-the-timetable" class="discrete">Use case 14: View the timetable</h3>
+<h3 id="use-case-19-view-the-timetable" class="discrete">Use case 19: View the timetable</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1915,6 +2093,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 <div class="paragraph">
 <p><em>{More to be added}</em></p>
+</div>
 </div>
 </div>
 </div>
@@ -2110,4 +2289,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 15:39:28 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 17:04:06 UTC</div></div></div></body></html>
