@@ -138,5 +138,142 @@ They showcase my ability to write technical documentation and the technical dept
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="logic-component"><a class="link" href="#logic-component">Logic component</a></h3>
+<div id="fig-LogicClassDiagram" class="imageblock">
+<div class="content">
+<img src="../images/LogicClassDiagram.png" alt="LogicClassDiagram">
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 05:24:59 UTC</div></div></div></body></html>
+<div class="title">Figure 1. Structure of the Logic Component</div>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> :
+<a href="{repoURL}/src/main/java/seedu/nova/logic/Logic.java"><code>Logic.java</code></a></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>Logic</code> uses the <code>LogicParser</code> class to determine which mode the user is in when they input a command.</p>
+</li>
+<li>
+<p>After which, the relevant parser is called (e.g. <code>EventParser</code> or <code>AddressBookParser</code>).</p>
+</li>
+<li>
+<p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
+</li>
+<li>
+<p>The command execution can affect the <code>Model</code> (e.g. adding a person).</p>
+</li>
+<li>
+<p>The result of the command execution is encapsulated as a <code>CommandResult</code> object which is passed back to the <code>Ui</code>.</p>
+</li>
+<li>
+<p>In addition, the <code>CommandResult</code> object can also instruct the <code>Ui</code> to perform certain actions, such as displaying help to the user.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="manage-events"><a class="link" href="#manage-events">Manage Events</a></h3>
+<div class="paragraph">
+<p>The manage events feature handles the events of the user, including meetings, consultations, study sessions and lessons.
+Users are able to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>add events</p>
+</li>
+<li>
+<p>delete events</p>
+</li>
+<li>
+<p>add notes to events</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="implementation-deleting-an-event"><a class="link" href="#implementation-deleting-an-event">Implementation - Deleting an event</a></h4>
+<div class="paragraph">
+<p>The delete feature allows users to remove events from the schedule.
+This feature is facilitated by <code>ScheduleParser</code>, <code>EventDeleteCommandParser</code> and <code>EventDeleteCommand</code>.
+The operation is exposed in the <code>Model</code> interface as <code>Model#deleteEvent()</code>.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the delete mechanism behaves at each step.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user does <code>view t\2020-03-20</code> to view their events on 20th March 2020.</p>
+</li>
+<li>
+<p>The user executes <code>delete t\2020-03-20 i\2</code> command to delete the second event on 20th March 2020.</p>
+</li>
+<li>
+<p><code>EventDeleteCommandParser</code> creates a new <code>EventDeleteCommand</code>.</p>
+</li>
+<li>
+<p><code>LogicManager</code> executes the <code>EventDeleteCommand</code>.</p>
+</li>
+<li>
+<p><code>Model#deleteEvent()</code> is called, and the <code>Schedule</code> object in <code>ModelManager</code> is updated.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the delete operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/EventDeleteSeqDiagram.png" alt="EventDeleteSeqDiagram">
+</div>
+</div>
+<div class="paragraph">
+<p>The following activity diagram shows what happens when a user inputs a delete command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/EventDeleteActDiagram.png" alt="EventDeleteActDiagram">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="paragraph">
+<p>Aspect: Syntax of Deleting an Event</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> choosing the event by its date and its index in the list of events on that date</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: relatively short to type, greater ease of implementation</p>
+</li>
+<li>
+<p>Cons: users have to view the list of events on that date before determining which event to mark as done</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> choosing the event by description</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: more recognisable for users</p>
+</li>
+<li>
+<p>Cons: difficulty in implementing as certain events may have the exact same descriptions</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 05:30:26 UTC</div></div></div></body></html>
