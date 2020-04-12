@@ -88,7 +88,8 @@
 <li><a href="#user-stories">Appendix B: User Stories</a></li>
 <li><a href="#use-cases">Appendix C: Use Cases</a>
 <ul class="sectlevel2">
-<li><a href="#use-case-16-add-notes-to-a-task-in-progress-tracker">C.1. Use case 16: Add notes to a task in progress tracker</a></li>
+<li><a href="#use-case-15-user-deletes-a-task">C.1. Use case 15: User deletes a task.</a></li>
+<li><a href="#use-case-18-add-notes-to-a-task-in-progress-tracker">C.2. Use case 18: Add notes to a task in progress tracker</a></li>
 </ul>
 </li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
@@ -1871,7 +1872,7 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 <li>
 <p>1a1. NOVA informs the student that there are no more commands to undo</p>
 <div class="paragraph">
-<p>Use case resumes at step 1</p>
+<p>resumes at step 1</p>
 </div>
 </li>
 </ul>
@@ -1919,7 +1920,44 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </li>
 </ul>
 </div>
-<h3 id="use-case-10-delete-an-event" class="discrete">Use case 10: Delete an event</h3>
+<h3 id="use-case-10-adding-a-consultation-event" class="discrete">Use case 10: Adding a consultation event</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Student enters consultation command with details of the consultation</p>
+</li>
+<li>
+<p>NOVA adds consultation event to the schedule</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. NOVA detects error in data inputted</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. NOVA informs student of the error</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-11-delete-an-event" class="discrete">Use case 11: Delete an event</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1956,7 +1994,41 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </li>
 </ul>
 </div>
-<h3 id="use-case-11-add-task-to-a-project-of-progress-tracker" class="discrete">Use case 11: Add task to a project of progress tracker</h3>
+<h3 id="use-case-12-adding-a-note-to-an-event" class="discrete">Use case 12: Adding a note to an event</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Student enters note command with details of the event</p>
+</li>
+<li>
+<p>NOVA adds note to the event</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. NOVA cannot find the event given</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. NOVA informs student that the event does not exist</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-13-add-task-to-a-project-of-progress-tracker" class="discrete">Use case 13: Add task to a project of progress tracker</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1989,7 +2061,7 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </li>
 </ul>
 </div>
-<h3 id="use-case-12-user-edits-a-task" class="discrete">Use case 12: User edits a task.</h3>
+<h3 id="use-case-14-user-edits-a-task" class="discrete">Use case 14: User edits a task.</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2022,7 +2094,8 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </li>
 </ul>
 </div>
-<h3 id="use-case-13-user-deletes-a-task" class="discrete">Use case 13: User deletes a task.</h3>
+<div class="sect2">
+<h3 id="use-case-15-user-deletes-a-task"><a class="link" href="#use-case-15-user-deletes-a-task">C.1. Use case 15: User deletes a task.</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2055,7 +2128,7 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </li>
 </ul>
 </div>
-<h3 id="use-case-14-user-lists-tasks-in-a-week-of-a-project" class="discrete">Use case 14: User lists tasks in a week of a project.</h3>
+<h3 id="use-case-16-user-lists-tasks-in-a-week-of-a-project" class="discrete">Use case 16: User lists tasks in a week of a project.</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2088,7 +2161,7 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </li>
 </ul>
 </div>
-<h3 id="use-case-15-user-set-an-added-task-as-done" class="discrete">Use case 15: User set an added task as done.</h3>
+<h3 id="use-case-17-user-set-an-added-task-as-done" class="discrete">Use case 17: User set an added task as done.</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2121,8 +2194,9 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </li>
 </ul>
 </div>
+</div>
 <div class="sect2">
-<h3 id="use-case-16-add-notes-to-a-task-in-progress-tracker"><a class="link" href="#use-case-16-add-notes-to-a-task-in-progress-tracker">C.1. Use case 16: Add notes to a task in progress tracker</a></h3>
+<h3 id="use-case-18-add-notes-to-a-task-in-progress-tracker"><a class="link" href="#use-case-18-add-notes-to-a-task-in-progress-tracker">C.2. Use case 18: Add notes to a task in progress tracker</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2155,7 +2229,7 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </li>
 </ul>
 </div>
-<h3 id="use-case-17-user-edits-a-note" class="discrete">Use case 17: User edits a note.</h3>
+<h3 id="use-case-19-user-edits-a-note" class="discrete">Use case 19: User edits a note.</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2188,7 +2262,7 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </li>
 </ul>
 </div>
-<h3 id="use-case-18-user-deletes-a-note" class="discrete">Use case 18: User deletes a note.</h3>
+<h3 id="use-case-20-user-deletes-a-note" class="discrete">Use case 20: User deletes a note.</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2221,7 +2295,7 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </li>
 </ul>
 </div>
-<h3 id="use-case-19-view-the-timetable" class="discrete">Use case 19: View the timetable</h3>
+<h3 id="use-case-21-view-the-timetable" class="discrete">Use case 21: View the timetable</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2251,7 +2325,7 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </li>
 </ul>
 </div>
-<h3 id="use-case-8-user-add-a-task-into-study-plan" class="discrete">Use case 8: User add a task into study plan.</h3>
+<h3 id="use-case-22-user-add-a-task-into-study-plan" class="discrete">Use case 22: User add a task into study plan.</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2284,7 +2358,7 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </li>
 </ul>
 </div>
-<h3 id="use-case-9-user-add-a-task-into-study-plan" class="discrete">Use case 9: User add a task into study plan</h3>
+<h3 id="use-case-23-user-add-a-task-into-study-plan" class="discrete">Use case 23: User add a task into study plan</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2317,7 +2391,7 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </li>
 </ul>
 </div>
-<h3 id="use-case-10-user-view-statistics-of-every-tasks-in-study-plan" class="discrete">Use case 10: User view statistics of every tasks in study plan</h3>
+<h3 id="use-case-24-user-view-statistics-of-every-tasks-in-study-plan" class="discrete">Use case 24: User view statistics of every tasks in study plan</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2350,7 +2424,7 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </li>
 </ul>
 </div>
-<h3 id="use-case-11-user-schedules-a-task-into-a-particular-day" class="discrete">Use case 11: User schedules a task into a particular day.</h3>
+<h3 id="use-case-25-user-schedules-a-task-into-a-particular-day" class="discrete">Use case 25: User schedules a task into a particular day.</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2520,4 +2594,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 19:19:36 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 20:42:25 UTC</div></div></div></body></html>
