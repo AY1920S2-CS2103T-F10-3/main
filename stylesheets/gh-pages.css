@@ -23,6 +23,12 @@
     padding-top: 0;
 }
 
+@media print {
+  a[href]:after {
+    content: none !important;
+  }
+}
+
 /* Overrides for asciidoctor.css */
 
 a {
