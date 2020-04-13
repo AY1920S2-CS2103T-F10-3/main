@@ -20,32 +20,70 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>:</p>
-</li>
-<li>
-<p><strong>Minor enhancement</strong>:</p>
-</li>
-<li>
-<p><strong>Code contributed</strong>:</p>
-</li>
-<li>
-<p><strong>Other contributions</strong>:</p>
+<p><strong>Major enhancement</strong>: added <strong>planner feature</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Project management:</p>
+<p>What it does: Tracks the progress of user study plan and assists in planning study events based on the tasks inside study plan.</p>
 </li>
 <li>
-<p>Enhancements to existing features:</p>
+<p>Justification: This feature reminds the user of their study progress so that user are able to plan ahead their study events before being distracted by other things and lack behind on their study.</p>
 </li>
 <li>
-<p>Documentation:</p>
+<p>Highlights: There&#8217;s no need for user to think of the detail (e.g. start time, end time) of the event.
+User only needs to specify the task and the date, planner will generate a study event on that day based on the task.
+Due to time constraint of this module, the algorithm for choosing the free slot for generating event is first-fit algorithm for now.
+More suitable algorithm needs to be developed in the future in order to make it more human-friendly.</p>
 </li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Major enhancement</strong>: added <strong>find free slot function</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: List the free slots in user&#8217;s schedule.</p>
+</li>
+<li>
+<p>Justification: This feature is needed due to the fact that we don&#8217;t have a schedule GUI. User are unable to grasp when they are free especially when there is many events in their schedule.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Make dialog window wrap text automatically whenever window is resized. reference: <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/pull/345">22</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Code contributed</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>[<a href="https://github.com/AY1920S2-CS2103T-F10-3/main/issues?q=is%3Aclosed+author%3Amightyrabbit99">Functional code</a>][<a href="https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=mightyrabbit99&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2020-02-14&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=mightyrabbit99&amp;tabRepo=AY1920S2-CS2103T-F10-3%2Fmain%5Bmaster%5D">RepoSense</a>]</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p>Community:</p>
-</li>
+<div class="ulist">
+<ul>
 <li>
-<p>Tools:</p>
+<p>Reported bugs and suggestions for other teams in the class: <a href="https://github.com/nus-cs2103-AY1920S2/addressbook-level3/pull/14#discussion_r388685822">12</a></p>
 </li>
 </ul>
 </div>
@@ -57,12 +95,558 @@
 <div class="sect1">
 <h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
 <div class="sectionbody">
-
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="daily-study-planner"><a class="link" href="#daily-study-planner">Daily Study Planner</a></h3>
+<div class="paragraph">
+<p>Learn how to work with the planner feature in NOVA. You can add daily/weeky tasks into your study plan and schedule it
+on any day you like hassle-free. You need to be in planner mode. Enter the planner mode by entering the command
+<code>nav planner</code>.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/userguide/planner.PNG" alt="planner" width="790">
+</div>
+</div>
+<div class="paragraph text-center">
+<p><em><span class="small">Fig 5.4: GUI of NOVA after user typed contact <code>nav planner</code></span></em></p>
+</div>
+<div class="sect3">
+<h4 id="create-routine-task-code-routine-code"><a class="link" href="#create-routine-task-code-routine-code">Create Routine Task: <code>routine</code></a></h4>
+<div class="paragraph">
+<p>You can create routine tasks in your study plan. When being scheduled, the tasks will lasts for 30 minutes weekly if
+possible.</p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>routine p\[task name] f\[daily/weekly] d\[event duration in minutes]</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>[event duration in minutes]</code> must be between 0 and 1440
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Example:<br>
+Suppose you want to create a weekly routine task "read cs2103 textbook",</p>
+</div>
+<div class="paragraph">
+<p><code>routine p\read cs2103 textbook f\weekly d\30</code></p>
+</div>
+<div class="paragraph">
+<p>NOVA will create a new task “read cs2103 textbook”.</p>
+</div>
+<div class="paragraph">
+<p><a href="#Top">[Back to Top]</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="create-flexible-day-task-code-flexible-code"><a class="link" href="#create-flexible-day-task-code-flexible-code">Create Flexible Day-Task: <code>flexible</code></a></h4>
+<div class="paragraph">
+<p>You can create flexible tasks in your study plan, which will create one event per day when being scheduled. When
+being scheduled, these tasks will create events with duration as long as possible, from 10 minutes to 60 minutes.</p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>flexible p\[task name] t\[total minutes] mind\[maximum event duration in minutes] maxd\[maximum event duration in minutes]</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>[total minutes]</code> must be greater than <code>[minimum event duration in minutes]</code></p>
+</li>
+<li>
+<p><code>[maximum event duration in minutes]</code> must be greater or equal to <code>[minimum event duration in minutes]</code></p>
+</li>
+<li>
+<p><code>[minimum event duration in minutes]</code> and <code>[maximum event duration in minutes]</code> must be between 0 and 1440</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Example:<br>
+Suppose you want to create a flexible task "study vocabulary",<br>
+<br>
+<code>flexible p\study vocabulary t\100 mind\10 maxd\60</code></p>
+</div>
+<div class="paragraph">
+<p>NOVA will create a new task “study vocabulary”<br>
+When being scheduled, this task will create one event “study vocabulary” with duration as long as
+possible, from 10 minutes to 60 minutes.<br>
+The total duration of all the event scheduled will not exceed 100 minutes.</p>
+</div>
+<div class="paragraph">
+<p><a href="#Top">[Back to Top]</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="delete-task-code-delete-code"><a class="link" href="#delete-task-code-delete-code">Delete task: <code>delete</code></a></h4>
+<div class="paragraph">
+<p>You can delete a task, and all its related future events.</p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>delete p\[task name]</code></p>
+</div>
+<div class="paragraph">
+<p>Example:<br>
+Suppose you want to delete the task "study vocabulary",</p>
+</div>
+<div class="paragraph">
+<p><code>delete p\study vocabulary</code></p>
+</div>
+<div class="paragraph">
+<p>NOVA will delete the task “study vocabulary” and all its related future events.</p>
+</div>
+<div class="paragraph">
+<p><a href="#Top">[Back to Top]</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="view-statistics-code-stats-code"><a class="link" href="#view-statistics-code-stats-code">View Statistics: <code>stats</code></a></h4>
+<div class="paragraph">
+<p>You can view the statistics of every tasks currently in study plan. The statistics are as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For weekly routine task, statistics consists of:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Number of weeks completed and incomplete since its creation</p>
+</li>
+<li>
+<p>All the events related to the task</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>For daily routine task, statistics consists of:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Number of days done and not done since its creation</p>
+</li>
+<li>
+<p>All the events related to the task</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>For flexible tasks, statistics consists of:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Percentage done (Total duration of every event created / Total minutes)</p>
+</li>
+<li>
+<p>All the events related to the task</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>stats</code></p>
+</div>
+<div class="paragraph">
+<p>NOVA will display the statistics of all the tasks currently in study plan.</p>
+</div>
+<div class="paragraph">
+<p><a href="#Top">[Back to Top]</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="schedule-task-code-schedule-code"><a class="link" href="#schedule-task-code-schedule-code">Schedule Task: <code>schedule</code></a></h4>
+<div class="paragraph">
+<p>You can generate an event on a random spot on the specified day according to the requirements of the task if
+possible. The event is generated on a random slot, you will need to manually modify the event generated if you wish.
+If it is impossible to schedule an event for the task for that day, you will be notified.</p>
+</div>
+<div class="paragraph">
+<p>Format:<br>
+<code>schedule p\[task name] t\[YYYY-MM-DD]</code><br></p>
+</div>
+<div class="paragraph">
+<p>Example:<br>
+Suppose you want to schedule the weekly routine task "read cs2103 textbook",</p>
+</div>
+<div class="paragraph">
+<p><code>schedule p\read cs2103 textbook t\2020-03-20</code></p>
+</div>
+<div class="paragraph">
+<p>NOVA will finds a free slot bigger than 30 minutes as specified by the task, and creates an event “read cs2103
+textbook” that lasts for 30 minutes on a random spot within the free slot.</p>
+</div>
+<div class="paragraph">
+<p>Suppose you want to schedule the flexible task "study vocabulary",<br>
+<br>
+<code>schedule p\study vocabulary t\2020-03-20</code><br></p>
+</div>
+<div class="paragraph">
+<p>NOVA will finds a free slot bigger than 10 minutes as specified by the task, and creates an event “read cs2103
+textbook” on a random spot within the free slot.</p>
+</div>
+<div class="paragraph">
+<p><a href="#Top">[Back to Top]</a></p>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
 <div class="sectionbody">
-
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="view-available-free-slot-of-a-specific-day"><a class="link" href="#view-available-free-slot-of-a-specific-day">View available free slot of a specific day</a></h3>
+<div class="paragraph">
+<p>The view free slots feature allows the user to view their available free slots on their schedule.</p>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 21:30:49 UTC</div></div></div></body></html>
+<div class="sect3">
+<h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the view free slot mechanism behaves at each step.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user keys in 'freeslot t\2020-03-10' into the command box.</p>
+</li>
+<li>
+<p>The user executes 'freeslot t\2020-03-10' to view the free slots on their schedule on the 10th of March 2020.</p>
+</li>
+<li>
+<p>'ScViewFreeSlotCommandParser' creates a new 'ScViewFreeSlotCommand'.</p>
+</li>
+<li>
+<p>'LogicManager' executes the 'ScViewFreeSlotCommand'.</p>
+</li>
+<li>
+<p>'ModelManger#viewFreeSlot()' is called and the free slots for the day is retrieved.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the view tasks operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ScViewFreeSlotDiagram.png" alt="ScViewFreeSlotDiagram">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-calculating-free-slots-given-a-schedule"><a class="link" href="#aspect-calculating-free-slots-given-a-schedule">Aspect: Calculating free slots given a schedule</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Embeds a free slot data structure to keep track of the free slots whenever
+events are added</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: no need to calculate free slots whenever user execute freeslot.</p>
+</li>
+<li>
+<p>Cons: overhead to add event commands, making its execution slower.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Calculates free slot based on the events whenever user executes freeslot</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: easier to implement.</p>
+</li>
+<li>
+<p>Cons: slower freeslot execution.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="schedule-events-based-on-a-task-in-plan"><a class="link" href="#schedule-events-based-on-a-task-in-plan">Schedule events based on a task in plan.</a></h3>
+<div class="paragraph">
+<p>The plan feature allows the user to create an event based on the task user created in the plan.</p>
+</div>
+<div class="sect3">
+<h4 id="implementation-2"><a class="link" href="#implementation-2">Implementation</a></h4>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the plan task mechanism behaves at each step.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user keys in 'schedule p\task name t\2020-03-10' into the command box.</p>
+</li>
+<li>
+<p>The user executes 'schedule p\task name t\2020-03-10' to create an event "task name" on their schedule on the 10th of
+March 2020.</p>
+</li>
+<li>
+<p>'PlannerScheduleTaskCommandParser' creates a new 'PlannerScheduleTaskCommand'.</p>
+</li>
+<li>
+<p>'LogicManager' executes the 'PlannerScheduleTaskCommand'.</p>
+</li>
+<li>
+<p>'ModelManger#searchTask()' is called to search for the task user specified.</p>
+</li>
+<li>
+<p>'ModelManger#generateTaskEvent()' is called and one event with time determined by algorithm is created on the day
+in schedule.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the schedule task operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/PlannerScheduleTaskSequenceDiagram.png" alt="PlannerScheduleTaskSequenceDiagram">
+</div>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarizes what happens when a user schedules a task:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/PlannerScheduleTaskActivityDiagram.png" alt="PlannerScheduleTaskActivityDiagram">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-calculating-best-fit-time-frame-for-a-task"><a class="link" href="#aspect-calculating-best-fit-time-frame-for-a-task">Aspect: Calculating best fit time frame for a task</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Plan gets free slot from schedule and generate event based on it.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Isolation of modules.</p>
+</li>
+<li>
+<p>Cons: Redundant code.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Schedule decides whether to schedule or discard an event generated from task.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: more robust schedule.</p>
+</li>
+<li>
+<p>Cons: more difficult to implement.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>|<code>* * *</code> |Student | Add tasks to study plan | Can add study tasks to my study plan</p>
+</div>
+<div class="paragraph">
+<p>|<code>* * *</code> |Student | Delete tasks on study plan | Can delete study tasks if I don&#8217;t need it anymore</p>
+</div>
+<div class="paragraph">
+<p>|<code>* * *</code> |Student | Generate event from a task | If I feel like I want to do a study task today, I can generate an
+event on today&#8217;s schedule so that I can keep up with my study plan.</p>
+</div>
+<div class="paragraph">
+<p>|<code>* *</code>   |Student | View statistics of my task progress | Can see how much I&#8217;ve done for each task on my study plan.</p>
+</div>
+<h3 id="use-case-23-user-add-a-task-into-study-plan" class="discrete">Use case 23: User add a task into study plan.</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enter command to create a task with name specified by user.</p>
+</li>
+<li>
+<p>Study Planner of NOVA adds the task into study plan.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. There is already a task with the same name.</p>
+</li>
+<li>
+<p>1a1. NOVA shows error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-24-user-add-a-task-into-study-plan" class="discrete">Use case 24: User add a task into study plan</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enter command to delete a task with name specified by user.</p>
+</li>
+<li>
+<p>Study Planner of NOVA deletes the task.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. No task with the name specified exists in study plan.</p>
+</li>
+<li>
+<p>1a1. NOVA shows error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-25-user-view-statistics-of-every-tasks-in-study-plan" class="discrete">Use case 25: User view statistics of every tasks in study plan</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enter command to view statistics of every tasks in study plan.</p>
+</li>
+<li>
+<p>NOVA calculates and shows all the statistics of every task.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. No task in study plan.</p>
+</li>
+<li>
+<p>1a1. NOVA shows error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-26-user-schedules-a-task-into-a-particular-day" class="discrete">Use case 26: User schedules a task into a particular day.</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enter command to schedules a task into a particular day.</p>
+</li>
+<li>
+<p>NOVA generates and adds the event into schedule.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. Unable to generate event.</p>
+</li>
+<li>
+<p>1a1. NOVA shows error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 02:15:03 UTC</div></div></div></body></html>
