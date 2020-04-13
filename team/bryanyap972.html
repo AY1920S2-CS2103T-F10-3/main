@@ -220,6 +220,27 @@ command <code>nav progresstracker</code>. Your NOVA should look something like F
 <p>Only <code>ip</code> and <code>tp</code> projects are available and are not case-sensitive</p>
 </li>
 <li>
+<p>There are only weeks 1 to 13 in each project</p>
+</li>
+<li>
+<p>When multiple same tags are keyed, the last tag will be taken as the input</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
 <p><code>add</code> is case-sensitive</p>
 </li>
 <li>
@@ -227,12 +248,6 @@ command <code>nav progresstracker</code>. Your NOVA should look something like F
 </li>
 <li>
 <p><code>[task description]</code> cannot be empty</p>
-</li>
-<li>
-<p>There are only weeks 1 to 13 in each project</p>
-</li>
-<li>
-<p>When multiple same tags are keyed, the last tag will be taken as the input.</p>
 </li>
 </ul>
 </div>
@@ -284,16 +299,31 @@ Suppose you want to add a task to week 3 of IP project to remind yourself to do 
 <p>Only <code>ip</code> and <code>tp</code> projects are available and are not case-sensitive</p>
 </li>
 <li>
+<p>There are only weeks 1 to 13 in each project</p>
+</li>
+<li>
+<p>When multiple same tags are keyed, the last tag will be taken as the input</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
 <p><code>list</code> is case-sensitive</p>
 </li>
 <li>
 <p><code>[week number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
-</li>
-<li>
-<p>There are only weeks 1 to 13 in each project</p>
-</li>
-<li>
-<p>When multiple same tags are keyed, the last tag will be taken as the input.</p>
 </li>
 </ul>
 </div>
@@ -344,16 +374,34 @@ Suppose you would like to view the tasks you have added to week 3 of IP project,
 <p>Only <code>ip</code> and <code>tp</code> projects are available and are not case-sensitive</p>
 </li>
 <li>
-<p><code>delete</code> is case-sensitive</p>
-</li>
-<li>
-<p><code>[week number]</code> and <code>[task number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
-</li>
-<li>
 <p>There are only weeks 1 to 13 in each project</p>
 </li>
 <li>
-<p>When multiple same tags are keyed, the last tag will be taken as the input.</p>
+<p>When multiple same tags are keyed, the last tag will be taken as the input</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete</code> is case-sensitive</p>
+</li>
+<li>
+<p><code>[week number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
+</li>
+<li>
+<p><code>[task number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
 </li>
 </ul>
 </div>
@@ -408,13 +456,34 @@ Suppose you wish to delete task number 1 in week 3 of IP project,</p>
 <p>There are only weeks 1 to 13 in each project</p>
 </li>
 <li>
-<p>When multiple same tags are keyed, the last tag will be taken as the input.</p>
+<p>When multiple same tags are keyed, the last tag will be taken as the input</p>
 </li>
+<li>
+<p>Calling <code>done</code> on a done task will set it to not done and vice versa</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
 <li>
 <p><code>done</code> is case-sensitive</p>
 </li>
 <li>
-<p><code>[week number]</code> and <code>[task number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
+<p><code>[week number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
+</li>
+<li>
+<p><code>[task number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
 </li>
 </ul>
 </div>
@@ -463,22 +532,40 @@ Suppose you wish to set task number 1 in week 3 of IP project as done or undone,
 <div class="ulist">
 <ul>
 <li>
-<p><code>addNote</code> is case-sensitive</p>
-</li>
-<li>
 <p>Only <code>ip</code> and <code>tp</code> projects are available and are not case-sensitive</p>
-</li>
-<li>
-<p><code>[week number]</code> and <code>[task number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
-</li>
-<li>
-<p><code>[note]</code> cannot be empty</p>
 </li>
 <li>
 <p>There are only weeks 1 to 13 in each project</p>
 </li>
 <li>
-<p>When multiple same tags are keyed, the last tag will be taken as the input.</p>
+<p>When multiple same tags are keyed, the last tag will be taken as the input</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>addNote</code> is case-sensitive</p>
+</li>
+<li>
+<p><code>[week number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
+</li>
+<li>
+<p><code>[task number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
+</li>
+<li>
+<p><code>[note]</code> cannot be empty</p>
 </li>
 </ul>
 </div>
@@ -527,22 +614,40 @@ Suppose you wish to add a note to remind yourself to create a branch and tag for
 <div class="ulist">
 <ul>
 <li>
-<p><code>editNote</code> is case-sensitive</p>
-</li>
-<li>
 <p>Only <code>ip</code> and <code>tp</code> projects are available and are not case-sensitive</p>
-</li>
-<li>
-<p><code>[week number]</code> and <code>[task number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
-</li>
-<li>
-<p><code>[new note]</code> cannot be empty</p>
 </li>
 <li>
 <p>There are only weeks 1 to 13 in each project</p>
 </li>
 <li>
 <p>When multiple same tags are keyed, the last tag will be taken as the input.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>editNote</code> is case-sensitive</p>
+</li>
+<li>
+<p><code>[week number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
+</li>
+<li>
+<p><code>[task number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
+</li>
+<li>
+<p><code>[new note]</code> cannot be empty</p>
 </li>
 </ul>
 </div>
@@ -591,19 +696,37 @@ Suppose you wish to edit the note added in task 1 of week 3 in IP project,</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>deleteNote</code> is case-sensitive</p>
-</li>
-<li>
 <p>Only <code>ip</code> and <code>tp</code> projects are available and are not case-sensitive</p>
-</li>
-<li>
-<p><code>[week number]</code> and <code>[task number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
 </li>
 <li>
 <p>There are only weeks 1 to 13 in each project</p>
 </li>
 <li>
 <p>When multiple same tags are keyed, the last tag will be taken as the input.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>deleteNote</code> is case-sensitive</p>
+</li>
+<li>
+<p><code>[week number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
+</li>
+<li>
+<p><code>[task number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
 </li>
 </ul>
 </div>
@@ -1215,4 +1338,4 @@ Example: Adding a @ to a week in a ptTask.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 14:23:29 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 14:38:29 UTC</div></div></div></body></html>
