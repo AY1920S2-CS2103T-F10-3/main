@@ -9,9 +9,9 @@
 <div id="toc" class="toc">
 <div id="toctitle"></div>
 <ul class="sectlevel1">
-<li><a href="#Intro">1. Introduction</a></li>
-<li><a href="#About">2. About</a></li>
-<li><a href="#Notation">3. Notations</a></li>
+<li><a href="#Intro">1. Introduction (Terence)</a></li>
+<li><a href="#About">2. About (Terence)</a></li>
+<li><a href="#Notation">3. Notations (Terence)</a></li>
 <li><a href="#QuickStart">4. Quick Start</a></li>
 <li><a href="#Features">5. Features</a>
 <ul class="sectlevel2">
@@ -43,12 +43,12 @@
 <li><a href="#add-a-lesson-code-lesson-code-chua-huixian">5.3.4. Add a Lesson: <code>lesson</code> (Chua Huixian)</a></li>
 <li><a href="#delete-event-code-delete-code-chua-huixian">5.3.5. Delete Event: <code>delete</code> (Chua Huixian)</a></li>
 <li><a href="#add-notes-to-event-code-note-code-chua-huixian">5.3.6. Add Notes to Event: <code>note</code> (Chua Huixian)</a></li>
-<li><a href="#view-schedule-of-a-day-code-view-code">5.3.7. View Schedule of a Day: <code>view</code></a></li>
-<li><a href="#view-schedule-of-a-week-code-view-code">5.3.8. View Schedule of a Week: <code>view</code></a></li>
-<li><a href="#find-free-slots-code-freeslot-code">5.3.9. Find Free Slots: <code>freeslot</code></a></li>
+<li><a href="#view-schedule-of-a-day-code-view-code-terence">5.3.7. View Schedule of a Day: <code>view</code> (Terence)</a></li>
+<li><a href="#view-schedule-of-a-week-code-view-code-terence">5.3.8. View Schedule of a Week: <code>view</code> (Terence)</a></li>
+<li><a href="#find-free-slots-code-freeslot-code-terence">5.3.9. Find Free Slots: <code>freeslot</code> (Terence)</a></li>
 </ul>
 </li>
-<li><a href="#daily-study-planner">5.4. Daily Study Planner</a>
+<li><a href="#daily-study-planner-tan-wah-ken">5.4. Daily Study Planner (Tan Wah Ken)</a>
 <ul class="sectlevel3">
 <li><a href="#create-routine-task-code-routine-code">5.4.1. Create Routine Task: <code>routine</code></a></li>
 <li><a href="#create-flexible-day-task-code-flexible-code">5.4.2. Create Flexible Day-Task: <code>flexible</code></a></li>
@@ -70,13 +70,13 @@
 </li>
 </ul>
 </li>
-<li><a href="#Summary">6. Command Summary</a></li>
+<li><a href="#Summary">6. Command Summary (Terence)</a></li>
 <li><a href="#FAQ">7. FAQ</a></li>
 </ul>
 </div>
 </div>
 <div class="sect1">
-<h2 id="Intro"><a class="link" href="#Intro">1. Introduction</a></h2>
+<h2 id="Intro"><a class="link" href="#Intro">1. Introduction (Terence)</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Welcome to the user guide (UG) for Next-gen Organizing Virtual Assistant (NOVA).</p>
@@ -92,12 +92,12 @@ through typing.</p>
 </div>
 </div>
 <div class="paragraph text-center">
-<p><em><span class="small">Fig 1: Components of NOVA</span></em></p>
+<p><em><span class="small">Fig 1: UI Components of NOVA</span></em></p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="About"><a class="link" href="#About">2. About</a></h2>
+<h2 id="About"><a class="link" href="#About">2. About (Terence)</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This UG is a reference guide to help you use NOVA. This document contains a <a href="#QuickStart">quick start</a> section to get
@@ -113,7 +113,7 @@ face any problems, take a look at the <a href="#FAQ">FAQ section</a>.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="Notation"><a class="link" href="#Notation">3. Notations</a></h2>
+<h2 id="Notation"><a class="link" href="#Notation">3. Notations (Terence)</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>In this guide, you&#8217;ll be seeing the following markup being used.</p>
@@ -184,14 +184,19 @@ This icon indicates actions that could negatively affect your experience while u
 <ul>
 <li>
 <p><strong><code>nav ab</code></strong>: navigates to address book mode.</p>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="images/userguide/addressbook.png" alt="addressbook" width="790">
+</li>
+</ul>
 </div>
+</li>
+</ol>
 </div>
-<div class="paragraph text-center">
-<p><em><span class="small">Fig 4.2: GUI of NOVA after entering <code>nav ab</code></span></em></p>
-</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
 <div class="paragraph">
 <p>You can use the following commands once you are in address book mode:</p>
 </div>
@@ -201,19 +206,21 @@ This icon indicates actions that could negatively affect your experience while u
 <p><strong><code>list</code></strong> : lists all contacts</p>
 </li>
 <li>
-<p><code>add n\John Doe p\98765432 e\john@gmail.com c\classmate</code> : adds a contact named <strong>John Doe</strong> to the Address Book
+<p><code>add n\John Doe p\98765432 e\john@gmail.com c\classmate</code> : adds a contact named John Doe to the Address Book
 and categorise as classmate</p>
 </li>
 </ul>
 </div>
-</li>
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><strong><code>exit</code></strong> : exits the app</p>
 </li>
 </ul>
-</div>
-</li>
-</ol>
 </div>
 <div class="paragraph">
 <p>Refer to <a href="#Features">Features</a> for details of each command.</p>
@@ -268,10 +275,10 @@ and within every mode, there is also a set of commands for you to use and get th
 </div>
 <div class="paragraph">
 <p>Example:<br>
-Suppose you want to use the schedule,<br></p>
+Suppose you want to use the schedule,</p>
 </div>
 <div class="paragraph">
-<p><code>nav schedule</code></p>
+<p>enter the command: <code>nav schedule</code></p>
 </div>
 <div class="paragraph">
 <p>NOVA will change the mode to schedule as seen below.</p>
@@ -293,8 +300,10 @@ Suppose you want to use the schedule,<br></p>
 <h3 id="address-book-loh-sze-ying"><a class="link" href="#address-book-loh-sze-ying">5.2. Address Book (Loh Sze Ying)</a></h3>
 <div class="paragraph">
 <p>Learn how to work with the Address Book in NOVA. The address book feature allows you to keep in contact with
-your teammates and classmates, and contacts are automatically sorted by alphabetical order.<br>
-Access this mode by entering the command <code>nav ab</code>. Your NOVA should look something
+your teammates and classmates, and contacts are automatically sorted by alphabetical order.<br></p>
+</div>
+<div class="paragraph">
+<p>You need to be in address book mode to use the features. Access this mode by entering the command <code>nav ab</code>. Your NOVA should look something
 like Figure 5.2 below.</p>
 </div>
 <div class="imageblock" style="text-align: center">
@@ -412,19 +421,20 @@ classmate category and display a confirmation message as seen below.</p>
 <li>
 <p>Suppose you want to view all the classmate contacts that you have added into NOVA,</p>
 <div class="paragraph">
-<p><code>list c\classmate</code></p>
+<p>enter the command: <code>list c\classmate</code></p>
 </div>
 <div class="paragraph">
-<p>NOVA will lists all your contacts in the <code>classmate</code> category as seen below.</p>
+<p>NOVA will lists all your contacts in the <code>classmate</code> category.<br>
+<br></p>
 </div>
 </li>
 <li>
 <p>Suppose you want to view all the teammate contacts that you have added into NOVA,</p>
 <div class="paragraph">
-<p><code>list c\teammate</code></p>
+<p>enter the command: <code>list c\teammate</code></p>
 </div>
 <div class="paragraph">
-<p>NOVA will lists all your contacts in the <code>teammate</code> category as seen below.</p>
+<p>NOVA will lists all your contacts in the <code>teammate</code> category.</p>
 </div>
 </li>
 </ul>
@@ -467,7 +477,7 @@ classmate category and display a confirmation message as seen below.</p>
 <li>
 <p>Suppose you want to find Jane Doe within NOVA,</p>
 <div class="paragraph">
-<p><code>find n\Jane doe</code></p>
+<p>enter the command: <code>find n\Jane doe</code></p>
 </div>
 <div class="paragraph">
 <p>NOVA will find and list saved contacts named Jane Doe.</p>
@@ -476,7 +486,7 @@ classmate category and display a confirmation message as seen below.</p>
 <li>
 <p>Or you can find Jane Doe with just Jane,</p>
 <div class="paragraph">
-<p><code>find n\Jane</code></p>
+<p>enter the command: <code>find n\Jane</code></p>
 </div>
 <div class="paragraph">
 <p>NOVA will find and list saved contacts named Jane.</p>
@@ -521,9 +531,8 @@ Confirm the position of the contact in your most recent list to avoid editing ot
 <div class="ulist">
 <ul>
 <li>
-<p>At least one of the optional fields must be provided.<br>
-Optional fields are <code>n\[name]</code>, <code>p\[phone number]</code>,
-<code>e\[email address]</code> or <code>c\[classmate/teammate]</code></p>
+<p>At least one of the optional fields must be provided (<code>n\[name]</code>, <code>p\[phone number]</code>,
+<code>e\[email address]</code> or <code>c\[classmate/teammate]</code>)</p>
 </li>
 <li>
 <p>The <code>[index]</code> must be a positive integer. (E.g. 1, 2, 3, &#8230;&#8203;)</p>
@@ -622,7 +631,7 @@ Confirm the position of the contact in your most recent list to avoid editing ot
 Suppose you want add remark to Bernice Yu in your address book after using <code>list</code> as seen in Fig 5.2.5.1,</p>
 </div>
 <div class="paragraph">
-<p>enter the command: <code>remark i\2 r\She&#8217;s a nice teammate</code></p>
+<p>enter the command: <code>remark i\2 r\She's a nice teammate</code></p>
 </div>
 <div class="paragraph">
 <p>NOVA will add the remark "She&#8217;s a nice teammate" to Bernice Yu in your address book as shown below.</p>
@@ -770,7 +779,10 @@ After you successfully entered a command (apart from undo) after an undo command
 <h3 id="schedule"><a class="link" href="#schedule">5.3. Schedule</a></h3>
 <div class="paragraph">
 <p>Learn how to work with the schedule feature in NOVA. You can track important events by adding them into the schedule
-and manage them easily  You need to be in schedule mode. Enter the schedule mode by entering the command <code>nav schedule</code>.
+and manage them easily.</p>
+</div>
+<div class="paragraph">
+<p>You need to be in schedule mode. Enter the schedule mode by entering the command <code>nav schedule</code>.
 Your NOVA should look something like Figure 5.3 below.</p>
 </div>
 <div class="imageblock" style="text-align: center">
@@ -829,7 +841,7 @@ Suppose you wish to add a project meeting into your schedule, which is from 2pm 
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/userguide/EventMeeting.png" alt="EventMeeting" width="500">
+<img src="images/userguide/EventMeeting.png" alt="EventMeeting" width="400">
 </div>
 </div>
 <div class="paragraph text-center">
@@ -888,7 +900,7 @@ Suppose you wish to add a group study session from 4pm to 5pm on 20 Feb 2020,<br
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/userguide/EventStudy.png" alt="EventStudy" width="500">
+<img src="images/userguide/EventStudy.png" alt="EventStudy" width="400">
 </div>
 </div>
 <div class="paragraph text-center">
@@ -947,7 +959,7 @@ Suppose you wish to add a consultation session from 3pm to 4pm on 20 Feb 2020,<b
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/userguide/EventConsultation.png" alt="EventConsultation" width="500">
+<img src="images/userguide/EventConsultation.png" alt="EventConsultation" width="400">
 </div>
 </div>
 <div class="paragraph text-center">
@@ -1009,7 +1021,7 @@ Suppose you wish to add a weekly lesson from 3pm to 4pm on Friday,<br></p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/userguide/EventLesson.png" alt="EventLesson" width="500">
+<img src="images/userguide/EventLesson.png" alt="EventLesson" width="400">
 </div>
 </div>
 <div class="paragraph text-center">
@@ -1062,7 +1074,7 @@ Suppose you wish to remove the second event from the list of events on 20 Feb 20
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/userguide/EventDelete.png" alt="EventDelete" width="500">
+<img src="images/userguide/EventDelete.png" alt="EventDelete" width="400">
 </div>
 </div>
 <div class="paragraph text-center">
@@ -1117,7 +1129,7 @@ to the first event on 20 Feb 2020.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/userguide/EventNote.png" alt="EventNote" width="500">
+<img src="images/userguide/EventNote.png" alt="EventNote" width="400">
 </div>
 </div>
 <div class="paragraph text-center">
@@ -1129,7 +1141,7 @@ to the first event on 20 Feb 2020.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="view-schedule-of-a-day-code-view-code"><a class="link" href="#view-schedule-of-a-day-code-view-code">5.3.7. View Schedule of a Day: <code>view</code></a></h4>
+<h4 id="view-schedule-of-a-day-code-view-code-terence"><a class="link" href="#view-schedule-of-a-day-code-view-code-terence">5.3.7. View Schedule of a Day: <code>view</code> (Terence)</a></h4>
 <div class="paragraph">
 <p>You can view the schedule of a specified day. If there is nothing to do on that day, NOVA will tell you.</p>
 </div>
@@ -1139,7 +1151,7 @@ to the first event on 20 Feb 2020.</p>
 </div>
 <div class="paragraph">
 <p>Example:<br>
-Suppose you want to check out what events are happening on 29 Feb,<br></p>
+Suppose you want to check out what events are happening on 20 Feb,<br></p>
 </div>
 <div class="paragraph">
 <p>enter the command: <code>view t\2020-02-20</code></p>
@@ -1149,7 +1161,7 @@ Suppose you want to check out what events are happening on 29 Feb,<br></p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/userguide/schedule_view_date.png" alt="schedule view date" width="500">
+<img src="images/userguide/schedule_view_date.png" alt="schedule view date" width="450">
 </div>
 </div>
 <div class="paragraph text-center">
@@ -1160,9 +1172,9 @@ Suppose you want to check out what events are happening on 29 Feb,<br></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="view-schedule-of-a-week-code-view-code"><a class="link" href="#view-schedule-of-a-week-code-view-code">5.3.8. View Schedule of a Week: <code>view</code></a></h4>
+<h4 id="view-schedule-of-a-week-code-view-code-terence"><a class="link" href="#view-schedule-of-a-week-code-view-code-terence">5.3.8. View Schedule of a Week: <code>view</code> (Terence)</a></h4>
 <div class="paragraph">
-<p>You can view the schedule of a specified week. IF there is nothing to do on that week, NOVA will tell you.</p>
+<p>You can view the schedule of a specified week. If there is nothing to do on that week, NOVA will tell you.</p>
 </div>
 <div class="paragraph">
 <p>Format:<br>
@@ -1214,7 +1226,7 @@ Suppose you are interested in what is going to happen in week 6 of the semester,
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/userguide/schedule_view_week.png" alt="schedule view week" width="500">
+<img src="images/userguide/schedule_view_week.png" alt="schedule view week" width="450">
 </div>
 </div>
 <div class="paragraph text-center">
@@ -1225,7 +1237,7 @@ Suppose you are interested in what is going to happen in week 6 of the semester,
 </div>
 </div>
 <div class="sect3">
-<h4 id="find-free-slots-code-freeslot-code"><a class="link" href="#find-free-slots-code-freeslot-code">5.3.9. Find Free Slots: <code>freeslot</code></a></h4>
+<h4 id="find-free-slots-code-freeslot-code-terence"><a class="link" href="#find-free-slots-code-freeslot-code-terence">5.3.9. Find Free Slots: <code>freeslot</code> (Terence)</a></h4>
 <div class="paragraph">
 <p>You can find free slots on a day easily within your schedule without looking through your schedule.</p>
 </div>
@@ -1249,10 +1261,13 @@ Suppose you want to find pockets of free time on 20 Feb 2020,<br></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="daily-study-planner"><a class="link" href="#daily-study-planner">5.4. Daily Study Planner</a></h3>
+<h3 id="daily-study-planner-tan-wah-ken"><a class="link" href="#daily-study-planner-tan-wah-ken">5.4. Daily Study Planner (Tan Wah Ken)</a></h3>
 <div class="paragraph">
 <p>Learn how to work with the planner feature in NOVA. You can add daily/weeky tasks into your study plan and schedule it
-on any day you like hassle-free. You need to be in planner mode. Enter the planner mode by entering the command
+on any day you like hassle-free.</p>
+</div>
+<div class="paragraph">
+<p>You need to be in planner mode. Enter the planner mode by entering the command
 <code>nav planner</code>.</p>
 </div>
 <div class="imageblock" style="text-align: center">
@@ -1290,7 +1305,7 @@ possible.</p>
 Suppose you want to create a weekly routine task "read cs2103 textbook",</p>
 </div>
 <div class="paragraph">
-<p><code>routine p\read cs2103 textbook f\weekly d\30</code></p>
+<p>enter the command: <code>routine p\read cs2103 textbook f\weekly d\30</code></p>
 </div>
 <div class="paragraph">
 <p>NOVA will create a new task “read cs2103 textbook”.</p>
@@ -1337,13 +1352,12 @@ being scheduled, these tasks will create events with duration as long as possibl
 <p>Example:<br>
 Suppose you want to create a flexible task "study vocabulary",<br>
 <br>
-<code>flexible p\study vocabulary t\100 mind\10 maxd\60</code></p>
+enter the command: <code>flexible p\study vocabulary t\100 mind\10 maxd\60</code></p>
 </div>
 <div class="paragraph">
-<p>NOVA will create a new task “study vocabulary”<br>
-When being scheduled, this task will create one event “study vocabulary” with duration as long as
-possible, from 10 minutes to 60 minutes.<br>
-The total duration of all the event scheduled will not exceed 100 minutes.</p>
+<p>NOVA will create a new task “study vocabulary”. When being scheduled, this task will create one event “study vocabulary”
+with duration as long as possible, from 10 minutes to 60 minutes. The total duration of all the event scheduled will
+not exceed 100 minutes.</p>
 </div>
 <div class="paragraph">
 <p><a href="#Top">[Back to Top]</a></p>
@@ -1363,7 +1377,7 @@ The total duration of all the event scheduled will not exceed 100 minutes.</p>
 Suppose you want to delete the task "study vocabulary",</p>
 </div>
 <div class="paragraph">
-<p><code>delete p\study vocabulary</code></p>
+<p>enter the command: <code>delete p\study vocabulary</code></p>
 </div>
 <div class="paragraph">
 <p>NOVA will delete the task “study vocabulary” and all its related future events.</p>
@@ -1443,24 +1457,31 @@ If it is impossible to schedule an event for the task for that day, you will be 
 <code>schedule p\[task name] t\[YYYY-MM-DD]</code><br></p>
 </div>
 <div class="paragraph">
-<p>Example:<br>
-Suppose you want to schedule the weekly routine task "read cs2103 textbook",</p>
+<p>Example:</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>Suppose you want to schedule the weekly routine task "read cs2103 textbook",</p>
 <div class="paragraph">
-<p><code>schedule p\read cs2103 textbook t\2020-03-20</code></p>
+<p>enter the command: <code>schedule p\read cs2103 textbook t\2020-03-20</code></p>
 </div>
 <div class="paragraph">
 <p>NOVA will finds a free slot bigger than 30 minutes as specified by the task, and creates an event “read cs2103
 textbook” that lasts for 30 minutes on a random spot within the free slot.</p>
 </div>
+</li>
+<li>
+<p>Suppose you want to schedule the flexible task "study vocabulary",</p>
 <div class="paragraph">
-<p>Suppose you want to schedule the flexible task "study vocabulary",<br>
-<br>
-<code>schedule p\study vocabulary t\2020-03-20</code><br></p>
+<p>enter the command: <code>schedule p\study vocabulary t\2020-03-20</code><br></p>
 </div>
 <div class="paragraph">
 <p>NOVA will finds a free slot bigger than 10 minutes as specified by the task, and creates an event “read cs2103
 textbook” on a random spot within the free slot.</p>
+</div>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p><a href="#Top">[Back to Top]</a></p>
@@ -1471,7 +1492,10 @@ textbook” on a random spot within the free slot.</p>
 <h3 id="progress-tracker-yap-wen-jun-bryan"><a class="link" href="#progress-tracker-yap-wen-jun-bryan">5.5. Progress Tracker  (Yap Wen Jun Bryan)</a></h3>
 <div class="paragraph">
 <p>Learn how to work with the progress tracker feature in NOVA. You can track important project tasks by adding them into the progress tracker
-and manage them easily. You need to be in Progress Tracker mode. Enter the Progress Tracker mode by entering the
+and manage them easily.</p>
+</div>
+<div class="paragraph">
+<p>You need to be in Progress Tracker mode. Enter the Progress Tracker mode by entering the
 command <code>nav progresstracker</code>. Your NOVA should look something like Figure 5.5 below.</p>
 </div>
 <div class="imageblock" style="text-align: center">
@@ -1504,27 +1528,6 @@ command <code>nav progresstracker</code>. Your NOVA should look something like F
 <p>Only <code>ip</code> and <code>tp</code> projects are available and are not case-sensitive</p>
 </li>
 <li>
-<p>There are only weeks 1 to 13 in each project</p>
-</li>
-<li>
-<p>When multiple same tags are keyed, the last tag will be taken as the input.</p>
-</li>
-</ul>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<div class="ulist">
-<ul>
-<li>
 <p><code>add</code> is case-sensitive</p>
 </li>
 <li>
@@ -1532,6 +1535,12 @@ command <code>nav progresstracker</code>. Your NOVA should look something like F
 </li>
 <li>
 <p><code>[task description]</code> cannot be empty</p>
+</li>
+<li>
+<p>There are only weeks 1 to 13 in each project</p>
+</li>
+<li>
+<p>When multiple same tags are keyed, the last tag will be taken as the input.</p>
 </li>
 </ul>
 </div>
@@ -1544,14 +1553,14 @@ command <code>nav progresstracker</code>. Your NOVA should look something like F
 Suppose you want to add a task to week 3 of IP project to remind yourself to do up javaFx,</p>
 </div>
 <div class="paragraph">
-<p><code>add p\ip w\3 d\Do up javaFx</code></p>
+<p>enter the command: <code>add p\ip w\3 d\Do up javaFx</code></p>
 </div>
 <div class="paragraph">
 <p>NOVA will add a task “Do up javaFx” to week 3 of IP in progress tracker.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/userguide/addPtTaskResult.png" alt="addPtTaskResult" width="500">
+<img src="images/userguide/addPtTaskResult.png" alt="addPtTaskResult" width="790">
 </div>
 </div>
 <div class="paragraph text-center">
@@ -1583,31 +1592,16 @@ Suppose you want to add a task to week 3 of IP project to remind yourself to do 
 <p>Only <code>ip</code> and <code>tp</code> projects are available and are not case-sensitive</p>
 </li>
 <li>
-<p>There are only weeks 1 to 13 in each project</p>
-</li>
-<li>
-<p>When multiple same tags are keyed, the last tag will be taken as the input.</p>
-</li>
-</ul>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<div class="ulist">
-<ul>
-<li>
 <p><code>list</code> is case-sensitive</p>
 </li>
 <li>
 <p><code>[week number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
+</li>
+<li>
+<p>There are only weeks 1 to 13 in each project</p>
+</li>
+<li>
+<p>When multiple same tags are keyed, the last tag will be taken as the input.</p>
 </li>
 </ul>
 </div>
@@ -1620,14 +1614,14 @@ Suppose you want to add a task to week 3 of IP project to remind yourself to do 
 Suppose you would like to view the tasks you have added to week 3 of IP project,</p>
 </div>
 <div class="paragraph">
-<p><code>list p\ip w\3</code></p>
+<p>enter the command: <code>list p\ip w\3</code></p>
 </div>
 <div class="paragraph">
 <p>NOVA will list the tasks in week 3 of IP project.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/userguide/listPtTask.png" alt="listPtTask" width="500">
+<img src="images/userguide/listPtTask.png" alt="listPtTask" width="790">
 </div>
 </div>
 <div class="paragraph text-center">
@@ -1658,34 +1652,16 @@ Suppose you would like to view the tasks you have added to week 3 of IP project,
 <p>Only <code>ip</code> and <code>tp</code> projects are available and are not case-sensitive</p>
 </li>
 <li>
+<p><code>delete</code> is case-sensitive</p>
+</li>
+<li>
+<p><code>[week number]</code> and <code>[task number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
+</li>
+<li>
 <p>There are only weeks 1 to 13 in each project</p>
 </li>
 <li>
 <p>When multiple same tags are keyed, the last tag will be taken as the input.</p>
-</li>
-</ul>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete</code> is case-sensitive</p>
-</li>
-<li>
-<p><code>[week number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
-</li>
-<li>
-<p><code>[task number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
 </li>
 </ul>
 </div>
@@ -1698,14 +1674,14 @@ Suppose you would like to view the tasks you have added to week 3 of IP project,
 Suppose you wish to delete task number 1 in week 3 of IP project,</p>
 </div>
 <div class="paragraph">
-<p><code>delete p\ip w\3 t\1</code></p>
+<p>enter the command: <code>delete p\ip w\3 t\1</code></p>
 </div>
 <div class="paragraph">
 <p>NOVA will delete task 1 in week 3 of IP in progress tracker.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/userguide/deletePtTaskResult.png" alt="deletePtTaskResult" width="500">
+<img src="images/userguide/deletePtTaskResult.png" alt="deletePtTaskResult" width="790">
 </div>
 </div>
 <div class="paragraph text-center">
@@ -1742,29 +1718,11 @@ Suppose you wish to delete task number 1 in week 3 of IP project,</p>
 <li>
 <p>When multiple same tags are keyed, the last tag will be taken as the input.</p>
 </li>
-</ul>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<div class="ulist">
-<ul>
 <li>
 <p><code>done</code> is case-sensitive</p>
 </li>
 <li>
-<p><code>[week number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
-</li>
-<li>
-<p><code>[task number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
+<p><code>[week number]</code> and <code>[task number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
 </li>
 </ul>
 </div>
@@ -1777,14 +1735,14 @@ Suppose you wish to delete task number 1 in week 3 of IP project,</p>
 Suppose you wish to set task number 1 in week 3 of IP project as done or undone,</p>
 </div>
 <div class="paragraph">
-<p><code>done p\ip w\3 t\1</code></p>
+<p>enter the command: <code>done p\ip w\3 t\1</code></p>
 </div>
 <div class="paragraph">
 <p>NOVA will set task 1 in week 3 of IP in progress tracker as done/undone depending on it&#8217;s status originally.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/userguide/setDonePtTaskResult.png" alt="setDonePtTaskResult" width="500">
+<img src="images/userguide/setDonePtTaskResult.png" alt="setDonePtTaskResult" width="470">
 </div>
 </div>
 <div class="paragraph text-center">
@@ -1813,7 +1771,16 @@ Suppose you wish to set task number 1 in week 3 of IP project as done or undone,
 <div class="ulist">
 <ul>
 <li>
+<p><code>addNote</code> is case-sensitive</p>
+</li>
+<li>
 <p>Only <code>ip</code> and <code>tp</code> projects are available and are not case-sensitive</p>
+</li>
+<li>
+<p><code>[week number]</code> and <code>[task number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
+</li>
+<li>
+<p><code>[note]</code> cannot be empty</p>
 </li>
 <li>
 <p>There are only weeks 1 to 13 in each project</p>
@@ -1827,46 +1794,19 @@ Suppose you wish to set task number 1 in week 3 of IP project as done or undone,
 </tr>
 </table>
 </div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<div class="ulist">
-<ul>
-<li>
-<p><code>addNote</code> is case-sensitive</p>
-</li>
-<li>
-<p><code>[week number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
-</li>
-<li>
-<p><code>[task number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
-</li>
-<li>
-<p><code>[note]</code> cannot be empty</p>
-</li>
-</ul>
-</div>
-</td>
-</tr>
-</table>
-</div>
 <div class="paragraph">
 <p>Example:<br>
 Suppose you wish to add a note to remind yourself to create a branch and tag for task number 2 in week 3 of IP project,</p>
 </div>
 <div class="paragraph">
-<p><code>addNote p\ip w\3 t\1 d\Need create branch and tag</code></p>
+<p>enter the command: <code>addNote p\ip w\3 t\1 d\Need create branch and tag</code></p>
 </div>
 <div class="paragraph">
 <p>NOVA will add a note “Need create branch and tag” to task 1 in week 3 of IP.</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="images/userguide/addPtNote.png" alt="addPtNote" width="500">
+<img src="images/userguide/addPtNote.png" alt="addPtNote" width="790">
 </div>
 </div>
 <div class="paragraph text-center">
@@ -1895,7 +1835,16 @@ Suppose you wish to add a note to remind yourself to create a branch and tag for
 <div class="ulist">
 <ul>
 <li>
+<p><code>editNote</code> is case-sensitive</p>
+</li>
+<li>
 <p>Only <code>ip</code> and <code>tp</code> projects are available and are not case-sensitive</p>
+</li>
+<li>
+<p><code>[week number]</code> and <code>[task number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
+</li>
+<li>
+<p><code>[new note]</code> cannot be empty</p>
 </li>
 <li>
 <p>There are only weeks 1 to 13 in each project</p>
@@ -1909,39 +1858,12 @@ Suppose you wish to add a note to remind yourself to create a branch and tag for
 </tr>
 </table>
 </div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<div class="ulist">
-<ul>
-<li>
-<p><code>editNote</code> is case-sensitive</p>
-</li>
-<li>
-<p><code>[week number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
-</li>
-<li>
-<p><code>[task number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
-</li>
-<li>
-<p><code>[new note]</code> cannot be empty</p>
-</li>
-</ul>
-</div>
-</td>
-</tr>
-</table>
-</div>
 <div class="paragraph">
 <p>Example:<br>
 Suppose you wish to edit the note added in task 1 of week 3 in IP project,</p>
 </div>
 <div class="paragraph">
-<p><code>editNote p\ip w\3 t\1 d\consult tutor</code></p>
+<p>enter the command: <code>editNote p\ip w\3 t\1 d\consult tutor</code></p>
 </div>
 <div class="paragraph">
 <p>NOVA will edit the note under task 1 of week 3 of IP.</p>
@@ -1977,7 +1899,13 @@ Suppose you wish to edit the note added in task 1 of week 3 in IP project,</p>
 <div class="ulist">
 <ul>
 <li>
+<p><code>deleteNote</code> is case-sensitive</p>
+</li>
+<li>
 <p>Only <code>ip</code> and <code>tp</code> projects are available and are not case-sensitive</p>
+</li>
+<li>
+<p><code>[week number]</code> and <code>[task number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
 </li>
 <li>
 <p>There are only weeks 1 to 13 in each project</p>
@@ -1991,36 +1919,12 @@ Suppose you wish to edit the note added in task 1 of week 3 in IP project,</p>
 </tr>
 </table>
 </div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<div class="ulist">
-<ul>
-<li>
-<p><code>deleteNote</code> is case-sensitive</p>
-</li>
-<li>
-<p><code>[week number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
-</li>
-<li>
-<p><code>[task number]</code> must be a positive integer (E.g. 1, 2, 3, …)</p>
-</li>
-</ul>
-</div>
-</td>
-</tr>
-</table>
-</div>
 <div class="paragraph">
 <p>Example:<br>
 Suppose you wish to delete the note added in task 1 of week 3 in IP project,</p>
 </div>
 <div class="paragraph">
-<p><code>deleteNote p\ip w\3 t\1</code></p>
+<p>enter the command: <code>deleteNote p\ip w\3 t\1</code></p>
 </div>
 <div class="paragraph">
 <p>NOVA will delete the note under task 1 of week 3 of IP.</p>
@@ -2031,15 +1935,17 @@ Suppose you wish to delete the note added in task 1 of week 3 in IP project,</p>
 </div>
 </div>
 <div class="paragraph text-center">
-<p><em><span class="small">Fig 5.5.7: Display message after entering <code>deleteNote p\ip w\3 t\1</code></span></em>
-<a href="#Top">[Back to Top]</a></p>
+<p><em><span class="small">Fig 5.5.7: Display message after entering <code>deleteNote p\ip w\3 t\1</code></span></em></p>
+</div>
+<div class="paragraph">
+<p><a href="#Top">[Back to Top]</a></p>
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="Summary"><a class="link" href="#Summary">6. Command Summary</a></h2>
+<h2 id="Summary"><a class="link" href="#Summary">6. Command Summary (Terence)</a></h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all">
 <colgroup>
@@ -2215,4 +2121,4 @@ contains the data of your previous NOVA folder.</p>
 <p><a href="#Top">[Back to Top]</a></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 10:17:47 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 10:26:38 UTC</div></div></div></body></html>
