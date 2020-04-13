@@ -17,7 +17,7 @@
 <li><a href="#Design-Logic">2.3. Logic component</a></li>
 <li><a href="#Design-Model">2.4. Model component</a></li>
 <li><a href="#Design-Storage">2.5. Storage component</a></li>
-<li><a href="#Design-Commons">2.6. Common classes</a></li>
+<li><a href="#Design-Commons">2.6. Common classes (Loh Sze Ying)</a></li>
 </ul>
 </li>
 <li><a href="#implementation">3. Implementation</a>
@@ -28,7 +28,7 @@
 <li><a href="#design-considerations">3.1.2. Design Considerations</a></li>
 </ul>
 </li>
-<li><a href="#address-book">3.2. Address Book</a>
+<li><a href="#address-book-loh-sze-ying">3.2. Address Book (Loh Sze Ying)</a>
 <ul class="sectlevel3">
 <li><a href="#implementation-undo-or-redo-command">3.2.1. Implementation - Undo or redo command</a></li>
 <li><a href="#design-considerations-undo-or-redo-command">3.2.2. Design Considerations - Undo or redo command</a>
@@ -98,7 +98,7 @@
 <ul class="sectlevel2">
 <li><a href="#launch">F.1. Launch</a></li>
 <li><a href="#shutdown-yap-wen-jun-bryan">F.2. Shutdown  (Yap Wen Jun Bryan)</a></li>
-<li><a href="#deleting-a-person-in-address-book">F.3. Deleting a person in Address Book</a></li>
+<li><a href="#deleting-a-person-in-address-book-loh-sze-ying">F.3. Deleting a person in Address Book (Loh Sze Ying)</a></li>
 <li><a href="#adding-a-project-task-in-progress-tracker-yap-wen-jun-bryan">F.4. Adding a project task in Progress Tracker  (Yap Wen Jun Bryan)</a></li>
 <li><a href="#saving-data-yap-wen-jun-bryan">F.5. Saving data  (Yap Wen Jun Bryan)</a></li>
 </ul>
@@ -206,7 +206,7 @@ The following class plays an important role at the architecture level:</p>
 </div>
 <div class="title">Figure 2. Architecture Diagram of the Logic Component</div>
 </div>
-<h4 id="how-the-architecture-components-interact-with-each-other" class="discrete">How the architecture components interact with each other</h4>
+<h4 id="how-the-architecture-components-interact-with-each-other-loh-sze-ying" class="discrete">How the architecture components interact with each other (Loh Sze Ying)</h4>
 <div class="paragraph">
 <p>The <em>Sequence Diagram</em> below shows how the components interact with each other for the scenario where the user issues the command <code>delete i\1</code> after navigating to Address Book mode with <code>nav ab</code>.<br>
 The same type of interaction applies to other mode within NOVA, such as Schedule mode, Planner mode or Progress Tracker mode.</p>
@@ -350,7 +350,7 @@ The same type of interaction applies to other mode within NOVA, such as Schedule
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Commons"><a class="link" href="#Design-Commons">2.6. Common classes</a></h3>
+<h3 id="Design-Commons"><a class="link" href="#Design-Commons">2.6. Common classes (Loh Sze Ying)</a></h3>
 <div class="paragraph">
 <p>Classes used by multiple components are in the <code>seedu.nova.commons</code> package.
 All of the classes under <code>Commons</code> work independently.</p>
@@ -482,7 +482,7 @@ The operation is exposed in the <code>Model</code> interface as <code>Model#dele
 </div>
 </div>
 <div class="sect2">
-<h3 id="address-book"><a class="link" href="#address-book">3.2. Address Book</a></h3>
+<h3 id="address-book-loh-sze-ying"><a class="link" href="#address-book-loh-sze-ying">3.2. Address Book (Loh Sze Ying)</a></h3>
 <div class="paragraph">
 <p>The address book feature handles the contact list of the users. To enter address book mode, users need to enter <code>nav ab</code> command. Users are able to:</p>
 </div>
@@ -615,18 +615,6 @@ If the <code>currentStatePointer</code> is at index 0, pointing to the initial a
 <div class="content">
 <img src="images/UndoSequenceDiagram.png" alt="UndoSequenceDiagram">
 </div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The lifeline for <code>AbUndoCommand</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-</td>
-</tr>
-</table>
 </div>
 <div class="paragraph">
 <p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoAddressBook()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the address book to that state.</p>
@@ -772,18 +760,6 @@ The operation is exposed in the <code>Model</code> interface as <code>Model#dele
 <div class="content">
 <img src="images/AbDeleteSequenceDiagram.png" alt="AbDeleteSequenceDiagram">
 </div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The lifeline for <code>AbDeleteCommandParser</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-</td>
-</tr>
-</table>
 </div>
 <div class="paragraph">
 <p>The following activity diagram shows how the delete mechanism works:</p>
@@ -1585,7 +1561,7 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 <div class="paragraph">
 <p>(For all use cases below, the <strong>System</strong> is the <code>nova</code> and the <strong>Actor</strong> is the <code>student</code>, unless specified otherwise)</p>
 </div>
-<h3 id="use-case-1-add-a-contact" class="discrete">Use case 1: Add a contact</h3>
+<h3 id="use-case-1-add-a-contact-loh-sze-ying" class="discrete">Use case 1: Add a contact (Loh Sze Ying)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1635,7 +1611,7 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </li>
 </ul>
 </div>
-<h3 id="use-case-2-list-all-contacts" class="discrete">Use case 2: List all contacts</h3>
+<h3 id="use-case-2-list-all-contacts-loh-sze-ying" class="discrete">Use case 2: List all contacts (Loh Sze Ying)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1672,7 +1648,7 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </li>
 </ul>
 </div>
-<h3 id="use-case-3-list-category-specific-contacts" class="discrete">Use case 3: List category specific contacts</h3>
+<h3 id="use-case-3-list-category-specific-contacts-loh-sze-ying" class="discrete">Use case 3: List category specific contacts (Loh Sze Ying)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1709,7 +1685,7 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </li>
 </ul>
 </div>
-<h3 id="use-case-4-find-saved-contacts" class="discrete">Use case 4: Find saved contacts</h3>
+<h3 id="use-case-4-find-saved-contacts-loh-sze-ying" class="discrete">Use case 4: Find saved contacts (Loh Sze Ying)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1746,7 +1722,7 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </li>
 </ul>
 </div>
-<h3 id="use-case-5-edit-a-contact" class="discrete">Use case 5: Edit a contact</h3>
+<h3 id="use-case-5-edit-a-contact-loh-sze-ying" class="discrete">Use case 5: Edit a contact (Loh Sze Ying)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1812,7 +1788,7 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </li>
 </ul>
 </div>
-<h3 id="use-case-6-delete-a-contact" class="discrete">Use case 6: Delete a contact</h3>
+<h3 id="use-case-6-delete-a-contact-loh-sze-ying" class="discrete">Use case 6: Delete a contact (Loh Sze Ying)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1878,7 +1854,7 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </li>
 </ul>
 </div>
-<h3 id="use-case-7-add-edit-or-delete-remark-to-a-contact" class="discrete">Use case 7: Add, edit or delete remark to a contact</h3>
+<h3 id="use-case-7-add-edit-or-delete-remark-to-a-contact-loh-sze-ying" class="discrete">Use case 7: Add, edit or delete remark to a contact (Loh Sze Ying)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1944,7 +1920,7 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </li>
 </ul>
 </div>
-<h3 id="use-case-8-undoing-in-address-book" class="discrete">Use case 8: Undoing in address book</h3>
+<h3 id="use-case-8-undoing-in-address-book-loh-sze-ying" class="discrete">Use case 8: Undoing in address book (Loh Sze Ying)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1981,7 +1957,7 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 </li>
 </ul>
 </div>
-<h3 id="use-case-9-redoing-in-address-book" class="discrete">Use case 9: Redoing in address book</h3>
+<h3 id="use-case-9-redoing-in-address-book-loh-sze-ying" class="discrete">Use case 9: Redoing in address book (Loh Sze Ying)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2649,10 +2625,6 @@ event on today&#8217;s schedule so that I can keep up with my study plan.</p></t
 <dd>
 <p>Windows, Linux, OS-X</p>
 </dd>
-<dt class="hdlist1"><a id="mode"></a> Mode</dt>
-<dd>
-<p>Mode of operation within NOVA, such as Address Book with <code>nav ab</code>, Schedule with <code>nav schedule</code>, Planner with <code>nav planner</code>, and Progress Tracker with <code>nav progresstracker</code>.</p>
-</dd>
 </dl>
 </div>
 </div>
@@ -2728,7 +2700,7 @@ Expected: The most recent window size and location is retained.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person-in-address-book"><a class="link" href="#deleting-a-person-in-address-book">F.3. Deleting a person in Address Book</a></h3>
+<h3 id="deleting-a-person-in-address-book-loh-sze-ying"><a class="link" href="#deleting-a-person-in-address-book-loh-sze-ying">F.3. Deleting a person in Address Book (Loh Sze Ying)</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2823,4 +2795,4 @@ Example: Adding a @ to a week in a ptTask.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 10:26:38 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 10:30:02 UTC</div></div></div></body></html>
