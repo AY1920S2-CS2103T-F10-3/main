@@ -996,7 +996,7 @@ Suppose you wish to delete the note added in task 1 of week 3 in IP project,</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-14-user-edits-a-task" class="discrete">Use case 14: User edits a task.</h3>
+<h3 id="use-case-14-edit-a-task" class="discrete">Use case 14: Edit a task.</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1032,7 +1032,7 @@ Suppose you wish to delete the note added in task 1 of week 3 in IP project,</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-15-user-deletes-a-task"><a class="link" href="#use-case-15-user-deletes-a-task">Use case 15: User deletes a task.</a></h3>
+<h3 id="use-case-15-delete-a-task"><a class="link" href="#use-case-15-delete-a-task">Use case 15: Delete a task.</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1065,7 +1065,7 @@ Suppose you wish to delete the note added in task 1 of week 3 in IP project,</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-16-user-lists-tasks-in-a-week-of-a-project" class="discrete">Use case 16: User lists tasks in a week of a project.</h3>
+<h3 id="use-case-16-list-tasks-in-a-week-of-a-project" class="discrete">Use case 16: List tasks in a week of a project.</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1098,7 +1098,7 @@ Suppose you wish to delete the note added in task 1 of week 3 in IP project,</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-17-user-set-an-added-task-as-done" class="discrete">Use case 17: User set an added task as done.</h3>
+<h3 id="use-case-17-set-an-added-task-as-done" class="discrete">Use case 17: Set an added task as done.</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1164,7 +1164,7 @@ Suppose you wish to delete the note added in task 1 of week 3 in IP project,</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-19-user-edits-a-note" class="discrete">Use case 19: User edits a note.</h3>
+<h3 id="use-case-19-edit-a-note" class="discrete">Use case 19: Edit a note.</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1197,7 +1197,7 @@ Suppose you wish to delete the note added in task 1 of week 3 in IP project,</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-20-user-deletes-a-note" class="discrete">Use case 20: User deletes a note.</h3>
+<h3 id="use-case-20-delete-a-note" class="discrete">Use case 20: Delete a note.</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1231,5 +1231,85 @@ Suppose you wish to delete the note added in task 1 of week 3 in IP project,</p>
 </ul>
 </div>
 </div>
+<div class="sect2">
+<h3 id="shutdown"><a class="link" href="#shutdown">Shutdown</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Exiting the application</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Enter <code>exit</code> in the command line.</p>
+</li>
+</ol>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 04:18:45 UTC</div></div></div></body></html>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-a-project-task-in-progress-tracker"><a class="link" href="#adding-a-project-task-in-progress-tracker">Adding a project task in Progress Tracker</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Enter progress tracker mode via <code>nav progresstracker</code></p>
+</li>
+<li>
+<p>Adding a project task</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>add p\ip w\1 d\new task</code><br>
+Expected: New project task with description "new task" is added to IP project week 1. Message showing successful execution is shown.</p>
+</li>
+<li>
+<p>Test case: <code>add p\ip w\14 d\new task</code><br>
+Expected: No new project task is added. Error details shown in the status message.</p>
+</li>
+<li>
+<p>Other incorrect add commands to try: <code>add</code>, <code>add p\ppp w\1 d\new task</code>.<br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="saving-data"><a class="link" href="#saving-data">Saving data</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Dealing with corrupted data file</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Edit the Nova data file to contain invalid data.<br>
+Example: Adding a @ to a week in a ptTask.</p>
+</li>
+<li>
+<p>Run the application. The application should start with an empty Nova data file.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Dealing with missing data file</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Delete the current Nova data file.</p>
+</li>
+<li>
+<p>Run the application. The application should start with a sample Nova data file with pre-included data.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 04:30:02 UTC</div></div></div></body></html>
