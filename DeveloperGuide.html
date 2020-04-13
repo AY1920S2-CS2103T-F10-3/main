@@ -133,14 +133,14 @@
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-The <code>.puml</code> files used to create diagrams in this document can be found in the <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/docs/diagrams/">diagrams</a> folder.
-Refer to the <a href="UsingPlantUml.html">Using PlantUML guide</a> to learn how to create and edit diagrams.
+The <code>.puml</code> files used to create diagrams in this document can be found in the <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/tree/master/docs/diagrams">diagrams</a> folder.
+Refer to the <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/blob/master/docs/UsingPlantUml.adoc">Using PlantUML guide</a> to learn how to create and edit diagrams.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p><code>Main</code> has two classes called <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/src/main/java/seedu/address/Main.java"><code>Main</code></a> and <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
+<p><code>Main</code> has two classes called <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/src/main/java/seedu/nova/Main.java"><code>Main</code></a> and <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/src/main/java/seedu/nova/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
 </div>
 <div class="ulist">
 <ul>
@@ -228,13 +228,13 @@ The same type of interaction applies to other mode within NOVA, such as Schedule
 <div class="title">Figure 4. Structure of the UI Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/blob/master/src/main/java/seedu/nova/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code> and <code>HelpBox</code>. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files (HelpBox does not have a <code>.fxml</code> file) that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
+<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files (HelpBox does not have a <code>.fxml</code> file) that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/blob/master/src/main/java/seedu/nova/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/blob/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component,</p>
@@ -260,7 +260,7 @@ The same type of interaction applies to other mode within NOVA, such as Schedule
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
-<a href="https://github.com/AY1920S2-CS2103T-F10-3/main/src/main/java/seedu/nova/logic/Logic.java"><code>Logic.java</code></a></p>
+<a href="https://github.com/AY1920S2-CS2103T-F10-3/main/blob/master/src/main/java/seedu/nova/logic/Logic.java"><code>Logic.java</code></a></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -294,7 +294,7 @@ The same type of interaction applies to other mode within NOVA, such as Schedule
 <div class="title">Figure 6. Structure of the Model Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/src/main/java/seedu/nova/model/Model.java"><code>Model.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/blob/master/src/main/java/seedu/nova/model/Model.java"><code>Model.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Model</code>,</p>
@@ -331,7 +331,7 @@ The same type of interaction applies to other mode within NOVA, such as Schedule
 <div class="title">Figure 7. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/src/main/java/seedu/nova/storage/Storage.java"><code>Storage.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/blob/master/src/main/java/seedu/nova/storage/Storage.java"><code>Storage.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Storage</code> component,</p>
@@ -359,11 +359,11 @@ All of the classes under <code>Commons</code> work independently.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/src/main/java/seedu/nova/commons/core/index/LogsCenter.java"><code>LogsCenter.java</code></a><br>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/blob/master/src/main/java/seedu/nova/commons/core/LogsCenter.java"><code>LogsCenter.java</code></a><br>
 The <code>LogsCenter</code> is used by NOVA to display logs when running NOVA in terminal.</p>
 </li>
 <li>
-<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/src/main/java/seedu/nova/commons/core/index/Messages.java"><code>Messages.java</code></a><br>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-F10-3/main/blob/master/src/main/java/seedu/nova/commons/core/Messages.java"><code>Messages.java</code></a><br>
 The <code>Messages</code> is used by NOVA and deals with messages to display relating to NOVA&#8217;s features.</p>
 </li>
 </ul>
@@ -2848,4 +2848,4 @@ Expected: Error messages will be shown as well.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 13:33:18 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 13:45:12 UTC</div></div></div></body></html>
