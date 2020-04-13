@@ -15,7 +15,7 @@
 <li><a href="#Design-Architecture">2.1. Architecture</a></li>
 <li><a href="#Design-Ui">2.2. UI component (Yap Wen Jun Bryan)</a></li>
 <li><a href="#Design-Logic">2.3. Logic component (Chua Huixian)</a></li>
-<li><a href="#Design-Model">2.4. Model component</a></li>
+<li><a href="#Design-Model">2.4. Model component (Terence)</a></li>
 <li><a href="#Design-Storage">2.5. Storage component</a></li>
 <li><a href="#Design-Commons">2.6. Common classes (Loh Sze Ying)</a></li>
 </ul>
@@ -51,14 +51,14 @@
 <li><a href="#design-considerations-2">3.3.2. Design Considerations</a></li>
 </ul>
 </li>
-<li><a href="#view-schedule">3.4. View schedule</a>
+<li><a href="#view-schedule-terence">3.4. View schedule (Terence)</a>
 <ul class="sectlevel3">
 <li><a href="#implementation-view-schedule-by-date">3.4.1. Implementation - View schedule by date</a></li>
 <li><a href="#implementation-view-schedule-by-week">3.4.2. Implementation - View schedule by week</a></li>
 <li><a href="#design-considerations-3">3.4.3. Design Considerations</a></li>
 </ul>
 </li>
-<li><a href="#view-available-free-slot-of-a-specific-day">3.5. View available free slot of a specific day</a>
+<li><a href="#view-available-free-slot-of-a-specific-day-tan-wah-ken">3.5. View available free slot of a specific day (Tan Wah Ken)</a>
 <ul class="sectlevel3">
 <li><a href="#implementation-3">3.5.1. Implementation</a></li>
 <li><a href="#design-considerations-4">3.5.2. Design Considerations</a>
@@ -68,7 +68,7 @@
 </li>
 </ul>
 </li>
-<li><a href="#schedule-events-based-on-a-task-in-plan">3.6. Schedule events based on a task in plan.</a>
+<li><a href="#schedule-events-based-on-a-task-in-plan-tan-wah-ken">3.6. Schedule events based on a task in plan (Tan Wah Ken)</a>
 <ul class="sectlevel3">
 <li><a href="#implementation-4">3.6.1. Implementation</a></li>
 <li><a href="#design-considerations-5">3.6.2. Design Considerations</a>
@@ -101,6 +101,7 @@
 <li><a href="#deleting-a-person-in-address-book-loh-sze-ying">F.3. Deleting a person in Address Book (Loh Sze Ying)</a></li>
 <li><a href="#adding-a-project-task-in-progress-tracker-yap-wen-jun-bryan">F.4. Adding a project task in Progress Tracker  (Yap Wen Jun Bryan)</a></li>
 <li><a href="#saving-data-yap-wen-jun-bryan">F.5. Saving data  (Yap Wen Jun Bryan)</a></li>
+<li><a href="#view-schedule-terence-2">F.6. View schedule (Terence)</a></li>
 </ul>
 </li>
 </ul>
@@ -288,7 +289,7 @@ The same type of interaction applies to other mode within NOVA, such as Schedule
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Model"><a class="link" href="#Design-Model">2.4. Model component</a></h3>
+<h3 id="Design-Model"><a class="link" href="#Design-Model">2.4. Model component (Terence)</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/ModelClassDiagram.png" alt="ModelClassDiagram">
@@ -891,7 +892,7 @@ The operation is exposed in the <code>Model</code> interface as <code>Model#dele
 </div>
 </div>
 <div class="sect2">
-<h3 id="view-schedule"><a class="link" href="#view-schedule">3.4. View schedule</a></h3>
+<h3 id="view-schedule-terence"><a class="link" href="#view-schedule-terence">3.4. View schedule (Terence)</a></h3>
 <div class="paragraph">
 <p>The view schedule feature allows users to view the events they have added into the schedule. Users are able to view the
 schedule by two time frames:</p>
@@ -1020,10 +1021,10 @@ The operation is exposed in the <code>Model</code> interface as <code>Model#view
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easier to fit the events into the display</p>
+<p>Pros: Easier to fit the events into the display.</p>
 </li>
 <li>
-<p>Cons: Less ways for user to view schedule</p>
+<p>Cons: Less ways for user to view schedule.</p>
 </li>
 </ul>
 </div>
@@ -1033,10 +1034,10 @@ The operation is exposed in the <code>Model</code> interface as <code>Model#view
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: User can see their whole month&#8217;s schedule at once</p>
+<p>Pros: User can see their whole month&#8217;s schedule at once.</p>
 </li>
 <li>
-<p>Cons: Might be too long and cannot fit into the display box</p>
+<p>Cons: Might be too long and cannot fit into the display box. Time to gather all the events may be too long.</p>
 </li>
 </ul>
 </div>
@@ -1046,7 +1047,7 @@ The operation is exposed in the <code>Model</code> interface as <code>Model#view
 </div>
 </div>
 <div class="sect2">
-<h3 id="view-available-free-slot-of-a-specific-day"><a class="link" href="#view-available-free-slot-of-a-specific-day">3.5. View available free slot of a specific day</a></h3>
+<h3 id="view-available-free-slot-of-a-specific-day-tan-wah-ken"><a class="link" href="#view-available-free-slot-of-a-specific-day-tan-wah-ken">3.5. View available free slot of a specific day (Tan Wah Ken)</a></h3>
 <div class="paragraph">
 <p>The view free slots feature allows the user to view their available free slots on their schedule.</p>
 </div>
@@ -1122,7 +1123,7 @@ events are added</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="schedule-events-based-on-a-task-in-plan"><a class="link" href="#schedule-events-based-on-a-task-in-plan">3.6. Schedule events based on a task in plan.</a></h3>
+<h3 id="schedule-events-based-on-a-task-in-plan-tan-wah-ken"><a class="link" href="#schedule-events-based-on-a-task-in-plan-tan-wah-ken">3.6. Schedule events based on a task in plan (Tan Wah Ken)</a></h3>
 <div class="paragraph">
 <p>The plan feature allows the user to create an event based on the task user created in the plan.</p>
 </div>
@@ -2794,5 +2795,33 @@ Example: Adding a @ to a week in a ptTask.</p>
 </ol>
 </div>
 </div>
+<div class="sect2">
+<h3 id="view-schedule-terence-2"><a class="link" href="#view-schedule-terence-2">F.6. View schedule (Terence)</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Enter schedule mode via <code>nav schedule</code></p>
+</li>
+<li>
+<p>View the schedule</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisite: An event has been added to 13 Jan 2020.</p>
+</li>
+<li>
+<p>Test case: <code>view t\2020-01-13</code><br>
+Expected: The event that was pre-added will be displayed.</p>
+</li>
+<li>
+<p>Test case: <code>view t\2020-01-12</code><br>
+Expected: Error message is shown to tell user that the date is out of the range of schedule.</p>
+</li>
+</ol>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 11:49:58 UTC</div></div></div></body></html>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 11:56:47 UTC</div></div></div></body></html>
