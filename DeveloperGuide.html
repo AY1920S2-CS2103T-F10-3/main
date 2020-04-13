@@ -96,8 +96,11 @@
 <li><a href="#glossary">Appendix E: Glossary</a></li>
 <li><a href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
-<li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-person-in-address-book">F.2. Deleting a person in Address Book</a></li>
+<li><a href="#launch">F.1. Launch</a></li>
+<li><a href="#shutdown">F.2. Shutdown</a></li>
+<li><a href="#deleting-a-person-in-address-book">F.3. Deleting a person in Address Book</a></li>
+<li><a href="#adding-a-project-task-in-progress-tracker">F.4. Adding a project task in Progress Tracker</a></li>
+<li><a href="#saving-data">F.5. Saving data</a></li>
 </ul>
 </li>
 </ul>
@@ -2673,7 +2676,7 @@ These instructions only provide a starting point for testers to work on; testers
 </table>
 </div>
 <div class="sect2">
-<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">F.1. Launch and Shutdown</a></h3>
+<h3 id="launch"><a class="link" href="#launch">F.1. Launch</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2708,7 +2711,24 @@ Expected: The most recent window size and location is retained.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person-in-address-book"><a class="link" href="#deleting-a-person-in-address-book">F.2. Deleting a person in Address Book</a></h3>
+<h3 id="shutdown"><a class="link" href="#shutdown">F.2. Shutdown</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Exiting the application</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Enter <code>exit</code> in the command line.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-person-in-address-book"><a class="link" href="#deleting-a-person-in-address-book">F.3. Deleting a person in Address Book</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2739,5 +2759,68 @@ Expected: Similar to previous.</p>
 </ol>
 </div>
 </div>
+<div class="sect2">
+<h3 id="adding-a-project-task-in-progress-tracker"><a class="link" href="#adding-a-project-task-in-progress-tracker">F.4. Adding a project task in Progress Tracker</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Enter progress tracker mode via <code>nav progresstracker</code></p>
+</li>
+<li>
+<p>Adding a project task</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>add p\ip w\1 d\new task</code><br>
+Expected: New project task with description "new task" is added to IP project week 1. Message showing successful execution is shown.</p>
+</li>
+<li>
+<p>Test case: <code>add p\ip w\14 d\new task</code><br>
+Expected: No new project task is added. Error details shown in the status message.</p>
+</li>
+<li>
+<p>Other incorrect add commands to try: <code>add</code>, <code>add p\ppp w\1 d\new task</code>.<br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 03:54:27 UTC</div></div></div></body></html>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="saving-data"><a class="link" href="#saving-data">F.5. Saving data</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Dealing with corrupted data file</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Edit the Nova data file to contain invalid data.<br>
+Example: Adding a @ to a week in a ptTask.</p>
+</li>
+<li>
+<p>Run the application. The application should start with an empty Nova data file.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Dealing with missing data file</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Delete the current Nova data file.</p>
+</li>
+<li>
+<p>Run the application. The application should start with a sample Nova data file with pre-included data.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 04:18:45 UTC</div></div></div></body></html>
