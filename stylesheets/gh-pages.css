@@ -2,6 +2,11 @@
 @import "asciidoctor.css"; /* Default asciidoc style framework - important */
 
 /* Custom block: details */
+@media print {
+  a[href]:after {
+    content: none !important;
+  }
+}
 
 .sidebarblock.details > .content {
     border-left: .25rem solid rgba(0, 0, 0, 0.1);

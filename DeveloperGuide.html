@@ -102,6 +102,7 @@
 <li><a href="#adding-a-project-task-in-progress-tracker-yap-wen-jun-bryan">F.4. Adding a project task in Progress Tracker  (Yap Wen Jun Bryan)</a></li>
 <li><a href="#saving-data-yap-wen-jun-bryan">F.5. Saving data  (Yap Wen Jun Bryan)</a></li>
 <li><a href="#view-schedule-terence-2">F.6. View schedule (Terence)</a></li>
+<li><a href="#adding-an-event-chua-huixian">F.7. Adding an event (Chua Huixian)</a></li>
 </ul>
 </li>
 </ul>
@@ -2823,5 +2824,34 @@ Expected: Error message is shown to tell user that the date is out of the range 
 </ol>
 </div>
 </div>
+<div class="sect2">
+<h3 id="adding-an-event-chua-huixian"><a class="link" href="#adding-an-event-chua-huixian">F.7. Adding an event (Chua Huixian)</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Enter schedule mode via <code>nav schedule</code></p>
+</li>
+<li>
+<p>Adding an event</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>meeting d\DG Meeting v\COM1 t\2020-03-13 13:00 14:00</code><br>
+Expected: A meeting event will be added to the schedule. The details of the meeting will be displayed.</p>
+</li>
+<li>
+<p>Test case: <code>meeting d\DG Meeting v\COM1 t\2020-03-13 14:00 12:00</code><br>
+Expected: Error message is shown. The end time must be later than start time.</p>
+</li>
+<li>
+<p>Other incorrect commands to try: <code>meeting</code>, <code>meeting d\DG Meeting v\COM1 t\2020-03-13 14:00</code>.<br>
+Expected: Error messages will be shown as well.</p>
+</li>
+</ol>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 11:57:49 UTC</div></div></div></body></html>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 12:46:16 UTC</div></div></div></body></html>
